@@ -1,0 +1,55 @@
+lessonup.app t.m 13:30
+zelf werken aan opdrachten
+
+
+
+
+
+
+
+
+front-end taal= html
+back-end taal = python
+werken met AskWhile (SQL)
+wat weten bedrijven van jouw?:
+betaalgegevens
+naw = naam adres woonplaats
+e-mail
+geboortedatum
+
+----------------------------------------------
+
+
+tables (tabellen):
+----------------
+[              ]
+----------------
+[              ]
+----------------
+[              ]
+----------------
+[              ]
+----------------
+[              ]
+----------------
+[              ]
+----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select kolemnaam, kolomnaam of * from tabelnaam where coditie: id > 3 (veldnaam vergelijking waarde)
