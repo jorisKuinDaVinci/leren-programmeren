@@ -1,8 +1,8 @@
-vier_vrienden = 7.45 * 4
+VIER_VRIENDEN = 7.45 * 4
 
-gameseat = 9 * 0.37
+GAMESEAT = 9 * 0.37
 
-totaal = vier_vrienden + gameseat
+totaal = VIER_VRIENDEN + GAMESEAT
 #print(f"De totale kosten zijn: {totaal} euro")
 if totaal > 0:
     print(f"De totale kosten zijn: {totaal} euro")

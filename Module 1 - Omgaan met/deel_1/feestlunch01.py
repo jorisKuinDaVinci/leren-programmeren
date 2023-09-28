@@ -1,8 +1,9 @@
-croissantjes = 0,39
-stokbroden = 2,78
+CROISSANTJES = 0.39
+print(type(CROISSANTJES))
+STOKBRODEN = 2.78
 #totaal = 17 * croissantjes + 2 * stokbroden
-kortingsbonnen = 0,50
-totaal = 17 * croissantjes + 2 * stokbroden - 3 * kortingsbonnen
+KORTINGSBONNEN = 0.50
+totaal = 17 * CROISSANTJES + 2 * STOKBRODEN - 3 * KORTINGSBONNEN
 if totaal > 0:
     print(f"De totale kosten zijn: {totaal} euro")
 elif totaal == 18.88:
