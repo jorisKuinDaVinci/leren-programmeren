@@ -1,5 +1,5 @@
 CROISSANTJES = 0.39
-print(type(CROISSANTJES))
+#print(type(CROISSANTJES)) laat zien wat voor type het is
 STOKBRODEN = 2.78
 #totaal = 17 * croissantjes + 2 * stokbroden
 KORTINGSBONNEN = 0.50

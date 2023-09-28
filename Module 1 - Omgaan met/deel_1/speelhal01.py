@@ -1,8 +1,10 @@
 VIER_VRIENDEN = 7.45 * 4
+PRIJS_PER_VIJF_MINUUT = 0.37
+AANTAL_MINUTEN = 45
+AANTAL_RONDJES = 9
+gameseat_kosten = AANTAL_RONDJES * PRIJS_PER_VIJF_MINUUT
 
-GAMESEAT = 9 * 0.37
-
-totaal = VIER_VRIENDEN + GAMESEAT
+totaal = VIER_VRIENDEN + gameseat_kosten
 #print(f"De totale kosten zijn: {totaal} euro")
 if totaal > 0:
     print(f"De totale kosten zijn: {totaal} euro")
