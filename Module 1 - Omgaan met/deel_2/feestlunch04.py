@@ -1,7 +1,7 @@
 # kosten van de feestlunch
-CROISSANTJES = float(input("Wat kosten de croissantjes?")) #= 0.39
-STOKBRODEN = float(input("Wat kosten de stokbroden?")) #= 2.78
-KORTINGSBONNEN = float(input("Wat kosten de kortingsbonnen?")) #= 0.50
+CROISSANTJES = int(input("Wat kosten de croissantjes?")) #= 0.39
+STOKBRODEN = int(input("Wat kosten de stokbroden?")) #= 2.78
+KORTINGSBONNEN = int(input("Wat kosten de kortingsbonnen?")) #= 0.50
 #aantal
 AANTAL_CROISSANTJES = int(input("Hoeveel croissantjes wil je?")) #= 17
 AANTAL_STOKBRODEN = int(input("Hoeveel stokbroden wil je?")) #= 2
