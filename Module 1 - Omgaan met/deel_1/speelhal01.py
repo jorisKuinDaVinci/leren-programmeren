@@ -10,8 +10,4 @@ persoons_kosten = PERSOONS_PRIJS * AANTAL_MENSEN
 # 45 minuten VR kost 9 rondjes van 5 minuten
 
 totaal = persoons_kosten + totaal_kosten_gameseat
-
-if totaal > 0:
-    print(f'Dit geweldige dagje-uit met 4 mensen in de Speelhal met 45 minuten VR kost je maar {totaal} euro')
-elif totaal == 44.44:
-    print(f'Dit geweldige dagje-uit met 4 mensen in de Speelhal met 45 minuten VR kost je maar 44.44 euro')
+print(f'Dit geweldige dagje-uit met {AANTAL_MENSEN} mensen in de Speelhal met {AANTAL_MINUTEN} minuten VR kost je maar {totaal} euro')

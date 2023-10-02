@@ -13,3 +13,7 @@ prijs_kortingsbonnen = AANTAL_KORTINGSBONNEN * KORTINGSBONNEN
 #totaal
 totaal = prijs_croissantjes + prijs_stokbroden - prijs_kortingsbonnen
 print(f"De feestlunch kost je bij de bakker: {totaal} euro")
+#if totaal > 0:
+    #print(f"De feestlunch kost je bij de bakker: {totaal} euro")
+#elif totaal == 18.88:
+    #print(f'De feestlunch kost je bij de bakker 18.88 euro voor de {AANTAL_CROISSANTJES} croissantjes en de 2 stokbroden als de 3 kortingsbonnen nog geldig zijn!')
