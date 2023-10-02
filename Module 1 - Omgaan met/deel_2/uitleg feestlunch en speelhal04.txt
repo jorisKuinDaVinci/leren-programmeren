@@ -1,0 +1,18 @@
+Opdracht:
+Het werk van een programmeur is nooit echt af.
+
+Pas feestlunch.py en speelhaldag.py van het vorige leerpad aan om input te accepteren
+
+1: Programmeer de invoer van de waarden (via input) van alle variabelen in feestlunch.py
+2: Programmeer de invoer van de waarden (via input) van alle variabelen in speelhaldag.py
+
+Zorg voor conversies naar integers en floats. 
+Hoe kan je ervoor zorgen dat prijzen en bedragen van de invoer worden opgeslagen als centen?
+
+3: Pas feestlunch.py zo aan dat je gaat rekenen met centen (integer values) in plaats van met euro's (float values)
+4: Pas speelhaldag.py zo aan dat je gaat rekenen met centen (integer values) in plaats van met euro's (float values)
+ 
+
+Test de goede werking van beide programma’s!
+
+Commit beide bestanden.
