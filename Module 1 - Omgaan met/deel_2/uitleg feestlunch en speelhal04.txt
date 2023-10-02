@@ -3,8 +3,8 @@ Het werk van een programmeur is nooit echt af.
 
 Pas feestlunch.py en speelhaldag.py van het vorige leerpad aan om input te accepteren
 
-1: Programmeer de invoer van de waarden (via input) van alle variabelen in feestlunch.py
-2: Programmeer de invoer van de waarden (via input) van alle variabelen in speelhaldag.py
+1: Programmeer de invoer van de waarden (via input) van alle variabelen in feestlunch.py (klaar)
+2: Programmeer de invoer van de waarden (via input) van alle variabelen in speelhaldag.py (klaar)
 
 Zorg voor conversies naar integers en floats. 
 Hoe kan je ervoor zorgen dat prijzen en bedragen van de invoer worden opgeslagen als centen?
