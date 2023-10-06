@@ -6,7 +6,6 @@ PERSOONS_PRIJS = int(  float( input("Hoeveel kost een persoon? ") )*100  )
 PRIJS_PER_VIJF_MINUUT = int(  float( input("Hoeveel kost 5 minuten? ") )*100  )
 #AANTAL_MINUTEN = 45
 AANTAL_MINUTEN = int(input("Hoeveel minuten gaan jullie? "))
-#AANTAL_RONDJES = 9
 
 totaal_kosten_gameseat = ((AANTAL_MINUTEN / 5) * PRIJS_PER_VIJF_MINUUT) * AANTAL_MENSEN
 
