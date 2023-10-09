@@ -1,5 +1,5 @@
 naam = input("Hallo, wat is je naam?")
 leeftijd = input("Goedendag {naam}, hoe oud ben je?")
-eten = input("En als {leeftijd} jarige, wat eet je het liefst {naam}?")
-drinken = input("En wat drink je het liefst bij {eten} {naam}?")
+eten = input("En als {leeftijd} jarige, wat eet {naam} het liefst?")
+drinken = input("En wat drink {naam} het liefst bij {eten}?")
 einde = input("De {leeftijd} jarige {naam} drink het liefst {drinken} bij {eten}.")

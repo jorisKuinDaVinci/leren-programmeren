@@ -6,6 +6,7 @@ PIZZA_PRIJZEN = {
     "medium": 7.00,
     "groot": 10.00
 }
+print(type(PIZZA_PRIJZEN))
 
 kosten_klein = klein * PIZZA_PRIJZEN["klein"]
 kosten_medium = medium * PIZZA_PRIJZEN["medium"]
