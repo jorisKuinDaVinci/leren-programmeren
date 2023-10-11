@@ -3,7 +3,7 @@ gasten = True
 drank = True
 chips = True
 
-if ???:
+if gastheer and gasten and drank and chips:
     print('Start the Party')
 else:
     print('No Party')
