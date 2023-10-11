@@ -1,0 +1,4 @@
+#if (practice_dieren_dressuur >= MIN_PRACTICE_DIEREN_DRESSUUR or experience >= MIN_EXPERIENCE or practice_acrobatiek >= MIN_PRACTICE_ACROBATIEK) and certificaat == "ja" and (diploma == "ja" or ondernemer == "ja" and ondernemer_years > MIN_ONDERNEMER_YEARS and werknemers >= MIN_WERKNEMERS) and (geslacht == "man" and snor == "ja") and vrachtwagen_rijbewijs == "ja" and hoge_hoed == "ja" and lichaamsgewicht >= MIN_WEIGHT and lichaamsgewicht <= MAX_WEIGHT and lengte >= MIN_LENGTH and lengte <= MAX_LENGTH:
+    #print("gefeliciteerd, je bent aangenomen!")
+#else: 
+    #print("sorry, je bent niet aangenomen")
