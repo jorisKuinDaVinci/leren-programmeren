@@ -1,0 +1,5 @@
+print("************************ STUDIEADVIES *****************************")
+print("Ik ga jou helpen met jouw opleiding. Je krijgt een aantal stellingen te zien.")
+print("Voor elke stelling moet je zeggen hoeveel dat bij jou voorkomt. je kunt steeds")
+print("antwoorden: 0 is 'altijd'; 1 is 'vaak'; 2 is 'regelmatig'; 3 is 'soms'; 4 is 'nooit'.")
+print("Het is belangrijk om eerlijk te zijn. Op basis van jouw antwoorden krijg je advies.")

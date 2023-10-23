@@ -1,7 +1,21 @@
 # Opdracht: Sollicitatiebrief schrijven
-practice_dieren_dressuur = int(input("hoeveel praktijkervaring heb je met dieren-dressuur? "))
+MIN_PRACTICE_DIEREN_DRESSUUR = 4
+MIN_EXPERIENCE = 5
+MIN_PRACTICE_ACROBATIEK = 3
+MIN_ONDERNEMER_YEARS = 3
+MIN_WERKNEMERS = 5
+MIN_SNOR_LENGTH = 10
+MIN_ROOD_KRULHAAR_LENGTH = 20
+MIN_BREDE_GLIMLACH_BREEDTE = 10
+practice_dieren_dressuur = int(input("hoeveel jaar praktijkervaring heb je met dieren-dressuur? "))
+if practice_dieren_dressuur >= MIN_PRACTICE_DIEREN_DRESSUUR:
+    print("goed dat je ervaring hebt met het vak dieren-dressuur!")
 experience = int(input("hoeveel jaar praktijkervaring heb je met jongleren? "))
+if experience >= MIN_EXPERIENCE:
+    print("goed dat je ervaring hebt met jongleren!")
 practice_acrobatiek = int(input("hoeveel jaar praktijkervaring heb je met acrobatiek? "))
+if practice_acrobatiek >= MIN_PRACTICE_ACROBATIEK:
+    print("goed dat je ervaring hebt met acrobatiek!")
 certificaat = input("ben je in bezit van certificaat overleven met gevaarlijk personeel? ")
 if certificaat == "ja":
     print("goed dat je een certificaat hebt!")
@@ -28,7 +42,7 @@ if geslacht == "man":
     else:
         snor = "nee"
         snor_length = 0
-        print("je bent niet aangenomen omdat je geen snor hebt!")
+        print("je bent niet aangenomen omdat je geen snor hebt of omdat je snor niet lang genoeg is!")
 if geslacht == "vrouw":
    krulhaar = input("heb je rood krulhaar? ")
    if krulhaar == "ja":
@@ -36,7 +50,7 @@ if geslacht == "vrouw":
    else:
        krulhaar = "nee"
        krulhaar_length = 0
-       print("je bent niet aangenomen omdat je geen rood krulhaar hebt!")
+       print("je bent niet aangenomen omdat je geen rood krulhaar hebt of je rode krulehaar te kort is!")
 if geslacht == "anders":
     Brede_glimlach = input("heb je een brede glimlach? ")
     if Brede_glimlach == "ja":
@@ -69,14 +83,6 @@ if lengte >= MIN_LENGTH and lengte <= MAX_LENGTH:
     print("goed dat je een goed lengte hebt!")
 else:
     print("je bent niet aangenomen omdat je niet lang of te lang bent!")
-MIN_PRACTICE_DIEREN_DRESSUUR = 4
-MIN_EXPERIENCE = 5
-MIN_PRACTICE_ACROBATIEK = 3
-MIN_ONDERNEMER_YEARS = 3
-MIN_WERKNEMERS = 5
-MIN_SNOR_LENGTH = 10
-MIN_ROOD_KRULHAAR_LENGTH = 20
-MIN_BREDE_GLIMLACH_BREEDTE = 10
 if (practice_dieren_dressuur >= MIN_PRACTICE_DIEREN_DRESSUUR or experience >= MIN_EXPERIENCE or practice_acrobatiek >= MIN_PRACTICE_ACROBATIEK) and certificaat == "ja" and vrachtwagen_rijbewijs == "ja" and hoge_hoed == "ja" and lichaamsgewicht >= MIN_WEIGHT and lichaamsgewicht <= MAX_WEIGHT and lengte >= MIN_LENGTH and lengte <= MAX_LENGTH and (diploma == "ja" or ondernemer == "ja" and ondernemer_years > MIN_ONDERNEMER_YEARS and werknemers >= MIN_WERKNEMERS) and geslacht == "man" and snor == "ja" and snor_length > MIN_SNOR_LENGTH or geslacht == "vrouw" and krulhaar == "ja" and krulhaar_length > MIN_ROOD_KRULHAAR_LENGTH or geslacht == "anders" and Brede_glimlach == "ja" and Brede_glimlach_breedte > MIN_BREDE_GLIMLACH_BREEDTE:
     print("gefeliciteerd, je bent aangenomen!")
 else:
