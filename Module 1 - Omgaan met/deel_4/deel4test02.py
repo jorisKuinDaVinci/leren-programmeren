@@ -10,8 +10,8 @@ def get_smallest(getal1: int, getal2: int) -> str: # een functie kun je 1 of mee
         kleinste = getal2
         #print("het kleinste getal is: " + str(kleinste))
 
-    #return kleinste # geeft terug: het kleinste getal is: x
-    return f"het kleinste getal is: {kleinste}"
+    #return kleinste
+    return f"het kleinste getal is: {kleinste}" # geeft terug: het kleinste getal is: x
 
 # enentuele variabelen/ constantes
 
