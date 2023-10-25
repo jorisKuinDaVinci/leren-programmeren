@@ -1,8 +1,21 @@
-print("************************ STUDIEADVIES *****************************")
-print("Ik ga jou helpen met jouw opleiding. Je krijgt een aantal stellingen te zien.")
-print("Voor elke stelling moet je zeggen hoeveel dat bij jou voorkomt.")
-print("je kunt steeds antwoorden: 0 is 'altijd'; 1 is 'vaak'; 2 is 'regelmatig'; 3 is 'soms'; 4 is 'nooit'.")
-print("Het is belangrijk om eerlijk te zijn. Op basis van jouw antwoorden krijg je advies.")
-print("")
-print("Ik voel stress of blokkades bij het maken van programeeropdrachten.")
-print("Kies: 0 = altijd, 1 = vaak, 2 = regelmatig, 3 = soms, 4 = nooit")
+from studieadviestext import *
+print(STUDIEDOKTER_TITEL)
+hoeveel_weken = int(input(AANTAL_WEKEN_VRAAG))
+stress_blokkades = int(input(COMPETENTIE_STELLING_1 + OPTIES))
+uitstellen = int(input(COMPETENTIE_STELLING_2 + OPTIES))
+talent = int(input(COMPETENTIE_STELLING_3 + OPTIES))
+vermijd_assessments = int(input(COMPETENTIE_STELLING_4 + OPTIES))
+vergelijk = int(input(COMPETENTIE_STELLING_5 + OPTIES))
+if hoeveel_weken >= 10:
+    interesse = int(input(COMPETENTIE_STELLING_6 + OPTIES))
+    kopieer = int(input(COMPETENTIE_STELLING_7 + OPTIES))
+
+gemiddelde_score = stress_blokkades + uitstellen + talent + vermijd_assessments + vergelijk
+#gemiddelde_score = (stress_blokkades + uitstellen + talent + vermijd_assessments + vergelijk) / 5
+print(COMPETENTIE_ADVIES_TITEL)
+if gemiddelde_score <= 2 or (stress_blokkades <= 1 or uitstellen <= 1 or talent <= 1 or vermijd_assessments <= 1 or vergelijk <= 1 or interesse <= 1 or kopieer <= 1):
+    print(COMPETENTIE_ADVIES_ZORGELIJK)
+elif gemiddelde_score <= 3 or (stress_blokkades <= 2 or uitstellen <= 2 or talent <= 2 or vermijd_assessments <= 2 or vergelijk <= 2 or interesse <= 2 or kopieer <= 2):
+    print(COMPETENTIE_ADVIES_TWIJFELACHTIG)
+else:
+    print(COMPETENTIE_ADVIES_GERUSTSTELLEND)    
