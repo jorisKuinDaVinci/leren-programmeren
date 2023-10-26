@@ -7,6 +7,7 @@ MIN_WERKNEMERS = 5
 MIN_SNOR_LENGTH = 10
 MIN_ROOD_KRULHAAR_LENGTH = 20
 MIN_BREDE_GLIMLACH_BREEDTE = 10
+naam = input("wat is je naam? ")
 practice_dieren_dressuur = int(input("hoeveel jaar praktijkervaring heb je met dieren-dressuur? "))
 if practice_dieren_dressuur >= MIN_PRACTICE_DIEREN_DRESSUUR:
     print("goed dat je ervaring hebt met het vak dieren-dressuur!")
