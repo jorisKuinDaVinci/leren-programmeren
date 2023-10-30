@@ -1,31 +1,24 @@
-try: 
-    klein = int(input("hoeveel klein?"))
-except: 
-    while True:
-        try: 
-            print("Dat is geen getal!(geef een cijfer!)")
-            klein = int(input("hoeveel klein?"))
-            break
-        except: 
-            print("Dat is geen getal!(geef een cijfer!)")
-try: 
-    medium = int(input("hoeveel medium?"))
-except: 
-    while True:
-        try: 
-            medium = int(input("hoeveel medium?"))
-            break
-        except: 
-            print("Dat is geen getal!(geef een cijfer!)")
-try: 
-    groot = int(input("hoeveel groot?"))
-except: 
-    while True:
-        try: 
-            groot = int(input("hoeveel groot?"))
-            break
-        except: 
-            print("Dat is geen getal!(geef een cijfer!)")
+while True:
+    try: 
+        klein = int(input("hoeveel klein?"))
+        break
+    except: 
+        print("Dat is geen getal!(geef een cijfer!)") 
+
+while True:
+    try:    
+        medium = int(input("hoeveel medium?"))
+        break
+    except: 
+        print("Dat is geen getal!(geef een cijfer!)")
+
+while True:
+    try: 
+        groot = int(input("hoeveel groot?"))
+        break
+    except: 
+        print("Dat is geen getal!(geef een cijfer!)")
+        
 PIZZA_PRIJZEN = {
     "klein": 5.00,
     "medium": 7.00,
