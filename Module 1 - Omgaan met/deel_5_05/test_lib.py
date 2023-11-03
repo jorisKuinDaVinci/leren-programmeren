@@ -77,6 +77,30 @@ def str_more(s: str, max: int) -> str:
   else:
       return s  
 
+def test_function(function, *args, expect):
+  result = function(*args)
+  test(f'Test function {function.__name__}', expect, result)
+
+def test_module(module, expect):    
+  test(f'Test module {module.__name__}', expect, module.__name__)
+
+def test_module_exists(module_name):
+  try:
+    module = __import__(module_name)
+    test_module(module, module_name)
+  except ModuleNotFoundError:
+    test_module(None, module_name)
+
+def test_module_function(module_name, function_name, *args, expect):
+  try:
+    module = __import__(module_name)
+    function = getattr(module, function_name)
+    test_function(function, *args, expect=expect)
+  except ModuleNotFoundError:
+    test_module(None, module_name)
+  except AttributeError:
+    test_module_function(None, function_name, *args, expect=expect)
+
 def test(name: str, expect: any, value: any):
   passed = False
   type_expected = ''
