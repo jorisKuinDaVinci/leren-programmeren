@@ -16,6 +16,10 @@ expected = nr1 + nr2
 calculated = add(nr1, nr2)
 test('add', expected, calculated)
 
+expected = 76
+calculated = add(17, 59)
+test('add', expected, calculated)
+
 expected = nr2 - nr1
 calculated = substract(nr2, nr1)
 test('substract', expected, calculated)
@@ -26,6 +30,10 @@ test('multiply', expected, calculated)
 
 expected = nr1 / nr2
 calculated = divide(nr1, nr2)
+test('divide', expected, calculated)
+
+expected = 9.0
+calculated = divide(27, 3)
 test('divide', expected, calculated)
 
 expected = None

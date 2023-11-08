@@ -38,7 +38,7 @@ test('pointless', expected, calculated)
 
 nr = 15.11
 expected = 16
-calculated = round(nr+1) # use one function to calculate expected number
+calculated = ceil(nr) # use one function to calculate expected number
 test('sky-is-the-limit', expected, calculated)
 
 report()
