@@ -24,8 +24,16 @@ expected = nr2 - nr1
 calculated = substract(nr2, nr1)
 test('substract', expected, calculated)
 
+expected = 34
+calculated = substract(55, 21)
+test('substract', expected, calculated)
+
 expected = nr1 * nr2
 calculated = multiply(nr1, nr2)
+test('multiply', expected, calculated)
+
+expected = 150
+calculated = multiply(75, 2)
 test('multiply', expected, calculated)
 
 expected = nr1 / nr2
