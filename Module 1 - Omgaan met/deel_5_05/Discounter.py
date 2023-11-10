@@ -56,3 +56,12 @@ name = f'test price: {price} brand: {brand}'
 test(name, expect_discount, calculated_discount )
 
 report()
+
+price = 1000.0
+brand = 'BMW'
+expect_discount = 0.0
+calculated_discount = calc_discount(price, brand, month_discount_brands)
+name = f'test price: {price} brand: {brand}'
+test(name, expect_discount, calculated_discount )
+
+report()
