@@ -8,13 +8,21 @@ expected = nr2 + 1 #
 calculated = increment(nr2)
 test('increment', expected, calculated)
 
-expected = nr2 - 1 #foutmelding bij: decrement
+expected = 29 #
+calculated = increment(28)
+test('extra test', expected, calculated)
+
+expected = nr2 - 1 #
 calculated = decrement(nr2)
 test('decrement', expected, calculated)
 
 expected = nr1 + nr2
 calculated = add(nr1, nr2)
 test('add', expected, calculated)
+
+expected = 55
+calculated = add(15, 40)
+test('extra test 2', expected, calculated)
 
 expected = 76
 calculated = add(17, 59)
