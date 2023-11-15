@@ -13,7 +13,11 @@ tekst_3 = "Abba was erg populair in de jaren 70"
 # schrijf code die het aantal a's uitrekent in deze string!
 aantal_a = 0
 for c in tekst_3:
-    if c == "a" or c == "A":
-        print(c)
+    if c == 'a' or c == 'A':
+        print(f"Dit is mijn {aantal_a}e {c}")
         aantal_a = aantal_a + 1
 print(aantal_a)
+
+
+for x in range(4):
+    print("je bent geweldig!")
