@@ -1,21 +1,21 @@
 import re
-# replace alle separators "." , ",", " en ", "omdat ", "zodat ", "want ", " wanneer " en "dat ”by a marker "|"
+
 def replace_separators(text: str) -> str:
   text = re.sub(r"\.|,|!|\?| en |omdat |zodat |want | wanneer |dat ", "|", text)
   return text
 
 def split_sentences(text: str) -> list:
-    sub_sentences = text.split("|") # split de text on marker "|"
+    sub_sentences = text.split("|") # split de text bij marker "|"
     return sub_sentences
 
 def get_ego_score(text: str) -> int:
     ego_score = 0
-    for sentence in sub_sentences: # repeat for every sentence in a list sentences
-        sentence = sentence.strip() # remove leading and trailing spaces
-        sentence = sentence.lower() # convert uppercase characters to lowercase
+    for sentence in sub_sentences: # herhaal voor elke sentence in een list sentences
+        sentence = sentence.strip() # verwijder leading en trailing spaces
+        sentence = sentence.lower() # verander uppercase characters naar lowercase
         if len(sentence) > 0:
-          words = sentence.split(' ') # split sentence into words
-          # first words of sentence equal to ik?
+          words = sentence.split(' ') # split sentence in worden
+          # eerste worden van sentence equal to ik?
           if len(words) >= 2 and (words[0] in ('ik','mijn') or words[1] in ('ik','mijn')):
             ego_score += 1
     return ego_score
