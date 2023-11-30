@@ -1,23 +1,23 @@
 import re
 
-def replace_separators(tekst: str) -> str:
+def vervang_separators(tekst: str) -> str:
   tekst = re.sub(r"\.|,|!|\?| en |omdat |zodat |want | wanneer |dat ", "|", tekst)
   return tekst
 
-def split_sentences(tekst: str) -> list:
-    sub_sentences = tekst.split("|") # split de text bij marker "|"
-    return sub_sentences
+def split_zinnen(tekst: str) -> list:
+    sub_zinnen = tekst.split("|") # split de text bij marker "|"
+    return sub_zinnen
 
-def get_ego_score(tekst: str) -> int:
-    sub_sentences = split_sentences(tekst)
+def pak_ego_score(tekst: str) -> int:
+    sub_zinnen = split_zinnen(tekst)
     ego_score = 0
-    for sentence in sub_sentences: # herhaal voor elke sentence in een list sentences
-        sentence = sentence.strip() # verwijder leading en trailing spaces
-        sentence = sentence.lower() # verander uppercase characters naar lowercase
-        if len(sentence) > 0:
-          words = sentence.split(' ') # split sentence in worden
+    for zin in sub_zinnen: # herhaal voor elke sentence in een list sentences
+        zin = zin.strip() # verwijder leading en trailing spaces
+        zin = zin.lower() # verander uppercase characters naar lowercase
+        if len(zin) > 0:
+          worden = zin.split(' ') # split sentence in worden
           # eerste worden van sentence equal to ik?
-          if len(words) >= 2 and (words[0] in ('ik','mijn') or words[1] in ('ik','mijn')):
+          if len(worden) >= 2 and (worden[0] in ('ik','mijn') or worden[1] in ('ik','mijn')):
             ego_score += 1
     return ego_score
 
@@ -34,6 +34,6 @@ tekst = """Geachte heer/mevrouw,
     Ik verdien daarom een plek in uw team.
     Ik kijk er naar uit om te horen wanneer ik op gesprek mag komen,
     zodat ik u persoonlijk kan overtuigen van mijn geschiktheid voor deze functie."""
-tekst = replace_separators(tekst)
-ego_score = get_ego_score(tekst)
+tekst = vervang_separators(tekst)
+ego_score = pak_ego_score(tekst)
 print(ego_score)
