@@ -1,11 +1,10 @@
 import re
 
-def vervang_separators(tekst: str) -> str:
-  tekst = re.sub(r"\.|,|!|\?| en |omdat |zodat |want | wanneer |dat ", "|", tekst)
-  return tekst
-
 def split_zinnen(tekst: str) -> list:
-    sub_zinnen = tekst.split("|") # split de text bij marker "|"
+    print(tekst)
+    tekst = re.sub(r"\.|,|!|\?| en |omdat |zodat |want | wanneer |dat ", "|", tekst)
+    print(tekst)
+    sub_zinnen = tekst.split("|") # split de tekst bij marker "|"
     return sub_zinnen
 
 def pak_ego_score(tekst: str) -> int:
@@ -34,6 +33,6 @@ tekst = """Geachte heer/mevrouw,
     Ik verdien daarom een plek in uw team.
     Ik kijk er naar uit om te horen wanneer ik op gesprek mag komen,
     zodat ik u persoonlijk kan overtuigen van mijn geschiktheid voor deze functie."""
-tekst = vervang_separators(tekst)
+list_tekst = split_zinnen(tekst)#als je van een string een list maakt verander dan de naam van de string
 ego_score = pak_ego_score(tekst)
 print(ego_score)
