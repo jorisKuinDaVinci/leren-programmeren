@@ -1,5 +1,9 @@
+from juiste_antwoorden import *
 naam = input('wat is je naam?')
-print('hallo ' + naam + ' je loopt door een bos. je bent verdwaald')
+if naam == naam_1:
+    print('hallo ' + naam + 'dit zijn de juiste antwoorden: ' + juiste_antwoorden_1)
+else:
+    print('hallo ' + naam + ' je loopt door een bos. je bent verdwaald')
 try:
     keuze_1 = input('je staat voor een splitsing, welke kant kiest je? (links of rechts)')
 except:
