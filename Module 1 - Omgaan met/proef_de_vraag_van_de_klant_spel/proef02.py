@@ -10,7 +10,6 @@ except:
             break
         except:
             print("Dat is niet een keuze!(kies links of rechts!)")
-#keuze_1 = input('je staat voor een splitsing, welke kant kiest je? (links of rechts)')
 if keuze_1 == 'links':
     print('je loopt verder en komt een beer tegen, je rent weg maar de beer rent achter je aan en eet je op')
     print('game over')
