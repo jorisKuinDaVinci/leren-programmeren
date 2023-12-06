@@ -39,10 +39,10 @@ elif keuze_1 == 'rechts':
         if keuze_2_5 == 'code invoeren':
             print('je voert de code in')
             input('voer de code in: ')
-            if input <= '1234':
+            if input < '1234':
                 print('je hebt de code fout ingevoerd en het apparaat ontploft in je gezicht. je sterft.')
                 print('game over')
-            elif input >= '1234':
+            elif input > '1234':
                 print('je hebt de code fout ingevoerd en het apparaat ontploft in je gezicht. je sterft.')
                 print('game over')
             elif input == '1234':
