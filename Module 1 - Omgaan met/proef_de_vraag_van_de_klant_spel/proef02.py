@@ -2,6 +2,7 @@ from juiste_antwoorden import *
 naam = input('wat is je naam?')
 if naam == naam_1:
     print('hallo ' + naam + 'dit zijn de juiste antwoorden: ' + juiste_antwoorden_1)
+    print('hallo ' + naam + ' je loopt door een bos. je bent verdwaald')
 else:
     print('hallo ' + naam + ' je loopt door een bos. je bent verdwaald')
 try:
@@ -15,10 +16,12 @@ except:
         except:
             print("Dat is niet een keuze!(kies links of rechts!)")
 if keuze_1 == 'links':
+    goed_antwoord_1 = 'nee'
     print('je loopt verder en komt een beer tegen, je rent weg maar de beer rent achter je aan en eet je op')
     print('game over')
 elif keuze_1 == 'rechts':
     print('je loopt verder en je komt aan bij een huis')
+    goed_antwoord_1 = 'ja'
     try:
         keuze_2 = input('je kunt kiezen om aan te bellen of om weg te lopen, wat doe je? (aanbellen of weglopen)')
     except:
@@ -30,6 +33,7 @@ elif keuze_1 == 'rechts':
             except:
                 print("Dat is niet een keuze!(kies aanbellen of weglopen!)")
     if keuze_2 == 'aanbellen':
+        goed_antwoord_2 = 'nee'
         try:
             keuze_2_5 = input('er doet niemand open je ziet een apparraat aan het huis hangen, je moet een code invoeren. (code invoeren of weglopen)')
         except:
@@ -43,12 +47,12 @@ elif keuze_1 == 'rechts':
         if keuze_2_5 == 'code invoeren':
             print('je voert de code in')
             input('voer de code in: ')
-            if input < '1234':
+            if input < '1234' or input > '1234':
                 print('je hebt de code fout ingevoerd en het apparaat ontploft in je gezicht. je sterft.')
                 print('game over')
-            elif input > '1234':
-                print('je hebt de code fout ingevoerd en het apparaat ontploft in je gezicht. je sterft.')
-                print('game over')
+            #elif input > '1234':
+                #print('je hebt de code fout ingevoerd en het apparaat ontploft in je gezicht. je sterft.')
+                #print('game over')
             elif input == '1234':
                 print('je hebt de code goed ingevoerd en de deur gaat open.')
                 try:
@@ -87,6 +91,7 @@ elif keuze_1 == 'rechts':
             print('game over')
     elif keuze_2 == 'weglopen':
         print('je loopt weg en komt aan bij een rivier')
+        goed_antwoord_2 = 'ja'
         try:
             keuze_5 = input('er is een brug. je kunt kiezen om te zwemmen of om over de brug te lopen, wat doe je? (zwemmen of over de brug lopen)')
         except:
@@ -98,11 +103,13 @@ elif keuze_1 == 'rechts':
                 except:
                     print("Dat is niet een keuze!(kies zwemmen of over de brug lopen!)")
         if keuze_5 == 'over de brug lopen':
+            goed_antwoord_3 = 'nee'
             print('je loopt over de brug en de brug stort in, je valt in het water en verdrinkt')
             print('game over')
         elif keuze_5 == 'zwemmen':
             print('je gaat zwemmen en komt veilig aan de overkant.')
             print('je loopt verder en komt aan bij een weg')
+            goed_antwoord_3 = 'ja'
             try:
                 keuze_6 = input('je kunt kiezen om te oversteken of verder door het bos te lopen wat doe je? (oversteken of door het bos lopen)') 
             except:
@@ -114,10 +121,12 @@ elif keuze_1 == 'rechts':
                     except:
                         print("Dat is niet een keuze!(kies oversteken of door het bos lopen!)")
             if keuze_6 == 'oversteken':
+                goed_antwoord_4 = 'nee'
                 print('je steekt over en wordt aangereden door een auto')
                 print('game over')
             elif keuze_6 == 'door het bos lopen':
                 print('je loopt door het bos en komt aan bij een zebrapad')
+                goed_antwoord_4 = 'ja'
                 try:
                     keuze_7 = input('je kunt kiezen om over te steken of om te wachten wat doe je? (oversteken of wachten)')
                 except:
@@ -129,10 +138,12 @@ elif keuze_1 == 'rechts':
                         except:
                             print("Dat is niet een keuze!(kies oversteken of wachten!)")
                 if keuze_7 == 'wachten':
+                    goed_antwoord_5 = 'nee'
                     print('je wacht en je wordt neergeschoten door een jager')
                     print('game over')
                 elif keuze_7 == 'oversteken':
                     print('je steekt over en komt bij een ander bos.')
+                    goed_antwoord_5 = 'ja'
                     print('je loopt verder en komt aan bij een huis met een bordje "te koop"')
                     try:
                         keuze_8 = input('je kunt kiezen om het huis te kopen of om verder te lopen wat doe je? (huis kopen of verder lopen)')
@@ -145,9 +156,11 @@ elif keuze_1 == 'rechts':
                             except:
                                 print("Dat is niet een keuze!(kies huis kopen of verder lopen!)")
                     if keuze_8 == 'huis kopen':
+                        goed_antwoord_6 = 'nee'
                         print('je koopt het huis en gaat er wonen')
                         print('je woont er 10 jaar en je sterft door een ziekte. je ziet je familie en vrienden nooit meer en sterft alleen.')
                     elif keuze_8 == 'verder lopen':
+                        goed_antwoord_6 = 'ja'
                         print('je loopt verder en komt bij een kruispunt')
                         try:
                             keuze_9 = input('je kunt kiezen om links of rechts te gaan wat doe je? (links of rechts)')
@@ -160,6 +173,7 @@ elif keuze_1 == 'rechts':
                                 except:
                                     print("Dat is niet een keuze!(kies links of rechts!)")
                         if keuze_9 == 'links':
+                            goed_antwoord_7 = 'nee'
                             print('je gaat links en ziet iets bekends')
                             try:
                                 keuze_10 = input('je kunt kiezen om er naar toe te gaan of om verder te lopen wat doe je? (er naar toe gaan of verder lopen)')
@@ -210,5 +224,13 @@ elif keuze_1 == 'rechts':
                                     print('game over')
                         elif keuze_9 == 'rechts':    
                             print('je gaat rechts en vindt het einde van het bos')
-                            print('je vindt je weg terug naar huis en leeft lang en gelukkig')
-                            print('einde')
+                            goed_antwoord_7 = 'ja'
+                            if goed_antwoord_1 == 'ja' and goed_antwoord_2 == 'ja' and goed_antwoord_3 == 'ja' and goed_antwoord_4 == 'ja' and goed_antwoord_5 == 'ja' and goed_antwoord_6 == 'ja' and goed_antwoord_7 == 'ja':
+                                print('je vindt je weg terug naar huis en leeft lang en gelukkig')
+                                print('je hebt alles goed gedaan!')
+                                print('einde')
+                            if not goed_antwoord_1 == 'ja' or not goed_antwoord_2 == 'ja' or not goed_antwoord_3 == 'ja' or not goed_antwoord_4 == 'ja' or not goed_antwoord_5 == 'ja' or not goed_antwoord_6 == 'ja' or not goed_antwoord_7 == 'ja':
+                                print('je vindt je weg niet terug naar huis en verhongerd in het bos')
+                                print('game over')
+                            #print('je vindt je weg terug naar huis en leeft lang en gelukkig')
+                            #print('einde')
