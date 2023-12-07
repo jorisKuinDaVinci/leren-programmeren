@@ -56,16 +56,16 @@ elif keuze_1 == 'rechts':
             elif input == '1234':
                 print('je hebt de code goed ingevoerd en de deur gaat open.')
                 try:
-                    keuze_3 = input('er staat een oude vrouw in het huis, ze vraagt of je binnen wilt komen, wat doe je? (binnenkomen of weglopen)')
+                    keuze_3 = input('er staat een oude vrouw in het huis, ze vraagt of je binnen wilt komen, wat doe je? (naar binnen gaan of weglopen)')
                 except:
                     while True:
                         try:
-                            print("Dat is niet een keuze!(kies binnenkomen of weglopen!)")
+                            print("Dat is niet een keuze!(kies naar binnen gaan of weglopen!)")
                             keuze_3 = input('er staat een oude vrouw in het huis, ze vraagt of je binnen wilt komen, wat doe je? (binnenkomen of weglopen)')
                             break
                         except:
-                            print("Dat is niet een keuze!(kies binnenkomen of weglopen!)")
-                if keuze_3 == 'binnenkomen':
+                            print("Dat is niet een keuze!(kies naar binnen gaan of weglopen!)")
+                if keuze_3 == 'naar binnen gaan':
                     print('je komt binnen en de vrouw vraagt of je wat wilt drinken.')
                     try:
                         keuze_4 = input('wil je drinken? (ja of nee)')
@@ -159,6 +159,7 @@ elif keuze_1 == 'rechts':
                         goed_antwoord_6 = 'nee'
                         print('je koopt het huis en gaat er wonen')
                         print('je woont er 10 jaar en je sterft door een ziekte. je ziet je familie en vrienden nooit meer en sterft alleen.')
+                        print('einde')
                     elif keuze_8 == 'verder lopen':
                         goed_antwoord_6 = 'ja'
                         print('je loopt verder en komt bij een kruispunt')
@@ -204,18 +205,19 @@ elif keuze_1 == 'rechts':
                                 if keuze_11 == 'aanbellen':
                                     print('je belt aan en er doet een oude vrouw open')
                                     try:
-                                        keuze_12 = input('ze vraagt of je binnen wilt komen wat doe je? (binnenkomen of weglopen)')
+                                        keuze_12 = input('ze vraagt of je binnen wilt komen wat doe je? (naar binnen gaan of weglopen)')
                                     except:
                                         while True:
                                             try:
-                                                print("Dat is niet een keuze!(kies binnenkomen of weglopen!)")
-                                                keuze_12 = input('ze vraagt of je binnen wilt komen wat doe je? (binnenkomen of weglopen)')
+                                                print("Dat is niet een keuze!(kies naar binnen gaan of weglopen!)")
+                                                keuze_12 = input('ze vraagt of je binnen wilt komen wat doe je? (naar binnen gaan of weglopen)')
                                                 break
                                             except:
                                                 print("Dat is niet een keuze!(kies binnenkomen of weglopen!)")
-                                    if keuze_12 == 'binnenkomen':
-                                        print('je komt binnen en de de vrouw sterft aan ouderdom. je krijgt haar huis.')
+                                    if keuze_12 == 'naar binnen gaan':
+                                        print('je komt binnen en de de vrouw sterft later aan ouderdom. je krijgt haar huis.')
                                         print('je woont er en je sterft aan ouderdom. je ziet je familie en vrienden nooit meer en sterft alleen.')
+                                        print('spel gewonnen!')
                                     elif keuze_12 == 'weglopen':
                                         print('je loopt weg en verhongert')
                                         print('game over')
@@ -228,6 +230,7 @@ elif keuze_1 == 'rechts':
                             if goed_antwoord_1 == 'ja' and goed_antwoord_2 == 'ja' and goed_antwoord_3 == 'ja' and goed_antwoord_4 == 'ja' and goed_antwoord_5 == 'ja' and goed_antwoord_6 == 'ja' and goed_antwoord_7 == 'ja':
                                 print('je vindt je weg terug naar huis en leeft lang en gelukkig')
                                 print('je hebt alles goed gedaan!')
+                                print('spel gewonnen!')
                                 print('einde')
                             if not goed_antwoord_1 == 'ja' or not goed_antwoord_2 == 'ja' or not goed_antwoord_3 == 'ja' or not goed_antwoord_4 == 'ja' or not goed_antwoord_5 == 'ja' or not goed_antwoord_6 == 'ja' or not goed_antwoord_7 == 'ja':
                                 print('je vindt je weg niet terug naar huis en verhongerd in het bos')
