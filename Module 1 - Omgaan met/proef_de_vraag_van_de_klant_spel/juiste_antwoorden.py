@@ -376,5 +376,5 @@
 
 
 
-naam_1 = 'Pellaeon'
+naam_1 = 'Joris'
 juiste_antwoorden_1 = '1 = rechts, 2 = weglopen, 5 = zwemmen, 6 = door het bos lopen, 7 = oversteken, 8 = verder lopen, 9 = rechts'
