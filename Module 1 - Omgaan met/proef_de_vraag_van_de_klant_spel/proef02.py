@@ -19,6 +19,7 @@ if keuze_1 == 'links':
     goed_antwoord_1 = 'nee'
     print('je loopt verder en komt een beer tegen, je rent weg maar de beer rent achter je aan en eet je op')
     print('game over')
+    print('einde')
 elif keuze_1 == 'rechts':
     print('je loopt verder en je komt aan bij een huis')
     goed_antwoord_1 = 'ja'
@@ -50,6 +51,7 @@ elif keuze_1 == 'rechts':
             if input < '1234' or input > '1234':
                 print('je hebt de code fout ingevoerd en het apparaat ontploft in je gezicht. je sterft.')
                 print('game over')
+                print('einde')
             #elif input > '1234':
                 #print('je hebt de code fout ingevoerd en het apparaat ontploft in je gezicht. je sterft.')
                 #print('game over')
@@ -80,15 +82,19 @@ elif keuze_1 == 'rechts':
                     if keuze_4 == 'ja':
                         print('je zegt ja en de vrouw geeft je een drankje, je drinkt het op en sterft')
                         print('game over')
+                        print('einde')
                     elif keuze_4 == 'nee':
                         print('je zegt nee en de vrouw wordt boos, ze pakt een mes en steekt je neer')
                         print('game over')
+                        print('einde')
                 elif keuze_3 == 'weglopen':
                     print('je loopt weg en een beer valt je aan. je sterft aan je verwondingen.')
                     print('game over')
+                    print('einde')
         if keuze_2_5 == 'weglopen':
             print('je loopt weg en een beer valt je aan. je sterft aan je verwondingen.')
             print('game over')
+            print('einde')
     elif keuze_2 == 'weglopen':
         print('je loopt weg en komt aan bij een rivier')
         goed_antwoord_2 = 'ja'
@@ -106,6 +112,7 @@ elif keuze_1 == 'rechts':
             goed_antwoord_3 = 'nee'
             print('je loopt over de brug en de brug stort in, je valt in het water en verdrinkt')
             print('game over')
+            print('einde')
         elif keuze_5 == 'zwemmen':
             print('je gaat zwemmen en komt veilig aan de overkant.')
             print('je loopt verder en komt aan bij een weg')
@@ -124,6 +131,7 @@ elif keuze_1 == 'rechts':
                 goed_antwoord_4 = 'nee'
                 print('je steekt over en wordt aangereden door een auto')
                 print('game over')
+                print('einde')
             elif keuze_6 == 'door het bos lopen':
                 print('je loopt door het bos en komt aan bij een zebrapad')
                 goed_antwoord_4 = 'ja'
@@ -141,6 +149,7 @@ elif keuze_1 == 'rechts':
                     goed_antwoord_5 = 'nee'
                     print('je wacht en je wordt neergeschoten door een jager')
                     print('game over')
+                    print('einde')
                 elif keuze_7 == 'oversteken':
                     print('je steekt over en komt bij een ander bos.')
                     goed_antwoord_5 = 'ja'
@@ -190,6 +199,7 @@ elif keuze_1 == 'rechts':
                                 print('je gaat er naar toe en loopt door een berenval')
                                 print('je sterft aan je verwondingen')
                                 print('game over')
+                                print('einde')
                             elif keuze_10 == 'verder lopen':
                                 print('je loopt verder en komt aan bij een huis')
                                 try:
@@ -218,12 +228,15 @@ elif keuze_1 == 'rechts':
                                         print('je komt binnen en de de vrouw sterft later aan ouderdom. je krijgt haar huis.')
                                         print('je woont er en je sterft aan ouderdom. je ziet je familie en vrienden nooit meer en sterft alleen.')
                                         print('spel gewonnen!')
+                                        print('einde')
                                     elif keuze_12 == 'weglopen':
                                         print('je loopt weg en verhongert')
                                         print('game over')
+                                        print('einde')
                                 elif keuze_11 == 'weglopen':
                                     print('je loopt weg en verhongert')
                                     print('game over')
+                                    print('einde')
                         elif keuze_9 == 'rechts':    
                             print('je gaat rechts en vindt het einde van het bos')
                             goed_antwoord_7 = 'ja'
@@ -235,5 +248,6 @@ elif keuze_1 == 'rechts':
                             if not goed_antwoord_1 == 'ja' or not goed_antwoord_2 == 'ja' or not goed_antwoord_3 == 'ja' or not goed_antwoord_4 == 'ja' or not goed_antwoord_5 == 'ja' or not goed_antwoord_6 == 'ja' or not goed_antwoord_7 == 'ja':
                                 print('je vindt je weg niet terug naar huis en verhongerd in het bos')
                                 print('game over')
+                                print('einde')
                             #print('je vindt je weg terug naar huis en leeft lang en gelukkig')
                             #print('einde')
