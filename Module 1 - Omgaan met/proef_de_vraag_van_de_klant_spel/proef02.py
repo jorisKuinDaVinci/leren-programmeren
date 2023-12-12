@@ -33,11 +33,11 @@ elif keuze_1 == 'rechts':
         if keuze_2_5 == 'a':
             print('je voert de code in')
             keuze_2_6 = input('voer de code in: ')
-            if keuze_2_6 !='1234':
+            if keuze_2_6 !='104':
                 print('je hebt de code fout ingevoerd en het apparaat ontploft in je gezicht. je sterft.')
                 print('game over')
                 print('einde')
-            elif keuze_2_6 == '1234':
+            elif keuze_2_6 == '104':
                 print('je hebt de code goed ingevoerd en de deur gaat open.')
                 keuze_3 = input('er staat een oude vrouw in het huis, ze vraagt of je binnen wilt komen, wat doe je? (b (naar binnen gaan) of weglopen)')
                 if keuze_3 not in ['b', 'weglopen']:
