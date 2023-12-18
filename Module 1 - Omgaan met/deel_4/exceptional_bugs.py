@@ -13,5 +13,5 @@ try:
         print('Dat is juist')
     elif int(number != num1-num2):
         print('Nee dat klopt niet')
-    except:
+except:
         print('Dat is geen nummer!')
