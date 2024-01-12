@@ -1,2 +1,2 @@
 for i in range(1,11):
-    print(i,"* 7 =", i * 7)
+    print(i,"x 3 =", i * 3)
