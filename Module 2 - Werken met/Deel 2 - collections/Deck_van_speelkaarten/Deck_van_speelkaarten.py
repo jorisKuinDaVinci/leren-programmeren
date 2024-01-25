@@ -5,6 +5,8 @@ kleuren = ("harten", "klaveren", "schoppen", "ruiten")
 
 kaarten = ("2", "3", "4", "5", "6", "7", "8", "9", "10", "boer", "vrouw", "heer", "aas")
 
+hoeveel_kaarten = print(len(kaarten))
+
 jokers = ("joker", "joker")
 
 deck = []
@@ -18,7 +20,12 @@ for i in range(len(jokers)):
 
 random.shuffle(deck)
 
-for i in range(len(deck)):
+# 7 kaarten
+
+for i in range(7):
     print("Kaart " + str(i + 1) + ": " + deck[i])
 
-print("deck (47 kaarten): " + str(deck))
+#for i in range(len(deck)):
+    #print("Kaart " + str(i + 1) + ": " + deck[i])
+
+print("deck (" + str(len(deck)) + "kaarten): " + str(deck))
