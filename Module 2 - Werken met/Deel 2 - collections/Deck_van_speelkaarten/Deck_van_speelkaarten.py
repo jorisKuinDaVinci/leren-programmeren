@@ -13,7 +13,6 @@ for i in range(len(kleuren)):
     for j in range(len(kaarten)):
         deck.append(kaarten[j] + " " + kleuren[i])
         # haal de kaart uit het deck
-        deck.pop()
 
 for i in range(len(jokers)):
     deck.append(jokers[i])
