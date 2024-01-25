@@ -12,7 +12,8 @@ deck = []
 for i in range(len(kleuren)):
     for j in range(len(kaarten)):
         deck.append(kaarten[j] + " " + kleuren[i])
-        # haal de kaart uit het deck
+        # haal de kaarten uit het deck
+
 
 for i in range(len(jokers)):
     deck.append(jokers[i])
