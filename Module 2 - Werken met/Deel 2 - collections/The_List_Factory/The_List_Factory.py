@@ -1,10 +1,13 @@
 list_amount = int(input("Hoeveel lijstjes wil je zien? "))
-#list_length = int(input("Hoe lang moet ieder lijstje zijn? "))
-
+lijst_leeg = []
 
 for i in range(1, list_amount + 1):
-    list_length = int(input("Hoe lang moet lijstje " + str(i) + " zijn? "))
-    if list_length not in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+    lijst_hoeveel_getallen = int(input("Hoeveel getallen moet lijstje " + str(i) + " hebben? "))
+    while lijst_hoeveel_getallen not in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
         print("Deze lijst is te lang of te kort")
-        list_length = int(input("Hoe lang moet lijstje " + str(i) + " zijn? "))
-    print(list(range(i, list_length + 1, i)))
+        lijst_hoeveel_getallen = int(input("Hoeveel getallen moet lijstje " + str(i) + " hebben? "))
+    lijst = (list(range(i, lijst_hoeveel_getallen * i + 1, i)))    
+    print(lijst)
+    lijst_leeg.append(lijst)
+
+print(lijst_leeg)
