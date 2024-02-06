@@ -1,4 +1,4 @@
-lijstjes va letters
+lijstjes van letters
 hoeveel lijstjes max 5
 per lijstje hoeveel letters wil je
 lijstje 1: 3
