@@ -3,6 +3,7 @@
 #per lijstje hoeveel letters wil je
 #lijstje 1: 3
 #[[a, b, c], [b, d], [c, f]]
+from string import ascii_lowercase
 
 input_lijst = input("Hoeveel lijstjes wil je? ")
 input_lijst = int(input_lijst)
