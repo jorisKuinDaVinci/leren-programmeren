@@ -1,24 +1,21 @@
 import random
 
 
-kleuren = ("rood", "geel", "blauw", "groen", "bruin")
+kleuren = ("rood", "geel", "blauw", "groen", "bruin", "oranje")
 
 
 aantal = int(input("Hoeveel M&M's wil je toevoegen? "))
 
 
 bagofmnms = {
-    "rood": 0,
-    "geel": 0,
-    "blauw": 0,
-    "groen": 0,
-    "bruin": 0
 
 }
 
-
 for i in range(aantal):
-    bagofmnms[random.choice(kleuren)] += 1
+    kleur_random = random.choice(kleuren)
+    if kleur_random not in bagofmnms:
+        bagofmnms[kleur_random] = 0
+    bagofmnms[kleur_random] +=1  
 
 
 print(bagofmnms)
