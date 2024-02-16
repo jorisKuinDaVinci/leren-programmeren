@@ -1,4 +1,4 @@
-# name of student: 
+# name of student: Joris
 # number of student:
 # purpose of program: 
 # structure of program: 
@@ -17,21 +17,10 @@ while change > 0 and len(coinValues) > 0: #
   if nrCoins > 0: #
     print('return maximal ', nrCoins, ' coins of ', coinValue, ' cents!' ) #
     nrCoinsReturned = int(input('How many coins of ' + str(coinValue) +  ' cents did you return? ')) #
-    change -= nrCoinsReturned * coinValue #
+    change -= nrCoinsReturned * coinValue # 
+
 
 if change > 0: #
   print('Change not returned: ', str(change) + ' cents') #
 else:
   print('done')
-coindict = {
-  50:0,
-  20:0,
-  10:0,
-  5:0,
-  2:0,
-  1:0
-} 
-for coin in coinValues:
-  coindict[coin] = nrCoinsReturned
-
-print(coindict)
