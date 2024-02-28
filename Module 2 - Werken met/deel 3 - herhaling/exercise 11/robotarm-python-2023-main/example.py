@@ -4,18 +4,29 @@ robotArm = RobotArm('exercise 11')
 
 # Jouw python instructies zet je vanaf hier:
 robotArm.speed = 2
+count_total = 10
+count = 9
+count_div = count - 1
+
+for i in range(8):
+    robotArm.moveRight()
+
 for i in range(9):
     robotArm.grab()
     color = robotArm.scan()
     if color == "white":
-        for i in range(1):
-            robotArm.moveRight()
-            robotArm.drop()
+        robotArm.moveRight()
+        robotArm.drop()
+        for i in range(count_total - count_div):
             robotArm.moveLeft()
-            robotArm.moveRight()      
+        count -= 1
+        count_div -= 1
     else:
         robotArm.drop()
-    robotArm.moveRight()
+        if i < 8:
+            robotArm.moveLeft()
+        count -= 1
+        count_div -= 1
 
 # Na jouw code wachten tot het sluiten van de window:
 robotArm.wait()

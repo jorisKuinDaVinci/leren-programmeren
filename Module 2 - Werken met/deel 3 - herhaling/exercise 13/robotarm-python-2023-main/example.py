@@ -5,19 +5,17 @@ robotArm.randomLevel(1,7)
 
 # Jouw python instructies zet je vanaf hier:
 robotArm.speed = 3
-#Verdeel alle blokken over de lege plaatsen, zodra er geen blokken meer zijn moet de arm stoppen.
-for i in range(9):
+check_for_blocks = True
+while check_for_blocks:
     robotArm.grab()
-    color = robotArm.scan()
-    if color != "":
+    if robotArm.scan() == "":
+        check_for_blocks = False
+    else:
         for i in range(9):
             robotArm.moveRight()
         robotArm.drop()
         for i in range(9):
             robotArm.moveLeft()
-    else:
-        robotArm.drop()
-    robotArm.moveRight()
 
 
 
