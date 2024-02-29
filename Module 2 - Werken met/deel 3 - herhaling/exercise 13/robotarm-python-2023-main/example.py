@@ -3,8 +3,19 @@ from RobotArm import RobotArm
 robotArm = RobotArm()
 robotArm.randomLevel(1,7)
 
-# Jouw python instructies zet je vanaf hier:
-
+for block in range(7):
+    
+    robotArm.speed = 3
+    # check_for_blocks = True
+    robotArm.grab()
+    if robotArm.scan() == "":
+        break
+    else:
+        for _ in range(block+1):
+            robotArm.moveRight();
+        robotArm.drop()
+        for _ in range(block+1):
+            robotArm.moveLeft();
 
 
 
