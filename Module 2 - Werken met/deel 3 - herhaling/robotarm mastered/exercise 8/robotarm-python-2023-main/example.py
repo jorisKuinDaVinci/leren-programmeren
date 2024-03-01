@@ -12,8 +12,6 @@ for i in range(7):
     robotArm.drop()
     for i in range(8):
         robotArm.moveLeft()
-
-# Na jouw code wachten tot het sluiten van de window:
 robotArm.wait()
 
 #Verplaats de stapel naar de rechterkant.
