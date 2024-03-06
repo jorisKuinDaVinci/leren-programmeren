@@ -4,33 +4,16 @@ robotArm = RobotArm('exercise 10')
 
 # Jouw python instructies zet je vanaf hier:
 robotArm.speed = 3
-robotArm.grab()
-for i in range(9):
-    robotArm.moveRight()
-robotArm.drop()
-for i in range(8):
-    robotArm.moveLeft()
-robotArm.grab()
-for i in range(7):
-    robotArm.moveRight()
-robotArm.drop()
-for i in range(6):
-    robotArm.moveLeft()
-robotArm.grab()
-for i in range(5):
-    robotArm.moveRight()
-robotArm.drop()
-for i in range(4):
-    robotArm.moveLeft()
-robotArm.grab()
-for i in range(3):
-    robotArm.moveRight()
-robotArm.drop()
-for i in range(2):
-    robotArm.moveLeft()
-robotArm.grab()
-robotArm.moveRight()
-robotArm.drop()
+aantal = 10
+for _ in range(5):
+    robotArm.grab()
+    aantal -= 1
+    for i in range(aantal):
+        robotArm.moveRight()
+    robotArm.drop()
+    aantal -= 1
+    for i in range(aantal):
+        robotArm.moveLeft()
 
 
 # Na jouw code wachten tot het sluiten van de window:
