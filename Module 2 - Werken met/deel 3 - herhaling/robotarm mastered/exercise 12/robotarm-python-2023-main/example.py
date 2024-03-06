@@ -6,7 +6,7 @@ robotArm = RobotArm('exercise 12')
 robotArm.speed = 2
 
 
-# Na jouw code wachten tot het sluiten van de window:
+
 robotArm.wait()
 
 #Verplaats alle rode blokken naar het einde.
