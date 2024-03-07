@@ -1,8 +1,5 @@
 from RobotArm import RobotArm
-
 robotArm = RobotArm('exercise 10')
-
-# Jouw python instructies zet je vanaf hier:
 robotArm.speed = 3
 aantal = 10
 for _ in range(5):
