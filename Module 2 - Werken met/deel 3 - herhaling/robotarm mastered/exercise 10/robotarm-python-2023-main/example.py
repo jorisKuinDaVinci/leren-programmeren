@@ -14,9 +14,6 @@ for _ in range(5):
     aantal -= 1
     for i in range(aantal):
         robotArm.moveLeft()
-
-
-# Na jouw code wachten tot het sluiten van de window:
 robotArm.wait()
 #Draai de volgorde van de blokken om.
 
