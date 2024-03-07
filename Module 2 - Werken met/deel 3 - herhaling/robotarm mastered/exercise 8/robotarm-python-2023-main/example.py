@@ -10,7 +10,6 @@ for i in range(7):
     for i in range(8):
         robotArm.moveLeft()
 robotArm.wait()
-
 #Verplaats de stapel naar de rechterkant.
 
 #Je mag maximaal 13 regels code gebruiken inclusief de import, het laden van de robotarm en de wait
