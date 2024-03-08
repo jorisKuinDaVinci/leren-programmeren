@@ -1,7 +1,6 @@
 from RobotArm import RobotArm
 robotArm = RobotArm('exercise 11')
-robotArm.speed = 2
-stappen_links = 8
+robotArm.speed = 3
 
 for c in range(8):
     robotArm.moveRight()
@@ -11,8 +10,11 @@ for a in range(9):
     color = robotArm.scan()
     if color == "white":
         print("wit")
-    robotArm.drop()    
-    robotArm.moveLeft()
+        robotArm.moveRight()
+        robotArm.drop()  
+        robotArm.moveLeft() 
+    else:
+        robotArm.drop()
     if a != 8:
         robotArm.moveLeft()
             

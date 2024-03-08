@@ -1,31 +1,24 @@
 from RobotArm import RobotArm
 robotArm = RobotArm('exercise 12')
-robotArm.speed = 2
-count_total = 10
-count = 9
-count_div = count - 1
+robotArm.speed = 3
 
-for i in range(8):
+for c in range(8):
     robotArm.moveRight()
-
-for i in range(9):
+    
+for positie in range(8, -1, -1):
     robotArm.grab()
     color = robotArm.scan()
     if color == "red":
-        for i in range(count_total - count):
+        print("rood")
+        for move in range(9 - positie):
             robotArm.moveRight()
-        robotArm.drop()
-        for i in range(count_total - count_div):
-            robotArm.moveLeft()
-        count -= 1
-        count_div -= 1
+        robotArm.drop()  
+        for move_2 in range(9 - positie):
+            robotArm.moveLeft() 
     else:
         robotArm.drop()
-        if i < 8:
-            robotArm.moveLeft()
-        count -= 1
-        count_div -= 1
-
+    if positie != 0:
+        robotArm.moveLeft()
 
 robotArm.wait()
 
