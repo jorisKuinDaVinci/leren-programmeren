@@ -10,7 +10,8 @@ for _ in range(5):
     robotArm.drop()
     aantal -= 1
     for i in range(aantal):
-        robotArm.moveLeft()
+        robotArm.moveLeft()  
+
 robotArm.wait()
 #Draai de volgorde van de blokken om.
 
