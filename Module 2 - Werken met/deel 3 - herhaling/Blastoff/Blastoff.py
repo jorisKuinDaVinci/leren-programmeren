@@ -6,5 +6,6 @@ while i > 0:
     print(i)
     time.sleep(1)
     i -= 1   
-print("0")
-print("launch")
+if i == 0:
+    print("0")
+    print("launch")
