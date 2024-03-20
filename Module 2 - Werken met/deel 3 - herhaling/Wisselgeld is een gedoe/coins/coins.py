@@ -4,6 +4,11 @@ toPay = int(float(input('Amount to pay: '))* 100) # input van wat je moet betale
 paid = int(float(input('Paid amount: ')) * 100) # input van wat je hebt betaald 
 change = paid - toPay # wat je hebt betaald - wat je moet betalen
 
+while toPay > paid: # als je niet genoeg hebt betaald
+  print('You have to pay ', str(toPay/100), ' euros') # wat je moet betalen
+  toPay = int(float(input('Amount to pay: '))* 100) # input van wat je moet betalen
+  paid = int(float(input('Paid amount: ')) * 100) # input van wat je hebt betaald
+
 while change > 0 and len(coinValues) > 0: # zolang er nog wisselgeld is en er nog munten zijn
 
   coinValue = coinValues.pop(0) # coinValue is de eerste waarde van coinValues
