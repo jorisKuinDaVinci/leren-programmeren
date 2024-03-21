@@ -59,8 +59,6 @@ def wat_wil_je_drinken():
                 exit()
     return drankje
 
-
-#bouw hieronder de flowchart na
 Hoe_oud = input("Hoe oud ben je?")
 if int(Hoe_oud) >= 18:
     naam = input("Wat is je naam?")
