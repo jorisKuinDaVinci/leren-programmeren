@@ -1,3 +1,10 @@
+# To do:
+# volgorde:
+# eerst de inports
+# dan de functies
+# dan de variabele
+# dan de programma code
+
 PRIJS_COLA = 1.80
 PRIJS_BIER = 2.40
 PRIJS_CHAMPAGNE = 12.30
@@ -15,48 +22,48 @@ geen_idee_krijg_water = "Sorry, geen idee wat je bedoelt, hier een glaasje water
 niet_naar_binnen = "Sorry, je mag niet naar binnen"
 stempel_tekst = "je krijgt van mij een stempel"
 
-def tot_je_18_bent():
+def tot_je_18_bent(Hoe_oud):
     tot_je_18_bent_som = 18 - int(Hoe_oud)
-    print("Probeer het in " + str(tot_je_18_bent_som) + " jaar nog eens")    
-    exit()
+    print(f"Probeer het in " + str(tot_je_18_bent_som) + " jaar nog eens")    
+    return
 
-def wat_wil_je_drinken():
+def wat_wil_je_drinken(bandje):
     print("Wat wil je drinken?")
-    drankje = input("Maak je keuze: ")
+    drankje = input("Maak je keuze: ").lower
     if drankje not in DRANKJES:
         print(geen_idee_krijg_water)
         drankje = "water"
-        exit()
+        return
     else:
         if drankje == "cola":
             if bandje == True:
                 print(complimenten_van_het_huis)
-                exit()
+                return
             else:
-                print("je {drankje} is dan " + str(PRIJS_COLA))
-                exit()
+                print(f"je {drankje} is dan " + str(PRIJS_COLA))
+                return
         elif drankje == "bier":
             if bandje == True or stempel == True:
                 if bandje == True:
                     print(complimenten_van_het_huis)
-                    exit()
+                    return
                 else:
-                    print("je {drankje} is dan " + str(PRIJS_BIER))
-                    exit()
+                    print(f"je {drankje} is dan " + str(PRIJS_BIER))
+                    return
             else:
                 print(geen_alcohol)
                 tot_je_18_bent()
         elif drankje == "champagne":
             if bandje == True:
                 if bandje_klaur == "blauw":
-                    print("je {drankje} is dan " + str(PRIJS_CHAMPAGNE))
-                    exit()
+                    print(f"je {drankje} is dan " + str(PRIJS_CHAMPAGNE))
+                    return
                 else:
                     print(geen_alcohol)
                     tot_je_18_bent()
             else:
                 print(alleen_vip_champagne)
-                exit()
+                return
     return drankje
 
 Hoe_oud = input("Hoe oud ben je?")
@@ -70,16 +77,13 @@ if int(Hoe_oud) >= 18:
         else:
             bandje_klaur = "rood"
             bandje = True
-        print("Je krijgt een " + bandje_klaur + " bandje")
-        wat_wil_je_drinken()   
+        print("Je krijgt een " + bandje_klaur + " bandje")   
     else:
         VIP = False
         if int(Hoe_oud) >= 21:
             print(stempel_tekst)
-            stempel = True
-            wat_wil_je_drinken()    
-        else:
-            wat_wil_je_drinken()    
+            stempel = True   
+    wat_wil_je_drinken()  
 else:
     print(niet_naar_binnen) 
     tot_je_18_bent()     
