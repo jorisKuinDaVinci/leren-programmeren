@@ -1,0 +1,26 @@
+1. Begin score op 0
+2. Begin ronde op 0
+
+3. Herhaal de volgende stappen totdat het aantal rondes 20 bereikt:
+   a. Verhoog ronde met 1
+   b. Genereer een willekeurig getal tussen 1 en 1000
+   c. Begin het aantal keer geraden voor dit getal op 0
+   
+   d. Herhaal de volgende stappen totdat het aantal keer geraden het maximum van 10 bereikt:
+      1. Vraag de speler om een getal te raden tussen 1 en 1000
+      2. Verhoog het aantal keer geraden voor dit getal met 1
+      
+      3. Als het geraden getal gelijk is aan het gegenereerde willekeurige getal:
+           - Geef een bericht weer dat het goed geraden is en het juiste getal
+           - Verhoog de score met 1
+           - Breek uit deze lus
+      
+      4. Anders, bepaal de afstand tussen het geraden getal en het willekeurige getal:
+           - Als de afstand kleiner is dan of gelijk aan 20, geef "Je bent heel warm" weer
+           - Als de afstand kleiner is dan of gelijk aan 50, geef "Je bent warm" weer
+           - Als het geraden getal kleiner is dan het willekeurige getal, geef "Het getal is hoger" weer
+           - Anders, geef "Het getal is lager" weer
+
+   e. Geef de score weer en hoeveel rondes er zijn gespeeld
+   
+4. Geef een bericht weer dat het spel voorbij is
