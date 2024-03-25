@@ -15,28 +15,25 @@ while ronde != 20:
             print(f"Goed geraden! Het getal was inderdaad {random_getal}")
             score += 1
             print(f"Je hebt {score} van de {hoeveel_keer_geraden} geraden")
-            break
-        elif getal < random_getal:
-            if abs(getal - random_getal) <= 50:
-                print("Je bent warm")
-            elif abs(getal - random_getal) <= 20:
+            goed_geraden = True
+        else:
+            if abs(getal - random_getal) <= 20:
                 print("Je bent heel warm")
+            elif abs(getal - random_getal) <= 50:
+                print("Je bent warm")
             else:
+                print("je bent koud")
+            if getal < random_getal:
                 print("Het getal is hoger")
-        elif getal > random_getal:
-            if abs(getal - random_getal) <= 50:
-                print("Je bent koud")
-            elif abs(getal - random_getal) <= 20:
-                print("Je bent heel koud")
             else:
-                print("Het getal is lager")
-        print(f"Je hebt {score} van de {hoeveel_keer_geraden} geraden")
-        doorgaan = input("Wil je doorgaan? ja of nee: ")
-        if doorgaan == "nee":
-            break
+                print("Het getal is lager")    
+            print(f"Je hebt {score} van de {hoeveel_keer_geraden} geraden")
+            doorgaan = input("Wil je doorgaan? ja of nee: ").lower()
+            if doorgaan == "nee":
+                exit()
 
-        if hoeveel_keer_geraden == 10:
-            nog_een_keer = input("Wil je nog een keer raden? ja of nee:")
+        if hoeveel_keer_geraden == 10 or goed_geraden == True:
+            nog_een_keer = input("Wil je nog een keer raden? ja of nee:").lower()
             if nog_een_keer == "ja":
                 continue
             else:
@@ -46,7 +43,7 @@ while ronde != 20:
     if ronde == 20:
         print("Het spel is afgelopen")
         print(f"Je hebt {score} van de 20 geraden")
-        nog_een_keer_spelen = input("Wil je nog een keer het spel spelen? ja of nee: ")
+        nog_een_keer_spelen = input("Wil je nog een keer het spel spelen? ja of nee: ").lower()
         if nog_een_keer_spelen == "ja":
             ronde = 0
             score = 0

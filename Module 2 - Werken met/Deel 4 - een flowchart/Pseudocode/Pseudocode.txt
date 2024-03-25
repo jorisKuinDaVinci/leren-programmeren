@@ -1,0 +1,35 @@
+1. bedenk een willekeurig getal tussen 1 en 1000.
+2. zet de score op 0.
+3. zet de ronde op 0.
+4. Herhaal het volgende totdat de ronde gelijk is aan 20:
+    5. Verhoog de ronde met 1.
+    6. zet het aantal geraden getallen voor deze ronde op 0.
+    7. Herhaal het volgende totdat het aantal geraden getallen gelijk is aan 10:
+        8. Vraag de gebruiker om een getal te raden tussen 1 en 1000.
+        9. Verhoog het aantal geraden getallen voor deze ronde met 1.
+        10. Als het geraden getal gelijk is aan het willekeurige getal:
+            11. Druk "Goed geraden!" af samen met het willekeurige getal.
+            12. Verhoog de score met 1.
+            13. Genereer een nieuw willekeurig getal tussen 1 en 1000.
+            14. stop het spel.
+        15. Anders als het geraden getal kleiner is dan het willekeurige getal:
+            16. Als het verschil tussen de geraden en willekeurige getallen kleiner is dan of gelijk aan 50, druk "Je bent warm" af.
+            17. Als het verschil tussen de geraden en willekeurige getallen kleiner is dan of gelijk aan 20, druk "Je bent heel warm" af.
+            18. Anders, print "Het getal is hoger".
+        19. Anders als het geraden getal groter is dan het willekeurige getal:
+            20. Als het verschil tussen de geraden en willekeurige getallen kleiner is dan of gelijk aan 50, druk "Je bent koud" af.
+            21. Als het verschil tussen de geraden en willekeurige getallen kleiner is dan of gelijk aan 20, druk "Je bent heel koud" af.
+            22. Anders, print "Het getal is lager".
+        23. print de huidige score en het aantal geraden getallen.
+        24. Vraag de gebruiker of ze willen doorgaan.
+        25. Als het antwoord "nee" is, stop met raden voor deze ronde.
+    26. Als het aantal geraden getallen gelijk is aan 10 of de gebruiker niet wil doorgaan:
+        27. Vraag de gebruiker of ze nog een keer willen raden.
+        28. Als het antwoord "ja" is, begin een nieuwe ronde.
+        29. Anders, bedank de speler voor het spelen en stop het programma.
+30. Als de ronde gelijk is aan 20:
+    31. print "Het spel is afgelopen".
+    32. print de eindscore.
+    33. Vraag de gebruiker of ze nog een keer willen spelen.
+    34. Als het antwoord "ja" is, reset het spel en begin opnieuw.
+    35. Anders, bedank de speler voor het spelen en stop het programma.
