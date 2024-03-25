@@ -29,14 +29,14 @@ while ronde != 20:
             else:
                 print("Het getal is lager")    
             print(f"Je hebt {score} van de {hoeveel_keer_geraden} geraden")
-            doorgaan = input("Wil je doorgaan? ja of nee: ").lower()
-            if doorgaan == "nee":
-                exit()
+            #doorgaan = input("Wil je doorgaan? ja of nee: ").lower()
+            #if doorgaan == "nee":
+                #exit()
 
         if hoeveel_keer_geraden == 10 or goed_geraden == True:
             nog_een_keer = input("Wil je nog een keer raden? ja of nee:").lower()
             if nog_een_keer == "ja":
-                continue
+                break
             else:
                 print("Bedankt voor het spelen")
                 exit()
