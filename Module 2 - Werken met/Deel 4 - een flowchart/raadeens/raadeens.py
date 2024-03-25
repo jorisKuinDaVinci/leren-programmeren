@@ -5,7 +5,7 @@ score = 0
 hoeveel_keer_geraden = 0
 ronde = 0
 hoeveel_getal_keer_geraden = 0
-while ronde is not 20 and hoeveel_getal_keer_geraden is not 10:
+while ronde != 20 and hoeveel_getal_keer_geraden != 10:
     ronde += 1
     getal = int(input("Raad een getal tussen 1 en 1000: "))
     hoeveel_keer_geraden += 1
