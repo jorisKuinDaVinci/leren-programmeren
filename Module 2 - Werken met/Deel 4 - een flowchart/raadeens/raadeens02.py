@@ -2,6 +2,7 @@ import random
 
 score = 0
 ronde = 0
+goed_geraden = False
 
 while ronde != 20:
     ronde += 1
