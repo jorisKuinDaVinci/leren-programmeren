@@ -1,31 +1,34 @@
-begin score, ronde en hoeveel_getal_keer_geraden op 0
-
-Zolang ronde < 20 en hoeveel_getal_keer_geraden < 10:
-    Genereer een willekeurig getal tussen 1 en 1000 en wijs toe aan genereer_random_getal
-    Verhoog ronde met 1
-    Verhoog hoeveel_getal_keer_geraden met 1
-    Zet geraden op False
-
-    Terwijl geraden niet waar is:
-        Vraag de gebruiker om een getal tussen 1 en 1000
-        Als het geraden getal gelijk is aan genereer_random_getal:
-            print "Goed geraden! Het getal was inderdaad [genereer_random_getal]"
-            Verhoog score met 1
-            Zet geraden op True
-        Anders als het absolute verschil tussen het geraden getal en genereer_random_getal kleiner of gelijk is aan 50:
-            print "Je bent warm"
-        Anders als het absolute verschil tussen het geraden getal en genereer_random_getal kleiner of gelijk is aan 20:
-            print "Je bent heel warm"
-        Anders als het geraden getal kleiner is dan genereer_random_getal:
-            print "Het getal is hoger"
-        Anders:
-            print "Het getal is lager"
-
-    print "Je hebt [score] van de [hoeveel_getal_keer_geraden] geraden"
-
-Als hoeveel_getal_keer_geraden gelijk is aan 10:
-    Vraag de gebruiker of ze nog een keer willen raden
-    Als het antwoord "ja" is:
-        Zet hoeveel_getal_keer_geraden op 0
-    Anders:
-        print "Bedankt voor het spelen"
+1. bedenk een willekeurig getal tussen 1 en 1000.
+2. zet de score op 0.
+3. zet de ronde op 0.
+4. Herhaal het volgende totdat de ronde gelijk is aan 20:
+    5. Verhoog de ronde met 1.
+    6. zet het aantal geraden getallen voor deze ronde op 0.
+    7. Herhaal het volgende totdat het aantal geraden getallen gelijk is aan 10:
+        8. Vraag de gebruiker om een getal te raden tussen 1 en 1000.
+        9. Verhoog het aantal geraden getallen voor deze ronde met 1.
+        10. Als het geraden getal gelijk is aan het willekeurige getal:
+            11. Druk "Goed geraden!" af samen met het willekeurige getal.
+            12. Verhoog de score met 1.
+            13. Genereer een nieuw willekeurig getal tussen 1 en 1000.
+        14. Anders als het geraden getal kleiner is dan het willekeurige getal:
+            15. Als het verschil tussen de geraden en willekeurige getallen kleiner is dan of gelijk aan 50, druk "Je bent warm" af.
+            16. Als het verschil tussen de geraden en willekeurige getallen kleiner is dan of gelijk aan 20, druk "Je bent heel warm" af.
+            17. Anders, print "Het getal is hoger".
+        18. Anders als het geraden getal groter is dan het willekeurige getal:
+            19. Als het verschil tussen de geraden en willekeurige getallen kleiner is dan of gelijk aan 50, druk "Je bent koud" af.
+            20. Als het verschil tussen de geraden en willekeurige getallen kleiner is dan of gelijk aan 20, druk "Je bent heel koud" af.
+            21. Anders, print "Het getal is lager".
+        22. print de huidige score en het aantal geraden getallen.
+        23. Vraag de gebruiker of ze willen doorgaan.
+        24. Als het antwoord "nee" is, stop met raden voor deze ronde.
+    25. Als het aantal geraden getallen gelijk is aan 10 of de gebruiker niet wil doorgaan:
+        26. Vraag de gebruiker of ze nog een keer willen raden.
+        27. Als het antwoord "ja" is, begin een nieuwe ronde.
+        28. Anders, bedank de speler voor het spelen en stop het programma.
+29. Als de ronde gelijk is aan 20:
+    30. print "Het spel is afgelopen".
+    31. print de eindscore.
+    32. Vraag de gebruiker of ze nog een keer willen spelen.
+    33. Als het antwoord "ja" is, reset het spel en begin opnieuw.
+    34. Anders, bedank de speler voor het spelen en stop het programma.
