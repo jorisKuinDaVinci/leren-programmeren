@@ -31,9 +31,22 @@ while ronde is not 20 and hoeveel_getal_keer_geraden is not 10:
     print(f"Je hebt {score} van de {hoeveel_keer_geraden} geraden")
 
 if hoeveel_getal_keer_geraden == 10:
-    nog_een_keer = input("wil je nog een keer raden?")
+    nog_een_keer = input("wil je nog een keer raden? ja of nee:")
     if nog_een_keer == "ja":
         hoeveel_getal_keer_geraden = 0
+    else:
+        print("Bedankt voor het spelen")
+        exit()
+
+if ronde == 20:
+    print("Het spel is afgelopen")
+    print(f"Je hebt {score} van de 20 geraden")
+    nog_een_keer_spelen = input("wil je nog een keer het spel spelen? ja of nee: ")
+    if nog_een_keer_spelen == "ja":
+        ronde = 0
+        score = 0
+        hoeveel_getal_keer_geraden = 0
+        genereer_random_getal = random.randint(1, 1000)
     else:
         print("Bedankt voor het spelen")
         exit()
