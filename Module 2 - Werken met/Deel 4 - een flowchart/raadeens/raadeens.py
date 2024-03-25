@@ -17,6 +17,7 @@ while ronde != 20:
             score += 1
             random_getal = random.randint(1, 1000)
             print(random_getal) # voor testen
+            break
         elif getal < random_getal:
             if abs(getal - random_getal) <= 50:
                 print("Je bent warm")
