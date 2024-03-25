@@ -35,13 +35,13 @@ while ronde != 20:
         if doorgaan == "nee":
             break
 
-    if hoeveel_keer_geraden == 10:
-        nog_een_keer = input("Wil je nog een keer raden? ja of nee:")
-        if nog_een_keer == "ja":
-            continue
-        else:
-            print("Bedankt voor het spelen")
-            exit()
+        if hoeveel_keer_geraden == 10:
+            nog_een_keer = input("Wil je nog een keer raden? ja of nee:")
+            if nog_een_keer == "ja":
+                continue
+            else:
+                print("Bedankt voor het spelen")
+                exit()
 
     if ronde == 20:
         print("Het spel is afgelopen")
