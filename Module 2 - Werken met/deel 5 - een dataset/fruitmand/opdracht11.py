@@ -12,4 +12,9 @@ if round_count > len([fruit for fruit in fruitmand.fruitmand if fruit['color'] =
     print(f'Er zijn {round_count - len([fruit for fruit in fruitmand.fruitmand if fruit["color"] == input_color and not fruit["round"]])} meer ronde vruchten dan niet ronde vruchten in de kleur {input_color}')
 #Print vervolgens het volgende als er van de gekozen kleur minder ronde dan niet ronde vruchten zijn:
 #“Er zijn {X} minder ronde vruchten dan niet ronde vruchten in de kleur {kleur}”
-    
+if round_count < len([fruit for fruit in fruitmand.fruitmand if fruit['color'] == input_color and not fruit['round']]):
+    print(f'Er zijn {len([fruit for fruit in fruitmand.fruitmand if fruit["color"] == input_color and not fruit["round"]]) - round_count} minder ronde vruchten dan niet ronde vruchten in de kleur {input_color}')
+#Print vervolgens het volgende als er van de gekozen kleur evenveel ronde als niet ronde vruchten zijn:
+#“Er zijn {X} ronde vruchten en {X} niet ronde vruchten in de kleur {kleur}”
+if round_count == len([fruit for fruit in fruitmand.fruitmand if fruit['color'] == input_color and not fruit['round']]):
+    print(f'Er zijn {round_count} ronde vruchten en {len([fruit for fruit in fruitmand.fruitmand if fruit["color"] == input_color and not fruit["round"]])} niet ronde vruchten in de kleur {input_color}')
