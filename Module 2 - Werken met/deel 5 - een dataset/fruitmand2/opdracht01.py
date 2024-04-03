@@ -1,3 +1,1 @@
-from fruitmand import fruitmand
-
-
+import fruitmand
