@@ -1,3 +1,5 @@
+# deze code moet worden verbeterd: dingen eeen keer doen en niet meerdere keren!
+# moet vrijdag 12-04-2024 af zijn!
 from fruitmand import fruitmand
 #Vraag aan de gebruiker om een kleur uit (alleen) de beschikbare kleuren van de fruitmand, als er toch een kleur gekozen wordt die niet in de fruitmand zit krijgt de gebruiker de melding: “De kleur {kleur} zit er niet in de fruitmand” en wordt de vraag opnieuw gesteld.
 input_color = input('Kies een kleur uit de beschikbare kleuren van de fruitmand: ')
