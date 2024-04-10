@@ -1,0 +1,24 @@
+1. import de random.
+2. vraag de gebruiker om een naam.
+3. vraag de gebruiker om nog een naam.
+4. vraag de gebruiker om nog een naam.
+5. check of er 3 namen zijn ingevoerd.
+6. als dit zo is ga dan door.
+7. anders print "Voer 3 namen in".
+8. vraag de gebruiker of hij/zij nog een naam wilt invoeren.
+9. als dit ja is:
+    1. vraag de gebruiker om nog een naam.
+    2. ga door
+10. anders ga door zonder nog een naam te vragen.
+11. maak een lijst met de namen.
+12. maak aantal namen.
+13. for i in range(aantal namen):
+    1. kies een random lootje
+    2. kies een random naam.
+    3. check of de naam niet gelijk is aan de naam van het lootje.
+    4 als dit de namen niet gelijk zijn:
+        1. print de naam en het lootje.
+    5 anders:
+        1. kies een nieuwe random lootje.
+        2. ga terug naar 2.
+14. print "Einde programma".
