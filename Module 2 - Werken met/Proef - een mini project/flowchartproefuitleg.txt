@@ -1,0 +1,8 @@
+Maak een flowchart voor een programma met de volgende eisen:
+
+Vraag namen op van deelnemers (alle namen moeten uniek zijn)
+Bij minder dan 3 namen, blijf je doorvragen naar namen.
+Als er 3 namen ingevoerd zijn dan krijgt de gebruiker de optie om nog een naam in te voeren of kunnen er lootjes worden getrokken
+Iedereen krijgt (random) één uniek lootje
+Aan het einde mag niemand het lootje van zichzelf hebben
+Als alles verdeeld is wordt er een lijst met namen geprint en de bijbehorende lootjes
