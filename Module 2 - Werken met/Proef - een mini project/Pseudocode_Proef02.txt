@@ -1,0 +1,30 @@
+begin
+1. van random importeer de shuffle en de choice (gebruikt de from en import)
+2. maak namen_set = set()
+3. maak namen = []
+4. zolang len(namen) < 3 is:
+    1. naam = geef_naam(namen_set)
+        1. def geef_naam(namen_set)
+        2. zolang True (gebruikt de while):
+            1. naam = input("Geef een naam: ")
+            2. if naam in namen_set:
+                1. print("Deze naam is al ingevoerd, probeer een andere naam.")
+            3. als dat niet waar is dan (de else):
+                1. namen_set.add(naam)
+                2. return naam
+    2. namen.append(naam)
+5. maak wil_je_nog_een_naam = input("Wil je nog een naam invoeren?: ")
+6. zolang wil_je_nog_een_naam gelijk is aan "ja" (gebruikt de while):
+    1. naam = geef_naam(namen_set)
+    2. namen.append(naam)
+    3. wil_je_nog_een_naam = input("Wil je nog een naam invoeren?: ")
+7. shuffle de namen   
+8. lootjes = kopieer de namen en maak nieuwe aan
+9. shuffle de lootjes
+10. als lootjes[-1] is gelijk aan namen[-1] (gebruikt de if):
+    1. index = choice(range(len(namen) - 1))
+    2. lootjes[-1], lootjes[index] = lootjes[index], lootjes[-1]
+    3 eind if
+11. voor i in range(len(namen)):
+    1. print(f"{namen[i]} heeft het lootje van {lootjes[i]}")
+eind
