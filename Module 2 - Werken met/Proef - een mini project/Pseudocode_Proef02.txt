@@ -27,4 +27,4 @@ begin
     3 eind if
 11. voor i in range(len(namen)):
     1. print(f"{namen[i]} heeft het lootje van {lootjes[i]}")
-eind
+eind 
