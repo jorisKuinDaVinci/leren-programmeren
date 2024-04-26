@@ -1,5 +1,5 @@
 from random import shuffle, choice
-
+wil_je_nog_een_naam = "Wil je nog een naam invoeren? "
 def geef_naam(namen_set):
     while True:
         naam = input("Geef een naam: ")
@@ -15,11 +15,11 @@ while len(namen) < 3:
     naam = geef_naam(namen_set)
     namen.append(naam)
 
-wil_je_nog_een_naam = input("Wil je nog een naam invoeren? ")
+input(wil_je_nog_een_naam)
 while wil_je_nog_een_naam == "ja":
     naam = geef_naam(namen_set)
     namen.append(naam)
-    wil_je_nog_een_naam = input("Wil je nog een naam invoeren? ")
+    input(wil_je_nog_een_naam)
 
 shuffle(namen)
 
