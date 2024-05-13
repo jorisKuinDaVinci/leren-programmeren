@@ -1,7 +1,5 @@
 import string
 # goede letters of niet? mini galgje!
-# max 10 fouten
-# tikt iemand de 'p' dan: print('_pp__')
 
 def get_letter() -> str:
     while True:
@@ -18,8 +16,11 @@ teller_fout = 0
 fout_geraden = []
 geraden = '_' * len(woord_te_raden)
 
+
+# max 10 fouten
+# tikt iemand de 'p' dan: print('_pp__')
 while teller_fout < 10:
     geraden_letter = get_letter()
     print(geraden_letter)
-
+    
 print(f'je hebt het niet geraden.\nHet woord was: {woord_te_raden}')    
