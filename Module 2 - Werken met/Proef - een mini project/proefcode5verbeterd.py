@@ -5,10 +5,10 @@
 #Aan het einde mag niemand het lootje van zichzelf hebben
 #Als alles verdeeld is wordt er een lijst met namen geprint en de bijbehorende lootjes
 from random import shuffle, choice
-wil_je_nog_een_naam = "Wil je nog een naam invoeren? "
+
 def geef_naam(namen):
     while True:
-        naam = input("Geef een naam: ")
+        naam = input("Geef een naam: ").lower()
         if naam in namen:
             print("Deze naam is al ingevoerd, probeer een andere naam.")
         else:
@@ -19,7 +19,7 @@ namen = []
 while True:
     naam = geef_naam(namen)
     namen.append(naam)
-    if len(namen) >= 3 and input("Wil je nog een naam invoeren? ") != "ja":
+    if len(namen) >= 3 and input("Wil je nog een naam invoeren? ").lower() != "ja":
         break
 
 shuffle(namen)
