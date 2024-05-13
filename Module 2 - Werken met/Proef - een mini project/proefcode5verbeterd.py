@@ -4,7 +4,7 @@
 #Iedereen krijgt (random) één uniek lootje
 #Aan het einde mag niemand het lootje van zichzelf hebben
 #Als alles verdeeld is wordt er een lijst met namen geprint en de bijbehorende lootjes
-from random import shuffle, choice
+from random import shuffle
 
 def geef_naam(namen):
     while True:
