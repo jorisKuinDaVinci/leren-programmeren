@@ -16,6 +16,15 @@ teller_fout = 0
 fout_geraden = []
 geraden = list('_' * 5)
 
+geraden[1] = 'p'
+geraden[2] = 'p'
+
+print(''.join(geraden))
+
+for l in woord_te_raden:
+    print(l)
+    print(l == 'p')
+
 
 # max 10 fouten
 # tikt iemand de 'p' dan: print('_pp__')
