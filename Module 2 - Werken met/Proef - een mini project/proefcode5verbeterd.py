@@ -1,3 +1,9 @@
+#Vraag namen op van deelnemers (alle namen moeten uniek zijn)
+#Bij minder dan 3 namen, blijf je doorvragen naar namen.
+#Als er 3 namen ingevoerd zijn dan krijgt de gebruiker de optie om nog een naam in te voeren of kunnen er lootjes worden getrokken
+#Iedereen krijgt (random) één uniek lootje
+#Aan het einde mag niemand het lootje van zichzelf hebben
+#Als alles verdeeld is wordt er een lijst met namen geprint en de bijbehorende lootjes
 from random import shuffle, choice
 wil_je_nog_een_naam = "Wil je nog een naam invoeren? "
 def geef_naam(namen):
@@ -8,7 +14,6 @@ def geef_naam(namen):
         else:
             return naam
 
-#namen_set = set()
 namen = []
 
 while True:
@@ -23,11 +28,15 @@ lootjes = namen.copy()
 shuffle(lootjes)
 
 
-if lootjes[-1] == namen[-1] or lootjes[-1] == namen[-2] or lootjes[-1] == namen[-3]:
-    index = choice(range(len(namen) - 1))
-    lootjes[-1], lootjes[index] = lootjes[index], lootjes[-1]
-    lootjes[-2], lootjes[index] = lootjes[index], lootjes[-2]
-    lootjes[-3], lootjes[index] = lootjes[index], lootjes[-3]
+while True:
+    fout = False
+    for i in range(len(namen)):
+        if namen[i] == lootjes[i]:
+            shuffle(lootjes)
+            fout = True
+            break
+    if not fout:
+        break
 
 for i in range(len(namen)):
     print(f"{namen[i]} heeft het lootje van {lootjes[i]}")
