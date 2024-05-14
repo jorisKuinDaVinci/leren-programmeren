@@ -21,22 +21,3 @@ while True:
     namen.append(naam)
     if len(namen) >= 3 and input("Wil je nog een naam invoeren? ").lower() != "ja":
         break
-
-shuffle(namen)
-
-lootjes = namen.copy()
-shuffle(lootjes)
-
-
-while True:
-    fout = False
-    for i in range(len(namen)):
-        if namen[i] == lootjes[i]:
-            shuffle(lootjes)
-            fout = True
-            break
-    if not fout:
-        break
-
-for i in range(len(namen)):
-    print(f"{namen[i]} heeft het lootje van {lootjes[i]}")
