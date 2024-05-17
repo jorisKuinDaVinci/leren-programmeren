@@ -22,14 +22,15 @@ while True:
     if len(namen) >= 3 and input("Wil je nog een naam invoeren? ").lower() != "ja":
         break
 
-shuffle(namen)
+#shuffle(namen)
 
 lootjes = namen.copy()
-shuffle(lootjes)
+#shuffle(lootjes)
 
 
 while True:
     fout = False
+    shuffle(lootjes)
     for i in range(len(namen)):
         if namen[i] == lootjes[i]:
             shuffle(lootjes)
