@@ -1,28 +1,50 @@
-def quantum_broodrooster(stellar_broccoli:int) -> bool:
-    return stellar_broccoli % 2 == 0
+# wat doet Getal_even?
+# Getal_even is een functie die een integer als input krijgt en kijkt of het getal even is. 
+# Als het getal even is, dan geeft de functie True terug, anders False.
 
-def chaos_papegaai(fantasie_platypus:str) -> str:
-    betoverde_druif = fantasie_platypus.split()
-    doldwaze_broccoli = betoverde_druif[::-1]
-    tijdmachine_pannenkoekenmix = ' '.join(doldwaze_broccoli)
-    return tijdmachine_pannenkoekenmix
+# wat doet omkeren?
+# omkeren is een functie die een string als input krijgt en de woorden in de string omkeert. 
+# De functie split de string in woorden, keert de volgorde van de woorden om en voegt de woorden weer samen tot een string. 
+# Deze string wordt vervolgens teruggegeven.
 
-def kosmische_koekjesmix(galactische_snoepjes:str) -> int:
-    planetair_taartje = set(galactische_snoepjes)
-    whatchamacallit = len(planetair_taartje)
-    return whatchamacallit
+# wat doet tel_unieke_karakters?
+# tel_unieke_karakters is een functie die een string als input krijgt en de unieke karakters in de string telt.
+# De functie maakt een set van de karakters in de string en telt het aantal elementen in de set.
 
-def ruimte_hamsterwiel(planetair_taartje:str) -> float:
-    wobbelwobbel = planetair_taartje.split()
+# wat doet gemiddelde_lengte?
+# gemiddelde_lengte is een functie die een string als input krijgt en de gemiddelde lengte van de woorden in de string berekent.
+# De functie split de string in woorden en telt de lengte van elk woord.
+# De functie berekent het gemiddelde van de lengte van de woorden en geeft dit terug.
+
+# wat doet keer?
+# keer is een functie die twee integers als input krijgt en een for loop uitvoert.
+# In de for loop wordt de eerste integer vermenigvuldigd met de iteratie van de loop en het resultaat wordt geprint.
+
+def Getal_even(integer_1:int) -> bool:
+    return integer_1 % 2 == 0
+
+def omkeren(string_1:str) -> str:
+    split_word = string_1.split()
+    volgorde_omkeren = split_word[::-1]
+    maak_string = ' '.join(volgorde_omkeren)
+    return maak_string
+
+def tel_unieke_karakters(string_2:str) -> int:
+    maak_set = set(string_2)
+    aantal = len(maak_set)
+    return aantal
+
+def gemiddelde_lengte(string_3:str) -> float:
+    split_word_2 = string_3.split()
     
-    blork = 0
-    for snorkelwagen in wobbelwobbel:
-        blork += len(snorkelwagen)
+    getal = 0
+    for lengte in split_word_2:
+        getal += len(lengte)
 
-    bizarro_matrix = blork / len(wobbelwobbel)
-    return bizarro_matrix
+    gemiddelde = getal / len(split_word_2)
+    return gemiddelde
 
-def spaghetti_spaceship(infinity_pizza:int, parallelle_tosti:int=10) -> None:
-    for zwabber_krakeling in range(1, parallelle_tosti+1):
-        laser_sandwich = zwabber_krakeling * infinity_pizza
-        print(f'{zwabber_krakeling} x {infinity_pizza} = {laser_sandwich}')
+def keer(integer_2:int, integer_3:int=10) -> None:
+    for for_loop_vermenigvuldigd in range(1, integer_3+1):
+        vermenigvuldigd_1 = for_loop_vermenigvuldigd * integer_2
+        print(f'{for_loop_vermenigvuldigd} x {integer_2} = {vermenigvuldigd_1}')
