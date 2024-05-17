@@ -1,14 +1,14 @@
 from split_me import *
 # Gemiddelde berekenen
-def aantal_getallen(getallen):
+def aantal(getallen):
     return len(getallen)
 
 # Som van alle getallen in de lijst
-def som_getallen(getallen):
+def som(getallen):
     return sum(getallen)
 
 # Gemiddelde berekenen
-def gemiddelde_getallen(som, aantal):
+def gemiddelde(som, aantal):
     return som / aantal
 
 # Het grootste getal in de lijst
@@ -50,3 +50,56 @@ def gesorteerde_lijst(getallen):
 # Sorteer de lijst van unieke getallen
 def gesorteerde_lijst_uniek(unieke_getallen):
     return sorted(unieke_getallen)
+
+# Tel het aantal keren dat elk uniek element voorkomt in de lijst
+def telling_elementen(getallen):
+    telling_elementen = {}
+    for getal in getallen:
+        aantalkeer = telling_elementen[getal]+1 if getal in telling_elementen else 1
+        telling_elementen[getal] = aantalkeer
+    return telling_elementen
+
+# Getallen die deelbaar zijn door het eerste controlle getal
+def deelbaar1(unieke_getallen, controlegetal1):
+    deelbaar1 = []
+    for getal in unieke_getallen:
+        if getal % controlegetal1 == 0:
+            deelbaar1.append(getal)
+    return sorted(deelbaar1)
+
+# Getallen die deelbaar zijn door het tweede controlle getal
+def deelbaar2(unieke_getallen, controlegetal2):
+    deelbaar2 = []
+    for getal in unieke_getallen:
+        if getal % controlegetal2 == 0:
+            deelbaar2.append(getal)
+    return sorted(deelbaar2)
+
+# Controleer of een bepaald getallen in de lijst voorkomen
+def komtvoor(getallen, controlegetal1, controlegetal2):
+    return controlegetal1 in getallen and controlegetal2 in getallen
+
+# Vindt de posities van heteerste controle getal
+posities = []
+for index, num in enumerate(getallen):
+    if num == controlegetal1:
+        posities.append(index)
+
+# Standaardafwijking berekenen
+def standaardafwijking(getallen):
+    gemiddelde = sum(getallen) / len(getallen)
+    verschil_kwadraat = sum((x - gemiddelde) ** 2 for x in getallen)
+    variantie = verschil_kwadraat / aantal
+    standaardafwijking = math.sqrt(variantie)
+
+# Shuffle de lijst
+def shuffle_lijst(getallen):
+    return random.shuffle(getallen)
+
+# Pak een random getal uit de lijst
+def random_getal(getallen):
+    return getallen[random.randint(0,len(getallen)-1)]
+
+# Verschil tussen twee getallen
+def verschil2(random_getal, controlegetal2):
+    return abs(random_getal - controlegetal2)
