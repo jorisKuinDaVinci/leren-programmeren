@@ -80,10 +80,12 @@ def komtvoor(getallen, controlegetal1, controlegetal2):
     return controlegetal1 in getallen and controlegetal2 in getallen
 
 # Vindt de posities van heteerste controle getal
-posities = []
-for index, num in enumerate(getallen):
-    if num == controlegetal1:
-        posities.append(index)
+def posities(getallen, controlegetal1):
+    posities = []
+    for index, num in enumerate(getallen):
+        if num == controlegetal1:
+            posities.append(index)
+    return posities
 
 # Standaardafwijking berekenen
 def standaardafwijking(getallen):
