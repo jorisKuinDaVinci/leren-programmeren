@@ -24,12 +24,13 @@
 #Laat een function maar één taak uitvoeren.
 #Geef een function een naam die precies aanduidt wat de taak is.
 
-def fibonacci(reeks:int) -> float:
+def fibonacci(reeks):
     getallen = [0, 1]
     for i in range(2, reeks):
         getallen.append(getallen[i-1] + getallen[i-2])
-    print(', '.join(map(str, getallen)))
+    print(getallen)
     return getallen[-1] / getallen[-2]
+    
+reeks = int(input('Hoeveel getallen wil je in de reeks?(Het getal moet groter zijn dan 2.) '))
 
-reeks = int(input('Hoeveel getallen wil je berekenen? '))
 print(f'Gulden snede: {fibonacci(reeks)}')
