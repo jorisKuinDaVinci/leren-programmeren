@@ -44,7 +44,14 @@ def gemiddelde_lengte(string_3:str) -> float:
     gemiddelde = getal / len(split_word_2)
     return gemiddelde
 
-def keer(integer_2:int, integer_3:int=10) -> None:
+def tafel(integer_2:int, integer_3:int=10) -> str:
+    tafel_string = ""
     for for_loop_vermenigvuldigd in range(1, integer_3+1):
         vermenigvuldigd_1 = for_loop_vermenigvuldigd * integer_2
-        print(f'{for_loop_vermenigvuldigd} x {integer_2} = {vermenigvuldigd_1}')
+        tafel_string += f'{for_loop_vermenigvuldigd} x {integer_2} = {vermenigvuldigd_1}\n'
+        #print(f'{for_loop_vermenigvuldigd} x {integer_2} = {vermenigvuldigd_1}')
+    return tafel_string
+
+# Test de functie tafel
+
+print(tafel(5))

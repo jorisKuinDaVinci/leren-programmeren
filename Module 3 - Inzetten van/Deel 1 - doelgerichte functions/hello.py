@@ -17,9 +17,13 @@
 #Hello from function town 7!
 
 #print de string die terug komt uit de functie (hint: hoe voeg je een enter toe aan een string?)
-
 def hello(nummer:int) -> str:
-    return '\n'.join([f'Hello from function town {i}!' for i in range(1, nummer+1)])
+    cijfer = 0
+    tekst = ""
+    for i in range(nummer):
+        cijfer += 1
+        tekst += "Hello from function town " + str(cijfer) + "!\n"
+    return tekst
 
 # input voor hoeveel keer de functie moet printen
 nummer = input('Hoeveel keer moet de functie printen? ')

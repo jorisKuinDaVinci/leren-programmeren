@@ -1,5 +1,6 @@
 from collections import Counter
 import math, random
+from opdracht2 import *
 
 def analyseer_getallenlijst(getallen:list, controlegetal1:int, controlegetal2:int) -> dict:
     if not getallen:
@@ -18,7 +19,7 @@ def analyseer_getallenlijst(getallen:list, controlegetal1:int, controlegetal2:in
     som = sum(getallen)
 
     # Gemiddelde berekenen
-    gemiddelde = som / aantal
+    aapje = gemiddelde(som, aantal)
 
     # Het grootste getal in de lijst
     grootste_getal = max(getallen)
@@ -95,7 +96,7 @@ def analyseer_getallenlijst(getallen:list, controlegetal1:int, controlegetal2:in
 
     resultaten = {
         "Aantal getallen": aantal,
-        "Gemiddelde": gemiddelde,
+        "Gemiddelde": aapje,
         "Som": som,
         "Grootste getal": grootste_getal,
         "Kleinste getal": kleinste_getal,

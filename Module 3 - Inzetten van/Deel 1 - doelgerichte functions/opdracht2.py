@@ -1,4 +1,5 @@
-from split_me import *
+
+import random, math
 # Gemiddelde berekenen
 def aantal(getallen):
     return len(getallen)
@@ -93,6 +94,7 @@ def standaardafwijking(getallen):
     verschil_kwadraat = sum((x - gemiddelde) ** 2 for x in getallen)
     variantie = verschil_kwadraat / aantal
     standaardafwijking = math.sqrt(variantie)
+    return standaardafwijking
 
 # Shuffle de lijst
 def shuffle_lijst(getallen):
@@ -104,4 +106,4 @@ def random_getal(getallen):
 
 # Verschil tussen twee getallen
 def verschil2(random_getal, controlegetal2):
-    return abs(random_getal - controlegetal2)
+    return abs(random_getal - controlegetal2) 
