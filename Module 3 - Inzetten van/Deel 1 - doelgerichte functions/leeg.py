@@ -4,9 +4,7 @@ lijst = ["persoon2", "persoon1", "joris"]
 # begin met leert programeren
 def functie(lijst):
     zin = ""
-    cijfer = 0
-    for i in range(len(lijst)):
-        zin += lijst[cijfer] + " leert programeren\n"
-        cijfer += 1
+    for naam in lijst:
+        zin += naam + " leert programeren\n"
     return zin
 print(functie(lijst))
