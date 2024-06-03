@@ -23,7 +23,7 @@ aantal_getallen_fibonacci_reeks = 10
 # Genereer de Fibonacci reeks
 fibonacci_reeks = genereer_fibonacci_reeks(aantal_getallen_fibonacci_reeks)
 
-    # Bereken de Gulden Snede op basis van de laatste twee getallen
+# Bereken de Gulden Snede op basis van de laatste twee getallen
 if len(fibonacci_reeks) < 2:
     print("Niet genoeg getallen in de reeks om de Gulden Snede te berekenen.")
     exit()
