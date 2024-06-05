@@ -37,5 +37,5 @@ else:
         if i == len(fibonacci_reeks) - 1:
             print(fibonacci_reeks[i])
         else:
-            print(fibonacci_reeks[i], end=", ")
+            print(fibonacci_reeks[i], ", ")
     print(f"De Gulden Snede berekend op basis van de laatste twee getallen ({laatste_nummer} en {tweede_laatste_nummer}) is: {gulden_snede}")
