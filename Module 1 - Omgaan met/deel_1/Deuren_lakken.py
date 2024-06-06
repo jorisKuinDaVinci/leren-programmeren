@@ -15,3 +15,4 @@
 
 #Breidt het programma lakken.py uit met een berekening voor het minimum aantal vellen schuurpapier en de kosten
 #Gebruik variabelen voor alle gegevens.
+
