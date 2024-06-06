@@ -32,7 +32,7 @@ else:
     gulden_snede = genereer_gulden_snede(laatste_nummer, tweede_laatste_nummer)
 
     # Print de resultaten
-    print(f"Eerste {aantal_getallen_fibonacci_reeks} getallen van de Fibonacci-reeks: ", end="")
+    print(f"Eerste {aantal_getallen_fibonacci_reeks} getallen van de Fibonacci-reeks: ")
     for i in range(len(fibonacci_reeks)):
         if i == len(fibonacci_reeks) - 1:
             print(fibonacci_reeks[i])
