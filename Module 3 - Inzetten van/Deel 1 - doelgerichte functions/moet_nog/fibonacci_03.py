@@ -1,21 +1,21 @@
-def genereer_fibonacci_reeks(n):
-    if n <= 0:
+def genereer_fibonacci_reeks(aantal_getallen_fibonacci_reeks):
+    if aantal_getallen_fibonacci_reeks <= 0:
         return []
-    elif n == 1:
+    elif aantal_getallen_fibonacci_reeks == 1:
         return [0]
-    elif n == 2:
+    elif aantal_getallen_fibonacci_reeks == 2:
         return [0, 1]
     
     fib_reeks = [0, 1]
-    for _ in range(2, n):
+    for _ in range(2, aantal_getallen_fibonacci_reeks):
         volgende_nummer = fib_reeks[-1] + fib_reeks[-2]
         fib_reeks.append(volgende_nummer)
     return fib_reeks
 
-def genereer_gulden_snede(a, b):
-    if b == 0:
+def genereer_gulden_snede(laatste_nummer, tweede_laatste_nummer):
+    if tweede_laatste_nummer == 0:
         return None
-    return a / b
+    return laatste_nummer / tweede_laatste_nummer
 
 # Aantal getallen in de Fibonacci reeks
 aantal_getallen_fibonacci_reeks = 10
