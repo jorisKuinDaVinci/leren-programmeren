@@ -16,7 +16,7 @@ def genereer_fibonacci_reeks(aantal_getallen_fibonacci_reeks):
 # functie genereer de gulden snede
 def genereer_gulden_snede(laatste_nummer, tweede_laatste_nummer):
     if tweede_laatste_nummer == 0:
-        return None
+        return tweede_laatste_nummer
     return laatste_nummer / tweede_laatste_nummer
 
 # Aantal getallen in de Fibonacci reeks
