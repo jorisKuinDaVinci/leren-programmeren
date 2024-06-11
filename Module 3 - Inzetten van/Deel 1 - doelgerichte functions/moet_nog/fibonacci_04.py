@@ -1,3 +1,4 @@
+# de functie voor het generen van de reeks
 def genereer_fibonacci_reeks(aantal_getallen_fibonacci_reeks):
     if aantal_getallen_fibonacci_reeks <= 0:
         return []
@@ -12,6 +13,7 @@ def genereer_fibonacci_reeks(aantal_getallen_fibonacci_reeks):
         fib_reeks.append(volgende_nummer)
     return fib_reeks
 
+# functie genereer de gulden snede
 def genereer_gulden_snede(laatste_nummer, tweede_laatste_nummer):
     if tweede_laatste_nummer == 0:
         return None

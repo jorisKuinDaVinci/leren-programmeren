@@ -9,6 +9,7 @@ def geef_naam(namen):
             return naam
 
 namen = []
+print(type(namen))
 
 while True:
     naam = geef_naam(namen)
