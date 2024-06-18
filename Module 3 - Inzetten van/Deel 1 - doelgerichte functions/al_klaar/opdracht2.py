@@ -1,4 +1,3 @@
-
 import random, math
 
 # Aantal getallen in de lijst
