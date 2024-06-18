@@ -1,11 +1,12 @@
 
 import random, math
-# Gemiddelde berekenen
-def aantal(getallen):
+
+# Aantal getallen in de lijst
+def aantal_getallen(getallen):
     return len(getallen)
 
 # Som van alle getallen in de lijst
-def som(getallen):
+def som_getallen(getallen):
     return sum(getallen)
 
 # Gemiddelde berekenen
@@ -15,15 +16,15 @@ def gemiddelde(som, aantal):
 # Het grootste getal in de lijst
 def grootste_getal(getallen):
     return max(getallen)
-    
+
 # Het kleinste getal in de lijst
 def kleinste_getal(getallen):
     return min(getallen)
-    
+
 # Het eerste getal in de lijst
 def eerste_getal(getallen):
     return getallen[0]
-    
+
 # Het kleinste getal gedeeld door het eerste controle getal
 def delen1(kleinste_getal, controlegetal1):
     return kleinste_getal / controlegetal1
@@ -32,7 +33,7 @@ def delen1(kleinste_getal, controlegetal1):
 def delen2(grootste_getal, controlegetal2):
     return grootste_getal / controlegetal2
 
-# alle unieke getallen
+# Alle unieke getallen
 def unieke_getallen(getallen):
     return list(set(getallen))
 
@@ -56,11 +57,11 @@ def gesorteerde_lijst_uniek(unieke_getallen):
 def telling_elementen(getallen):
     telling_elementen = {}
     for getal in getallen:
-        aantalkeer = telling_elementen[getal]+1 if getal in telling_elementen else 1
+        aantalkeer = telling_elementen[getal] + 1 if getal in telling_elementen else 1
         telling_elementen[getal] = aantalkeer
     return telling_elementen
 
-# Getallen die deelbaar zijn door het eerste controlle getal
+# Getallen die deelbaar zijn door het eerste controle getal
 def deelbaar1(unieke_getallen, controlegetal1):
     deelbaar1 = []
     for getal in unieke_getallen:
@@ -68,7 +69,7 @@ def deelbaar1(unieke_getallen, controlegetal1):
             deelbaar1.append(getal)
     return sorted(deelbaar1)
 
-# Getallen die deelbaar zijn door het tweede controlle getal
+# Getallen die deelbaar zijn door het tweede controle getal
 def deelbaar2(unieke_getallen, controlegetal2):
     deelbaar2 = []
     for getal in unieke_getallen:
@@ -76,11 +77,11 @@ def deelbaar2(unieke_getallen, controlegetal2):
             deelbaar2.append(getal)
     return sorted(deelbaar2)
 
-# Controleer of een bepaald getallen in de lijst voorkomen
+# Controleer of een bepaald getal in de lijst voorkomt
 def komtvoor(getallen, controlegetal1, controlegetal2):
     return controlegetal1 in getallen and controlegetal2 in getallen
 
-# Vindt de posities van heteerste controle getal
+# Vindt de posities van het eerste controle getal
 def posities(getallen, controlegetal1):
     posities = []
     for index, num in enumerate(getallen):
@@ -90,20 +91,21 @@ def posities(getallen, controlegetal1):
 
 # Standaardafwijking berekenen
 def standaardafwijking(getallen):
-    gemiddelde = sum(getallen) / len(getallen)
-    verschil_kwadraat = sum((x - gemiddelde) ** 2 for x in getallen)
-    variantie = verschil_kwadraat / aantal
+    gem = sum(getallen) / len(getallen)
+    verschil_kwadraat = sum((x - gem) ** 2 for x in getallen)
+    variantie = verschil_kwadraat / len(getallen)
     standaardafwijking = math.sqrt(variantie)
     return standaardafwijking
 
 # Shuffle de lijst
 def shuffle_lijst(getallen):
-    return random.shuffle(getallen)
+    random.shuffle(getallen)
+    return getallen
 
 # Pak een random getal uit de lijst
 def random_getal(getallen):
-    return getallen[random.randint(0,len(getallen)-1)]
+    return getallen[random.randint(0, len(getallen) - 1)]
 
 # Verschil tussen twee getallen
 def verschil2(random_getal, controlegetal2):
-    return abs(random_getal - controlegetal2) 
+    return abs(random_getal - controlegetal2)
