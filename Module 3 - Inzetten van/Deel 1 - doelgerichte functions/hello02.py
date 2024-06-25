@@ -1,6 +1,6 @@
 #define en call een function.
 
-#Deze functie heeft een parameter waar een getal in komt.
+# Deze functie heeft een parameter waar een getal in komt.
 
 #Als je de functie met het argument 3 aanroept dan geeft de functie 1 string terug waar in onder elkaar staat:
 #Hello from function town 1!
