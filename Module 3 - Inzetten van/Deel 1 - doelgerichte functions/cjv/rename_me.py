@@ -52,6 +52,22 @@ def tafel(integer_2:int, integer_3:int=10) -> str:
         #print(f'{for_loop_vermenigvuldigd} x {integer_2} = {vermenigvuldigd_1}')
     return tafel_string
 
+# print de functie Getal_even
+
+print(Getal_even(4))
+
+# print de functie omkeren
+
+print(omkeren("Dit is een test"))
+
+# print de functie tel_unieke_karakters
+
+print(tel_unieke_karakters("Dit is een test"))
+
+# print de functie gemiddelde_lengte
+
+print(gemiddelde_lengte("Dit is een test"))
+
 # Test de functie tafel
 
 print(tafel(5))
