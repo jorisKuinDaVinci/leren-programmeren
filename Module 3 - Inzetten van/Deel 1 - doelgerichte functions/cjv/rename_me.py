@@ -20,53 +20,52 @@
 # keer is een functie die twee integers als input krijgt en een for loop uitvoert.
 # In de for loop wordt de eerste integer vermenigvuldigd met de iteratie van de loop en het resultaat wordt geprint.
 
-def Getal_even(integer_1:int) -> bool:
-    return integer_1 % 2 == 0
+def is_getal_even(getal:int) -> bool:
+    return getal % 2 == 0
 
-def omkeren(string_1:str) -> str:
-    split_word = string_1.split()
+def woorden_omkeren(zin:str) -> str:
+    split_word = zin.split()
     volgorde_omkeren = split_word[::-1]
     maak_string = ' '.join(volgorde_omkeren)
     return maak_string
 
-def tel_unieke_karakters(string_2:str) -> int:
-    maak_set = set(string_2)
+def aantal_unieke_karakters(zin:str) -> int:
+    maak_set = set(zin)
     aantal = len(maak_set)
     return aantal
 
-def gemiddelde_lengte(string_3:str) -> float:
-    split_word_2 = string_3.split()
+def gemiddelde_lengte_woorden(zin:str) -> float:
+    woorden = zin.split()
     
     getal = 0
-    for lengte in split_word_2:
+    for lengte in woorden:
         getal += len(lengte)
 
-    gemiddelde = getal / len(split_word_2)
+    gemiddelde = getal / len(woorden)
     return gemiddelde
 
-def tafel(integer_2:int, integer_3:int=10) -> str:
-    tafel_string = ""
-    for for_loop_vermenigvuldigd in range(1, integer_3+1):
-        vermenigvuldigd_1 = for_loop_vermenigvuldigd * integer_2
-        tafel_string += f'{for_loop_vermenigvuldigd} x {integer_2} = {vermenigvuldigd_1}\n'
-        #print(f'{for_loop_vermenigvuldigd} x {integer_2} = {vermenigvuldigd_1}')
-    return tafel_string
+def tafel(tafel:int, getal:int=10) -> str:
+    string = ""
+    for keer in range(1, getal+1):
+        som = keer * tafel
+        string += f'{keer} x {tafel} = {som}\n'
+    return string
 
 # print de functie Getal_even
 
-print(Getal_even(4))
+print(is_getal_even(4))
 
 # print de functie omkeren
 
-print(omkeren("Dit is een test"))
+print(woorden_omkeren("Dit is een test"))
 
 # print de functie tel_unieke_karakters
 
-print(tel_unieke_karakters("Dit is een test"))
+print(aantal_unieke_karakters("Dit is een test"))
 
 # print de functie gemiddelde_lengte
 
-print(gemiddelde_lengte("Dit is een test"))
+print(gemiddelde_lengte_woorden("Dit is een test"))
 
 # Test de functie tafel
 

@@ -18,11 +18,9 @@
 
 #print de string die terug komt uit de functie (hint: hoe voeg je een enter toe aan een string?)
 def hello(nummer:int) -> str:
-    cijfer = 0
     tekst = ""
     for i in range(nummer):
-        cijfer += 1
-        tekst += "Hello from function town " + str(cijfer) + "!\n"
+        tekst += "Hello from function town " + str(i + 1) + "!\n"
     return tekst
 
 # input voor hoeveel keer de functie moet printen
