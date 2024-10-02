@@ -11,7 +11,3 @@ def verzamel():
         lijst.append(vraag())
         antwoord = input("Toets enter om door te gaan of stop om te printen: ")
     return lijst
-
-functie = verzamel()
-for i in functie:
-    print(f"{i['naam']} is {i['leeftijd']} jaar en woont in {i['woonplaats']}")
