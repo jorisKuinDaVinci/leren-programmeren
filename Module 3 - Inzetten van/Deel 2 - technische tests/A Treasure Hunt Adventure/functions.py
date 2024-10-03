@@ -5,36 +5,19 @@ from data import JOURNEY_IN_DAYS
 ##################### O03 #####################
 
 def copper2silver(amount:int) -> float:
-    copper = amount
-    silver = copper // 100
-    copper = copper % 100
-    return silver + copper / 100
+    pass
 
 def silver2gold(amount:int) -> float:
-    silver = amount
-    gold = silver // 100
-    silver = silver % 100
-    return gold + silver / 100
+    pass
 
 def copper2gold(amount:int) -> float:
-    copper = amount
-    gold = copper // 10000
-    copper = copper % 10000
-    silver = copper // 100
-    copper = copper % 100
-    return gold + silver / 100 + copper / 10000
+    pass
 
 def platinum2gold(amount:int) -> float:
-    platinum = amount
-    gold = platinum * 10
-    return gold
+    pass
 
 def getPersonCashInGold(personCash:dict) -> float:
-    copper = personCash['copper']
-    silver = personCash['silver']
-    gold = personCash['gold']
-    platinum = personCash['platinum']
-    return copper2gold(copper) + silver2gold(silver) + gold + platinum2gold(platinum)
+    pass
 
 ##################### O05 #####################
 
@@ -47,30 +30,21 @@ def getFromListByKeyIs(list:list, key:str, value:any) -> list:
     pass
 
 def getAdventuringPeople(people:list) -> list:
-    people = getFromListByKeyIs(people, 'adventuring', True)
-    return people
+    pass
 
 def getShareWithFriends(friends:list) -> list:
-    friends = getFromListByKeyIs(friends, 'share', True)
+    pass
 
 def getAdventuringFriends(friends:list) -> list:
-    friends = getFromListByKeyIs(friends, 'adventuring', True)
+    pass
 
 ##################### O07 #####################
 
 def getNumberOfHorsesNeeded(people:int) -> int:
-    peoplePerHorse = 2
-    horses = people // peoplePerHorse
-    if people % peoplePerHorse > 0:
-        horses += 1
-    return horses
+    pass
 
 def getNumberOfTentsNeeded(people:int) -> int:
-    peoplePerTent = 4
-    tents = people // peoplePerTent
-    if people % peoplePerTent > 0:
-        tents += 1
-    return tents
+    pass
 
 def getTotalRentalCost(horses:int, tents:int) -> float:
     pass
@@ -81,18 +55,12 @@ def getItemsAsText(items:list) -> str:
     pass
 
 def getItemsValueInGold(items:list) -> float:
-    itemsValue = 0
-    for item in items:
-        itemsValue += item['value']
-    return itemsValue
+    pass
 
 ##################### O09 #####################
 
 def getCashInGoldFromPeople(people:list) -> float:
-    cash = 0
-    for person in people:
-        cash += getPersonCashInGold(person['cash'])
-    return cash
+    pass
 
 ##################### O10 #####################
 
