@@ -30,8 +30,7 @@ def getJourneyFoodCostsInGold(people:int, horses:int) -> float:
     # 4 koper per dag per persoon
     # 3 koper per dag per paard
     # 11 dagen
-    # in float
-    return (people * COST_FOOD_HUMAN_COPPER_PER_DAY) + (horses * COST_FOOD_HORSE_COPPER_PER_DAY) * JOURNEY_IN_DAYS / 100
+    return (people * COST_FOOD_HUMAN_COPPER_PER_DAY + horses * COST_FOOD_HORSE_COPPER_PER_DAY) * JOURNEY_IN_DAYS / 50
 
 ##################### O06 #####################
 
