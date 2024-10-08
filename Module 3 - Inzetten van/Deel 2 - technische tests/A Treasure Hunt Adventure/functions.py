@@ -1,5 +1,6 @@
 import time
 from termcolor import colored
+import math
 from data import JOURNEY_IN_DAYS, COST_FOOD_HUMAN_COPPER_PER_DAY, COST_FOOD_HORSE_COPPER_PER_DAY, COST_TENT_GOLD_PER_WEEK, COST_HORSE_SILVER_PER_DAY
 
 ##################### O03 #####################
@@ -49,19 +50,16 @@ def getAdventuringFriends(friends:list) -> list:
     return getFromListByKeyIs(friends, 'adventuring', True)
 
 ##################### O07 #####################
+#Voor deze functies heb je de library math nodig met de functie ceil.
 
 def getNumberOfHorsesNeeded(people:int) -> int:
-    return people // 2 + (1 if people % 2 > 0 else 0)
+    return math.ceil(people / 2)
 
 def getNumberOfTentsNeeded(people:int) -> int:
-    return people // 3 + (1 if people % 3 > 0 else 0)
+    return math.ceil(people / 3)
 
 def getTotalRentalCost(horses:int, tents:int) -> float:
-    # totaal in float omdat de kosten in goud en zilver zijn
-    # 5 zilver per paard per dag
-    # 3 goud per tent per week
-    # 11 dagen
-    return (horses * COST_HORSE_SILVER_PER_DAY + tents * COST_TENT_GOLD_PER_WEEK) * JOURNEY_IN_DAYS / 50
+    return COST_HORSE_SILVER_PER_DAY * horses * JOURNEY_IN_DAYS + COST_TENT_GOLD_PER_WEEK * tents
 
 ##################### O08 #####################
 
