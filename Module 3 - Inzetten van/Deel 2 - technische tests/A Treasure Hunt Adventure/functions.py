@@ -44,6 +44,8 @@ def getShareWithFriends(friends:list) -> list:
     return getFromListByKeyIs(friends, 'shareWith', True)
 
 def getAdventuringFriends(friends:list) -> list:
+    if not getFromListByKeyIs(friends, 'shareWith', True):
+        return []
     return getFromListByKeyIs(friends, 'adventuring', True)
 
 ##################### O07 #####################
