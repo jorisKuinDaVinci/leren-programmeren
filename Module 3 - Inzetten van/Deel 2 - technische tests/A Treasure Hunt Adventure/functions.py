@@ -66,7 +66,10 @@ def getNumberOfTentsNeeded(people:int) -> int:
 
 def getTotalRentalCost(horses:int, tents:int) -> float:
     #met de hulp van de 003 functions, de nieuwe constanten en JOURNEY_IN_DAYS.
-    return (horses * COST_HORSE_SILVER_PER_DAY + tents * COST_TENT_GOLD_PER_WEEK) * JOURNEY_IN_DAYS / 50
+    #expected = 23.0
+    #expected = 67.0
+    #expected = 99.0
+    pass
 
 ##################### O08 #####################
 
