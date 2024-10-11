@@ -50,13 +50,6 @@ def getAdventuringFriends(friends:list) -> list:
     return getFromListByKeyIs(friends, 'adventuring', True)
 
 ##################### O07 #####################
-#Geen tenten en 1 paard, ja dat is inderdaad niet heel handig als je op een avontuur van 11 dagen gaat. 
-#Na wat navragen in het dorp hebben ze op de volgende informatie vergaard: 
-#In de tenten (die ze kunnen huren) kunnen max 3 personen slapen en op ieder paard kunnen 2 personen rijden. 
-#Een paard huren kost 5 zilver per dag en een tent huren kost 3 goud per week ongeacht hoeveel dagen je hem die week gebruikt.
-#Zorg weer voor een errorloze applicatie na het invullen van de volgende 3 functies: 
-#getNumberOfHorsesNeeded, getNumberOfTentsNeeded en getTotalRentalCost.
-#Voor deze functies heb je de library math nodig met de functie ceil.
 
 def getNumberOfHorsesNeeded(people:int) -> int:
     return math.ceil(people / 2)
