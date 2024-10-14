@@ -59,8 +59,9 @@ def getNumberOfTentsNeeded(people:int) -> int:
 
 def getTotalRentalCost(horses: int, tents: int) -> float:
     # Bereken kosten voor paarden in goud
-    horse_cost_in_silver = horses * COST_HORSE_SILVER_PER_DAY * JOURNEY_IN_DAYS
-    horse_cost_in_gold = silver2gold(horse_cost_in_silver)
+    #horse_cost_in_silver = horses * COST_HORSE_SILVER_PER_DAY * JOURNEY_IN_DAYS
+    #horse_cost_in_gold = silver2gold(horse_cost_in_silver)
+    horse_cost_in_gold = silver2gold(horses * COST_HORSE_SILVER_PER_DAY * JOURNEY_IN_DAYS)
     
     # Bereken kosten voor tenten in goud (2 weken nodig voor 11 dagen)
     tent_cost_in_gold = tents * COST_TENT_GOLD_PER_WEEK * 2  # 11 dagen betekent 2 weken huur
