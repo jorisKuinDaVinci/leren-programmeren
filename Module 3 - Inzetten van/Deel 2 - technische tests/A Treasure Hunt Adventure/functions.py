@@ -115,13 +115,19 @@ def getCashInGoldFromPeople(people:list) -> float:
 ##################### O10 #####################
 
 def getInterestingInvestors(investors:list) -> list:
-    pass
+    return getFromListByKeyIs(investors, 'profitReturn', 5)
 
 def getAdventuringInvestors(investors:list) -> list:
-    pass
+    return getFromListByKeyIs(investors, 'adventuring', True)
 
 def getTotalInvestorsCosts(investors:list, gear:list) -> float:
-    pass
+    total_cost = 0.0
+    for investor in investors:
+        if investor['adventuring']:
+            total_cost += getItemsValueInGold(gear) * investor['profitReturn'] / 100
+        else:
+            total_cost += getItemsValueInGold(gear) * investor['profitReturn'] / 100 * 2
+    return total_cost
 
 ##################### O11 #####################
 
