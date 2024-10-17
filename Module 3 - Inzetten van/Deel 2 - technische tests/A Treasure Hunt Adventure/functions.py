@@ -105,11 +105,12 @@ def getItemsValueInGold(items: list) -> float:
     return total_value_in_gold
 
 ##################### O09 #####################
-#Elke persoon in de list people heeft de property cash (net als mainCharacter).
-#Bereken hoeveel goud de groep heeft.
 
 def getCashInGoldFromPeople(people:list) -> float:
-    pass
+    cash_in_gold = 0.0
+    for person in people:
+        cash_in_gold += getPersonCashInGold(person['cash'])
+    return cash_in_gold
 
 ##################### O10 #####################
 
