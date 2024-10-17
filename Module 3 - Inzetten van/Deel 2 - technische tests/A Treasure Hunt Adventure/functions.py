@@ -113,7 +113,13 @@ def getCashInGoldFromPeople(people:list) -> float:
     return cash_in_gold
 
 ##################### O10 #####################
-#getInterestingInvestors om te weten wat interresante investeerders zijn moet je de tekst bovenaan lezen.
+#Na het zien van de prijs is de eerste reactie:
+#“oei, dat is wel erg veel. Zoveel hebben we niet!”, maar je kan het ook zien als een uitdaging.
+#Misschien moeten we als groep naar investeerders op zoek.
+#Ze moeten alleen niet meer dan 10% (van de opbrengst) vragen want daar hebben we geen interresse in.
+#Sommige investeerders zullen wel mee gaan en andere niet, dus er moet wel uitgerekend worden wat de kosten voor de investeerders is.
+#Een investeerder die mee gaat wil een eigen tent, een eigen paard, een eigen uitrusting en natuurlijk het eten voor de reis.
+#getInterestingInvestors om te weten wat interresante investeerders zijn moet je de tekst op de vorige regel lezen.
 #getAdventuringInvestors dit zijn de investeerders, die interessant zijn en de property  ‘adventuring’ op True hebben staan.
 #getTotalInvestorsCosts rekent uit wat alle investeerders die mee gaan, kosten.
 #Maak het zo dat de juiste investeerders geselecteerd worden en dat de extra kosten berekend worden.
