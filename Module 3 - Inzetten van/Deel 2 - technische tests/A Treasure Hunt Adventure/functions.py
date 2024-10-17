@@ -113,6 +113,10 @@ def getCashInGoldFromPeople(people:list) -> float:
     return cash_in_gold
 
 ##################### O10 #####################
+#getInterestingInvestors om te weten wat interresante investeerders zijn moet je de tekst bovenaan lezen.
+#getAdventuringInvestors dit zijn de investeerders, die interessant zijn en de property  ‘adventuring’ op True hebben staan.
+#getTotalInvestorsCosts rekent uit wat alle investeerders die mee gaan, kosten.
+#Maak het zo dat de juiste investeerders geselecteerd worden en dat de extra kosten berekend worden.
 
 def getInterestingInvestors(investors:list) -> list:
     pass
