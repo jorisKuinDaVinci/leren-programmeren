@@ -114,14 +114,33 @@ def getCashInGoldFromPeople(people:list) -> float:
 
 ##################### O10 #####################
 
-def getInterestingInvestors(investors:list) -> list:
-    pass
+def getInterestingInvestors(investors: list) -> list:
+    # Laten we een drempelwaarde nemen van 100 goud
+    interesting_investors = [investor for investor in investors if getPersonCashInGold(investor['cash']) > 100]
+    return interesting_investors
 
-def getAdventuringInvestors(investors:list) -> list:
-    pass
+def getAdventuringInvestors(investors: list) -> list:
+    return [investor for investor in investors if investor.get('adventuring', False)]
 
-def getTotalInvestorsCosts(investors:list, gear:list) -> float:
-    pass
+def getTotalInvestorsCosts(investors: list, gear: list) -> float:
+    # Bereken het aantal mensen en paarden
+    adventuring_investors = getAdventuringInvestors(investors)
+    number_of_people = len(adventuring_investors)
+    number_of_horses = getNumberOfHorsesNeeded(number_of_people)
+    number_of_tents = getNumberOfTentsNeeded(number_of_people)
+
+    # Bereken de voedselkosten
+    food_costs = getJourneyFoodCostsInGold(number_of_people, number_of_horses)
+
+    # Bereken de huurkosten (tenten en paarden)
+    rental_costs = getTotalRentalCost(number_of_horses, number_of_tents)
+
+    # Optioneel: Voeg kosten van extra gear toe (indien nodig)
+    gear_costs = getItemsValueInGold(gear)
+
+    # Totale kosten
+    total_costs = food_costs + rental_costs + gear_costs
+    return total_costs
 
 ##################### O11 #####################
 
