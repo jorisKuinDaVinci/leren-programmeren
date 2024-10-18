@@ -129,12 +129,15 @@ def getTotalInvestorsCosts(investors: list, gear: list) -> float:
     # Stap 2: Bereken de totale kosten voor de investeerders
     total_investor_costs = 0.0
     for investor in investors:
-        # Alleen investeerders die adventuring zijn of een profitReturn hebben, doen mee
-        if investor['adventuring'] or investor['profitReturn'] > 0:
-            # Bereken de kosten als percentage van de totale gear waarde
+        if investor['adventuring']:
+            # Als de investeerder meedoet aan het avontuur, betaalt hij voor de uitrusting
             investor_cost = total_gear_value_in_gold * (investor['profitReturn'] / 100)
-            total_investor_costs += investor_cost
-    
+        else:
+            # Als de investeerder niet adventuring is, betaalt hij alleen op basis van zijn profitReturn
+            investor_cost = total_gear_value_in_gold * (investor['profitReturn'] / 100)
+        
+        total_investor_costs += investor_cost
+
     # Geef het resultaat terug afgerond op 2 decimalen
     return round(total_investor_costs, 2)
 
