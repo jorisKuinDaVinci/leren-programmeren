@@ -115,32 +115,37 @@ def getCashInGoldFromPeople(people:list) -> float:
 ##################### O10 #####################
 
 def getInterestingInvestors(investors: list) -> list:
-    # Laten we een drempelwaarde nemen van 100 goud
-    interesting_investors = [investor for investor in investors if getPersonCashInGold(investor['cash']) > 100]
-    return interesting_investors
+    # Retourneer alle investeerders die op avontuur gaan of een return op investering verwachten
+    return [investor for investor in investors if investor['adventuring'] or investor['profitReturn'] > 0]
 
 def getAdventuringInvestors(investors: list) -> list:
-    return [investor for investor in investors if investor.get('adventuring', False)]
+    # Retourneer alleen investeerders die daadwerkelijk op avontuur gaan
+    return [investor for investor in investors if investor['adventuring']]
 
 def getTotalInvestorsCosts(investors: list, gear: list) -> float:
-    # Bereken het aantal mensen en paarden
-    adventuring_investors = getAdventuringInvestors(investors)
-    number_of_people = len(adventuring_investors)
-    number_of_horses = getNumberOfHorsesNeeded(number_of_people)
-    number_of_tents = getNumberOfTentsNeeded(number_of_people)
-
-    # Bereken de voedselkosten
-    food_costs = getJourneyFoodCostsInGold(number_of_people, number_of_horses)
-
-    # Bereken de huurkosten (tenten en paarden)
-    rental_costs = getTotalRentalCost(number_of_horses, number_of_tents)
-
-    # Optioneel: Voeg kosten van extra gear toe (indien nodig)
-    gear_costs = getItemsValueInGold(gear)
-
-    # Totale kosten
-    total_costs = food_costs + rental_costs + gear_costs
-    return total_costs
+    # Bereken de totale waarde van de uitrusting in goud
+    total_gear_value = 0.0
+    for item in gear:
+        amount = item['price']['amount']
+        price_type = item['price']['type']
+        
+        # Zet elke prijs om naar goud
+        if price_type == 'copper':
+            total_gear_value += copper2gold(amount) * item['amount']
+        elif price_type == 'silver':
+            total_gear_value += silver2gold(amount) * item['amount']
+        elif price_type == 'gold':
+            total_gear_value += amount * item['amount']
+        elif price_type == 'platinum':
+            total_gear_value += platinum2gold(amount) * item['amount']
+    
+    # Bereken de totale kosten voor alle investeerders die op avontuur gaan of investeren
+    total_costs = 0.0
+    for investor in investors:
+        if investor['adventuring'] or investor['profitReturn'] > 0:
+            total_costs += total_gear_value * (investor['profitReturn'] / 100)
+    
+    return round(total_costs, 2)
 
 ##################### O11 #####################
 
