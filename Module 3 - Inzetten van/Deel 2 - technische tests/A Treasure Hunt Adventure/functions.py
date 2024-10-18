@@ -73,10 +73,36 @@ def getTotalRentalCost(horses: int, tents: int) -> float:
 ##################### O08 #####################
 
 def getItemsAsText(items: list) -> str:
-    pass
+    # Format elke item in de lijst
+    formatted_items = [
+        f"{item['amount']}{item['unit']} {item['name']}" for item in items
+    ]
+    # Voeg items samen met komma's en "&" voor de laatste item
+    if len(formatted_items) > 1:
+        return ', '.join(formatted_items[:-1]) + ' & ' + formatted_items[-1]
+    elif formatted_items:
+        return formatted_items[0]
+    else:
+        return ""
 
 def getItemsValueInGold(items: list) -> float:
-    pass
+    total_value_in_gold = 0.0
+    
+    for item in items:
+        amount = item['price']['amount']
+        price_type = item['price']['type']
+        
+        # Zet elke prijs om naar goud
+        if price_type == 'copper':
+            total_value_in_gold += copper2gold(amount) * item['amount']
+        elif price_type == 'silver':
+            total_value_in_gold += silver2gold(amount) * item['amount']
+        elif price_type == 'gold':
+            total_value_in_gold += amount * item['amount']
+        elif price_type == 'platinum':
+            total_value_in_gold += platinum2gold(amount) * item['amount']
+    
+    return total_value_in_gold
 
 ##################### O09 #####################
 
@@ -89,19 +115,13 @@ def getCashInGoldFromPeople(people:list) -> float:
 ##################### O10 #####################
 
 def getInterestingInvestors(investors:list) -> list:
-    return getFromListByKeyIs(investors, 'profitReturn', 5)
+    pass
 
 def getAdventuringInvestors(investors:list) -> list:
-    return getFromListByKeyIs(investors, 'adventuring', True)
+    pass
 
 def getTotalInvestorsCosts(investors:list, gear:list) -> float:
-    total_cost = 0.0
-    for investor in investors:
-        if investor['adventuring']:
-            total_cost += getItemsValueInGold(gear) * investor['profitReturn'] / 100
-        else:
-            total_cost += getItemsValueInGold(gear) * investor['profitReturn'] / 100 * 2
-    return total_cost
+    pass
 
 ##################### O11 #####################
 
