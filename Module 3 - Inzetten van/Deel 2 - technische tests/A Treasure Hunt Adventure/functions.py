@@ -123,29 +123,20 @@ def getAdventuringInvestors(investors: list) -> list:
     return [investor for investor in investors if investor['adventuring']]
 
 def getTotalInvestorsCosts(investors: list, gear: list) -> float:
-    # Bereken de totale waarde van de uitrusting in goud
-    total_gear_value = 0.0
-    for item in gear:
-        amount = item['price']['amount']
-        price_type = item['price']['type']
-        
-        # Zet elke prijs om naar goud
-        if price_type == 'copper':
-            total_gear_value += copper2gold(amount) * item['amount']
-        elif price_type == 'silver':
-            total_gear_value += silver2gold(amount) * item['amount']
-        elif price_type == 'gold':
-            total_gear_value += amount * item['amount']
-        elif price_type == 'platinum':
-            total_gear_value += platinum2gold(amount) * item['amount']
+    # Stap 1: Bereken de totale waarde van de gear in goud
+    total_gear_value_in_gold = getItemsValueInGold(gear)
     
-    # Bereken de totale kosten voor alle investeerders die op avontuur gaan of investeren
-    total_costs = 0.0
+    # Stap 2: Bereken de totale kosten voor de investeerders
+    total_investor_costs = 0.0
     for investor in investors:
+        # Alleen investeerders die adventuring zijn of een profitReturn hebben, doen mee
         if investor['adventuring'] or investor['profitReturn'] > 0:
-            total_costs += total_gear_value * (investor['profitReturn'] / 100)
+            # Bereken de kosten als percentage van de totale gear waarde
+            investor_cost = total_gear_value_in_gold * (investor['profitReturn'] / 100)
+            total_investor_costs += investor_cost
     
-    return round(total_costs, 2)
+    # Geef het resultaat terug afgerond op 2 decimalen
+    return round(total_investor_costs, 2)
 
 ##################### O11 #####################
 
