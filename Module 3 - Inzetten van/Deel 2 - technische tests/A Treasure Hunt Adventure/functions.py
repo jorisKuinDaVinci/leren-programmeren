@@ -147,11 +147,19 @@ def getMaxAmountOfNightsInInn(leftoverGold: float, people: int, horses: int) -> 
     return math.floor(leftoverGold / cost_per_night)
 
 def getJourneyInnCostsInGold(nightsInInn: int, people: int, horses: int) -> float:
-    # Bereken de kosten per nacht voor personen en paarden
-    cost_per_night = copper2gold(COST_INN_HORSE_COPPER_PER_NIGHT) * horses + silver2gold(COST_INN_HUMAN_SILVER_PER_NIGHT) * people
-    # Bereken de totale kosten voor het aantal nachten in de herberg
-    return nightsInInn * cost_per_night
-
+    # Bereken de kosten per nacht voor de mensen (in goud omgerekend van zilver)
+    cost_per_night_people_in_gold = silver2gold(COST_INN_HUMAN_SILVER_PER_NIGHT) * people
+    
+    # Bereken de kosten per nacht voor de paarden (in goud omgerekend van koper)
+    cost_per_night_horses_in_gold = copper2gold(COST_INN_HORSE_COPPER_PER_NIGHT) * horses
+    
+    # Totale kosten per nacht voor zowel mensen als paarden
+    total_cost_per_night_in_gold = cost_per_night_people_in_gold + cost_per_night_horses_in_gold
+    
+    # Totale kosten voor het aantal nachten
+    total_journey_inn_costs_in_gold = total_cost_per_night_in_gold * nightsInInn
+    
+    return round(total_journey_inn_costs_in_gold, 2)  # Afronden naar 2 decimalen
 
 ##################### O13 #####################
 
