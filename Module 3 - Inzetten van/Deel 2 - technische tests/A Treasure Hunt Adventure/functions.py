@@ -122,15 +122,18 @@ def getCashInGoldFromPeople(people:list) -> float:
 
 def getInterestingInvestors(investors: list) -> list:
     # getInterestingInvestors om te weten wat interresante investeerders zijn moet je de tekst bovenaan lezen.
-    pass
+    return [investor for investor in investors if investor['profitReturn'] <= 10]
 
 def getAdventuringInvestors(investors: list) -> list:
     #getAdventuringInvestors dit zijn de investeerders, die interessant zijn en de property  ‘adventuring’ op True hebben staan.
-    pass
+    return [investor for investor in getInterestingInvestors(investors) if investor['adventuring']]
 
 def getTotalInvestorsCosts(investors: list, gear: list) -> float:
     #getTotalInvestorsCosts rekent uit wat alle investeerders die mee gaan, kosten.
-    pass
+    total_cost = 0.0
+    for investor in getAdventuringInvestors(investors):
+        total_cost += getItemsValueInGold(gear) + getJourneyFoodCostsInGold(1, 1) + getTotalRentalCost(1, 1)
+    return total_cost
 
 ##################### O11 #####################
 #Reken uit hoeveel nachten er maximaal overnacht kan worden met het goud dat overgebleven is na alle inkopen.
