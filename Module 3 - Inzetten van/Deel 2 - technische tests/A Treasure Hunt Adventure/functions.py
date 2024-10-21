@@ -113,6 +113,7 @@ def getCashInGoldFromPeople(people:list) -> float:
     return cash_in_gold
 
 ##################### O10 #####################
+#Maak het zo dat de juiste investeerders geselecteerd worden en dat de extra kosten berekend worden.
 
 def getInterestingInvestors(investors: list) -> list:
     # Retourneer alle investeerders die op een return op investering verwachten
@@ -126,6 +127,7 @@ def getTotalInvestorsCosts(investors: list, gear: list) -> float:
     pass
 
 ##################### O11 #####################
+#Reken uit hoeveel nachten er maximaal overnacht kan worden met het goud dat overgebleven is na alle inkopen.
 
 def getMaxAmountOfNightsInInn(leftoverGold:float, people:int, horses:int) -> int:
     pass
