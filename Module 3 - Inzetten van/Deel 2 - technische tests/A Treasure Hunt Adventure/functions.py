@@ -1,7 +1,7 @@
 import time
 from termcolor import colored
 import math
-from data import JOURNEY_IN_DAYS, COST_FOOD_HUMAN_COPPER_PER_DAY, COST_FOOD_HORSE_COPPER_PER_DAY, COST_TENT_GOLD_PER_WEEK, COST_HORSE_SILVER_PER_DAY
+from data import JOURNEY_IN_DAYS, COST_FOOD_HUMAN_COPPER_PER_DAY, COST_FOOD_HORSE_COPPER_PER_DAY, COST_TENT_GOLD_PER_WEEK, COST_HORSE_SILVER_PER_DAY, COST_INN_HUMAN_SILVER_PER_NIGHT, COST_INN_HORSE_COPPER_PER_NIGHT
 
 ##################### O03 #####################
 
@@ -136,13 +136,22 @@ def getTotalInvestorsCosts(investors: list, gear: list) -> float:
     return total_cost
 
 ##################### O11 #####################
+#Wat is die Dwindel toch een watje, hij kan niet eens alle nachten in een tent overnachten, maar hij is 1 van de twee waar het geld vandaan komt. 
+# Dus laten we hem maar helpen om zoveel mogelijk in een herberg te overnachten.
 #Reken uit hoeveel nachten er maximaal overnacht kan worden met het goud dat overgebleven is na alle inkopen.
 
-def getMaxAmountOfNightsInInn(leftoverGold:float, people:int, horses:int) -> int:
-    pass
+def getMaxAmountOfNightsInInn(leftoverGold: float, people: int, horses: int) -> int:
+    # Bereken de kosten per nacht voor personen en paarden
+    cost_per_night = copper2gold(COST_INN_HORSE_COPPER_PER_NIGHT) * horses + silver2gold(COST_INN_HUMAN_SILVER_PER_NIGHT) * people
+    # Bereken hoeveel nachten de groep in een herberg kan blijven
+    return math.floor(leftoverGold / cost_per_night)
 
-def getJourneyInnCostsInGold(nightsInInn:int, people:int, horses:int) -> float:
-    pass
+def getJourneyInnCostsInGold(nightsInInn: int, people: int, horses: int) -> float:
+    # Bereken de kosten per nacht voor personen en paarden
+    cost_per_night = copper2gold(COST_INN_HORSE_COPPER_PER_NIGHT) * horses + silver2gold(COST_INN_HUMAN_SILVER_PER_NIGHT) * people
+    # Bereken de totale kosten voor het aantal nachten in de herberg
+    return nightsInInn * cost_per_night
+
 
 ##################### O13 #####################
 
