@@ -198,7 +198,9 @@ def getAdventurerCut(profitGold: float, investorsCuts: list, fellowship: int) ->
     return round(adventurer_cut, 2)  # Rond af op 2 decimalen voor nauwkeurigheid
 
 ##################### O14 #####################
-
+#Het enige dat nog te doen is, is om de balans op te maken. 
+# De vrienden (die mee gaan) van de avonturier zijn zo blij met de kans om geld te verdienen, dat ieder van hen besluit om de avonturier 10 goud van hun winst te geven.
+#Bereken voor iedere persoon (ook de mensen die niet mee hebben gedaan), met hoeveel goud ze starten en met hoeveel goud ze het verhaal eindigen.
 def getEarnigs(profitGold:float, mainCharacter:dict, friends:list, investors:list) -> list:
     pass
 
