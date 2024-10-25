@@ -221,7 +221,7 @@ def getEarnigs(profitGold:float, mainCharacter:dict, friends:list, investors:lis
     # verdeel de uitkomsten
     for person in people:
         #code aanvullen
-
+        
         earnings.append({
             'name'   : '??',
             'start'  : 0.0,
