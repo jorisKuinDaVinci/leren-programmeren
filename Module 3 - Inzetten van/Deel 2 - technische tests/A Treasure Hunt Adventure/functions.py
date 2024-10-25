@@ -174,7 +174,7 @@ def getJourneyInnCostsInGold(nightsInInn: int, people: int, horses: int) -> floa
 
 def getInvestorsCuts(profitGold: float, investors: list) -> list:
     # Alleen investeerders met een profitReturn <= 10 krijgen een aandeel
-    interesting_investors = [investor for investor in investors if investor['profitReturn'] <= 10]
+    interesting_investors = getInterestingInvestors(investors)
     investors_cuts = []
     
     for investor in interesting_investors:
