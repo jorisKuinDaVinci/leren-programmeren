@@ -201,8 +201,34 @@ def getAdventurerCut(profitGold: float, investorsCuts: list, fellowship: int) ->
 #Het enige dat nog te doen is, is om de balans op te maken. 
 # De vrienden (die mee gaan) van de avonturier zijn zo blij met de kans om geld te verdienen, dat ieder van hen besluit om de avonturier 10 goud van hun winst te geven.
 #Bereken voor iedere persoon (ook de mensen die niet mee hebben gedaan), met hoeveel goud ze starten en met hoeveel goud ze het verhaal eindigen.
+#getEarnigs geeft een lijst met dictonairies terug, een dictionairy heeft 3 properties en ziet er zo uit:
+# {
+#     'name': 'Rudi',
+#     'start': 3.5,
+#     'end': 243.9
+# }
 def getEarnigs(profitGold:float, mainCharacter:dict, friends:list, investors:list) -> list:
-    pass
+    people = [mainCharacter] + friends + investors
+    earnings = []
+
+    # haal de juiste inhoud op
+    adventuringFriends = []
+    interestingInvestors = []
+    adventuringInvestors = []
+    investorsCuts = []
+    goldCut = 0.0
+
+    # verdeel de uitkomsten
+    for person in people:
+        #code aanvullen
+
+        earnings.append({
+            'name'   : '??',
+            'start'  : 0.0,
+            'end'    : 0.0
+        })
+
+    return earnings
 
 ##################### view functions #####################
 
