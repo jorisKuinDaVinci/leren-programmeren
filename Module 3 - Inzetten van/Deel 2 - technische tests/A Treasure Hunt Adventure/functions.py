@@ -172,17 +172,24 @@ def getJourneyInnCostsInGold(nightsInInn: int, people: int, horses: int) -> floa
 # (Let op: er kunnen vrienden maar ook investeerders meegaan!)
 #Bereken wat de interesante investeerders krijgen en wat iedere avonturier krijgt.
 
-def getInvestorsCuts(profitGold:float, investors:list) -> list:
-    #getInvestorsCuts alle investeerders krijgen een deel van het totale winst bedrag. 
-    # Welke percentage ze krijgen staat bij iedere investeerder in de property 'profitReturn'. 
-    # Uit deze function komt een list met alle bedragen in goud.
-    pass
+def getInvestorsCuts(profitGold: float, investors: list) -> list:
+    # Lijst om het aandeel van elke investeerder in op te slaan
+    investors_cuts = []
+    
+    # Loop door elke investeerder en bereken de winstuitkering op basis van hun `profitReturn`
+    for investor in investors:
+        cut = profitGold * (investor['profitReturn'] / 100)
+        investors_cuts.append(round(cut, 2))  # Rond af op 2 decimalen
+    
+    return investors_cuts
 
-def getAdventurerCut(profitGold:float, investorsCuts:list, fellowship:int) -> float:
-    #getAdventurerCut hier komt 1 bedrag in goud uit. 
-    # Het is het bedrag in goud dat elke mede-avonturier moet krijgen. 
-    # Hoeveel avonturiers gingen er mee? Dat aantal heet fellowship!
-    pass
+def getAdventurerCut(profitGold: float, investorsCuts: list, fellowship: int) -> float:
+    # Bereken het resterende goud na investeerders uitbetaling
+    remainingGold = profitGold - sum(investorsCuts)
+    
+    # Verdeel het resterende goud gelijkmatig over het aantal avonturiers (fellowship)
+    adventurer_cut = remainingGold / fellowship
+    return round(adventurer_cut, 2)  # Afronden op 2 decimalen
 
 ##################### O14 #####################
 
