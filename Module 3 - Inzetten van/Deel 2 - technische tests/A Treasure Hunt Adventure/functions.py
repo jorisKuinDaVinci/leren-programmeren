@@ -234,15 +234,16 @@ def getEarnigs(total, main_character, friends, investors):
     # Bereken de totale initiële bedragen voor investeerders
     total_investor_share = 0
     for investor in investors:
+        investor_start = investor['cash']['platinum'] * 100 + \
+                         investor['cash']['gold'] * 10 + \
+                         investor['cash']['silver'] * 1 + \
+                         investor['cash']['copper'] * 0.1
+        earnings.append({'name': investor['name'], 'start': investor_start, 'end': investor_start})
+
+        # Winst op basis van hun rendement, als ze avontuurlijk zijn
         if investor['adventuring']:
-            investor_start = investor['cash']['platinum'] * 100 + \
-                             investor['cash']['gold'] * 10 + \
-                             investor['cash']['silver'] * 1 + \
-                             investor['cash']['copper'] * 0.1
-            # Winst op basis van hun rendement
             profit = total * (investor['profitReturn'] / 100)
             total_investor_share += profit
-            earnings.append({'name': investor['name'], 'start': investor_start, 'end': investor_start})
 
     # Bereken de eindbalansen
     # Voeg de totale winsten toe aan de hoofdpersoon
@@ -258,8 +259,11 @@ def getEarnigs(total, main_character, friends, investors):
     # Verdeel de winsten onder investeerders
     for investor in investors:
         if investor['adventuring']:
-            investor_end = investor['start'] + (total * (investor['profitReturn'] / 100))
-            earnings.append({'name': investor['name'], 'start': investor_start, 'end': investor_end})
+            # Zoek de index van de investeerder in de earnings lijst
+            for e in earnings:
+                if e['name'] == investor['name']:
+                    investor_end = e['start'] + (total * (investor['profitReturn'] / 100))
+                    e['end'] = investor_end
 
     return earnings
 
