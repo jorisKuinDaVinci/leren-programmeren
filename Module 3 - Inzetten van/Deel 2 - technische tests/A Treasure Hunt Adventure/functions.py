@@ -184,7 +184,6 @@ def getInvestorsCuts(profitGold: float, investors: list) -> list:
     
     return investors_cuts
 
-
 def getAdventurerCut(profitGold: float, investorsCuts: list, fellowship: int) -> float:
     # Trek de totale winst die naar investeerders gaat af van het totale winstbedrag
     total_investors_cut = sum(investorsCuts)
