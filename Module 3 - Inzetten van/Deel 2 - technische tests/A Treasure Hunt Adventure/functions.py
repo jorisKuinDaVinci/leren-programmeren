@@ -207,63 +207,26 @@ def getAdventurerCut(profitGold: float, investorsCuts: list, fellowship: int) ->
 #     'start': 3.5,
 #     'end': 243.9
 # }
-def getEarnigs(total, main_character, friends, investors):
+def getEarnigs(profitGold:float, mainCharacter:dict, friends:list, investors:list) -> list:
+    people = [mainCharacter] + friends + investors
     earnings = []
 
-    # Bereken de initiële hoeveelheid geld voor de hoofdpersoon
-    main_start = main_character['cash']['platinum'] * 100 + \
-                 main_character['cash']['gold'] * 10 + \
-                 main_character['cash']['silver'] * 1 + \
-                 main_character['cash']['copper'] * 0.1
+    # haal de juiste inhoud op
+    adventuringFriends = []
+    interestingInvestors = []
+    adventuringInvestors = []
+    investorsCuts = []
+    goldCut = 0.0
 
-    # Beginbalans voor de hoofdpersoon
-    earnings.append({'name': main_character['name'], 'start': main_start, 'end': main_start})
+    # verdeel de uitkomsten
+    for person in people:
+        #code aanvullen
 
-    # Bereken de totale initiële bedragen voor vrienden
-    total_friend_share = 0
-    for friend in friends:
-        if friend['adventuring'] and friend['shareWith']:
-            friend_start = friend['cash']['platinum'] * 100 + \
-                           friend['cash']['gold'] * 10 + \
-                           friend['cash']['silver'] * 1 + \
-                           friend['cash']['copper'] * 0.1
-            # Voeg het deel van de vriend toe aan de totale winst
-            total_friend_share += total * 0.25  # Aannemend dat vrienden 25% van de totale winst delen
-            earnings.append({'name': friend['name'], 'start': friend_start, 'end': friend_start})
-
-    # Bereken de totale initiële bedragen voor investeerders
-    total_investor_share = 0
-    for investor in investors:
-        investor_start = investor['cash']['platinum'] * 100 + \
-                         investor['cash']['gold'] * 10 + \
-                         investor['cash']['silver'] * 1 + \
-                         investor['cash']['copper'] * 0.1
-        earnings.append({'name': investor['name'], 'start': investor_start, 'end': investor_start})
-
-        # Winst op basis van hun rendement, als ze avontuurlijk zijn
-        if investor['adventuring']:
-            profit = total * (investor['profitReturn'] / 100)
-            total_investor_share += profit
-
-    # Bereken de eindbalansen
-    # Voeg de totale winsten toe aan de hoofdpersoon
-    main_end = main_start + total - total_friend_share - total_investor_share
-    earnings[0]['end'] = main_end
-
-    # Verdeel de winsten onder vrienden
-    for friend in friends:
-        if friend['adventuring'] and friend['shareWith']:
-            friend_end = friend['start'] + (total * 0.25) / len(friends)
-            earnings[1]['end'] = friend_end  # Gebruik de index voor de vriend
-
-    # Verdeel de winsten onder investeerders
-    for investor in investors:
-        if investor['adventuring']:
-            # Zoek de index van de investeerder in de earnings lijst
-            for e in earnings:
-                if e['name'] == investor['name']:
-                    investor_end = e['start'] + (total * (investor['profitReturn'] / 100))
-                    e['end'] = investor_end
+        earnings.append({
+            'name'   : '??',
+            'start'  : 0.0,
+            'end'    : 0.0
+        })
 
     return earnings
 
