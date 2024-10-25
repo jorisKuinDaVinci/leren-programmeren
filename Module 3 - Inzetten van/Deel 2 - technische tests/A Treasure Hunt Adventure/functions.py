@@ -173,23 +173,30 @@ def getJourneyInnCostsInGold(nightsInInn: int, people: int, horses: int) -> floa
 #Bereken wat de interesante investeerders krijgen en wat iedere avonturier krijgt.
 
 def getInvestorsCuts(profitGold: float, investors: list) -> list:
-    # Lijst om het aandeel van elke investeerder in op te slaan
+    # Alleen investeerders met een profitReturn <= 10 krijgen een aandeel
+    interesting_investors = [investor for investor in investors if investor['profitReturn'] <= 10]
     investors_cuts = []
     
-    # Loop door elke investeerder en bereken de winstuitkering op basis van hun `profitReturn`
-    for investor in investors:
-        cut = profitGold * (investor['profitReturn'] / 100)
-        investors_cuts.append(round(cut, 2))  # Rond af op 2 decimalen
+    for investor in interesting_investors:
+        # Bereken de winst voor de investeerder op basis van hun profitReturn percentage
+        cut = (profitGold * investor['profitReturn']) / 100
+        investors_cuts.append(round(cut, 2))  # Rond af op 2 decimalen voor nauwkeurigheid
     
     return investors_cuts
 
+
 def getAdventurerCut(profitGold: float, investorsCuts: list, fellowship: int) -> float:
-    # Bereken het resterende goud na investeerders uitbetaling
-    remainingGold = profitGold - sum(investorsCuts)
-    
-    # Verdeel het resterende goud gelijkmatig over het aantal avonturiers (fellowship)
-    adventurer_cut = remainingGold / fellowship
-    return round(adventurer_cut, 2)  # Afronden op 2 decimalen
+    # Trek de totale winst die naar investeerders gaat af van het totale winstbedrag
+    total_investors_cut = sum(investorsCuts)
+    remaining_gold = profitGold - total_investors_cut
+
+    # Verdeel het resterende goud over de avonturiers (fellowship)
+    if fellowship > 0:
+        adventurer_cut = remaining_gold / fellowship
+    else:
+        adventurer_cut = 0.0  # Geen verdeling als er geen avonturiers zijn
+
+    return round(adventurer_cut, 2)  # Rond af op 2 decimalen voor nauwkeurigheid
 
 ##################### O14 #####################
 
