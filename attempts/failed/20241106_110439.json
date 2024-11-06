@@ -1,0 +1,37 @@
+{
+    "roomorder": "1,4,2,10,U,V,W,X,Y,Z",
+    "start": "06-11-2024 11:03:46",
+    "end": "06-11-2024 11:04:38",
+    "data": {
+        "player": {
+            "noice": 0,
+            "pickups": []
+        },
+        "route": {
+            "routetaken": [
+                "step A : 1",
+                "step B : 2"
+            ],
+            "doorcode": "",
+            "errors": [],
+            "roomanswers": [
+                "room1 : a",
+                "room2 : None"
+            ]
+        },
+        "story": {
+            "fullstory": [
+                "Je herinnert je alleen nog de val door een diep gat, na een zware aardbeving.",
+                "Versuft sta je op.",
+                "Je ziet links van je een deur en rechts van je een gang met aan het einde een standbeeld.",
+                "...",
+                "Je bent ergens waar je niet verwacht te zijn.",
+                "Je bent verdwaald geraakt in de dungeon."
+            ],
+            "choices": [
+                "Neem je A) de deur links of B) de gang rechts? : a"
+            ],
+            "errors": []
+        }
+    }
+}
