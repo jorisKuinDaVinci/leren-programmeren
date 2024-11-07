@@ -1,7 +1,6 @@
 import string
 import random
 
-
 opnieuw = True
 letters = string.ascii_lowercase
 hoofdletters = string.ascii_uppercase
