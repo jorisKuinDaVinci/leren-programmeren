@@ -53,13 +53,10 @@ def genereer_wachtwoord():
             positie = vrije_posities.pop(0)
             wachtwoord_lijst[positie] = letter
 
-    # Controleer of de laatste positie een kleine letter bevat en wissel deze indien nodig
+    # Zorg ervoor dat de laatste positie geen kleine letter is
     if wachtwoord_lijst[-1] in kleine_letters:
-        # Zoek een hoofdletter of speciaal teken om te wisselen
-        for i in range(23):  # Loop door de eerste 23 posities
-            if wachtwoord_lijst[i] in hoofdletters + speciale_tekens:
-                wachtwoord_lijst[-1], wachtwoord_lijst[i] = wachtwoord_lijst[i], wachtwoord_lijst[-1]
-                break
+        # Kies willekeurig een hoofdletter of cijfer voor de laatste positie
+        wachtwoord_lijst[-1] = random.choice(hoofdletters + cijfers)
 
     # Zet de lijst om in een string
     wachtwoord = "".join(wachtwoord_lijst)
