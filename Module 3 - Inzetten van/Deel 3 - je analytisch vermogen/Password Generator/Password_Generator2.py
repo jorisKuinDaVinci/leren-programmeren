@@ -34,10 +34,5 @@ while opnieuw == True:
                     if wachtwoord[0] and wachtwoord[1] and wachtwoord[2] not in cijfers:
                         opnieuw = False
                         print(wachtwoord)
-                        #print(len(wachtwoord))
-                        #print(wachtwoord[11], wachtwoord[12])
-                        #print(wachtwoord[23])
-                        #print(wachtwoord[0], wachtwoord[23])
-                        #print(wachtwoord[0] and wachtwoord[1] and wachtwoord[2])
     else:
         ()
