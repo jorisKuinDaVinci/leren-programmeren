@@ -41,7 +41,7 @@ def genereer_wachtwoord():
         vrije_posities.remove(positie)
 
     # Plaats cijfers, vermijd de eerste drie posities
-    vrije_posities = [i for i in vrije_posities if i >= 3]
+    vrije_posities = [i for i in vrije_posities if i not in [0, 1, 2]]
     for cijfer in gekozen_cijfers:
         positie = random.choice(vrije_posities)
         wachtwoord_lijst[positie] = cijfer
