@@ -9,8 +9,8 @@ cijfers = '0123456789'
 
 while opnieuw == True:
     randomhoofdletters = random.randint(2,6)
-    randomgetallen = random.randint(4,7)
-    randomletters = random.randint(8,10)
+    randomcijfers = random.randint(4,7)
+    randomkleineletters = random.randint(8,10)
     wachtwoord = ''
     
     for x in range(8):
@@ -22,7 +22,7 @@ while opnieuw == True:
     for x in range(3):
         wachtwoord += random.choice(speciale_tekens)
 
-    for x in range(randomgetallen):
+    for x in range(randomcijfers):
         wachtwoord += random.choice(cijfers)
 
     wachtwoord = ''.join(random.sample(wachtwoord, len(wachtwoord)))
