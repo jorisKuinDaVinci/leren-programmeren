@@ -28,11 +28,9 @@ while opnieuw == True:
     wachtwoord = ''.join(random.sample(wachtwoord, len(wachtwoord)))
     
     if len(wachtwoord) == 24:
-        if wachtwoord[11] and wachtwoord[12] not in hoofdletters:
+        if wachtwoord[11] not in hoofdletters and wachtwoord[12] not in hoofdletters:
             if wachtwoord[23] not in kleine_letters:
-                if wachtwoord[0] and wachtwoord[23] not in speciale_tekens:
-                    if wachtwoord[0] and wachtwoord[1] and wachtwoord[2] not in cijfers:
+                if wachtwoord[0] not in speciale_tekens and wachtwoord[23] not in speciale_tekens:
+                    if wachtwoord[0] not in cijfers and wachtwoord[1] not in cijfers and wachtwoord[2] not in cijfers:
                         opnieuw = False
                         print(wachtwoord)
-    else:
-        ()
