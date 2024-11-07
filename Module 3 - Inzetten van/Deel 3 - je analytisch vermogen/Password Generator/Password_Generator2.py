@@ -23,40 +23,32 @@ def genereer_wachtwoord():
     # Random speciale tekens
     gekozen_speciale_tekens = random.sample(speciale_tekens, 3)
 
-    # Plaatsing van karakters in het wachtwoord
+    # Initialiseer het wachtwoord als een lijst van lege tekens
     wachtwoord_lijst = [""] * 24
 
     # Plaats hoofdletters, vermijd posities 11 en 12
-    vrije_posities = [i for i in range(24) if i not in [11, 12]]
-    for letter in gekozen_hoofdletters:
-        positie = random.choice(vrije_posities)
-        wachtwoord_lijst[positie] = letter
-        vrije_posities.remove(positie)
+    hoofdletter_posities = random.sample([i for i in range(24) if i not in [11, 12]], aantal_hoofdletters)
+    for i, positie in enumerate(hoofdletter_posities):
+        wachtwoord_lijst[positie] = gekozen_hoofdletters[i]
 
     # Plaats speciale tekens, vermijd de eerste en laatste positie
-    vrije_posities = [i for i in vrije_posities if i not in [0, 23]]
-    for symbool in gekozen_speciale_tekens:
-        positie = random.choice(vrije_posities)
-        wachtwoord_lijst[positie] = symbool
-        vrije_posities.remove(positie)
+    speciale_tekens_posities = random.sample([i for i in range(1, 23)], 3)
+    for i, positie in enumerate(speciale_tekens_posities):
+        wachtwoord_lijst[positie] = gekozen_speciale_tekens[i]
 
     # Plaats cijfers, vermijd de eerste drie posities
-    vrije_posities = [i for i in vrije_posities if i not in [0, 1, 2]]
-    for cijfer in gekozen_cijfers:
-        positie = random.choice(vrije_posities)
-        wachtwoord_lijst[positie] = cijfer
-        vrije_posities.remove(positie)
+    cijfers_posities = random.sample([i for i in range(3, 24)], aantal_cijfers)
+    for i, positie in enumerate(cijfers_posities):
+        wachtwoord_lijst[positie] = gekozen_cijfers[i]
 
     # Vul de overige posities met kleine letters
-    for letter in gekozen_kleine_letters:
-        if vrije_posities:
-            positie = vrije_posities.pop(0)
-            wachtwoord_lijst[positie] = letter
+    lege_posities = [i for i in range(24) if wachtwoord_lijst[i] == ""]
+    for i, positie in enumerate(lege_posities):
+        wachtwoord_lijst[positie] = gekozen_kleine_letters[i]
 
     # Zorg ervoor dat de laatste positie geen kleine letter is
     if wachtwoord_lijst[-1] in kleine_letters:
-        # Kies willekeurig een hoofdletter of cijfer voor de laatste positie
-        wachtwoord_lijst[-1] = random.choice(hoofdletters + cijfers)
+        wachtwoord_lijst[-1] = random.choice(hoofdletters + cijfers + speciale_tekens)
 
     # Zet de lijst om in een string
     wachtwoord = "".join(wachtwoord_lijst)
