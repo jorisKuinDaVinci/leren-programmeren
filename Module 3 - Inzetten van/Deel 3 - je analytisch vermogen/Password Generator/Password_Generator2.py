@@ -55,7 +55,8 @@ def genereer_wachtwoord():
 
     # Controleer of de laatste positie een kleine letter bevat en wissel deze indien nodig
     if wachtwoord_lijst[-1] in kleine_letters:
-        for i in range(24):
+        # Zoek een hoofdletter of speciaal teken om te wisselen
+        for i in range(23):  # Loop door de eerste 23 posities
             if wachtwoord_lijst[i] in hoofdletters + speciale_tekens:
                 wachtwoord_lijst[-1], wachtwoord_lijst[i] = wachtwoord_lijst[i], wachtwoord_lijst[-1]
                 break
