@@ -28,23 +28,24 @@ def genereer_wachtwoord():
 
     # Plaats hoofdletters, vermijd posities 11 en 12
     hoofdletter_posities = random.sample([i for i in range(24) if i not in [11, 12]], aantal_hoofdletters)
-    for i in range(aantal_hoofdletters):
-        wachtwoord_lijst[hoofdletter_posities[i]] = gekozen_hoofdletters[i]
+    for i, positie in enumerate(hoofdletter_posities):
+        wachtwoord_lijst[positie] = gekozen_hoofdletters[i]
 
     # Plaats speciale tekens, vermijd de eerste en laatste positie
     speciale_tekens_posities = random.sample([i for i in range(1, 23)], 3)
-    for i in range(3):
-        wachtwoord_lijst[speciale_tekens_posities[i]] = gekozen_speciale_tekens[i]
+    for i, positie in enumerate(speciale_tekens_posities):
+        wachtwoord_lijst[positie] = gekozen_speciale_tekens[i]
 
     # Plaats cijfers, vermijd de eerste drie posities
     cijfers_posities = random.sample([i for i in range(3, 24)], aantal_cijfers)
-    for i in range(aantal_cijfers):
-        wachtwoord_lijst[cijfers_posities[i]] = gekozen_cijfers[i]
+    for i, positie in enumerate(cijfers_posities):
+        wachtwoord_lijst[positie] = gekozen_cijfers[i]
 
     # Vul de overige posities met kleine letters
     lege_posities = [i for i in range(24) if wachtwoord_lijst[i] == ""]
-    for i in range(len(lege_posities)):
-        wachtwoord_lijst[lege_posities[i]] = gekozen_kleine_letters[i]
+    for i, positie in enumerate(lege_posities):
+        if i < len(gekozen_kleine_letters):  # Controleer of er niet meer letters worden neergezet dan er beschikbaar zijn
+            wachtwoord_lijst[positie] = gekozen_kleine_letters[i]
 
     # Zorg ervoor dat de laatste positie geen kleine letter is
     if wachtwoord_lijst[-1] in kleine_letters:
