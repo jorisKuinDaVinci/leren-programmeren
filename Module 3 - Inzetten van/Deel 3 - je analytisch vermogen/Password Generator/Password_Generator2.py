@@ -33,7 +33,7 @@ def genereer_wachtwoord():
         wachtwoord_lijst[positie] = letter
         vrije_posities.remove(positie)
 
-    # Plaats speciale tekens, vermijd eerste en laatste positie
+    # Plaats speciale tekens, vermijd de eerste en laatste positie
     vrije_posities = [i for i in vrije_posities if i not in [0, 23]]
     for symbool in gekozen_speciale_tekens:
         positie = random.choice(vrije_posities)
