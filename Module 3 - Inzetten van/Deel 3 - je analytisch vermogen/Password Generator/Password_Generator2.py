@@ -2,7 +2,7 @@ import string
 import random
 
 opnieuw = True
-letters = string.ascii_lowercase
+kleine_letters = string.ascii_lowercase
 hoofdletters = string.ascii_uppercase
 speciale_tekens = '@#$%&_?'
 cijfers = '0123456789'
@@ -14,7 +14,7 @@ while opnieuw == True:
     wachtwoord = ''
     
     for x in range(8):
-        wachtwoord += random.choice(letters)
+        wachtwoord += random.choice(kleine_letters)
 
     for x in range(randomhoofdletters):
         wachtwoord += random.choice(hoofdletters)
@@ -29,7 +29,7 @@ while opnieuw == True:
     
     if len(wachtwoord) == 24:
         if wachtwoord[11] and wachtwoord[12] not in hoofdletters:
-            if wachtwoord[23] not in letters:
+            if wachtwoord[23] not in kleine_letters:
                 if wachtwoord[0] and wachtwoord[23] not in speciale_tekens:
                     if wachtwoord[0] and wachtwoord[1] and wachtwoord[2] not in cijfers:
                         opnieuw = False
