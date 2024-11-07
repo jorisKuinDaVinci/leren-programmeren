@@ -44,10 +44,7 @@ def genereer_wachtwoord():
     # Vul de overige posities met kleine letters
     lege_posities = [i for i in range(24) if wachtwoord_lijst[i] == ""]
     
-    # Zorg ervoor dat het aantal lege posities gelijk is aan het aantal kleine letters
-    gekozen_kleine_letters = gekozen_kleine_letters[:len(lege_posities)]  # Snijd de lijst van kleine letters bij naar de lengte van lege posities
-
-    # Plaats de kleine letters in de lege posities
+    # Aantal lege posities moet overeenkomen met het aantal kleine letters dat we willen plaatsen
     for i in range(len(lege_posities)):
         wachtwoord_lijst[lege_posities[i]] = gekozen_kleine_letters[i]
 
