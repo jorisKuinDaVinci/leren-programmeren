@@ -16,8 +16,8 @@ def genereer_wachtwoord():
     aantal_cijfers = random.randint(4, 7)
     gekozen_cijfers = random.sample(cijfers, aantal_cijfers)
 
-    # Minimaal 8 kleine letters
-    aantal_kleine_letters = 24 - aantal_hoofdletters - aantal_cijfers - 3  # Er blijven 24 - aantal hoofdletters - aantal cijfers - aantal speciale tekens posities over
+    # Bepaal het aantal kleine letters zodat er precies 3 speciale tekens zijn en de totale lengte 24 is
+    aantal_kleine_letters = 24 - aantal_hoofdletters - aantal_cijfers - 3
     gekozen_kleine_letters = random.sample(kleine_letters, aantal_kleine_letters)
 
     # Random speciale tekens
@@ -43,8 +43,6 @@ def genereer_wachtwoord():
 
     # Vul de overige posities met kleine letters
     lege_posities = [i for i in range(24) if wachtwoord_lijst[i] == ""]
-    
-    # Aantal lege posities moet overeenkomen met het aantal kleine letters dat we willen plaatsen
     for i in range(len(lege_posities)):
         wachtwoord_lijst[lege_posities[i]] = gekozen_kleine_letters[i]
 
