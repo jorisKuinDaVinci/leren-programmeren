@@ -4,8 +4,8 @@ import random
 opnieuw = True
 letters = string.ascii_lowercase
 hoofdletters = string.ascii_uppercase
-tekens = '@#$%&_?'
-getallen = '0123456789'
+speciale_tekens = '@#$%&_?'
+cijfers = '0123456789'
 
 while opnieuw == True:
     randomhoofdletters = random.randint(2,6)
@@ -20,18 +20,18 @@ while opnieuw == True:
         wachtwoord += random.choice(hoofdletters)
 
     for x in range(3):
-        wachtwoord += random.choice(tekens)
+        wachtwoord += random.choice(speciale_tekens)
 
     for x in range(randomgetallen):
-        wachtwoord += random.choice(getallen)
+        wachtwoord += random.choice(cijfers)
 
     wachtwoord = ''.join(random.sample(wachtwoord, len(wachtwoord)))
     
     if len(wachtwoord) == 24:
         if wachtwoord[11] and wachtwoord[12] not in hoofdletters:
             if wachtwoord[23] not in letters:
-                if wachtwoord[0] and wachtwoord[23] not in tekens:
-                    if wachtwoord[0] and wachtwoord[1] and wachtwoord[2] not in getallen:
+                if wachtwoord[0] and wachtwoord[23] not in speciale_tekens:
+                    if wachtwoord[0] and wachtwoord[1] and wachtwoord[2] not in cijfers:
                         opnieuw = False
                         print(wachtwoord)
                         #print(len(wachtwoord))
