@@ -69,7 +69,7 @@ calc_factor = nr_persons / 4 # 4 persons is the base of the recipe
 
 # calculate amount_eggs
 calc_amount_eggs = AMOUNT_EGGS * calc_factor
-afgerond_eggs = round_quarter(calc_amount_eggs)
+afgerond_eggs = round_piece(calc_amount_eggs)
 
 # calculate amount_milk
 calc_amount_milk = AMOUNT_MILK * calc_factor
@@ -89,11 +89,11 @@ afgerond_oil = round_quarter(calc_amount_oil)
 
 # calculate amount_onions
 calc_amount_onions = AMOUNT_ONIONS * calc_factor
-afgerond_onions = round_quarter(calc_amount_onions)
+afgerond_onions = round_piece(calc_amount_onions)
 
 # calculate amount_garlics
 calc_amount_garlics = AMOUNT_GARLICS * calc_factor
-afgerond_garlics = round_quarter(calc_amount_garlics)
+afgerond_garlics = round_piece(calc_amount_garlics)
 
 # calculate amount_spinach
 calc_amount_spinach = AMOUNT_SPINACH * calc_factor
@@ -101,7 +101,7 @@ afgerond_spinach = round_quarter(calc_amount_spinach)
 
 # calculate amount_paprikas
 calc_amount_paprikas = AMOUNT_PAPRIKAS * calc_factor
-afgerond_paprikas = round_quarter(calc_amount_paprikas)
+afgerond_paprikas = round_piece(calc_amount_paprikas)
 
 # calculate amount_cheese
 calc_amount_cheese = AMOUNT_CHEESE * calc_factor
