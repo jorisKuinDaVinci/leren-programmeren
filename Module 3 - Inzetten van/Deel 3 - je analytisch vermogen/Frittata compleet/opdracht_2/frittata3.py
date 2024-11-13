@@ -7,27 +7,27 @@ print('=============== Frittata recept ===============')
 # Gebruik recipe_lib voor input van aantal personen
 nr_persons = input_nr_persons('Voor hoeveel personen wilt u frittata maken? ')
 
-#Kan netter!
-#De app geeft nu een resultaat met enkele minpuntjes.
-
-#omschrijvingen worden getoond in enkelvoud én in meervoud, zoals “persoon|personen” of “groot ei|grote eieren” (roodomcirkeld)!  Dat is nogal twijfelachtig! We willen voor 1 ei zien: 1 groot ei. En voor 23 eieren: 23 grote eieren.
-#de hoeveelheden voor lepels, theelepels en kopjes worden niet getoond zoals gebruikelijk (geelomcirkeld)! Voor bijvoorbeeld: 3.25,  1.5, 0.75 en 4.0 willen we zien: 3¼ , 1½ , ¾ en 4
-#de eenheden voor lepels, theelepels en kopjes worden getoond in het Engels (groenomcirkeld)! In plaats van 1.5 teaspoon: 1½ lepel en in plaats van 3.25 cup: 3¼ kopjes. Dus Nederlandse namen en dan in enkel- of meervoud afhankelijk van de hoeveelheid. (Alles vanaf de 2 dus in meervoud!)
-
 #Stappenplan
-#Codeer in frittata2.py de enkelvoud of meervoud ingrediënt-omschrijvingen afhankelijk van de hoeveelheid.
-#gebruik de function str_single_plural()
+#Codeer de berekening van het volume in ml van alle ingrediënten met lepels, theelepels en kopjes. Niet stuks!
+#gebruik de function in unit2ml() uit recipe_lib.py
+#maak de function wel eerst werkend.
+#reken daarin het aantal eenheden (amount) om naar ml
+#3 lepels is bijvoorbeeld gelijk aan 45 ml
+#gebruik daarin de constanten: ML_SPOON, ML_TEASPOON en ML_CUP
+#genereer een TypeError als een unit is meegegeven anders dan: UNIT_SPOONS, UNIT_TEASPOONS of UNIT_CUPS
+#return het resultaat (in ml)
+#Codeer de berekening van het gewicht in gram op basis van het volume voor zout, peper, spinazie en kaas. Daarvoor is het soortelijk gewicht (gram per ml) nodig van die ingrediënten.
+#gebruik de function ml2gram()
 #maak de function wel eerst werkend:
-#meervoud vanaf hoeveelheid 2
-#hoe kan je een string splitsen in twee delen, waarvan je er een kan returnen?
-#Codeer het presenteren van getallen met ¼ , ½  en ¾ (function uit recipe_lib.py?)
-#gebruik de function str_amount_fraction() uit recipe_lib.py. Deze lastige function is al werkend gemaakt.
-#Codeer het presenteren van de juiste eenheden voor spoons, teaspoons en cups.
-#gebruik de function str_units()
-#maak de function wel eerst werkend:
-#maak hierin gebruik van de function str_single_prural()
-#maak hierin ook gebruik van de constanten: TXT_SPOONS, TXT_TEASPOONS en TXT_CUPS
-#Test de werking van frittata2 met verschillende testgevallen.
+#reken daarin het aantal ml (amount_ml) om naar gram.
+#10 ml zout is bijvoorbeeld gelijk aan 12 gram.
+#gebruik de constanten: GRAM_PER_ML_SALT, GRAM_PER_ML_PEPPER, GRAM_PER_ML_CHEESE, GRAM_PER_ML_SPINACH
+#return het resultaat (in gram)
+#Codeer het printen van het volume en gewicht van ingrediënten
+#zoals in voorbeeld
+#tot 100 met één decimaal nauwkeurigheid.
+#vanaf 100 met nul decimalen nauwkeurigheid.
+#Test de werking.
 
 # ----- CALCULATIONS ----
 # calculate factor 
