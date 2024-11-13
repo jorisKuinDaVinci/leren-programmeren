@@ -58,11 +58,11 @@ nr_persons = input_nr_persons('Voor hoeveel personen wilt u frittata maken? ')
 #Vergelijk de ouputs van de testen met de getallen in onderstaande tabel:
 
 #personen	ei	melk	zout	peper	olie	ui	knoflook	paprika	spinazie	kaas
-#1	        2	0.25	0.25	0.25	0.25	1	1	        1	    0.25	    0.25
-#3	        6	0.5	    0.5	    0.5	    0.75	1	2	        3	    0.75	    0.5
-#7	        13	1.0	    1.0	    1.0	    1.75	2	4	        6	    1.75	    1.0
-#13	        23	1.5	    1.5	    1.5	    3.25	4	7	        10	    3.25	    1.5
-#90	        158	11	    11	    11	    22	    23	45	        68	    22	        11
+#1	        2	0.25	0.25	0.25	0.25	1	1	        1	    0.25	    0.25 
+#3	        6	0.5	    0.5	    0.5	    0.75	1	2	        3	    0.75	    0.5 Goed
+#7	        13	1.0	    1.0	    1.0	    1.75	2	4	        6	    1.75	    1.0 Goed
+#13	        23	1.5	    1.5	    1.5	    3.25	4	7	        10	    3.25	    1.5 Goed
+#90	        158	11	    11	    11	    22	    23	45	        68	    22	        11 Goed
 
 # ----- CALCULATIONS ----
 # calculate factor 
