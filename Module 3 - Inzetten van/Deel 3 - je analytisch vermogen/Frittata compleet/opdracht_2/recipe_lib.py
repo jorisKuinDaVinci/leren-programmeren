@@ -72,7 +72,14 @@ ML_TEASPOON = 5 # one teaspoon contains 5 ml
 ML_CUP = 240 # one cup contains 240 ml
 
 def unit2ml(amount: float, unit: str) -> float:
-  pass
+    if unit == UNIT_SPOONS:
+        return amount * ML_SPOON
+    elif unit == UNIT_TEASPOONS:
+        return amount * ML_TEASPOON
+    elif unit == UNIT_CUPS:
+        return amount * ML_CUP
+    else:
+        raise TypeError(f"Invalid unit for conversion to ml: {unit}")
 
 # average densities in gram per ml for common ingredients, to calculate weight(gram) from milliliters(ml)
 # 1ml of salt weighs 1.2 gram 
@@ -83,5 +90,4 @@ GRAM_PER_ML_SPINACH = 0.15
 
 # returns amount in gram for amount in milliliter based on density (weight per volume)
 def ml2gram(amount_ml: float, gram_per_ml: float) -> float:
-  pass
-
+    return amount_ml * gram_per_ml
