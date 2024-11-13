@@ -48,6 +48,8 @@ def str_units(amount: float, unit: str) -> str:
         return str_single_plural(amount, TXT_TEASPOONS)
     elif unit == UNIT_CUPS:
         return str_single_plural(amount, TXT_CUPS)
+    elif unit == UNIT_PIECES:
+        return str_single_plural(amount, TXT_PIECES)
     return unit  # Voor andere eenheden die niet vertaald hoeven te worden
 
 
