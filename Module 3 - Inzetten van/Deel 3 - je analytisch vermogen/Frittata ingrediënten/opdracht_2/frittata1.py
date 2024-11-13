@@ -69,57 +69,38 @@ calc_factor = nr_persons / 4 # 4 persons is the base of the recipe
 
 # calculate amount_eggs
 calc_amount_eggs = AMOUNT_EGGS * calc_factor
-afgerond_eggs = round_piece(calc_amount_eggs)
 
 # calculate amount_milk
 calc_amount_milk = AMOUNT_MILK * calc_factor
-afgerond_milk = round_quarter(calc_amount_milk)
 
 # calculate amount_salt
 calc_amount_salt = AMOUNT_SALT * calc_factor
-afgerond_salt = round_quarter(calc_amount_salt)
 
 # calculate amount_pepper
 calc_amount_pepper = AMOUNT_PEPPER * calc_factor
-afgerond_pepper = round_quarter(calc_amount_pepper)
 
 # calculate amount_oil
 calc_amount_oil = AMOUNT_OIL * calc_factor
-afgerond_oil = round_quarter(calc_amount_oil)
 
 # calculate amount_onions
 calc_amount_onions = AMOUNT_ONIONS * calc_factor
-afgerond_onions = round_piece(calc_amount_onions)
 
 # calculate amount_garlics
 calc_amount_garlics = AMOUNT_GARLICS * calc_factor
-afgerond_garlics = round_piece(calc_amount_garlics)
 
 # calculate amount_spinach
 calc_amount_spinach = AMOUNT_SPINACH * calc_factor
-afgerond_spinach = round_quarter(calc_amount_spinach)
 
 # calculate amount_paprikas
 calc_amount_paprikas = AMOUNT_PAPRIKAS * calc_factor
-afgerond_paprikas = round_piece(calc_amount_paprikas)
 
 # calculate amount_cheese
 calc_amount_cheese = AMOUNT_CHEESE * calc_factor
-afgerond_cheese = round_quarter(calc_amount_cheese)
 
 # -------- OUTPUT -------
 print('=============== Frittata recept ===============')
 print(f'Ingrediënten voor {nr_persons} personen:')
 print('-----------------------------------------------')
 # print (formatted) all amounts and units combined with their ingrediënt descriptions
-print(f'eggs: {afgerond_eggs} {UNIT_EGGS}')
-print(f'milk: {afgerond_milk} {UNIT_MILK}')
-print(f'salt: {afgerond_salt} {UNIT_SALT}')
-print(f'pepper: {afgerond_pepper} {UNIT_PEPPER}')
-print(f'oil: {afgerond_oil} {UNIT_OIL}')
-print(f'onions: {afgerond_onions} {UNIT_ONIONS}')
-print(f'garlics: {afgerond_garlics} {UNIT_GARLICS}')
-print(f'spinach: {afgerond_spinach} {UNIT_SPINACH}')
-print(f'paprikas: {afgerond_paprikas} {UNIT_PAPRIKAS}')
-print(f'cheese: {afgerond_cheese} {UNIT_CHEESE}')
+
 print('-----------------------------------------------')
