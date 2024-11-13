@@ -54,11 +54,11 @@ calc_amount_onions = round_piece(AMOUNT_ONIONS * calc_factor)
 # calculate amount_garlics
 calc_amount_garlics = round_piece(AMOUNT_GARLICS * calc_factor)
 
-# calculate amount_spinach
-calc_amount_spinach = round_quarter(AMOUNT_SPINACH * calc_factor)
-
 # calculate amount_paprikas
 calc_amount_paprikas = round_piece(AMOUNT_PAPRIKAS * calc_factor)
+
+# calculate amount_spinach
+calc_amount_spinach = round_quarter(AMOUNT_SPINACH * calc_factor)
 
 # calculate amount_cheese
 calc_amount_cheese = round_quarter(AMOUNT_CHEESE * calc_factor)
@@ -68,14 +68,14 @@ print('=============== Frittata recept ===============')
 print(f'Ingrediënten voor {nr_persons} personen:')
 print('-----------------------------------------------')
 # print (formatted) all amounts and units combined with their ingrediënt descriptions
-print(f'{calc_amount_eggs} {UNIT_PIECES} {TXT_EGGS}')
-print(f'{calc_amount_milk} {UNIT_CUPS} {TXT_MILK}')
-print(f'{calc_amount_salt} {UNIT_TEASPOONS} {TXT_SALT}')
-print(f'{calc_amount_pepper} {UNIT_TEASPOONS} {TXT_PEPPER}')
-print(f'{calc_amount_oil} {UNIT_SPOONS} {TXT_OIL}')
-print(f'{calc_amount_onions} {UNIT_PIECES} {TXT_ONIONS}')
-print(f'{calc_amount_garlics} {UNIT_PIECES} {TXT_GARLICS}')
-print(f'{calc_amount_spinach} {UNIT_CUPS} {TXT_SPINACH}')
-print(f'{calc_amount_paprikas} {UNIT_PIECES} {TXT_PAPRIKAS}')
-print(f'{calc_amount_cheese} {UNIT_CUPS} {TXT_CHEESE}')
+print(f'{str_amount_fraction(calc_amount_eggs)} {str_units(calc_amount_eggs, UNIT_EGGS)} {str_single_plural(calc_amount_eggs, TXT_EGGS)}')
+print(f'{str_amount_fraction(calc_amount_milk)} {str_units(calc_amount_milk, UNIT_MILK)} {TXT_MILK}')
+print(f'{str_amount_fraction(calc_amount_salt)} {str_units(calc_amount_salt, UNIT_SALT)} {TXT_SALT}')
+print(f'{str_amount_fraction(calc_amount_pepper)} {str_units(calc_amount_pepper, UNIT_PEPPER)} {TXT_PEPPER}')
+print(f'{str_amount_fraction(calc_amount_oil)} {str_units(calc_amount_oil, UNIT_OIL)} {TXT_OIL}')
+print(f'{str_amount_fraction(calc_amount_onions)} {str_units(calc_amount_onions, UNIT_ONIONS)} {str_single_plural(calc_amount_onions, TXT_ONIONS)}')
+print(f'{str_amount_fraction(calc_amount_garlics)} {str_units(calc_amount_garlics, UNIT_GARLICS)} {str_single_plural(calc_amount_garlics, TXT_GARLICS)}')
+print(f'{str_amount_fraction(calc_amount_paprikas)} {str_units(calc_amount_paprikas, UNIT_PAPRIKAS)} {str_single_plural(calc_amount_paprikas, TXT_PAPRIKAS)}')
+print(f'{str_amount_fraction(calc_amount_spinach)} {str_units(calc_amount_spinach, UNIT_SPINACH)} {TXT_SPINACH}')
+print(f'{str_amount_fraction(calc_amount_cheese)} {str_units(calc_amount_cheese, UNIT_CHEESE)} {TXT_CHEESE}')
 print('-----------------------------------------------')

@@ -36,12 +36,19 @@ def round_quarter(amount: float) -> float:
 # returns single or plural description of a string 'single desciption|plural description' 
 # depending on amount
 def str_single_plural(amount: float, txt: str) -> str:
-  pass
+    singular, plural = txt.split('|')
+    return singular if amount == 1 else plural
 
 
 # returns description of single or plural units
 def str_units(amount: float, unit: str) -> str:
-  pass
+    if unit == UNIT_SPOONS:
+        return str_single_plural(amount, TXT_SPOONS)
+    elif unit == UNIT_TEASPOONS:
+        return str_single_plural(amount, TXT_TEASPOONS)
+    elif unit == UNIT_CUPS:
+        return str_single_plural(amount, TXT_CUPS)
+    return unit  # Voor andere eenheden die niet vertaald hoeven te worden
 
 
 # returns amount in string with 1/4 or 1/2 or 3/4
