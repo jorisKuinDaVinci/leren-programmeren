@@ -37,7 +37,10 @@ def round_quarter(amount: float) -> float:
 # depending on amount
 def str_single_plural(amount: float, txt: str) -> str:
     singular, plural = txt.split('|')
-    return singular if amount == 1 else plural
+    if amount == 1 or amount == 0.5:
+        return singular  # Gebruik enkelvoud bij 1 of 0.5
+    else:
+        return plural  # Gebruik meervoud bij andere hoeveelheden
 
 
 # returns description of single or plural units
