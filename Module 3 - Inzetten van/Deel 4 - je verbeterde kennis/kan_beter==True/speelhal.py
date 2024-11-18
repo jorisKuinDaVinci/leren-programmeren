@@ -1,24 +1,3 @@
-#Tip 0: je kunt van help.py alles importeren met: from help import * Dit geeft de code toegang tot extra functions.
-#Tip 1: roep de function input_yes_no() aan. 
-# Zoals de naam niet helemaal doet vermoeden, mag (in Nederlands) alleen met een 'j’ of 'n’ worden geantwoord. 
-# Geef de vraagtekst (prompt) mee met de aanroep. 
-# Deze function herhaalt de vraag tot een geldige waarde kan worden teruggegeven. 
-# Herstarten na een invoerfout is dus niet meer nodig!
-#Tip 2: je kunt condities vaak vereenvoudigen met behulp van de ‘in’-operator.
-#Tip 3: roep de function input_int() aan. 
-# De function verwacht 3 argumenten bij de aanroep: prompt, min en max. prompt is de vraagtekst. 
-# min is de minimum waarde. max is de maximum waarde. 
-# Deze function herhaalt de vraag tot een geldige waarde kan worden teruggegeven. 
-# Herstarten na een invoerfout is dus niet meer nodig!
-#Tip 4: een bool-variabele krijgt de waarde True of False. 
-# Zo'n variabele kan verderop in de code worden gebruikt om code wel of niet uit te voeren. 
-# Een if-else code die True of False moet toekennen aan een bool-variabele kan in veel gevallen worden vereenvoudigd. 
-# Ken de uitkomst van de conditie direct toe aan die bool-variabele!
-#Tip 5: bool-variabelen hebben altijd de waarde True of False. 
-# Ze worden meestal toegepast in de condities van if-elif-else code. 
-# Het zijn aan-uitschakelaars! 
-# Ze zorgen ervoor dat de code kan besluiten om bepaalde code wel of niet uit te voeren.
-#In de conditie hoef je zo’n bool variabele niet nog eens te vergelijken met True of False.
 from help import input_yes_no, input_int, get_vat_from_amount_incl, get_vat_perc
 
 RECEIPT_TEXT = '***** SPEELHAL ENTREE VOOR {personen:2} PERSONEN *****'
@@ -34,180 +13,74 @@ POPCORN_PRICE = 2.89
 VAT_CODE_H = 'H'
 VAT_CODE_L = 'L'
 
-# ***************** INPUT *****************
 print("SPEELHAL-ENTREE-KASSA")
-# --> Vereenvoudig hier de code m.b.v. de help.py function: input_yes_no() (zie tip 1)
-answer = input("Wilt u bestellen?(J/N)\n") 
-if not (answer == 'J' or answer == 'j' or answer == 'N' or answer == 'n'):
-  print('Alleen een optie uit: J of j of N of n')
-  exit(RESTART_TEXT)
 
-# --> Vereenvoudig hier de conditie met de 'in'-operator (zie tip 2)
-if answer == 'N' or answer == 'n': 
-  exit('Nu geen interesse? Tot ziens!')
+# Bestellen starten
+if input_yes_no("Wilt u bestellen?") not in ('j', 'J'):
+    print("Nu geen interesse? Tot ziens!")
+    exit()
+
+# Vraag tickets
+nr_tickets = input_int("Hoeveel personen?", 1, MAX_TICKETS)
+
+# Vraag VR-VIP seats
+vr_vip_ordered = input_yes_no("Ook VR-VIP seats?") in ('j', 'J')
+if vr_vip_ordered:
+    nr_vr_vip_seats = input_int("Hoeveel VR-VIP seats?", 0, nr_tickets)
+    vr_vip_seat_time = input_int("Hoeveel minuten in de VR-VIP-seats?", 5, MAX_VR_VIP_SEAT_TIME)
 else:
-  print('Ik ga u nu vragen wat en hoeveel u wilt...')
+    nr_vr_vip_seats = vr_vip_seat_time = 0
 
-# --> Vereenvoudig hier de code m.b.v. de help.py function: input_int() (zie tip 3)
-try:
-  min = 1
-  max = MAX_TICKETS
-  answer = input("Hoeveel personen?\n")
-  nr_tickets = int(answer)
-  if nr_tickets < min:
-    print(f'Minimum is: {min}')
-    exit(RESTART_TEXT)
-  elif nr_tickets > max:
-    print(f'Maximum is: {max}')
-    exit(RESTART_TEXT)
-except:
-  print(f'Geen geldig getal: {answer}')
-  exit(RESTART_TEXT)
+# Vraag drankjes en snacks
+nr_cola = input_int("Hoeveel cola?", 0, nr_tickets)
+nr_popcorn = input_int("Hoeveel popcorn?", 0, nr_tickets)
 
-# --> Vereenvoudig hier de code m.b.v. de help.py function: input_yes_no() (zie tip 1)
-answer = input("Ook VR-VIP seats?(J/N)\n")
-if not (answer == 'J' or answer == 'j' or answer == 'N' or answer == 'n'):
-  print('Alleen een optie uit: J of j of N of n')
-  exit()
+# Vraag factuur
+vat_invoice = input_yes_no("Wilt u een factuur met BTW-specificatie?") in ('j', 'J')
+company_name = None
+if vat_invoice:
+    company_name = input("Op welke naam komt de factuur? ")
+    if len(company_name) == 0:
+        company_name = "........... (zelf invullen)"
 
-# --> Vereenvoudig hier de conditie met de 'in'-operator (zie tip 2)
-# --> Vereenvoudig vervolgens de code door de uitkomst van de conditie toe te kennen aan: vr_vip_ordered (tip 4)
-if answer == 'J' or answer == 'j':
-  vr_vip_ordered = True
-else:
-  vr_vip_ordered = False
-
-# --> Vereenvoudig hier de conditie (zie tip 5)
-if vr_vip_ordered == True:
-  # --> Vereenvoudig hier de code m.b.v. de help.py function: input_int() (zie tip 3)
-  try:
-    min = 0
-    max = nr_tickets
-    answer = input("hoeveel VR-VIP seats?\n")
-    nr_vr_vip_seats = int(answer)
-    if nr_vr_vip_seats < min:
-      print(f'Minimum is: {min}')
-      exit(RESTART_TEXT)
-    elif nr_vr_vip_seats > max:
-      print(f'Maximum is: {max}')
-      exit(RESTART_TEXT)
-  except:
-    print(f'Geen geldig getal: {answer}')
-    exit(RESTART_TEXT)
-  # --> Vereenvoudig hier de code m.b.v. de help.py function: input_int() (zie tip 3)
-  try:
-    min = 5
-    max = MAX_VR_VIP_SEAT_TIME
-    answer = input("hoeveel minuten in de VR-VIP-seats?\n")
-    vr_vip_seat_time = int(answer)
-    if vr_vip_seat_time < min:
-      print(f'Minimum is: {min}')
-      exit(RESTART_TEXT)
-    elif vr_vip_seat_time > max:
-      print(f'Maximum is:time > max: {max}')
-      exit(RESTART_TEXT)
-  except:
-    print(f'Geen geldig getal: {answer}')
-    exit(RESTART_TEXT)
-else:
-  nr_vr_vip_seats = 0
-  vr_vip_seat_time = 0
-
-# --> Vereenvoudig hier de code m.b.v. de help.py function: input_int() (zie tip 3)
-try:
-  min = 0
-  max = nr_tickets
-  answer = input("Hoeveel cola?\n")
-  nr_cola = int(answer)
-  if nr_cola < min:
-    print(f'Minimum is: {min}')
-    exit(RESTART_TEXT)
-  elif nr_cola > max:
-    print(f'Maximum is: {max}')
-    exit(RESTART_TEXT)
-except:
-  print(f'Geen geldig getal: {answer}')
-  exit(RESTART_TEXT)
-
-# --> Vereenvoudig hier de code m.b.v. de help.py function: input_int() (zie tip 3)
-try:
-  min = 0
-  max = nr_tickets
-  answer = input("Hoeveel popcorn?\n")
-  nr_popcorn = int(answer)
-  if nr_cola < min:
-    print(f'Minimum is: {min}')
-    exit(RESTART_TEXT)
-  elif nr_cola > max:
-    print(f'Maximum is: {max}')
-    exit(RESTART_TEXT)
-except:
-  print(f'Geen geldig getal: {answer}')
-  exit(RESTART_TEXT)
-
-# --> Vereenvoudig hier de code m.b.v. de help.py function: input_yes_no() (zie tip 1)
-answer = input("Wilt u een factuur met BTW specificatie?(J/N)\n")
-if not (answer == 'J' or answer == 'j' or answer == 'N' or answer == 'n'):
-  print('Alleen een optie uit: J of j of N of n')
-  exit(RESTART_TEXT)
-
-# --> Vereenvoudig hier de conditie met de 'in'-operator (zie tip 2)
-# --> Vereenvoudig vervolgens de code door de uitkomst van de conditie toe te kennen aan: vr_vip_ordered (tip 4)
-if answer == 'J' or answer == 'j':
-  vat_invoice = True
-else:
-  vat_invoice = False
-
-# --> Vereenvoudig hier de conditie (zie tip 5)
-if vat_invoice == True:
-   company_name = input('Op welke bedrijfsnaam komt de factuur?\n').trim()
-   if len(company_name) == 0:
-     company_name = '........... (zelf invullen)'
-
-# ***************** CALCULATION *****************
-total_tickets = round(nr_tickets * TICKET_PRICE,2)
+# Berekeningen
+total_tickets = round(nr_tickets * TICKET_PRICE, 2)
 vr_vip_seat_price = vr_vip_seat_time / VR_VIP_SEAT_PRICE_PERIOD * VR_VIP_SEAT_PERIOD_PRICE
 total_vr_vip_seats = round(nr_vr_vip_seats * vr_vip_seat_price, 2)
 total_cola = round(nr_cola * COLA_PRICE, 2)
 total_popcorn = round(nr_popcorn * POPCORN_PRICE, 2)
 total_all = total_tickets + total_vr_vip_seats + total_cola + total_popcorn
 
-# --> Vereenvoudig hier de conditie (zie tip 5)
-if vat_invoice == True:
-# --> Vereenvoudig hier de code met de help.py function: get_vat_from_amount_incl() (zie tip 6)
-  vat_perc_H = 21 # voor VAT_CODE_H
-  total_tickets_vat = round(total_tickets / (100 + vat_perc_H) * vat_perc_H, 2)
-  total_vr_vip_seats_vat = round(total_vr_vip_seats / (100 + vat_perc_H) * vat_perc_H, 2)
-
-  vat_perc_L = 9  # voor VAT_CODE_L
-  total_cola_ex_vat = round(total_cola / (100 + vat_perc_H) * vat_perc_L, 2)
-  total_popcorn_ex_vat = round(total_popcorn / (100 + vat_perc_H) * vat_perc_L, 2)
-
-  total_vat_H = total_tickets_vat + total_vr_vip_seats_vat
-  total_vat_L = total_cola_ex_vat + total_popcorn_ex_vat
-  total_vat = total_vat_H + total_vat_L
-
-# ***************** OUTPUT *****************
-receipt_text = RECEIPT_TEXT.format(personen = nr_tickets)
-print(receipt_text+'\n')
+# BTW-berekeningen
+total_vat_H = total_vat_L = 0
 if vat_invoice:
-  print(f'Factuur voor: {company_name}')
+    total_vat_H = (
+        get_vat_from_amount_incl(total_tickets, VAT_CODE_H) +
+        get_vat_from_amount_incl(total_vr_vip_seats, VAT_CODE_H)
+    )
+    total_vat_L = (
+        get_vat_from_amount_incl(total_cola, VAT_CODE_L) +
+        get_vat_from_amount_incl(total_popcorn, VAT_CODE_L)
+    )
+
+# Bon tonen
+print("\n" + RECEIPT_TEXT.format(personen=nr_tickets))
+if vat_invoice:
+    print(f"Factuur voor: {company_name}")
 else:
-  print(f'Kassabon')\
-  
-print('-'*len(receipt_text))
-print(f'Tickets                   {nr_tickets:2} x {TICKET_PRICE:2.2f} = {total_tickets:6.2f}')
-print(f'VR-vip-seats  {vr_vip_seat_time:3} minuten {nr_vr_vip_seats:2} x {vr_vip_seat_price:2.2f} = {total_vr_vip_seats:6.2f}')
-print(f'Cola                      {nr_cola:2} x {COLA_PRICE:2.2f} = {total_cola:6.2f}')
-print(f'Popcorn                   {nr_popcorn:2} x {POPCORN_PRICE:2.2f} = {total_popcorn:6.2f}')
-print('.'*len(receipt_text))
-print(f'Totaal:                               {total_all:6.2f}')
+    print("Kassabon")
 
-print()
-# --> Verbeter hier de code met de help.py function: get_vat_perc() en gebruikmakend van de vat codes: VAT_CODE_H en VAT_CODE_L (zie tip 7)
+print("-" * len(RECEIPT_TEXT))
+print(f"Tickets                  {nr_tickets:2} x €{TICKET_PRICE:5.2f} = €{total_tickets:6.2f}")
+if vr_vip_ordered:
+    print(f"VR-vip-seats  {vr_vip_seat_time:3} minuten {nr_vr_vip_seats:2} x €{vr_vip_seat_price:5.2f} = €{total_vr_vip_seats:6.2f}")
+print(f"Cola                     {nr_cola:2} x €{COLA_PRICE:5.2f} = €{total_cola:6.2f}")
+print(f"Popcorn                  {nr_popcorn:2} x €{POPCORN_PRICE:5.2f} = €{total_popcorn:6.2f}")
+print("." * len(RECEIPT_TEXT))
+print(f"Totaal:                      €{total_all:6.2f}")
+
 if vat_invoice:
-  print(f'BTW Hoog                          {vat_perc_H:2}% {total_vat_H:6.2f}')
-  print(f'BTW Laag                          {vat_perc_L:2}% {total_vat_L:6.2f}')
-print('='*len(receipt_text))
-print('Bedankt voor de bestelling, veel plezier!')
-# --> Verwijder na succesvolle testen alle refactor instructies uit de code
+    print(f"BTW Hoog                 {get_vat_perc(VAT_CODE_H)}% = €{total_vat_H:6.2f}")
+    print(f"BTW Laag                 {get_vat_perc(VAT_CODE_L)}% = €{total_vat_L:6.2f}")
+print("=" * len(RECEIPT_TEXT))
+print("Bedankt voor de bestelling, veel plezier!")
