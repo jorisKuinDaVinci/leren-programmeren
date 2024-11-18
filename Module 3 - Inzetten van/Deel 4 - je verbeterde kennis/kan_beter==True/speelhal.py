@@ -1,4 +1,25 @@
-from help import *
+#Tip 0: je kunt van help.py alles importeren met: from help import * Dit geeft de code toegang tot extra functions.
+#Tip 1: roep de function input_yes_no() aan. 
+# Zoals de naam niet helemaal doet vermoeden, mag (in Nederlands) alleen met een 'j’ of 'n’ worden geantwoord. 
+# Geef de vraagtekst (prompt) mee met de aanroep. 
+# Deze function herhaalt de vraag tot een geldige waarde kan worden teruggegeven. 
+# Herstarten na een invoerfout is dus niet meer nodig!
+#Tip 2: je kunt condities vaak vereenvoudigen met behulp van de ‘in’-operator.
+#Tip 3: roep de function input_int() aan. 
+# De function verwacht 3 argumenten bij de aanroep: prompt, min en max. prompt is de vraagtekst. 
+# min is de minimum waarde. max is de maximum waarde. 
+# Deze function herhaalt de vraag tot een geldige waarde kan worden teruggegeven. 
+# Herstarten na een invoerfout is dus niet meer nodig!
+#Tip 4: een bool-variabele krijgt de waarde True of False. 
+# Zo'n variabele kan verderop in de code worden gebruikt om code wel of niet uit te voeren. 
+# Een if-else code die True of False moet toekennen aan een bool-variabele kan in veel gevallen worden vereenvoudigd. 
+# Ken de uitkomst van de conditie direct toe aan die bool-variabele!
+#Tip 5: bool-variabelen hebben altijd de waarde True of False. 
+# Ze worden meestal toegepast in de condities van if-elif-else code. 
+# Het zijn aan-uitschakelaars! 
+# Ze zorgen ervoor dat de code kan besluiten om bepaalde code wel of niet uit te voeren.
+#In de conditie hoef je zo’n bool variabele niet nog eens te vergelijken met True of False.
+from help import input_yes_no, input_int, get_vat_from_amount_incl, get_vat_perc
 
 RECEIPT_TEXT = '***** SPEELHAL ENTREE VOOR {personen:2} PERSONEN *****'
 RESTART_TEXT = '\nBestelprocedure gestopt door invoerfout!\nHerstart de bestelprocedure!'
