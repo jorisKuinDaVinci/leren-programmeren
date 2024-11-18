@@ -1,4 +1,4 @@
-# --> importeer alles uit help.py (zie tip 0)
+from help import *
 
 RECEIPT_TEXT = '***** SPEELHAL ENTREE VOOR {personen:2} PERSONEN *****'
 RESTART_TEXT = '\nBestelprocedure gestopt door invoerfout!\nHerstart de bestelprocedure!'

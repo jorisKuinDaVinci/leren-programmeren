@@ -48,4 +48,3 @@ def get_vat_from_amount_excl(amount: float, vat_key: str) -> float:
 def get_vat_from_amount_incl(amount: float, vat_key: str) -> float:
   perc = get_vat_perc(vat_key)
   return round(amount / (100 + perc) * perc,2)
-
