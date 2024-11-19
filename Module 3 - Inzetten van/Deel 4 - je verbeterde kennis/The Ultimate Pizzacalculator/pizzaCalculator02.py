@@ -1,43 +1,29 @@
-while True:
-    try: 
-        klein = int(input("hoeveel klein?"))
-        break
-    except: 
-        print("Dat is geen getal!(geef een cijfer!)") 
-
-while True:
-    try:    
-        medium = int(input("hoeveel medium?"))
-        break
-    except: 
-        print("Dat is geen getal!(geef een cijfer!)")
-
-while True:
-    try: 
-        groot = int(input("hoeveel groot?"))
-        break
-    except: 
-        print("Dat is geen getal!(geef een cijfer!)")
-        
 PIZZA_PRIJZEN = {
     "klein": 5.00,
     "medium": 7.00,
     "groot": 10.00
 }
-print(type(PIZZA_PRIJZEN))
 
-kosten_klein = klein * PIZZA_PRIJZEN["klein"]
-kosten_medium = medium * PIZZA_PRIJZEN["medium"]
-kosten_groot = groot * PIZZA_PRIJZEN["groot"]
+# Vraag aantallen op
+aantallen = {}
+for type_pizza in PIZZA_PRIJZEN:
+    while True:
+        try:
+            aantallen[type_pizza] = int(input(f"Hoeveel {type_pizza}? "))
+            break
+        except ValueError:
+            print("Dat is geen getal! Geef een cijfer.")
 
-totaal = kosten_klein + kosten_medium + kosten_groot
-#print(f"De kosten zijn {totaal:.2f} euro voor {klein} kleine pizza's, {medium} medium pizza's en {groot} grote pizza's")
+# Bereken kosten
+kosten = {type_pizza: aantallen[type_pizza] * PIZZA_PRIJZEN[type_pizza] for type_pizza in PIZZA_PRIJZEN}
+totaal = sum(kosten[type_pizza] for type_pizza in kosten)
+
+# Print overzicht
 print("----------------------------------------------------")
-print("|  Klein     : " + str(klein))
-print("|  kosten klein  : " + str(kosten_klein))
-print("|  medium  : " + str(medium))
-print("|  kosten medium: " + str(kosten_medium))
-print("|  Groot  : " + str(groot))
-print("|  kosten groot: " + str(kosten_groot))
+for type_pizza, aantal in aantallen.items():
+    # Handmatig de eerste letter van het type pizza hoofdletter maken
+    pizza_naam = type_pizza[0].upper() + type_pizza[1:]
+    print(f"|  {pizza_naam:<10}: {aantal}")
+    print(f"|  Kosten {type_pizza:<7}: {kosten[type_pizza]:.2f}")
 print("----------------------------------------------------")
-print("|  Totaal: " + str(totaal))
+print(f"|  Totaal: {totaal:.2f}")
