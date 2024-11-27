@@ -3,6 +3,7 @@ from random import shuffle
 def geef_naam(namen):
     #Vraagt de gebruiker een naam in te voeren en controleert of deze al bestaat.
     #Retourneert een unieke naam.
+    #.strip() verwijdert spaties aan het begin en einde van de string.
     while True:
         naam = input("Geef een naam: ").strip()
         if naam.lower() in [n.lower() for n in namen]:
@@ -13,6 +14,7 @@ def geef_naam(namen):
 def vraag_cadeautjes(naam):
     #Vraagt drie cadeautjes voor een specifieke naam.
     #Retourneert een lijst met cadeautjes.
+    #.strip() verwijdert spaties aan het begin en einde van de string.
     cadeautjes = []
     print(f"Vul drie cadeautjes in voor {naam}.")
     for i in range(1, 4):
