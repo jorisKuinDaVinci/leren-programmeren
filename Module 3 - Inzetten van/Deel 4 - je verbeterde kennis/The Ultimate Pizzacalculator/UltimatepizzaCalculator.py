@@ -17,9 +17,9 @@ def print_overzicht(aantallen, kosten, totaal):
     print("----------------------------------------------------")
     for type_pizza, aantal in aantallen.items():
         print(f"|  {type_pizza.upper():<10}: {aantal}")
-        print(f"|  Kosten {type_pizza:<7}: {kosten[type_pizza]:.2f}")
+        print(f"|  Kosten {type_pizza:<7}: {kosten[type_pizza]:8.2f}")
     print("----------------------------------------------------")
-    print(f"|  Totaal: {totaal:.2f}")
+    print(f"|  Totaal:         {totaal:8.2f}")
 
 PIZZA_PRIJZEN = {
     "klein": 5.00,
