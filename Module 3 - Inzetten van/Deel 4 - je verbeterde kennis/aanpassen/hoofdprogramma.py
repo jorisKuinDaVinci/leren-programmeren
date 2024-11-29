@@ -15,7 +15,6 @@ def avontuur():
 
     antwoorden_correct = True
 
-    # Scenario 1: splitsing
     # Keuze 1: splitsing
     keuze_1 = vraag_invoer("Je staat voor een splitsing, welke kant kies je? (links of rechts): ", ["links", "rechts"])
     if not controleer_antwoord(keuze_1, "1"):
