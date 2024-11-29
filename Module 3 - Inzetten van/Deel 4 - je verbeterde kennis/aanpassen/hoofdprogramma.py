@@ -1,7 +1,7 @@
 # hoofdprogramma.py
 
 from functions import vraag_invoer, controleer_antwoord, print_game_over, print_introductie
-from juiste_antwoorden import JUISTE_ANTWOORDEN, SPECIALE_SPELER, SPECIALE_ANTWOORDEN
+from juiste_antwoorden import JUISTE_ANTWOORDEN, SPECIALE_SPELER, SPECIALE_ANTWOORDEN, JUISTE_CODE
 from data import TEKSTEN
 
 def avontuur():
@@ -29,18 +29,22 @@ def avontuur():
     keuze_2 = vraag_invoer("Wat doe je? (aanbellen of weglopen): ", ["aanbellen", "weglopen"])
     if keuze_2 == "aanbellen":
         print("Er doet niemand open. Je probeert een code in te voeren.")
+        if naam.lower() == SPECIALE_SPELER.lower():
+            print(f"Hallo {naam}, dit is de juiste code: {JUISTE_CODE}")
         code = input("Voer de code in: ").strip()
         if code != "104":
-            print("Foutieve code. Het apparaat ontploft en je sterft.")
-            antwoorden_correct = False
-            print_game_over()
+            print("Foutieve code. Het apparaat ontploft.")
+            print("Je loopt weg en komt bij een rivier.")
+        if code == "104":
+            print("De deur gaat open. Je wordt uitgenodigd door een oude vrouw.")
+            print("Ze geeft je een kaart met de route naar huis.")
+            print(TEKSTEN["gewonnen"])
             return
-        print("De deur gaat open. Je wordt uitgenodigd door een oude vrouw.")
     else:
         print("Je loopt weg en komt bij een rivier.")
 
     # Keuze 3: zwemmen of brug
-    keuze_3 = vraag_invoer("Wat doe je? (zwemmen of brug): ", ["zwemmen", "brug"])
+    keuze_3 = vraag_invoer("Wat doe je? (zwemmen of over de brug lopen): ", ["zwemmen", "brug"])
     if not controleer_antwoord(keuze_3, "5"):
         print("De brug stort in. Je valt in het water en verdrinkt.")
         antwoorden_correct = False
@@ -49,10 +53,10 @@ def avontuur():
 
     print("Je zwemt naar de overkant en loopt verder.")
 
-    # Keuze 4: oversteken of bos
-    keuze_4 = vraag_invoer("Wat doe je? (oversteken of bos): ", ["oversteken", "bos"])
+    # Keuze 4: oversteken of door het bos lopen
+    keuze_4 = vraag_invoer("Wat doe je? (oversteken (oversteken) of door het bos lopen (bos lopen).): ", ["oversteken", "bos lopen"])
     if not controleer_antwoord(keuze_4, "6"):
-        print("Je kiest oversteken en wordt aangereden door een auto.")
+        print("Je kiest oversteken en raakt verdwaald.")
         antwoorden_correct = False
         print_game_over()
         return
@@ -62,7 +66,7 @@ def avontuur():
     # Keuze 5: oversteken of wachten
     keuze_5 = vraag_invoer("Wat doe je? (oversteken of wachten): ", ["oversteken", "wachten"])
     if not controleer_antwoord(keuze_5, "7"):
-        print("Je kiest wachten en wordt neergeschoten door een jager.")
+        print("Je kiest wachten en een beer eet je op.")
         antwoorden_correct = False
         print_game_over()
         return
@@ -70,9 +74,9 @@ def avontuur():
     print("Je steekt over en komt aan bij een huis met een bordje 'te koop'.")
 
     # Keuze 6: huis kopen of verder lopen
-    keuze_6 = vraag_invoer("Wat doe je? (huis of verder): ", ["huis", "verder"])
+    keuze_6 = vraag_invoer("Wat doe je? (huis kopen (huis) of verder lopen (verder).): ", ["huis", "verder"])
     if not controleer_antwoord(keuze_6, "8"):
-        print("Je koopt het huis en sterft later aan een ziekte.")
+        print("Je koopt het huis en vindt nooit je weg terug.")
         antwoorden_correct = False
         print_game_over()
         return
