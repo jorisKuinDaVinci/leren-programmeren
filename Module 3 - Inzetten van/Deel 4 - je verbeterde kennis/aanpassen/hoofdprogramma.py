@@ -1,5 +1,3 @@
-# hoofdprogramma.py
-
 from functions import vraag_invoer, controleer_antwoord, print_game_over, print_introductie
 from juiste_antwoorden import JUISTE_ANTWOORDEN, SPECIALE_SPELER, SPECIALE_ANTWOORDEN, JUISTE_CODE
 from data import TEKSTEN

@@ -1,5 +1,3 @@
-# data.py
-
 # Algemene teksten
 TEKSTEN = {
     "start_tekst": "Je loopt door een bos. Je bent verdwaald.",

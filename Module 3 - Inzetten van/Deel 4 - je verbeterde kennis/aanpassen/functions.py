@@ -1,5 +1,3 @@
-# functions.py
-
 from juiste_antwoorden import JUISTE_ANTWOORDEN
 from data import TEKSTEN
 
