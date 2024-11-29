@@ -44,7 +44,7 @@ def avontuur():
         print("Je loopt weg en komt bij een rivier.")
 
     # Keuze 3: zwemmen of brug
-    keuze_3 = vraag_invoer("Wat doe je? (zwemmen of over de brug lopen): ", ["zwemmen", "brug"])
+    keuze_3 = vraag_invoer("Wat doe je? (zwemmen (zwemmen) of over de brug lopen (brug).): ", ["zwemmen", "brug"])
     if not controleer_antwoord(keuze_3, "5"):
         print("De brug stort in. Je valt in het water en verdrinkt.")
         antwoorden_correct = False
