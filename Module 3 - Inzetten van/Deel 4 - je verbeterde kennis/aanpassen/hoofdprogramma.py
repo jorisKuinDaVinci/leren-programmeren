@@ -11,13 +11,10 @@ def avontuur():
     print_introductie(naam)
     print(TEKSTEN["start_tekst"])
 
-    antwoorden_correct = True
-
     # Keuze 1: splitsing
     keuze_1 = vraag_invoer("Je staat voor een splitsing, welke kant kies je? (links of rechts): ", ["links", "rechts"])
     if not controleer_antwoord(keuze_1, "1"):
         print("Je kiest links en een beer eet je op.")
-        antwoorden_correct = False
         print_game_over()
         return
 
@@ -45,7 +42,6 @@ def avontuur():
     keuze_3 = vraag_invoer("Wat doe je? (zwemmen (zwemmen) of over de brug lopen (brug).): ", ["zwemmen", "brug"])
     if not controleer_antwoord(keuze_3, "5"):
         print("De brug stort in. Je valt in het water.")
-        antwoorden_correct = False
         print_game_over()
         return
 
@@ -55,7 +51,6 @@ def avontuur():
     keuze_4 = vraag_invoer("Wat doe je? (oversteken (oversteken) of door het bos lopen (bos lopen).): ", ["oversteken", "bos lopen"])
     if not controleer_antwoord(keuze_4, "6"):
         print("Je kiest oversteken en raakt verdwaald.")
-        antwoorden_correct = False
         print_game_over()
         return
 
@@ -65,7 +60,6 @@ def avontuur():
     keuze_5 = vraag_invoer("Wat doe je? (oversteken of wachten): ", ["oversteken", "wachten"])
     if not controleer_antwoord(keuze_5, "7"):
         print("Je kiest wachten en een beer eet je op.")
-        antwoorden_correct = False
         print_game_over()
         return
 
@@ -75,7 +69,6 @@ def avontuur():
     keuze_6 = vraag_invoer("Wat doe je? (huis kopen (huis) of verder lopen (verder).): ", ["huis", "verder"])
     if not controleer_antwoord(keuze_6, "8"):
         print("Je koopt het huis en vindt nooit je weg terug.")
-        antwoorden_correct = False
         print_game_over()
         return
 
@@ -85,15 +78,13 @@ def avontuur():
     keuze_7 = vraag_invoer("Welke kant kies je? (links of rechts): ", ["links", "rechts"])
     if not controleer_antwoord(keuze_7, "9"):
         print("Je kiest links en loopt in een berenval.")
-        antwoorden_correct = False
         print_game_over()
         return
 
     print("Je kiest rechts en vindt het einde van het bos.")
 
     # Controleer of alle antwoorden correct zijn
-    if antwoorden_correct:
-        print(TEKSTEN["gewonnen"])
+    print(TEKSTEN["gewonnen"])
 
 # Start het avontuur
 if __name__ == "__main__":
