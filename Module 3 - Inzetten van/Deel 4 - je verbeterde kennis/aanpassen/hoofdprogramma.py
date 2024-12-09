@@ -17,11 +17,10 @@ def keuze_1():
         print("Je kiest links en een beer eet je op.")
         print_game_over()
         return
+    print("Je loopt verder en komt aan bij een huis.")
 
 # start keuze 1
 keuze_1()
-
-print("Je loopt verder en komt aan bij een huis.")
 
 # Keuze 2: aanbellen of weglopen
 def keuze_2():
