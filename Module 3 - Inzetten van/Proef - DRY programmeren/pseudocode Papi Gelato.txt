@@ -1,0 +1,39 @@
+Stap1:
+  Vraag de klant: "Hoeveel bolletjes wilt u?"
+  Lees input: aantal
+
+  Als aantal tussen 1 en 3:
+    Ga naar Stap2
+  Anders als aantal tussen 4 en 8:
+    Zeg: "Dan krijgt u van mij een bakje met {aantal} bolletjes."
+    Ga naar Stap3
+  Anders als aantal > 8:
+    Zeg: "Sorry, zulke grote bakken hebben we niet."
+    Herhaal Stap1
+  Anders:
+    Zeg: "Sorry, dat snap ik niet..."
+    Herhaal Stap1
+
+Stap2:
+  Vraag de klant: "Wilt u deze {aantal} bolletje(s) in een hoorntje of een bakje?"
+  Lees input: keuze
+
+  Als keuze is "hoorntje" of "bakje":
+    Ga naar Stap3
+  Anders:
+    Zeg: "Sorry, dat snap ik niet..."
+    Herhaal Stap2
+
+Stap3:
+  Zeg: "Hier is uw {hoorntje/bakje} met {aantal} bolletje(s)."
+  Vraag de klant: "Wilt u nog meer bestellen?"
+  Lees input: meer_bestellen
+
+  Als meer_bestellen is "ja":
+    Ga naar Stap1
+  Anders als meer_bestellen is "nee":
+    Zeg: "Bedankt en tot ziens!"
+    Stop programma
+  Anders:
+    Zeg: "Sorry, dat snap ik niet..."
+    Herhaal Stap3
