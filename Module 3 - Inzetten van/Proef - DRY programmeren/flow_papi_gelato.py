@@ -1,5 +1,5 @@
-from functions import vraag_aantal_bolletjes, controleer_aantal_bolletjes, vraag_hoorntje_of_bakje, controleer_keuze, bevestiging_bestelling, vraag_nog_meer, controleer_meer_bestellen
-from data import TEKSTEN
+from functions_Papi_Gelato import vraag_aantal_bolletjes, controleer_aantal_bolletjes, vraag_hoorntje_of_bakje, controleer_keuze, bevestiging_bestelling, vraag_nog_meer, controleer_meer_bestellen
+from data_Papi_Gelato import TEKSTEN
 
 def start_programma():
     print(TEKSTEN["welkom_tekst"])
