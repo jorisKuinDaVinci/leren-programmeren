@@ -19,6 +19,7 @@ Stap2:
   Lees input: keuze
 
   Als keuze is "hoorntje" of "bakje":
+    lees input keuze
     Ga naar Stap3
   Anders:
     Zeg: "Sorry, dat snap ik niet..."
