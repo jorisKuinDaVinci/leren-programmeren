@@ -1,0 +1,21 @@
+De medewerkers van Papi Gelato blijken niet goed te kunnen hoofdrekenen en aan jou is gevraagd om aan het einde van het programmaatje een bonnetje op het scherm te laten zien.
+
+Ieder onderdeel heeft zijn eigen prijs:
+
+Bolletjes zijn €1,10 per stuk
+Hoorentjes zijn €1,25 per stuk
+Bakjes zijn €0,75 per stuk
+
+Het zou er dan zo uit moeten zien:
+
+---------["Papi Galato"]---------
+
+Bolletjes  23 x €1.10 = € 25.30
+Hoorntjes   6 x €1.25 = €  7.50
+Bakjes      4 x €0.75 = €  3.00
+                      --------- +
+Totaal                = € 35.80
+
+Bedankt en tot ziens!
+
+Als er iets 0 keer is besteld dan hoeft die regel ook niet getoont te worden op het bonnetje
