@@ -38,4 +38,3 @@ while True:
             exit()
         else:
             print("Sorry, dat snap ik niet...")
-
