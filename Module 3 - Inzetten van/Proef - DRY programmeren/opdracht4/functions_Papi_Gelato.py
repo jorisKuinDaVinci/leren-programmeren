@@ -97,10 +97,10 @@ def print_bon(bestellingen):
 
     # Toppings (alleen weergeven als er toppings zijn)
     if bestellingen["topping_prijs"] > 0:
-        print(f"Toppings     {'':>3}            = €{bestellingen['topping_prijs']:5.2f}")
+        print(f"Topping     {'':>3}           = €{bestellingen['topping_prijs']:7.2f}")
         totaal += bestellingen["topping_prijs"]
 
     # Totaal
-    print(f"{'':>31}--------- +")
-    print(f"Totaal{'':>24}= €{totaal:7.2f}")
+    print(f"{'':>29}--------- +")
+    print(f"Totaal{'':>20}= €{totaal:7.2f}")
     print("\nBedankt en tot ziens!")
