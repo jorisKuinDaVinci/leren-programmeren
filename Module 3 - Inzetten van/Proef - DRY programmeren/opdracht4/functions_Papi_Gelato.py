@@ -90,7 +90,7 @@ def print_bon(bestellingen):
         totaal += prijs
         print(f"Bakjes       {bestellingen['bakjes']:>2} x €0.75 = €{prijs:6.2f}")
 
-    if bestellingen["topping_prijs"] > 0:
+    if bestellingen["topping_prijs"] > 0:  # Alleen weergeven als er toppings zijn
         print(f"Toppings              = €{bestellingen['topping_prijs']:6.2f}")
         totaal += bestellingen["topping_prijs"]
 
