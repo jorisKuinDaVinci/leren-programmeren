@@ -101,6 +101,6 @@ def print_bon(bestellingen):
         totaal += bestellingen["topping_prijs"]
 
     # Totaal
-    print(f"{'':>29}--------- +")
+    print(f"{'':>26}--------- +")
     print(f"Totaal{'':>20}= €{totaal:7.2f}")
     print("\nBedankt en tot ziens!")
