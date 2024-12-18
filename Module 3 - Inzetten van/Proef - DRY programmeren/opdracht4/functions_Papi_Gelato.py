@@ -78,24 +78,24 @@ def print_bon(bestellingen):
         if aantal > 0:
             prijs = aantal * 1.10
             totaal += prijs
-            print(f"B.{smaak:<11} {aantal:>2} x €1.10 = €{prijs:6.2f}")
+            print(f"B.{smaak:<10} {aantal:>3} x €1.10  = €{prijs:7.2f}")
 
     if bestellingen["hoorntjes"] > 0:
         naam = "Hoorntje" if bestellingen["hoorntjes"] == 1 else "Hoorntjes"
         prijs = bestellingen["hoorntjes"] * 1.25
         totaal += prijs
-        print(f"{naam:<12} {bestellingen['hoorntjes']:>2} x €1.25 = €{prijs:6.2f}")
+        print(f"{naam:<12} {bestellingen['hoorntjes']:>3} x €1.25  = €{prijs:7.2f}")
 
     if bestellingen["bakjes"] > 0:
         naam = "Bakje" if bestellingen["bakjes"] == 1 else "Bakjes"
         prijs = bestellingen["bakjes"] * 0.75
         totaal += prijs
-        print(f"{naam:<12} {bestellingen['bakjes']:>2} x €0.75 = €{prijs:6.2f}")
+        print(f"{naam:<12} {bestellingen['bakjes']:>3} x €0.75  = €{prijs:7.2f}")
 
     if bestellingen["topping_prijs"] > 0:  # Alleen weergeven als er toppings zijn
-        print(f"Toppings     {'':>7}      = €{bestellingen['topping_prijs']:6.2f}")
+        print(f"Toppings     {'':>3}            = €{bestellingen['topping_prijs']:7.2f}")
         totaal += bestellingen["topping_prijs"]
 
-    print(f"{'':>23}--------- +")
-    print(f"Totaal{'':>16}= €{totaal:6.2f}")
+    print(f"{'':>31}--------- +")
+    print(f"Totaal{'':>24}= €{totaal:7.2f}")
     print("\nBedankt en tot ziens!")
