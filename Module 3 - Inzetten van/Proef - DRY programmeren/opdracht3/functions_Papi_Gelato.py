@@ -15,6 +15,13 @@ def controleer_aantal_bolletjes(aantal):
     except ValueError:
         return "ongeldig", None
 
+def vraag_smaak(bolletje_nummer):
+    return f"Welke smaak wilt u voor bolletje nummer {bolletje_nummer}? A) Aardbei, C) Chocolade, M) Munt of V) Vanille?"
+
+def controleer_smaak(keuze):
+    smaken = {"A": "Aardbei", "C": "Chocolade", "M": "Munt", "V": "Vanille"}
+    return smaken.get(keuze.upper(), None)
+
 def vraag_hoorntje_of_bakje(aantal):
     return f"Wilt u deze {aantal} bolletje(s) in een hoorntje of een bakje?"
 
@@ -42,10 +49,11 @@ def print_bon(bestellingen):
     print("\n---------[\"Papi Gelato\"]---------")
     totaal = 0.0
 
-    if bestellingen["bolletjes"] > 0:
-        prijs = bestellingen["bolletjes"] * 1.10
-        totaal += prijs
-        print(f"Bolletjes {bestellingen['bolletjes']:>3} x €1.10 = €{prijs:6.2f}")
+    for smaak, aantal in bestellingen["smaken"].items():
+        if aantal > 0:
+            prijs = aantal * 1.10
+            totaal += prijs
+            print(f"{smaak:<9} {aantal:>3} x €1.10 = €{prijs:6.2f}")
 
     if bestellingen["hoorntjes"] > 0:
         prijs = bestellingen["hoorntjes"] * 1.25
