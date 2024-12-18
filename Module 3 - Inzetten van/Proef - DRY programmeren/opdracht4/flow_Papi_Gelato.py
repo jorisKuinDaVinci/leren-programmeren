@@ -1,4 +1,4 @@
-from functions_Papi_Gelato import vraag_aantal_bolletjes, controleer_aantal_bolletjes, vraag_smaak, controleer_smaak, vraag_hoorntje_of_bakje, controleer_keuze, bevestiging_bestelling, vraag_nog_meer, controleer_meer_bestellen, print_bon
+from functions_Papi_Gelato import vraag_aantal_bolletjes, controleer_aantal_bolletjes, vraag_smaak, controleer_smaak, vraag_hoorntje_of_bakje, controleer_keuze, vraag_topping, controleer_topping, bereken_topping_prijs, bevestiging_bestelling, vraag_nog_meer, controleer_meer_bestellen, print_bon
 from data_Papi_Gelato import TEKSTEN
 
 print(TEKSTEN["welkom_tekst"])
@@ -14,6 +14,7 @@ bestellingen = {
         "Munt": 0,
         "Vanille": 0,
     },
+    "topping_prijs": 0.0,
 }
 
 while True:
@@ -49,6 +50,18 @@ while True:
                 break
             else:
                 print("Sorry, dat snap ik niet...")
+
+        while True:
+            print(vraag_topping())
+            topping = input("> ")
+            gekozen_topping = controleer_topping(topping)
+            if gekozen_topping:
+                topping_prijs = bereken_topping_prijs(gekozen_topping, aantal, keuze)
+                bestellingen["topping_prijs"] += topping_prijs
+                break
+            else:
+                print("Sorry dat snap ik niet...")
+
     elif status == "bakje":
         smaken = []
         for i in range(1, aantal + 1):
@@ -65,6 +78,18 @@ while True:
         print(f"Dan krijgt u van mij een bakje met {aantal} bolletjes.")
         bestellingen["bolletjes"] += aantal
         bestellingen["bakjes"] += 1
+
+        while True:
+            print(vraag_topping())
+            topping = input("> ")
+            gekozen_topping = controleer_topping(topping)
+            if gekozen_topping:
+                topping_prijs = bereken_topping_prijs(gekozen_topping, aantal, "bakje")
+                bestellingen["topping_prijs"] += topping_prijs
+                break
+            else:
+                print("Sorry dat snap ik niet...")
+
     elif status == "teveel":
         print("Sorry, zulke grote bakken hebben we niet.")
         continue

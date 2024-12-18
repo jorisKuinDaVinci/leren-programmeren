@@ -31,6 +31,31 @@ def controleer_keuze(keuze):
     else:
         return None
 
+def vraag_topping():
+    return "Wat voor topping wilt u: A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus?"
+
+def controleer_topping(keuze):
+    toppings = {
+        "A": "Geen",
+        "B": "Slagroom",
+        "C": "Sprinkels",
+        "D": "Caramel Saus",
+    }
+    return toppings.get(keuze.upper(), None)
+
+def bereken_topping_prijs(topping, aantal_bolletjes, type_keuze):
+    if topping == "Slagroom":
+        return 0.50
+    elif topping == "Sprinkels":
+        return aantal_bolletjes * 0.30
+    elif topping == "Caramel Saus":
+        if type_keuze == "hoorntje":
+            return 0.60
+        elif type_keuze == "bakje":
+            return 0.90
+    else:
+        return 0.0
+
 def bevestiging_bestelling(keuze, aantal):
     return f"Hier is uw {keuze} met {aantal} bolletje(s)."
 
@@ -53,17 +78,21 @@ def print_bon(bestellingen):
         if aantal > 0:
             prijs = aantal * 1.10
             totaal += prijs
-            print(f"{smaak:<9} {aantal:>3} x €1.10 = €{prijs:6.2f}")
+            print(f"B.{smaak:<11} {aantal:>2} x €1.10 = €{prijs:6.2f}")
 
     if bestellingen["hoorntjes"] > 0:
         prijs = bestellingen["hoorntjes"] * 1.25
         totaal += prijs
-        print(f"Hoorntjes {bestellingen['hoorntjes']:>3} x €1.25 = €{prijs:6.2f}")
+        print(f"Hoorntjes    {bestellingen['hoorntjes']:>2} x €1.25 = €{prijs:6.2f}")
 
     if bestellingen["bakjes"] > 0:
         prijs = bestellingen["bakjes"] * 0.75
         totaal += prijs
-        print(f"Bakjes    {bestellingen['bakjes']:>3} x €0.75 = €{prijs:6.2f}")
+        print(f"Bakjes       {bestellingen['bakjes']:>2} x €0.75 = €{prijs:6.2f}")
+
+    if bestellingen["topping_prijs"] > 0:
+        print(f"Toppings              = €{bestellingen['topping_prijs']:6.2f}")
+        totaal += bestellingen["topping_prijs"]
 
     print(f"{'':>23}--------- +")
     print(f"Totaal{'':>16}= €{totaal:6.2f}")
