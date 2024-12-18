@@ -8,7 +8,7 @@ Bakjes zijn €0,75 per stuk
 
 Het zou er dan zo uit moeten zien:
 
----------["Papi Galato"]---------
+---------["Papi Gelato"]---------
 
 Bolletjes  23 x €1.10 = € 25.30
 Hoorntjes   6 x €1.25 = €  7.50
