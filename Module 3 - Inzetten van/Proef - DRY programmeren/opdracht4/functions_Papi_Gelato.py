@@ -81,14 +81,16 @@ def print_bon(bestellingen):
             print(f"B.{smaak:<11} {aantal:>2} x €1.10 = €{prijs:6.2f}")
 
     if bestellingen["hoorntjes"] > 0:
+        naam = "Hoorntje" if bestellingen["hoorntjes"] == 1 else "Hoorntjes"
         prijs = bestellingen["hoorntjes"] * 1.25
         totaal += prijs
-        print(f"Hoorntjes    {bestellingen['hoorntjes']:>2} x €1.25 = €{prijs:6.2f}")
+        print(f"{naam:<12} {bestellingen['hoorntjes']:>2} x €1.25 = €{prijs:6.2f}")
 
     if bestellingen["bakjes"] > 0:
+        naam = "Bakje" if bestellingen["bakjes"] == 1 else "Bakjes"
         prijs = bestellingen["bakjes"] * 0.75
         totaal += prijs
-        print(f"Bakjes       {bestellingen['bakjes']:>2} x €0.75 = €{prijs:6.2f}")
+        print(f"{naam:<12} {bestellingen['bakjes']:>2} x €0.75 = €{prijs:6.2f}")
 
     if bestellingen["topping_prijs"] > 0:  # Alleen weergeven als er toppings zijn
         print(f"Toppings              = €{bestellingen['topping_prijs']:6.2f}")
