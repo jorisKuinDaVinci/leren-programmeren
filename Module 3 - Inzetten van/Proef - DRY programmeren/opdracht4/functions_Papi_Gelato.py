@@ -74,28 +74,33 @@ def print_bon(bestellingen):
     print("\n---------[\"Papi Gelato\"]---------")
     totaal = 0.0
 
+    # Smaken
     for smaak, aantal in bestellingen["smaken"].items():
         if aantal > 0:
             prijs = aantal * 1.10
             totaal += prijs
             print(f"B.{smaak:<10} {aantal:>3} x €1.10  = €{prijs:7.2f}")
 
+    # Hoorntjes
     if bestellingen["hoorntjes"] > 0:
         naam = "Hoorntje" if bestellingen["hoorntjes"] == 1 else "Hoorntjes"
         prijs = bestellingen["hoorntjes"] * 1.25
         totaal += prijs
         print(f"{naam:<12} {bestellingen['hoorntjes']:>3} x €1.25  = €{prijs:7.2f}")
 
+    # Bakjes
     if bestellingen["bakjes"] > 0:
         naam = "Bakje" if bestellingen["bakjes"] == 1 else "Bakjes"
         prijs = bestellingen["bakjes"] * 0.75
         totaal += prijs
         print(f"{naam:<12} {bestellingen['bakjes']:>3} x €0.75  = €{prijs:7.2f}")
 
-    if bestellingen["topping_prijs"] > 0:  # Alleen weergeven als er toppings zijn
+    # Toppings (alleen weergeven als er toppings zijn)
+    if bestellingen["topping_prijs"] > 0:
         print(f"Toppings     {'':>3}            = €{bestellingen['topping_prijs']:7.2f}")
         totaal += bestellingen["topping_prijs"]
 
+    # Totaal
     print(f"{'':>31}--------- +")
     print(f"Totaal{'':>24}= €{totaal:7.2f}")
     print("\nBedankt en tot ziens!")
