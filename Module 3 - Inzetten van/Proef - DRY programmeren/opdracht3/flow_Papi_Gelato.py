@@ -22,14 +22,14 @@ while True:
     status, aantal = controleer_aantal_bolletjes(aantal_input)
 
     if status == "stap2":
-        smaken = []
+        #smaken = []
         for i in range(1, aantal + 1):
             while True:
                 print(vraag_smaak(i))
                 smaak = input("> ")
                 gekozen_smaak = controleer_smaak(smaak)
                 if gekozen_smaak:
-                    smaken.append(gekozen_smaak)
+                    #smaken.append(gekozen_smaak)
                     bestellingen["smaken"][gekozen_smaak] += 1
                     break
                 else:
@@ -50,14 +50,14 @@ while True:
             else:
                 print("Sorry, dat snap ik niet...")
     elif status == "bakje":
-        smaken = []
+        #smaken = []
         for i in range(1, aantal + 1):
             while True:
                 print(vraag_smaak(i))
                 smaak = input("> ")
                 gekozen_smaak = controleer_smaak(smaak)
                 if gekozen_smaak:
-                    smaken.append(gekozen_smaak)
+                    #smaken.append(gekozen_smaak)
                     bestellingen["smaken"][gekozen_smaak] += 1
                     break
                 else:

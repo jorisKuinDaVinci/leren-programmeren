@@ -43,20 +43,23 @@ def print_bon(bestellingen):
     totaal = 0.0
 
     if bestellingen["bolletjes"] > 0:
-        prijs = bestellingen["bolletjes"] * 1.10
-        totaal += prijs
-        print(f"Bolletjes {bestellingen['bolletjes']:>3} x €1.10 = €{prijs:6.2f}")
+        prijs = 1.10
+        bedrag = bestellingen["bolletjes"] * prijs
+        totaal += bedrag
+        print(f"Bolletjes {bestellingen['bolletjes']:>3} x €{prijs:5.2f} = €{bedrag:6.2f}")
 
     if bestellingen["hoorntjes"] > 0:
-        prijs = bestellingen["hoorntjes"] * 1.25
-        totaal += prijs
-        print(f"Hoorntjes {bestellingen['hoorntjes']:>3} x €1.25 = €{prijs:6.2f}")
+        prijs = 1.25
+        bedrag = bestellingen["hoorntjes"] * prijs
+        totaal += bedrag
+        print(f"Hoorntjes {bestellingen['hoorntjes']:>3} x €{prijs:5.2f} = €{bedrag:6.2f}")
 
     if bestellingen["bakjes"] > 0:
-        prijs = bestellingen["bakjes"] * 0.75
-        totaal += prijs
-        print(f"Bakjes    {bestellingen['bakjes']:>3} x €0.75 = €{prijs:6.2f}")
+        prijs = 0.75
+        bedrag = bestellingen["bakjes"] * prijs
+        totaal += bedrag
+        print(f"Bakjes    {bestellingen['bakjes']:>3} x €{prijs:5.2f} = €{bedrag:6.2f}")
 
     print(f"{'':>23}--------- +")
-    print(f"Totaal{'':>16}= €{totaal:6.2f}")
+    print(f"Totaal{'':>16} = €{totaal:6.2f}")
     print("\nBedankt en tot ziens!")
