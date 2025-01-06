@@ -17,6 +17,7 @@ from functions_Papi_Gelato import (
 
 from data_Papi_Gelato import TEKSTEN
 
+
 # Functie om bestellingen te resetten
 def reset_bestellingen():
     return {
@@ -31,6 +32,7 @@ def reset_bestellingen():
         },
         "topping_prijs": 0.0
     }
+
 
 def main():
     print(TEKSTEN["welkom_tekst"])
@@ -59,6 +61,7 @@ def main():
         else:
             print(TEKSTEN["afsluit_tekst"])
             break
+
 
 if __name__ == "__main__":
     main()

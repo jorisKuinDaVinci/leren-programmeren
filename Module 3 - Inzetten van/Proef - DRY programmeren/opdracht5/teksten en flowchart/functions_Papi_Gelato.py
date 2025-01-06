@@ -1,5 +1,3 @@
-# Functies voor de Papi Gelato applicatie
-
 # Algemene invoercontrolefunctie
 def vraag_invoer(vraag, validaties):
     """Stelt een vraag en controleert of de invoer geldig is volgens een set van validaties"""
