@@ -1,3 +1,6 @@
+from data_Papi_Gelato import TEKSTEN
+# Functies voor de Papi Gelato applicatie
+
 # Algemene invoercontrolefunctie
 def vraag_invoer(vraag, validaties):
     """Stelt een vraag en controleert of de invoer geldig is volgens een set van validaties"""
@@ -129,3 +132,94 @@ def controleer_klant_type(keuze):
     elif keuze == "2":
         return "zakelijk"
     return None
+
+
+# Nieuwe functies die we hebben toegevoegd:
+
+# Functie voor zakelijke klant workflow
+def zakelijke_klant_workflow(bestellingen):
+    print("Zakelijke klant gekozen.")
+    
+    # Vraag het aantal bolletjes
+    print(vraag_aantal_bolletjes())
+    keuze = input("> ")
+    status, aantal_bolletjes = controleer_aantal_bolletjes(keuze)
+    
+    if status == "teveel":
+        print(TEKSTEN["teveel_bolletjes"])
+        return
+    
+    # Voeg het aantal bolletjes toe aan de bestelling
+    bestellingen["bolletjes"] = aantal_bolletjes
+    
+    # Vraag naar de smaken en voeg ze toe
+    for i in range(1, aantal_bolletjes + 1):
+        print(vraag_smaak(i))
+        smaak_keuze = input("> ").upper()
+        smaak = controleer_smaak(smaak_keuze)
+        
+        if smaak:
+            bestellingen["smaken"][smaak] += 1
+    
+    # Vraag om topping
+    print(vraag_topping())
+    topping_keuze = input("> ").upper()
+    topping = controleer_topping(topping_keuze)
+    
+    if topping:
+        bestellingen["topping_prijs"] = bereken_topping_prijs(topping, aantal_bolletjes, "hoorntje")
+    
+    # Bevestig de bestelling
+    print(bevestiging_bestelling("zakelijke bestelling", aantal_bolletjes))
+    
+    # Print de bon
+    print_bon(bestellingen, "zakelijk")
+
+# Functie voor particuliere klant workflow
+def particulier_workflow(bestellingen):
+    print("Particuliere klant gekozen.")
+    
+    # Vraag het aantal bolletjes
+    print(vraag_aantal_bolletjes())
+    keuze = input("> ")
+    status, aantal_bolletjes = controleer_aantal_bolletjes(keuze)
+    
+    if status == "teveel":
+        print(TEKSTEN["teveel_bolletjes"])
+        return
+    
+    # Voeg het aantal bolletjes toe aan de bestelling
+    bestellingen["bolletjes"] = aantal_bolletjes
+    
+    # Vraag naar de smaken en voeg ze toe
+    for i in range(1, aantal_bolletjes + 1):
+        print(vraag_smaak(i))
+        smaak_keuze = input("> ").upper()
+        smaak = controleer_smaak(smaak_keuze)
+        
+        if smaak:
+            bestellingen["smaken"][smaak] += 1
+    
+    # Vraag naar het type (hoorntje of bakje)
+    print(vraag_hoorntje_of_bakje(aantal_bolletjes))
+    keuze = input("> ").lower()
+    type_keuze = controleer_keuze(keuze)
+    
+    if type_keuze == "hoorntje":
+        bestellingen["hoorntjes"] = aantal_bolletjes
+    elif type_keuze == "bakje":
+        bestellingen["bakjes"] = aantal_bolletjes
+    
+    # Vraag om topping
+    print(vraag_topping())
+    topping_keuze = input("> ").upper()
+    topping = controleer_topping(topping_keuze)
+    
+    if topping:
+        bestellingen["topping_prijs"] = bereken_topping_prijs(topping, aantal_bolletjes, type_keuze)
+    
+    # Bevestig de bestelling
+    print(bevestiging_bestelling(type_keuze, aantal_bolletjes))
+    
+    # Print de bon
+    print_bon(bestellingen, "particulier")
