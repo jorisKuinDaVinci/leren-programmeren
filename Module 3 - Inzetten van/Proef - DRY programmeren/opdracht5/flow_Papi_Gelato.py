@@ -15,7 +15,7 @@ from functions_Papi_Gelato import (
     controleer_klant_type,
 )
 
-from opdracht1.data_Papi_Gelato import TEKSTEN
+from data_Papi_Gelato import TEKSTEN
 
 
 # Functie om bestellingen te resetten
