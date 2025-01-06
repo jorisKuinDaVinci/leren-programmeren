@@ -13,6 +13,8 @@ from functions_Papi_Gelato import (
     print_bon,
     vraag_klant_type,
     controleer_klant_type,
+    zakelijke_klant_workflow,
+    particulier_workflow
 )
 
 from data_Papi_Gelato import TEKSTEN
