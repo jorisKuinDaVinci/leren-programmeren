@@ -1,4 +1,22 @@
-from functions_Papi_Gelato import vraag_aantal_bolletjes, controleer_aantal_bolletjes, vraag_smaak, controleer_smaak, vraag_hoorntje_of_bakje, controleer_keuze, vraag_topping, controleer_topping, bereken_topping_prijs, bevestiging_bestelling, vraag_nog_meer, controleer_meer_bestellen, print_bon, vraag_klant_type, controleer_klant_type, zakelijke_klant_workflow
+from functions_Papi_Gelato import (
+    vraag_aantal_bolletjes,
+    controleer_aantal_bolletjes,
+    vraag_smaak,
+    controleer_smaak,
+    vraag_hoorntje_of_bakje,
+    controleer_keuze,
+    vraag_topping,
+    controleer_topping,
+    bereken_topping_prijs,
+    bevestiging_bestelling,
+    vraag_nog_meer,
+    controleer_meer_bestellen,
+    print_bon,
+    vraag_klant_type,
+    controleer_klant_type,
+    zakelijke_klant_workflow,
+    particulier_workflow,
+)
 from data_Papi_Gelato import TEKSTEN
 
 print(TEKSTEN["welkom_tekst"])
@@ -31,112 +49,17 @@ while True:
     if klant_type == "zakelijk":
         zakelijke_klant_workflow(bestellingen)
     elif klant_type == "particulier":
-        # Bestaande workflow voor particulieren
-        print(vraag_aantal_bolletjes())
-        aantal_input = input("> ")
-        status, aantal = controleer_aantal_bolletjes(aantal_input)
+        particulier_workflow(bestellingen)
 
-        if status == "stap2":
-            smaken = []
-            for i in range(1, aantal + 1):
-                while True:
-                    print(vraag_smaak(i))
-                    smaak = input("> ")
-                    gekozen_smaak = controleer_smaak(smaak)
-                    if gekozen_smaak:
-                        smaken.append(gekozen_smaak)
-                        bestellingen["smaken"][gekozen_smaak] += 1
-                        break
-                    else:
-                        print("Sorry dat snap ik niet...")
-
-    print(vraag_aantal_bolletjes())
-    aantal_input = input("> ")
-    status, aantal = controleer_aantal_bolletjes(aantal_input)
-
-    if status == "stap2":
-        smaken = []
-        for i in range(1, aantal + 1):
-            while True:
-                print(vraag_smaak(i))
-                smaak = input("> ")
-                gekozen_smaak = controleer_smaak(smaak)
-                if gekozen_smaak:
-                    smaken.append(gekozen_smaak)
-                    bestellingen["smaken"][gekozen_smaak] += 1
-                    break
-                else:
-                    print("Sorry dat snap ik niet...")
-
-        while True:
-            print(vraag_hoorntje_of_bakje(aantal))
-            keuze = input("> ")
-            keuze = controleer_keuze(keuze)
-            if keuze:
-                print(bevestiging_bestelling(keuze, aantal))
-                bestellingen["bolletjes"] += aantal
-                if keuze == "hoorntje":
-                    bestellingen["hoorntjes"] += 1
-                elif keuze == "bakje":
-                    bestellingen["bakjes"] += 1
-                break
-            else:
-                print("Sorry, dat snap ik niet...")
-
-        while True:
-            print(vraag_topping())
-            topping = input("> ")
-            gekozen_topping = controleer_topping(topping)
-            if gekozen_topping:
-                topping_prijs = bereken_topping_prijs(gekozen_topping, aantal, keuze)
-                bestellingen["topping_prijs"] += topping_prijs
-                break
-            else:
-                print("Sorry dat snap ik niet...")
-
-    elif status == "bakje":
-        smaken = []
-        for i in range(1, aantal + 1):
-            while True:
-                print(vraag_smaak(i))
-                smaak = input("> ")
-                gekozen_smaak = controleer_smaak(smaak)
-                if gekozen_smaak:
-                    smaken.append(gekozen_smaak)
-                    bestellingen["smaken"][gekozen_smaak] += 1
-                    break
-                else:
-                    print("Sorry dat snap ik niet...")
-        print(f"Dan krijgt u van mij een bakje met {aantal} bolletjes.")
-        bestellingen["bolletjes"] += aantal
-        bestellingen["bakjes"] += 1
-
-        while True:
-            print(vraag_topping())
-            topping = input("> ")
-            gekozen_topping = controleer_topping(topping)
-            if gekozen_topping:
-                topping_prijs = bereken_topping_prijs(gekozen_topping, aantal, "bakje")
-                bestellingen["topping_prijs"] += topping_prijs
-                break
-            else:
-                print("Sorry dat snap ik niet...")
-
-    elif status == "teveel":
-        print("Sorry, zulke grote bakken hebben we niet.")
-        continue
-    elif status == "ongeldig":
-        print("Sorry, dat snap ik niet...")
-        continue
-
+    # Vraag of de klant nog meer wil bestellen
     while True:
         print(vraag_nog_meer())
         meer_input = input("> ")
         meer = controleer_meer_bestellen(meer_input)
         if meer is True:
-            break
+            break  # Start een nieuwe bestelling
         elif meer is False:
-            print_bon(bestellingen)
+            print_bon(bestellingen)  # Toon de bon en sluit af
             exit()
         else:
             print("Sorry, dat snap ik niet...")
