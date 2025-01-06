@@ -1,4 +1,4 @@
-from functions_Papi_Gelato import vraag_aantal_bolletjes, controleer_aantal_bolletjes, vraag_smaak, controleer_smaak, vraag_hoorntje_of_bakje, controleer_keuze, vraag_topping, controleer_topping, bereken_topping_prijs, bevestiging_bestelling, vraag_nog_meer, controleer_meer_bestellen, print_bon
+from functions_Papi_Gelato import vraag_aantal_bolletjes, controleer_aantal_bolletjes, vraag_smaak, controleer_smaak, vraag_hoorntje_of_bakje, controleer_keuze, vraag_topping, controleer_topping, bereken_topping_prijs, bevestiging_bestelling, vraag_nog_meer, controleer_meer_bestellen, print_bon, vraag_klant_type, controleer_klant_type, zakelijke_klant_workflow
 from data_Papi_Gelato import TEKSTEN
 
 print(TEKSTEN["welkom_tekst"])
@@ -18,6 +18,38 @@ bestellingen = {
 }
 
 while True:
+    # Vraag klanttype
+    while True:
+        print(vraag_klant_type())
+        klant_type = input("> ")
+        klant_type = controleer_klant_type(klant_type)
+        if klant_type:
+            break
+        else:
+            print("Sorry dat snap ik niet...")
+
+    if klant_type == "zakelijk":
+        zakelijke_klant_workflow(bestellingen)
+    elif klant_type == "particulier":
+        # Bestaande workflow voor particulieren
+        print(vraag_aantal_bolletjes())
+        aantal_input = input("> ")
+        status, aantal = controleer_aantal_bolletjes(aantal_input)
+
+        if status == "stap2":
+            smaken = []
+            for i in range(1, aantal + 1):
+                while True:
+                    print(vraag_smaak(i))
+                    smaak = input("> ")
+                    gekozen_smaak = controleer_smaak(smaak)
+                    if gekozen_smaak:
+                        smaken.append(gekozen_smaak)
+                        bestellingen["smaken"][gekozen_smaak] += 1
+                        break
+                    else:
+                        print("Sorry dat snap ik niet...")
+
     print(vraag_aantal_bolletjes())
     aantal_input = input("> ")
     status, aantal = controleer_aantal_bolletjes(aantal_input)
