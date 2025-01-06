@@ -35,7 +35,7 @@ def reset_bestellingen():
     }
 
 # Start van het programma
-print(TEKSTEN.get("welkom_tekst", "Welkom bij Papi Gelato!"))
+print(TEKSTEN["welkom_tekst"])
 
 # Hoofdprogramma
 while True:
