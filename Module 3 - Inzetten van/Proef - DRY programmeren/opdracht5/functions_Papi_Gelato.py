@@ -44,17 +44,15 @@ def controleer_topping(keuze):
     return toppings.get(keuze.upper(), None)
 
 def bereken_topping_prijs(topping, aantal_bolletjes, type_keuze):
-    if topping == "Slagroom":
+    if topping == "Geen":
+        return 0.0
+    elif topping == "Slagroom":
         return 0.50
     elif topping == "Sprinkels":
         return aantal_bolletjes * 0.30
     elif topping == "Caramel Saus":
-        if type_keuze == "hoorntje":
-            return 0.60
-        elif type_keuze == "bakje":
-            return 0.90
-    else:
-        return 0.0
+        return 0.60 if type_keuze == "hoorntje" else 0.90
+    return 0.0
 
 def bevestiging_bestelling(keuze, aantal):
     return f"Hier is uw {keuze} met {aantal} bolletje(s)."
@@ -67,9 +65,8 @@ def controleer_meer_bestellen(antwoord):
         return True
     elif antwoord.lower() == "nee":
         return False
-    else:
-        return None
-    
+    return None
+
 def vraag_en_verwerk_smaken(aantal, bestellingen, vraag_smaak, controleer_smaak):
     """
     Vraagt naar smaken en verwerkt deze in de bestellingen.
@@ -84,7 +81,6 @@ def vraag_en_verwerk_smaken(aantal, bestellingen, vraag_smaak, controleer_smaak)
                 break
             else:
                 print("Sorry dat snap ik niet...")
-
 
 def vraag_en_verwerk_topping(aantal, keuze, bestellingen, vraag_topping, controleer_topping, bereken_topping_prijs):
     """
@@ -150,10 +146,8 @@ def controleer_klant_type(keuze):
         return "particulier"
     elif keuze == "2":
         return "zakelijk"
-    else:
-        return None
+    return None
 
-# Workflow voor zakelijke klanten
 def zakelijke_klant_workflow(bestellingen):
     while True:
         try:
@@ -161,6 +155,9 @@ def zakelijke_klant_workflow(bestellingen):
             aantal_liter = int(input("> "))
             if aantal_liter <= 0:
                 print("Voer een geldig aantal liters in.")
+                continue
+            elif aantal_liter > 100:
+                print("Sorry, we kunnen maximaal 100 liter per bestelling verwerken.")
                 continue
             break
         except ValueError:
