@@ -1,0 +1,21 @@
+De restaurants in de buurt van Papi Gelato krijgen lucht van de populariteit en willen het graag als dessert op het menu zetten, daar hebben ze bij Papi Gelato wel oren naar en ze gaan aan zakelijke klanten per liter verkopen, dus hier komt de volgende feature.
+
+Aan het begin (voor stap 1) moet de werknemer de volgende vraag stellen: “Bent u 1) een particuliere klant of 2) een zakelijke klant?”
+   A. Als er particulier gekozen wordt dan ga je naar stap 1 (met de bolletjes)
+   B. Als er zakelijk gekozen wordt:
+
+is stap 1 anders dan wordt er niet gevraagd hoeveel bolletjes de klant wilt, maar hoeveel liter.
+Daarna wordt er per liter gevraagd welke smaak de klant wil.
+Toppings worden niet om gevraagd en ook niet of de klant meer wil bestellen. 
+De prijs van ijs per liter is voor iedere smaak €9,80 inclusief BTW
+Op het bonnetje moet alleen bij een zakelijke klant BTW komen onder het totaal dat ziet er zo uit:
+
+---------["Papi Gelato"]---------
+
+L.Aardbei      1 x €9.80  = €9.80
+L.Vanille      2 x €9.80  = €19.60
+                          --------- +
+Totaal                    = €29.40
+BTW (9%)                  = €2.43
+
+C. Bij een andere keuze dan 1 of 2 krijg je de tekst te zien: “Sorry dat snap ik niet...” en wordt deze stap herhaald
