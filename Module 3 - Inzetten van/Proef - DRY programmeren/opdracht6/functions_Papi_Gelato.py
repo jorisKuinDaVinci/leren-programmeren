@@ -36,33 +36,43 @@ def vraag_smaak(bolletje_nummer):
     return f"Welke smaak wilt u voor bolletje nummer {bolletje_nummer}? A) Aardbei, C) Chocolade of V) Vanille?"
 
 # Functie om de smaak te controleren
-def controleer_smaak(keuze):
+def controleer_smaak():
     smaken = {"A": "Aardbei", "C": "Chocolade", "V": "Vanille"}  # Munt verwijderd
-    return smaken.get(keuze.upper(), None)
+    while True:
+        keuze = input("Welke smaak wilt u? Kies A) Aardbei, C) Chocolade of V) Vanille > ").strip().upper()
+        if keuze in smaken:
+            return smaken[keuze]
+        print("Sorry dat is geen optie die we aanbieden. Probeer opnieuw.")
 
 # Functie om te vragen of de klant een hoorntje of bakje wil
 def vraag_hoorntje_of_bakje(aantal):
     return f"Wilt u deze {aantal} bolletje(s) in een hoorntje of een bakje?"
 
 # Functie om de keuze tussen hoorntje of bakje te controleren
-def controleer_keuze(keuze):
-    if keuze.lower() in ["hoorntje", "bakje"]:
-        return keuze.lower()
-    return None
+def controleer_keuze():
+    while True:
+        keuze = input("Wilt u deze bolletjes in een hoorntje of een bakje? > ").strip().lower()
+        if keuze in ["hoorntje", "bakje"]:
+            return keuze
+        print("Sorry dat is geen optie die we aanbieden. Probeer opnieuw.")
 
 # Functie om een topping te vragen
 def vraag_topping():
     return "Wat voor topping wilt u: A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus?"
 
 # Functie om de topping te controleren
-def controleer_topping(keuze):
+def controleer_topping():
     toppings = {
         "A": "Geen",
         "B": "Slagroom",
         "C": "Sprinkels",
         "D": "Caramel Saus",
     }
-    return toppings.get(keuze.upper(), None)
+    while True:
+        keuze = input("Wat voor topping wilt u? Kies A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus > ").strip().upper()
+        if keuze in toppings:
+            return toppings[keuze]
+        print("Sorry dat is geen optie die we aanbieden. Probeer opnieuw.")
 
 # Functie om de prijs van de topping te berekenen
 def bereken_topping_prijs(topping, aantal_bolletjes, type_keuze):
@@ -124,12 +134,14 @@ def vraag_klant_type():
     return "Bent u 1) een particuliere klant of 2) een zakelijke klant?"
 
 # Functie voor het klanttype te controleren
-def controleer_klant_type(keuze):
-    if keuze == "1":
-        return "particulier"
-    elif keuze == "2":
-        return "zakelijk"
-    return None
+def controleer_klant_type():
+    while True:
+        keuze = input("Bent u 1) een particuliere klant of 2) een zakelijke klant? > ").strip()
+        if keuze == "1":
+            return "particulier"
+        elif keuze == "2":
+            return "zakelijk"
+        print("Sorry dat is geen optie die we aanbieden. Probeer opnieuw.")
 
 # Functie voor zakelijke klant workflow
 def zakelijke_klant_workflow(bestellingen):
@@ -152,9 +164,8 @@ def zakelijke_klant_workflow(bestellingen):
     # Vraag naar de smaken en voeg ze toe
     for i in range(1, liters + 1):
         while True:
-            print(f"Welke smaak wilt u voor liter nummer {i}? A) Aardbei, C) Chocolade, M) Munt of V) Vanille?")
-            smaak_keuze = input("> ").strip().upper()
-            smaak = controleer_smaak(smaak_keuze)
+            print(f"Welke smaak wilt u voor liter nummer {i}? A) Aardbei, C) Chocolade of V) Vanille?")
+            smaak = controleer_smaak()
             
             if smaak:
                 bestellingen["smaken"][smaak] += 1
@@ -184,16 +195,14 @@ def particulier_workflow(bestellingen):
     # Vraag naar de smaken en voeg ze toe
     for i in range(1, aantal_bolletjes + 1):
         print(vraag_smaak(i))
-        smaak_keuze = input("> ").upper()
-        smaak = controleer_smaak(smaak_keuze)
+        smaak = controleer_smaak()
         
         if smaak:
             bestellingen["smaken"][smaak] += 1
     
     # Vraag naar het type (hoorntje of bakje)
     print(vraag_hoorntje_of_bakje(aantal_bolletjes))
-    keuze = input("> ").lower()
-    type_keuze = controleer_keuze(keuze)
+    type_keuze = controleer_keuze()
     
     if type_keuze == "hoorntje":
         bestellingen["hoorntjes"] = aantal_bolletjes
@@ -202,8 +211,7 @@ def particulier_workflow(bestellingen):
     
     # Vraag om topping
     print(vraag_topping())
-    topping_keuze = input("> ").upper()
-    topping = controleer_topping(topping_keuze)
+    topping = controleer_topping()
     
     if topping:
         bestellingen["topping_prijs"] = bereken_topping_prijs(topping, aantal_bolletjes, type_keuze)
