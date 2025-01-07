@@ -36,43 +36,54 @@ def vraag_smaak(bolletje_nummer):
     return f"Welke smaak wilt u voor bolletje nummer {bolletje_nummer}? A) Aardbei, C) Chocolade of V) Vanille?"
 
 # Functie om de smaak te controleren
-def controleer_smaak():
+def controleer_smaak(keuze):
     smaken = {"A": "Aardbei", "C": "Chocolade", "V": "Vanille"}  # Munt verwijderd
-    while True:
-        keuze = input("Welke smaak wilt u? Kies A) Aardbei, C) Chocolade of V) Vanille > ").strip().upper()
-        if keuze in smaken:
-            return smaken[keuze]
-        print("Sorry dat is geen optie die we aanbieden. Probeer opnieuw.")
+    return smaken.get(keuze.upper(), None)
+
+# Vragen naar smaak met de algemene invoercontrolefunctie
+def vraag_smaak_via_invoer(bolletje_nummer):
+    return vraag_invoer(
+        f"Welke smaak wilt u voor bolletje nummer {bolletje_nummer}? A) Aardbei, C) Chocolade, V) Vanille",
+        [controleer_smaak]
+    )
 
 # Functie om te vragen of de klant een hoorntje of bakje wil
 def vraag_hoorntje_of_bakje(aantal):
     return f"Wilt u deze {aantal} bolletje(s) in een hoorntje of een bakje?"
 
 # Functie om de keuze tussen hoorntje of bakje te controleren
-def controleer_keuze():
-    while True:
-        keuze = input("Wilt u deze bolletjes in een hoorntje of een bakje? > ").strip().lower()
-        if keuze in ["hoorntje", "bakje"]:
-            return keuze
-        print("Sorry dat is geen optie die we aanbieden. Probeer opnieuw.")
+def controleer_keuze(keuze):
+    if keuze.lower() in ["hoorntje", "bakje"]:
+        return keuze.lower()
+    return None
+
+# Vragen naar keuze met de algemene invoercontrolefunctie
+def vraag_hoorntje_of_bakje_via_invoer():
+    return vraag_invoer(
+        "Wilt u uw ijsje in een hoorntje of een bakje?",
+        [controleer_keuze]
+    )
 
 # Functie om een topping te vragen
 def vraag_topping():
     return "Wat voor topping wilt u: A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus?"
 
 # Functie om de topping te controleren
-def controleer_topping():
+def controleer_topping(keuze):
     toppings = {
         "A": "Geen",
         "B": "Slagroom",
         "C": "Sprinkels",
         "D": "Caramel Saus",
     }
-    while True:
-        keuze = input("Wat voor topping wilt u? Kies A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus > ").strip().upper()
-        if keuze in toppings:
-            return toppings[keuze]
-        print("Sorry dat is geen optie die we aanbieden. Probeer opnieuw.")
+    return toppings.get(keuze.upper(), None)
+
+# Vragen naar topping met de algemene invoercontrolefunctie
+def vraag_topping_via_invoer():
+    return vraag_invoer(
+        "Wat voor topping wilt u: A) Geen, B) Slagroom, C) Sprinkels, D) Caramel Saus?",
+        [controleer_topping]
+    )
 
 # Functie om de prijs van de topping te berekenen
 def bereken_topping_prijs(topping, aantal_bolletjes, type_keuze):
@@ -133,15 +144,20 @@ def print_bon(bestellingen, klant_type):
 def vraag_klant_type():
     return "Bent u 1) een particuliere klant of 2) een zakelijke klant?"
 
-# Functie voor het klanttype te controleren
-def controleer_klant_type():
-    while True:
-        keuze = input("Bent u 1) een particuliere klant of 2) een zakelijke klant? > ").strip()
-        if keuze == "1":
-            return "particulier"
-        elif keuze == "2":
-            return "zakelijk"
-        print("Sorry dat is geen optie die we aanbieden. Probeer opnieuw.")
+# Functie om het klanttype te controleren
+def controleer_klant_type(keuze):
+    if keuze == "1":
+        return "particulier"
+    elif keuze == "2":
+        return "zakelijk"
+    return None
+
+# Vragen naar klanttype met de algemene invoercontrolefunctie
+def vraag_klant_type_via_invoer():
+    return vraag_invoer(
+        "Bent u 1) een particuliere klant of 2) een zakelijke klant?",
+        [controleer_klant_type]
+    )
 
 # Functie voor zakelijke klant workflow
 def zakelijke_klant_workflow(bestellingen):
