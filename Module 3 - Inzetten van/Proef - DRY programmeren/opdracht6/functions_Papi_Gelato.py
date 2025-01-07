@@ -1,6 +1,4 @@
 from data_Papi_Gelato import TEKSTEN, PRIJZEN, BTW_TARIEF
-# Functies voor de Papi Gelato applicatie
-
 
 # Algemene invoercontrolefunctie
 def vraag_invoer(vraag, validaties):
@@ -12,7 +10,7 @@ def vraag_invoer(vraag, validaties):
             resultaat = validatie(keuze)
             if resultaat:
                 return resultaat
-        print(TEKSTEN["ongeldige_invoer"])
+        print("Sorry dat is geen optie die we aanbieden...")  # Nieuwe foutmelding
 
 # Functie om het aantal bolletjes te vragen
 def vraag_aantal_bolletjes():
