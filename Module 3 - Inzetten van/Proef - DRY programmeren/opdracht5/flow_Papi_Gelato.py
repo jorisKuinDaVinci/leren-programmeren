@@ -1,57 +1,37 @@
 from functions_Papi_Gelato import (
-    vraag_invoer,
+    vraag_klant_type,
     controleer_klant_type,
     zakelijke_klant_workflow,
     particulier_workflow
 )
 
-from data_Papi_Gelato import TEKSTEN
-
-
-# Functie om bestellingen te resetten
-def reset_bestellingen():
-    return {
-        "bolletjes": 0,
-        "hoorntjes": 0,
-        "bakjes": 0,
-        "smaken": {
-            "Aardbei": 0,
-            "Chocolade": 0,
-            "Munt": 0,
-            "Vanille": 0,
-        },
-        "topping_prijs": 0.0
-    }
-
 
 def main():
-    print(TEKSTEN["welkom_tekst"])
-
-    # Vraag naar klanttype
-    klant_type = vraag_invoer(TEKSTEN["vraag_klant_type"], [controleer_klant_type])
-
-    bestellingen = reset_bestellingen()
-
-    # Afhankelijk van klanttype: zakelijke of particuliere workflow
-    if klant_type == "zakelijk":
-        zakelijke_klant_workflow(bestellingen)
-    elif klant_type == "particulier":
-        particulier_workflow(bestellingen)
-
-    # Vraag om meer te bestellen
+    # Start van de applicatie
     while True:
-        print(TEKSTEN["vraag_nog_meer"])
-        antwoord = input("> ")
-        if antwoord.lower() == "ja":
-            bestellingen = reset_bestellingen()
-            if klant_type == "zakelijk":
-                zakelijke_klant_workflow(bestellingen)
-            else:
-                particulier_workflow(bestellingen)
-        else:
-            print(TEKSTEN["afsluit_tekst"])
+        print(vraag_klant_type())
+        klant_type_keuze = input("> ").strip()
+        klant_type = controleer_klant_type(klant_type_keuze)
+        
+        if klant_type == "particulier":
+            bestellingen = {
+                "bolletjes": 0,
+                "hoorntjes": 0,
+                "bakjes": 0,
+                "smaken": {"Aardbei": 0, "Chocolade": 0, "Munt": 0, "Vanille": 0},
+                "topping_prijs": 0.0
+            }
+            particulier_workflow(bestellingen)
             break
-
+        elif klant_type == "zakelijk":
+            bestellingen = {
+                "liters": 0,
+                "smaken": {"Aardbei": 0, "Chocolade": 0, "Munt": 0, "Vanille": 0},
+            }
+            zakelijke_klant_workflow(bestellingen)
+            break
+        else:
+            print("Sorry dat snap ik niet...")
 
 if __name__ == "__main__":
     main()

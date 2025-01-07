@@ -79,7 +79,8 @@ def bereken_topping_prijs(topping, aantal_bolletjes, type_keuze):
 def bevestiging_bestelling(keuze, aantal):
     return f"Hier is uw {keuze} met {aantal} bolletje(s)."
 
-# Functie om de bon af te drukken
+# Functie om de bon te printen
+
 def print_bon(bestellingen, klant_type):
     print("\n---------[\"Papi Gelato\"]---------")
     totaal = 0.0
@@ -111,13 +112,13 @@ def print_bon(bestellingen, klant_type):
             print(f"Toppings     {'':>3}            = €{bestellingen['topping_prijs']:7.2f}")
             totaal += bestellingen["topping_prijs"]
 
-    # Totaal en BTW
-    print(f"{'':>31}--------- +")
-    print(f"Totaal{'':>24}= €{totaal:7.2f}")
+    # Totaal
+    print(f"{'':>27}--------- +")
+    print(f"Totaal{'':>20}= €{totaal:7.2f}")
 
     if klant_type == "zakelijk":
         btw = totaal * 0.09  # 9% BTW
-        print(f"BTW (9%){'':>21}= €{btw:7.2f}")
+        print(f"BTW (9%){'':>22}= €{btw:7.2f}")
 
     print("\nBedankt en tot ziens!")
 
@@ -133,44 +134,36 @@ def controleer_klant_type(keuze):
         return "zakelijk"
     return None
 
-
-# Nieuwe functies die we hebben toegevoegd:
-
 # Functie voor zakelijke klant workflow
 def zakelijke_klant_workflow(bestellingen):
     print("Zakelijke klant gekozen.")
     
-    # Vraag het aantal bolletjes
-    print(vraag_aantal_bolletjes())
-    keuze = input("> ")
-    status, aantal_bolletjes = controleer_aantal_bolletjes(keuze)
-    
-    if status == "teveel":
-        print(TEKSTEN["teveel_bolletjes"])
-        return
-    
-    # Voeg het aantal bolletjes toe aan de bestelling
-    bestellingen["bolletjes"] = aantal_bolletjes
+    # Vraag het aantal liters
+    while True:
+        print("Hoeveel liter wilt u bestellen?")
+        keuze = input("> ").strip()
+        try:
+            liters = int(keuze)
+            if liters > 0:
+                bestellingen["liters"] = liters
+                break
+            else:
+                print("Sorry, dat aantal begrijp ik niet. Probeer opnieuw.")
+        except ValueError:
+            print("Sorry, dat aantal begrijp ik niet. Probeer opnieuw.")
     
     # Vraag naar de smaken en voeg ze toe
-    for i in range(1, aantal_bolletjes + 1):
-        print(vraag_smaak(i))
-        smaak_keuze = input("> ").upper()
-        smaak = controleer_smaak(smaak_keuze)
-        
-        if smaak:
-            bestellingen["smaken"][smaak] += 1
-    
-    # Vraag om topping
-    print(vraag_topping())
-    topping_keuze = input("> ").upper()
-    topping = controleer_topping(topping_keuze)
-    
-    if topping:
-        bestellingen["topping_prijs"] = bereken_topping_prijs(topping, aantal_bolletjes, "hoorntje")
-    
-    # Bevestig de bestelling
-    print(bevestiging_bestelling("zakelijke bestelling", aantal_bolletjes))
+    for i in range(1, liters + 1):
+        while True:
+            print(f"Welke smaak wilt u voor liter nummer {i}? A) Aardbei, C) Chocolade, M) Munt of V) Vanille?")
+            smaak_keuze = input("> ").strip().upper()
+            smaak = controleer_smaak(smaak_keuze)
+            
+            if smaak:
+                bestellingen["smaken"][smaak] += 1
+                break
+            else:
+                print("Sorry, die smaak begrijp ik niet.")
     
     # Print de bon
     print_bon(bestellingen, "zakelijk")
