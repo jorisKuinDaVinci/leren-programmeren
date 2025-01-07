@@ -1,5 +1,5 @@
 from functions_Papi_Gelato import (
-    controleer_klant_type,
+    vraag_klant_type_via_invoer,
     zakelijke_klant_workflow,
     particulier_workflow
 )
@@ -7,7 +7,8 @@ from functions_Papi_Gelato import (
 def main():
     """Hoofdprogramma van de applicatie."""
     while True:
-        klant_type = controleer_klant_type()
+        # Vraag het klanttype
+        klant_type = vraag_klant_type_via_invoer()
 
         if klant_type == "particulier":
             bestellingen = {

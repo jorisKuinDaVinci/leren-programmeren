@@ -136,7 +136,7 @@ def print_bon(bestellingen, klant_type):
 
     if klant_type == "zakelijk":
         btw = totaal * BTW_TARIEF["standaard"]
-        print(f"BTW ({BTW_TARIEF['standaard'] * 100:.0f}%) {'':>21}= €{btw:7.2f}")
+        print(f"BTW ({BTW_TARIEF['standaard'] * 100:.0f}%) {'':>17}= €{btw:7.2f}")
 
     print("\nBedankt en tot ziens!")
 
@@ -180,8 +180,8 @@ def zakelijke_klant_workflow(bestellingen):
     # Vraag naar de smaken en voeg ze toe
     for i in range(1, liters + 1):
         while True:
-            print(f"Welke smaak wilt u voor liter nummer {i}? A) Aardbei, C) Chocolade of V) Vanille?")
-            smaak = controleer_smaak()
+            # Vraag naar de smaak
+            smaak = vraag_smaak_via_invoer(1)  # Voor bolletje nummer 1
             
             if smaak:
                 bestellingen["smaken"][smaak] += 1
@@ -210,24 +210,22 @@ def particulier_workflow(bestellingen):
     
     # Vraag naar de smaken en voeg ze toe
     for i in range(1, aantal_bolletjes + 1):
-        print(vraag_smaak(i))
-        smaak = controleer_smaak()
-        
+
+        # Vraag naar de smaak
+        smaak = vraag_smaak_via_invoer(1)  # Voor bolletje nummer 1
         if smaak:
             bestellingen["smaken"][smaak] += 1
     
-    # Vraag naar het type (hoorntje of bakje)
-    print(vraag_hoorntje_of_bakje(aantal_bolletjes))
-    type_keuze = controleer_keuze()
+    # Vraag naar hoorntje of bakje
+    type_keuze = vraag_hoorntje_of_bakje_via_invoer()
     
     if type_keuze == "hoorntje":
         bestellingen["hoorntjes"] = aantal_bolletjes
     elif type_keuze == "bakje":
         bestellingen["bakjes"] = aantal_bolletjes
     
-    # Vraag om topping
-    print(vraag_topping())
-    topping = controleer_topping()
+    # Vraag naar de topping
+    topping = vraag_topping_via_invoer()
     
     if topping:
         bestellingen["topping_prijs"] = bereken_topping_prijs(topping, aantal_bolletjes, type_keuze)
