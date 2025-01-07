@@ -1,17 +1,5 @@
 from functions_Papi_Gelato import (
     vraag_invoer,
-    #vraag_aantal_bolletjes,
-    #controleer_aantal_bolletjes,
-    #vraag_smaak,
-    #controleer_smaak,
-    #vraag_hoorntje_of_bakje,
-    #controleer_keuze,
-    #vraag_topping,
-    #controleer_topping,
-    #bereken_topping_prijs,
-    #bevestiging_bestelling,
-    #print_bon,
-    #vraag_klant_type,
     controleer_klant_type,
     zakelijke_klant_workflow,
     particulier_workflow
