@@ -179,16 +179,11 @@ def zakelijke_klant_workflow(bestellingen):
     
     # Vraag naar de smaken en voeg ze toe
     for i in range(1, liters + 1):
-        while True:
-            # Vraag naar de smaak
-            smaak = vraag_smaak_via_invoer(1)  # Voor bolletje nummer 1
-            
-            if smaak:
-                bestellingen["smaken"][smaak] += 1
-                break
-            else:
-                print("Sorry, die smaak begrijp ik niet.")
-    
+        smaak = vraag_invoer(
+            f"Welke smaak wilt u voor liter nummer {i}? A) Aardbei, C) Chocolade, V) Vanille?",
+            [controleer_smaak]
+        )
+        bestellingen["smaken"][smaak] += 1
     # Print de bon
     print_bon(bestellingen, "zakelijk")
 

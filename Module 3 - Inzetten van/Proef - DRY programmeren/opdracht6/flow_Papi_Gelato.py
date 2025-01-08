@@ -21,7 +21,7 @@ def main():
             particulier_workflow(bestellingen)
             break
 
-        elif klant_type == "zakelijk":
+        if klant_type == "zakelijk":
             bestellingen = {
                 "liters": 0,
                 "smaken": {"Aardbei": 0, "Chocolade": 0, "Vanille": 0},
