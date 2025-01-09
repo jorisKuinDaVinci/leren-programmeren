@@ -118,7 +118,7 @@ def print_bon(bestellingen, klant_type):
 
     if klant_type == "zakelijk":
         btw = totaal * 0.09  # 9% BTW
-        print(f"BTW (9%){'':>22}= €{btw:7.2f}")
+        print(f"BTW (9%){'':>18}= €{btw:7.2f}")
 
     print("\nBedankt en tot ziens!")
 
