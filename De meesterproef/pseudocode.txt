@@ -1,0 +1,22 @@
+START
+
+// Definieer basisvariabelen
+WOORDENLIJST ← ["woordenlijst", "met", "willekeurige", "woorden"]
+BINGOKAART_TEAM1 ← 4x4 matrix gevuld met lege velden
+BINGOKAART_TEAM2 ← 4x4 matrix gevuld met lege velden
+TEAM1_SCORE ← 0
+TEAM2_SCORE ← 0
+TEAM1_RODE_BALLEN ← 0
+TEAM2_RODE_BALLEN ← 0
+TEAM1_GROENE_BALLEN ← 0
+TEAM2_GROENE_BALLEN ← 0
+SPEL_AAN_DE_GANG ← TRUE
+
+WHILE SPEL_AAN_DE_GANG DO
+    // Selecteer een willekeurig woord
+    TE_RADEN_WOORD ← Willekeurig selecteer uit WOORDENLIJST
+    BEGINLETTER ← Eerste letter van TE_RADEN_WOORD
+    HUIDIG_TEAM ← Team dat aan de beurt is
+
+    // Start ronde voor huidig team
+    POGINGEN ← 0
