@@ -1,7 +1,7 @@
 START
 
-// Definieer basisvariabelen
-WOORDENLIJST ← (words in lingowords.py)
+// Initialiseer variabelen
+WOORDENLIJST ← lijst met woorden in lingowords.py
 BINGOKAART_TEAM1 ← 4x4 matrix gevuld met lege velden
 BINGOKAART_TEAM2 ← 4x4 matrix gevuld met lege velden
 TEAM1_SCORE ← 0
@@ -10,13 +10,97 @@ TEAM1_RODE_BALLEN ← 0
 TEAM2_RODE_BALLEN ← 0
 TEAM1_GROENE_BALLEN ← 0
 TEAM2_GROENE_BALLEN ← 0
+TEAM1_FOUTE_RIJ ← 0
+TEAM2_FOUTE_RIJ ← 0
 SPEL_AAN_DE_GANG ← TRUE
+HUIDIG_TEAM ← "TEAM1"
 
 WHILE SPEL_AAN_DE_GANG
     // Selecteer een willekeurig woord
-    TE_RADEN_WOORD ← Willekeurig selecteer uit words in lingowords.py
+    TE_RADEN_WOORD ← Willekeurig woord uit WOORDENLIJST
     BEGINLETTER ← Eerste letter van TE_RADEN_WOORD
-    HUIDIG_TEAM ← Team dat aan de beurt is
-
-    // Start ronde voor huidig team
+    GERADEN_LETTERS ← Lijst met BEGINLETTER en lege posities
     POGINGEN ← 0
+    WOORD_GERADEN ← FALSE
+
+    // Toon beginletter aan het team
+    PRINT "Het woord begint met: " + BEGINLETTER
+
+    // Het team krijgt 5 pogingen
+    WHILE POGINGEN < 5 AND NOT WOORD_GERADEN
+        // Vraag invoer van het team
+        INVOER ← Vraag team om een woord van dezelfde lengte
+        POGINGEN ← POGINGEN + 1
+
+        // Controleer letters
+        VOOR i ← 0 TOT lengte van TE_RADEN_WOORD
+            ALS INVOER[i] = TE_RADEN_WOORD[i] DAN
+                GERADEN_LETTERS[i] ← INVOER[i] // Letter op de juiste plaats (groen)
+            ANDERS ALS INVOER[i] IN TE_RADEN_WOORD DAN
+                MARKEREN ALS GEEL (letter in woord, verkeerde plaats)
+
+        // Toon resultaat
+        PRINT GERADEN_LETTERS
+
+        // Controleer of het woord geraden is
+        ALS INVOER = TE_RADEN_WOORD DAN
+            WOORD_GERADEN ← TRUE
+            PRINT "Correct! Het woord is geraden!"
+
+    // Evalueer ronde
+    ALS WOORD_GERADEN DAN
+        // Reset foutencounter
+        ALS HUIDIG_TEAM = "TEAM1" DAN TEAM1_FOUTE_RIJ ← 0
+        ANDERS TEAM2_FOUTE_RIJ ← 0
+
+        // Grabbelen in de ballenbak
+        BALLEN ← 2
+        WHILE BALLEN > 0 DO
+            BAL ← Grabbelen uit ballenbak
+            PRINT "Team trekt bal: " + BAL
+
+            // Verwerk bal
+            ALS BAL = "ROOD" DAN
+                ALS HUIDIG_TEAM = "TEAM1" DAN TEAM1_RODE_BALLEN ← TEAM1_RODE_BALLEN + 1
+                ANDERS TEAM2_RODE_BALLEN ← TEAM2_RODE_BALLEN + 1
+                BREAK // Stop met grabbelen als de eerste bal rood is
+            ANDERS ALS BAL = "GROEN" DAN
+                ALS HUIDIG_TEAM = "TEAM1" DAN TEAM1_GROENE_BALLEN ← TEAM1_GROENE_BALLEN + 1
+                ANDERS TEAM2_GROENE_BALLEN ← TEAM2_GROENE_BALLEN + 1
+            ANDERS // Voeg nummer toe aan de bingo kaart
+                ALS HUIDIG_TEAM = "TEAM1" DAN Update BINGOKAART_TEAM1 met BAL
+                ANDERS Update BINGOKAART_TEAM2 met BAL
+
+            BALLEN ← BALLEN - 1
+
+    ANDERS // Woord niet geraden
+        ALS HUIDIG_TEAM = "TEAM1" DAN TEAM1_FOUTE_RIJ ← TEAM1_FOUTE_RIJ + 1
+        ANDERS TEAM2_FOUTE_RIJ ← TEAM2_FOUTE_RIJ + 1
+
+    // Controleer eindvoorwaarden
+    ALS TEAM1_GROENE_BALLEN = 3 OF Bingo op BINGOKAART_TEAM1 OF TEAM1_SCORE = 10 DAN
+        PRINT "Team 1 wint!"
+        SPEL_AAN_DE_GANG ← FALSE
+    ALS TEAM2_GROENE_BALLEN = 3 OF Bingo op BINGOKAART_TEAM2 OF TEAM2_SCORE = 10 DAN
+        PRINT "Team 2 wint!"
+        SPEL_AAN_DE_GANG ← FALSE
+    ALS TEAM1_RODE_BALLEN = 3 OF TEAM1_FOUTE_RIJ = 3 DAN
+        PRINT "Team 1 verliest!"
+        SPEL_AAN_DE_GANG ← FALSE
+    ALS TEAM2_RODE_BALLEN = 3 OF TEAM2_FOUTE_RIJ = 3 DAN
+        PRINT "Team 2 verliest!"
+        SPEL_AAN_DE_GANG ← FALSE
+
+    // Wissel team
+    ALS HUIDIG_TEAM = "TEAM1" DAN HUIDIG_TEAM ← "TEAM2"
+    ANDERS HUIDIG_TEAM ← "TEAM1"
+
+EINDE WHILE
+
+// Vraag om opnieuw te spelen
+PRINT "Wil je opnieuw spelen? (ja/nee)"
+INVOER ← Vraag invoer
+ALS INVOER = "ja" DAN SPEL_AAN_DE_GANG ← TRUE
+ANDERS PRINT "Bedankt voor het spelen!"
+
+EINDE
