@@ -1,4 +1,9 @@
 import random
+from lingowords import words  # Importeer de woordenlijst
+
+def kies_willekeurig_woord():
+    """Selecteert een willekeurig woord uit de lijst."""
+    return random.choice(words)
 
 # Bingo-kaarten initialiseren
 def bingokaart():
