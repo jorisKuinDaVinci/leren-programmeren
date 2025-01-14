@@ -73,3 +73,25 @@ def controleer_letters(te_raden_woord, invoer, geraden_letters):
 def vraag_opnieuw_spelen():
     antwoord = input("Wil je opnieuw spelen? (ja/nee): ").strip().lower()
     return antwoord == "ja"
+
+def raad_woord(te_raden_woord, geraden_letters):
+    """Functie om een speler het woord te laten raden"""
+    woord_geraden = False
+    pogingen = 0
+
+    while pogingen < 5 and not woord_geraden:
+        print("Raad het woord: ", " ".join(geraden_letters))
+        invoer = input("Jouw gok: ").lower()
+
+        if len(invoer) != len(te_raden_woord):
+            print("Fout: Het woord moet dezelfde lengte hebben!")
+            continue
+
+        pogingen += 1
+        geraden_letters = controleer_letters(te_raden_woord, invoer, geraden_letters)
+
+        if "".join(geraden_letters) == te_raden_woord:
+            woord_geraden = True
+            print(f"Gefeliciteerd, het woord was correct!")
+
+    return woord_geraden, geraden_letters

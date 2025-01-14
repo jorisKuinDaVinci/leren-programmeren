@@ -6,6 +6,7 @@ from Lingo.functions import (
     selecteer_woord_en_beginletter,
     controleer_letters,
     vraag_opnieuw_spelen,
+    raad_woord,  # Importeer de nieuwe functie
 )
 from Lingo.lingowords import woordenlijst
 
@@ -23,23 +24,9 @@ def speel_lingo():
         # Selecteer een woord en beginletter
         te_raden_woord, geraden_letters = selecteer_woord_en_beginletter(woordenlijst)
         print(f"\n{huidig_team} is aan de beurt! Het woord begint met: {te_raden_woord[0]}")
-        
-        woord_geraden = False
-        pogingen = 0
 
-        while pogingen < 5 and not woord_geraden:
-            print("Raad het woord: ", " ".join(geraden_letters))
-            invoer = input("Jouw gok: ").lower()
-            if len(invoer) != len(te_raden_woord):
-                print("Fout: Het woord moet dezelfde lengte hebben!")
-                continue
-
-            pogingen += 1
-            geraden_letters = controleer_letters(te_raden_woord, invoer, geraden_letters)
-
-            if "".join(geraden_letters) == te_raden_woord:
-                woord_geraden = True
-                print(f"Gefeliciteerd {huidig_team}, het woord was correct!")
+        # Gebruik de nieuwe raad_woord functie
+        woord_geraden, geraden_letters = raad_woord(te_raden_woord, geraden_letters)
 
         if woord_geraden:
             if huidig_team == "TEAM1":
