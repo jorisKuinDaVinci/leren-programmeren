@@ -7,7 +7,7 @@ def init_bingokaart():
 # Toon bingo-kaart
 def print_bingokaart(kaart):
     for rij in kaart:
-        print(" | ".join([str(item).rjust(2) if item else "  " for item in rij]))
+        print(" | ".join([str(item) if item else " " for item in rij]))
     print()
 
 # Controleer op bingo
