@@ -1,4 +1,3 @@
-import random
 from Lingo.functions import (
     bingokaart,
     print_bingokaart,
@@ -8,8 +7,7 @@ from Lingo.functions import (
     controleer_letters,
     vraag_opnieuw_spelen,
 )
-
-WOORDENLIJST = ["voorbeeld", "woordenlijst", "testwoord", "spel", "lingo", "python"]
+from Lingo.lingowords import woordenlijst
 
 def speel_lingo():
     bingokaart_team1 = bingokaart()
@@ -23,7 +21,7 @@ def speel_lingo():
 
     while spel_aan_de_gang:
         # Selecteer een woord en beginletter
-        te_raden_woord, geraden_letters = selecteer_woord_en_beginletter(WOORDENLIJST)
+        te_raden_woord, geraden_letters = selecteer_woord_en_beginletter(woordenlijst)
         print(f"\n{huidig_team} is aan de beurt! Het woord begint met: {te_raden_woord[0]}")
         
         woord_geraden = False
@@ -86,4 +84,5 @@ def speel_lingo():
     else:
         print("Bedankt voor het spelen!")
 
-speel_lingo()
+if __name__ == "__main__":
+    speel_lingo()
