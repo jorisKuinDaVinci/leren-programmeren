@@ -1,5 +1,5 @@
 import random
-from functions import (
+from Lingo.functions import (
     bingokaart,
     print_bingokaart,
     check_bingo,
