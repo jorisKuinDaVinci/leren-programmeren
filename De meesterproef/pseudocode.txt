@@ -55,7 +55,7 @@ WHILE SPEL_AAN_DE_GANG
 
         // Grabbelen in de ballenbak
         BALLEN ← 2
-        WHILE BALLEN > 0 DO
+        WHILE BALLEN > 0
             BAL ← Grabbelen uit ballenbak
             PRINT "Team trekt bal: " + BAL
 
