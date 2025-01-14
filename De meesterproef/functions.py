@@ -1,7 +1,7 @@
 import random
 
 # Bingo-kaarten initialiseren
-def init_bingokaart():
+def bingokaart():
     return [["" for _ in range(4)] for _ in range(4)]
 
 # Toon bingo-kaart
