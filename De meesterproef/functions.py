@@ -46,3 +46,24 @@ def grabbel_ballen(huidig_team, bingokaart, groene_ballen, rode_ballen):
                 if toegevoegd:
                     break
     return groene_ballen, rode_ballen, True
+
+# Selecteer een woord en beginletter
+def selecteer_woord_en_beginletter(woordenlijst):
+    te_raden_woord = random.choice(woordenlijst)
+    beginletter = te_raden_woord[0]
+    geraden_letters = [beginletter] + ["_"] * (len(te_raden_woord) - 1)
+    return te_raden_woord, geraden_letters
+
+# Controleer de letters in het woord
+def controleer_letters(te_raden_woord, invoer, geraden_letters):
+    for i in range(len(te_raden_woord)):
+        if invoer[i] == te_raden_woord[i]:
+            geraden_letters[i] = invoer[i]  # Juiste plaats (groen)
+        elif invoer[i] in te_raden_woord:
+            print(f"Letter {invoer[i]} is in het woord, maar op de verkeerde plaats (geel).")
+    return geraden_letters
+
+# Vraag of spelers opnieuw willen spelen
+def vraag_opnieuw_spelen():
+    opnieuw = input("Wil je opnieuw spelen? (ja/nee): ").lower()
+    return opnieuw == "ja"
