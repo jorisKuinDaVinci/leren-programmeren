@@ -38,7 +38,7 @@ def speel_lingo():
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)
 
-        # Debug: toon het woord als de speler Joris heet
+        # Debug: toon het woord
         toon_te_raden_woord(speler_naam, te_raden_woord)
 
         # Woord raden
