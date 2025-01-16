@@ -48,7 +48,7 @@ def grabbel_ballen(team, kaart, groene_ballen, rode_ballen):
             doorgaan = False
         else:
             nummer_getrokken(team, bal)
-            # Bereken rij- en kolomindex zonder divmod
+            # Bereken rij- en kolomindex
             rijnummer = (bal - 1) // 4
             kolomnummer = (bal - 1) % 4
             kaart[rijnummer][kolomnummer] = bal
@@ -64,7 +64,7 @@ def selecteer_woord_en_beginletter(woordenlijst):
 
 def controleer_letters(te_raden_woord, invoer, geraden_letters):
     nieuwe_geraden = geraden_letters[:]
-    for i in range(len(invoer)):  # Gebruik range in plaats van enumerate
+    for i in range(len(invoer)):
         letter = invoer[i]
         if te_raden_woord[i] == letter:
             nieuwe_geraden[i] = letter
