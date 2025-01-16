@@ -4,13 +4,13 @@ from functions import (
     grabbel_ballen,
     selecteer_woord_en_beginletter,
     raad_woord,
-    vraag_opnieuw_spelen,
 )
 from teksten import (
     welkom_bericht,
     team_aan_de_beurt,
     helaas,
-    einde_spel
+    einde_spel,
+    vraag_opnieuw_spelen
 )
 from lingowords import woordenlijst
 

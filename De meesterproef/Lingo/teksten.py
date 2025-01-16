@@ -36,3 +36,16 @@ def opnieuw_spelen_prompt():
 def raad_woord_prompt(geraden_letters):
     print("Raad het woord: ", " ".join(geraden_letters))
     return input("Jouw gok: ").lower()
+
+def vraag_opnieuw_spelen():
+    """Vraagt de speler of deze opnieuw wil spelen."""
+    while True:
+        antwoord = input("Wil je opnieuw spelen? (ja/nee): ").strip().lower()
+        if antwoord == "ja":
+            print("Het spel wordt opnieuw gestart!")
+            return True
+        elif antwoord == "nee":
+            print("Bedankt voor het spelen! Tot ziens!")
+            return False
+        else:
+            print("Ongeldig antwoord. Typ 'ja' of 'nee'.")
