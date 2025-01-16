@@ -3,7 +3,7 @@ from functions import (
     kies_willekeurig_woord,
     controleer_letters,
     raad_woord,
-    toon_te_raden_woord_als_joris,
+    toon_te_raden_woord,
     bingokaart,
     print_bingokaart,
     check_bingo,
@@ -39,7 +39,7 @@ def speel_lingo():
         geraden_letters = ["_"] * len(te_raden_woord)
 
         # Debug: toon het woord als de speler Joris heet
-        toon_te_raden_woord_als_joris(speler_naam, te_raden_woord)
+        toon_te_raden_woord(speler_naam, te_raden_woord)
 
         # Woord raden
         woord_geraden = raad_woord(te_raden_woord, geraden_letters)

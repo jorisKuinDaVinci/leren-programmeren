@@ -34,7 +34,7 @@ def raad_woord(te_raden_woord, geraden_letters):
     return False
 
 
-def toon_te_raden_woord_als_joris(speler_naam, te_raden_woord):
+def toon_te_raden_woord(speler_naam, te_raden_woord):
     """Toon het te raden woord als de speler 'Joris' heet."""
     if speler_naam.lower() == "joris":
         print(f"[DEBUG] Het te raden woord is: {te_raden_woord}")
