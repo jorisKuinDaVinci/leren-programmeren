@@ -1,16 +1,21 @@
 from Lingo.functions import (
     bingokaart,
-    print_bingokaart,
     check_bingo,
     grabbel_ballen,
     selecteer_woord_en_beginletter,
-    controleer_letters,
+    raad_woord,
     vraag_opnieuw_spelen,
-    raad_woord,  # Importeer de nieuwe functie
+)
+from Lingo.teksten import (
+    welkom_bericht,
+    team_aan_de_beurt,
+    helaas,
+    einde_spel
 )
 from Lingo.lingowords import woordenlijst
 
 def speel_lingo():
+    welkom_bericht()
     bingokaart_team1 = bingokaart()
     bingokaart_team2 = bingokaart()
     team1_score, team2_score = 0, 0
@@ -21,11 +26,9 @@ def speel_lingo():
     huidig_team = "TEAM1"
 
     while spel_aan_de_gang:
-        # Selecteer een woord en beginletter
         te_raden_woord, geraden_letters = selecteer_woord_en_beginletter(woordenlijst)
-        print(f"\n{huidig_team} is aan de beurt! Het woord begint met: {te_raden_woord[0]}")
+        team_aan_de_beurt(huidig_team, te_raden_woord[0])
 
-        # Gebruik de nieuwe raad_woord functie
         woord_geraden, geraden_letters = raad_woord(te_raden_woord, geraden_letters)
 
         if woord_geraden:
@@ -42,7 +45,7 @@ def speel_lingo():
                     huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen
                 )
         else:
-            print(f"Helaas {huidig_team}, het woord was: {te_raden_woord}")
+            helaas(huidig_team, te_raden_woord)
             if huidig_team == "TEAM1":
                 team1_foute_rij += 1
             else:
@@ -61,7 +64,7 @@ def speel_lingo():
             or team2_rode_ballen == 3
             or team2_foute_rij == 3
         ):
-            print(f"Einde spel! {huidig_team} wint!")
+            einde_spel(huidig_team)
             break
 
         huidig_team = "TEAM2" if huidig_team == "TEAM1" else "TEAM1"

@@ -1,12 +1,14 @@
 import random
+from Lingo.teksten import (
+    groene_bal_getrokken,
+    rode_bal_getrokken,
+    nummer_getrokken,
+    toon_bingokaart
+)
 from Lingo.lingowords import woordenlijst
 
 def bingokaart():
     return [[0] * 4 for _ in range(4)]
-
-def print_bingokaart(kaart):
-    for rij in kaart:
-        print(" ".join(str(getal) if getal != 0 else "_" for getal in rij))
 
 def check_bingo(kaart):
     # Controleer rijen, kolommen en diagonalen op bingo
@@ -29,7 +31,6 @@ def grabbel_ballen(team, kaart, groene_ballen, rode_ballen):
     nummers = [n for n in range(1, 17)]
     ballenbak = groene + rode + nummers
 
-    print(f"{team} mag twee keer grabbelen!")
     doorgaan = True
 
     for _ in range(2):
@@ -39,19 +40,20 @@ def grabbel_ballen(team, kaart, groene_ballen, rode_ballen):
         ballenbak.remove(bal)
 
         if bal == "groen":
-            print(f"{team} heeft een groene bal getrokken!")
+            groene_bal_getrokken(team)
             groene_ballen += 1
         elif bal == "rood":
-            print(f"{team} heeft een rode bal getrokken!")
+            rode_bal_getrokken(team)
             rode_ballen += 1
             doorgaan = False
         else:
-            print(f"{team} heeft balnummer {bal} getrokken!")
-            rijnummer, kolomnummer = divmod(bal - 1, 4)
+            nummer_getrokken(team, bal)
+            # Bereken rij- en kolomindex zonder divmod
+            rijnummer = (bal - 1) // 4
+            kolomnummer = (bal - 1) % 4
             kaart[rijnummer][kolomnummer] = bal
 
-    print(f"Bingo-kaart van {team}:")
-    print_bingokaart(kaart)
+    toon_bingokaart(team, kaart)
     return groene_ballen, rode_ballen, doorgaan
 
 def selecteer_woord_en_beginletter(woordenlijst):
@@ -62,7 +64,8 @@ def selecteer_woord_en_beginletter(woordenlijst):
 
 def controleer_letters(te_raden_woord, invoer, geraden_letters):
     nieuwe_geraden = geraden_letters[:]
-    for i, letter in enumerate(invoer):
+    for i in range(len(invoer)):  # Gebruik range in plaats van enumerate
+        letter = invoer[i]
         if te_raden_woord[i] == letter:
             nieuwe_geraden[i] = letter
         elif letter in te_raden_woord:
@@ -70,21 +73,17 @@ def controleer_letters(te_raden_woord, invoer, geraden_letters):
                 nieuwe_geraden[i] = "*"
     return nieuwe_geraden
 
-def vraag_opnieuw_spelen():
-    antwoord = input("Wil je opnieuw spelen? (ja/nee): ").strip().lower()
-    return antwoord == "ja"
-
 def raad_woord(te_raden_woord, geraden_letters):
-    """Functie om een speler het woord te laten raden"""
+    from Lingo.teksten import raad_woord_prompt, foutieve_lengte, gefeliciteerd
+
     woord_geraden = False
     pogingen = 0
 
     while pogingen < 5 and not woord_geraden:
-        print("Raad het woord: ", " ".join(geraden_letters))
-        invoer = input("Jouw gok: ").lower()
+        invoer = raad_woord_prompt(geraden_letters)
 
         if len(invoer) != len(te_raden_woord):
-            print("Fout: Het woord moet dezelfde lengte hebben!")
+            foutieve_lengte()
             continue
 
         pogingen += 1
@@ -92,6 +91,6 @@ def raad_woord(te_raden_woord, geraden_letters):
 
         if "".join(geraden_letters) == te_raden_woord:
             woord_geraden = True
-            print(f"Gefeliciteerd, het woord was correct!")
+            gefeliciteerd("")
 
     return woord_geraden, geraden_letters
