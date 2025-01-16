@@ -1,51 +1,29 @@
-def welkom_bericht():
-    print("Welkom bij Lingo! Het leukste spel met woorden en bingo.")
+def print_introductie():
+    """Print de introductietekst."""
+    print("Welkom bij het Lingo-spel! Twee teams gaan de strijd aan.")
 
-def team_aan_de_beurt(team, beginletter):
+
+def print_beurt_start(team, beginletter):
+    """Print dat een team aan de beurt is met de beginletter van het woord."""
     print(f"\n{team} is aan de beurt! Het woord begint met: {beginletter}")
 
-def foutieve_lengte():
-    print("Fout: Het woord moet dezelfde lengte hebben!")
 
-def gefeliciteerd(team):
-    print(f"Gefeliciteerd {team}, het woord was correct!")
+def print_fout_woord_lengte():
+    """Print een foutmelding als het ingevoerde woord niet de juiste lengte heeft."""
+    print("Fout: Het woord moet dezelfde lengte hebben als het te raden woord!")
 
-def helaas(team, te_raden_woord):
-    print(f"Helaas {team}, het woord was: {te_raden_woord}")
 
-def groene_bal_getrokken(team):
-    print(f"{team} heeft een groene bal getrokken!")
-
-def rode_bal_getrokken(team):
-    print(f"{team} heeft een rode bal getrokken!")
-
-def nummer_getrokken(team, nummer):
-    print(f"{team} heeft balnummer {nummer} getrokken!")
-
-def toon_bingokaart(team, kaart):
-    print(f"Bingo-kaart van {team}:")
-    for rij in kaart:
-        print(" ".join(str(getal) if getal != 0 else "_" for getal in rij))
-
-def einde_spel(team):
+def print_winnaar(team):
+    """Print welke team het spel wint."""
     print(f"Einde spel! {team} wint!")
 
-def opnieuw_spelen_prompt():
-    return input("Wil je opnieuw spelen? (ja/nee): ").strip().lower()
 
-def raad_woord_prompt(geraden_letters):
-    print("Raad het woord: ", " ".join(geraden_letters))
-    return input("Jouw gok: ").lower()
+def print_afsluiting():
+    """Print een afsluitende tekst."""
+    print("Bedankt voor het spelen! Tot de volgende keer!")
+
 
 def vraag_opnieuw_spelen():
-    """Vraagt de speler of deze opnieuw wil spelen."""
-    while True:
-        antwoord = input("Wil je opnieuw spelen? (ja/nee): ").strip().lower()
-        if antwoord == "ja":
-            print("Het spel wordt opnieuw gestart!")
-            return True
-        elif antwoord == "nee":
-            print("Bedankt voor het spelen! Tot ziens!")
-            return False
-        else:
-            print("Ongeldig antwoord. Typ 'ja' of 'nee'.")
+    """Vraag de speler of ze opnieuw willen spelen."""
+    antwoord = input("Wil je opnieuw spelen? (ja/nee): ").lower()
+    return antwoord == "ja"
