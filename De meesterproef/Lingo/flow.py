@@ -1,9 +1,13 @@
 import random
-from Lingo.functions import (
+from functions import (
     kies_willekeurig_woord,
     controleer_letters,
     raad_woord,
-    toon_te_raden_woord_als_joris
+    toon_te_raden_woord_als_joris,
+    bingokaart,
+    print_bingokaart,
+    check_bingo,
+    grabbel_ballen,
 )
 from teksten import (
     print_introductie,
@@ -20,23 +24,21 @@ from lingowords import words as woordenlijst
 def speel_lingo():
     speler_naam = vraag_naam()
 
+    # Maak bingokaarten en scores
     bingokaart_team1 = bingokaart()
     bingokaart_team2 = bingokaart()
     team1_score, team2_score = 0, 0
     team1_rode_ballen, team2_rode_ballen = 0, 0
     team1_groene_ballen, team2_groene_ballen = 0, 0
     team1_foute_rij, team2_foute_rij = 0, 0
+    spel_aan_de_gang = True
     huidig_team = "TEAM1"
 
-    print_introductie()
-
-    while True:
-        # Selecteer een nieuw woord en start de beurt
+    while spel_aan_de_gang:
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)
-        print_beurt_start(huidig_team, te_raden_woord[0])
 
-        # Controleer of het woord moet worden getoond
+        # Debug: toon het woord als de speler Joris heet
         toon_te_raden_woord_als_joris(speler_naam, te_raden_woord)
 
         # Woord raden
@@ -89,4 +91,5 @@ def speel_lingo():
         print_afsluiting()
 
 
+# Start het spel
 speel_lingo()
