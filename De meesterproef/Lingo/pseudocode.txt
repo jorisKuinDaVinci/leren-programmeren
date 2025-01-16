@@ -1,106 +1,96 @@
-START
+Pseudocode voor Lingo
 
-// Initialiseer variabelen
-WOORDENLIJST ← lijst met woorden in lingowords.py
-BINGOKAART_TEAM1 ← 4x4 matrix gevuld met lege velden
-BINGOKAART_TEAM2 ← 4x4 matrix gevuld met lege velden
-TEAM1_SCORE ← 0
-TEAM2_SCORE ← 0
-TEAM1_RODE_BALLEN ← 0
-TEAM2_RODE_BALLEN ← 0
-TEAM1_GROENE_BALLEN ← 0
-TEAM2_GROENE_BALLEN ← 0
-TEAM1_FOUTE_RIJ ← 0
-TEAM2_FOUTE_RIJ ← 0
-SPEL_AAN_DE_GANG ← TRUE
-HUIDIG_TEAM ← "TEAM1"
 
-WHILE SPEL_AAN_DE_GANG
-    // Selecteer een willekeurig woord
-    TE_RADEN_WOORD ← Willekeurig woord uit WOORDENLIJST
-    BEGINLETTER ← Eerste letter van TE_RADEN_WOORD
-    GERADEN_LETTERS ← Lijst met BEGINLETTER en lege posities
-    POGINGEN ← 0
-    WOORD_GERADEN ← FALSE
+1. Begin Spel
 
-    // Toon beginletter aan het team
-    PRINT "Het woord begint met: " + BEGINLETTER
 
-    // Het team krijgt 5 pogingen
-    WHILE POGINGEN < 5 AND NOT WOORD_GERADEN
-        // Vraag invoer van het team
-        INVOER ← Vraag team om een woord van dezelfde lengte
-        POGINGEN ← POGINGEN + 1
+Toon een welkomstbericht: "Welkom bij Lingo!"
+Initialiseer:
+Bingo-kaarten voor beide teams (lege 4x4-kaarten).
+Scores voor beide teams op 0.
+Rode ballen, groene ballen en foutenrij-tellers voor beide teams op 0.
+Stel het actieve team in op TEAM1.
 
-        // Controleer letters
-        VOOR i ← 0 TOT lengte van TE_RADEN_WOORD
-            ALS INVOER[i] = TE_RADEN_WOORD[i] DAN
-                GERADEN_LETTERS[i] ← INVOER[i] // Letter op de juiste plaats (groen)
-            ANDERS ALS INVOER[i] IN TE_RADEN_WOORD DAN
-                MARKEREN ALS GEEL (letter in woord, verkeerde plaats)
 
-        // Toon resultaat
-        PRINT GERADEN_LETTERS
+2. Spelronde
 
-        // Controleer of het woord geraden is
-        ALS INVOER = TE_RADEN_WOORD DAN
-            WOORD_GERADEN ← TRUE
-            PRINT "Correct! Het woord is geraden!"
 
-    // Evalueer ronde
-    ALS WOORD_GERADEN DAN
-        // Reset foutencounter
-        ALS HUIDIG_TEAM = "TEAM1" DAN TEAM1_FOUTE_RIJ ← 0
-        ANDERS TEAM2_FOUTE_RIJ ← 0
+Herhaal zolang het spel aan de gang is:
 
-        // Grabbelen in de ballenbak
-        BALLEN ← 2
-        WHILE BALLEN > 0
-            BAL ← Grabbelen uit ballenbak
-            PRINT "Team trekt bal: " + BAL
+Selecteer een woord en beginletter:
 
-            // Verwerk bal
-            ALS BAL = "ROOD" DAN
-                ALS HUIDIG_TEAM = "TEAM1" DAN TEAM1_RODE_BALLEN ← TEAM1_RODE_BALLEN + 1
-                ANDERS TEAM2_RODE_BALLEN ← TEAM2_RODE_BALLEN + 1
-                BREAK // Stop met grabbelen als de eerste bal rood is
-            ANDERS ALS BAL = "GROEN" DAN
-                ALS HUIDIG_TEAM = "TEAM1" DAN TEAM1_GROENE_BALLEN ← TEAM1_GROENE_BALLEN + 1
-                ANDERS TEAM2_GROENE_BALLEN ← TEAM2_GROENE_BALLEN + 1
-            ANDERS // Voeg nummer toe aan de bingo kaart
-                ALS HUIDIG_TEAM = "TEAM1" DAN Update BINGOKAART_TEAM1 met BAL
-                ANDERS Update BINGOKAART_TEAM2 met BAL
+Kies een willekeurig woord uit de woordenlijst.
+Laat de eerste letter van het woord zien aan het actieve team.
+Het actieve team raadt het woord:
 
-            BALLEN ← BALLEN - 1
+Herhaal maximaal 5 keer:
+Toon de geraden letters (met onbekende letters als _).
+Laat de speler een gok invoeren.
+Controleer of de lengte van het ingevoerde woord correct is:
+Zo niet, geef een foutmelding en laat opnieuw gokken.
+Vergelijk de gok met het te raden woord:
+Vul correct geraden letters in.
+Markeer onjuiste letters die wel in het woord zitten met *.
+Controleer of het woord volledig geraden is:
+Zo ja, feliciteer het team en beëindig de pogingen.
+Afhandeling na woord raden:
 
-    ANDERS // Woord niet geraden
-        ALS HUIDIG_TEAM = "TEAM1" DAN TEAM1_FOUTE_RIJ ← TEAM1_FOUTE_RIJ + 1
-        ANDERS TEAM2_FOUTE_RIJ ← TEAM2_FOUTE_RIJ + 1
+Als het woord correct is geraden:
+Voeg 1 punt toe aan de score van het actieve team.
+Laat het actieve team twee ballen grabbelen:
+Groene bal: Voeg toe aan groene ballen.
+Rode bal: Voeg toe aan rode ballen en beëindig het grabbelen.
+Nummerbal: Vul het nummer in op de bingo-kaart van het team.
+Toon de bijgewerkte bingo-kaart van het team.
+Als het woord niet is geraden:
+Toon het juiste woord.
+Verhoog de foutenrij-teller van het actieve team.
+Controleer spelbeëindigingsvoorwaarden:
 
-    // Controleer eindvoorwaarden
-    ALS TEAM1_GROENE_BALLEN = 3 OF Bingo op BINGOKAART_TEAM1 OF TEAM1_SCORE = 10 DAN
-        PRINT "Team 1 wint!"
-        SPEL_AAN_DE_GANG ← FALSE
-    ALS TEAM2_GROENE_BALLEN = 3 OF Bingo op BINGOKAART_TEAM2 OF TEAM2_SCORE = 10 DAN
-        PRINT "Team 2 wint!"
-        SPEL_AAN_DE_GANG ← FALSE
-    ALS TEAM1_RODE_BALLEN = 3 OF TEAM1_FOUTE_RIJ = 3 DAN
-        PRINT "Team 1 verliest!"
-        SPEL_AAN_DE_GANG ← FALSE
-    ALS TEAM2_RODE_BALLEN = 3 OF TEAM2_FOUTE_RIJ = 3 DAN
-        PRINT "Team 2 verliest!"
-        SPEL_AAN_DE_GANG ← FALSE
+Het spel eindigt als een van de volgende waar is:
+Een team heeft 3 groene ballen.
+Een team heeft bingo op de kaart.
+Een team heeft 10 punten.
+Een team heeft 3 rode ballen.
+Een team heeft 3 fouten op rij.
+Wissel het actieve team:
 
-    // Wissel team
-    ALS HUIDIG_TEAM = "TEAM1" DAN HUIDIG_TEAM ← "TEAM2"
-    ANDERS HUIDIG_TEAM ← "TEAM1"
+Als het huidige team TEAM1 is, wordt het TEAM2 en andersom.
 
-EINDE WHILE
 
-// Vraag om opnieuw te spelen
-PRINT "Wil je opnieuw spelen? (ja/nee)"
-INVOER ← Vraag invoer
-ALS INVOER = "ja" DAN SPEL_AAN_DE_GANG ← TRUE
-ANDERS PRINT "Bedankt voor het spelen!"
+3. Einde van het spel
 
-EINDE
+
+Toon het winnende team.
+Vraag of de spelers opnieuw willen spelen:
+Ja: Herstart het spel vanaf het begin.
+Nee: Bedank de spelers en beëindig het programma.
+Overzicht van de Hulpfuncties
+Woord Selecteren:
+
+Kies een willekeurig woord uit een vooraf gedefinieerde lijst.
+Geef de eerste letter vrij; markeer de rest met _.
+Letters Controleren:
+
+Vergelijk de gok van de speler met het te raden woord.
+Markeer correcte letters.
+Markeer onjuiste letters die wel in het woord zitten met *.
+Ballen Grabbelen:
+
+Kies willekeurig een bal (groen, rood of een nummer).
+Bij een nummerbal: Bereken de juiste rij- en kolompositie en vul deze in op de bingo-kaart.
+Bingo Controleren:
+
+Controleer rijen, kolommen en diagonalen op volledige invulling.
+Vraag Opnieuw Spelen:
+
+Vraag de speler of het spel opnieuw moet worden gestart.
+
+
+Visuele Structuur van de Programma-Modules
+
+
+flow.py: Bevat de hoofdlogica van het spel.
+functions.py: Bevat alle helperfuncties zoals woordselectie, grabbelballen en bingo-controle.
+teksten.py: Bevat alle printfuncties voor berichten aan de speler.
+lingowords.py: Bevat de woordenlijst voor het spel.
