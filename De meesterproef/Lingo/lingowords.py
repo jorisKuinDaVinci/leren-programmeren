@@ -1,4 +1,4 @@
-woordenlijst = [
+words = [
 	"appel",
 	"aldus",
 	"afwas",
