@@ -1,4 +1,4 @@
-from Lingo.functions import (
+from functions import (
     bingokaart,
     check_bingo,
     grabbel_ballen,
@@ -6,13 +6,13 @@ from Lingo.functions import (
     raad_woord,
     vraag_opnieuw_spelen,
 )
-from Lingo.teksten import (
+from teksten import (
     welkom_bericht,
     team_aan_de_beurt,
     helaas,
     einde_spel
 )
-from Lingo.lingowords import woordenlijst
+from lingowords import woordenlijst
 
 def speel_lingo():
     welkom_bericht()

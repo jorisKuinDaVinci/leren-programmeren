@@ -1,11 +1,11 @@
 import random
-from Lingo.teksten import (
+from teksten import (
     groene_bal_getrokken,
     rode_bal_getrokken,
     nummer_getrokken,
     toon_bingokaart
 )
-from Lingo.lingowords import woordenlijst
+from lingowords import woordenlijst
 
 def bingokaart():
     return [[0] * 4 for _ in range(4)]
