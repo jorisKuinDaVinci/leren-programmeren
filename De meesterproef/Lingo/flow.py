@@ -1,12 +1,9 @@
 import random
-from functions import (
-    bingokaart,
-    print_bingokaart,
-    check_bingo,
-    grabbel_ballen,
+from Lingo.functions import (
     kies_willekeurig_woord,
     controleer_letters,
-    raad_woord
+    raad_woord,
+    toon_te_raden_woord_als_joris
 )
 from teksten import (
     print_introductie,
@@ -39,9 +36,8 @@ def speel_lingo():
         geraden_letters = ["_"] * len(te_raden_woord)
         print_beurt_start(huidig_team, te_raden_woord[0])
 
-        # Laat het te raden woord zien als de speler Joris heet
-        if speler_naam.lower() == "joris":
-            print(f"[DEBUG] Het te raden woord is: {te_raden_woord}")
+        # Controleer of het woord moet worden getoond
+        toon_te_raden_woord_als_joris(speler_naam, te_raden_woord)
 
         # Woord raden
         woord_geraden = raad_woord(te_raden_woord, geraden_letters)
