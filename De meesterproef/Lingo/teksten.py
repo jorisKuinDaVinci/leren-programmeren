@@ -27,3 +27,9 @@ def vraag_opnieuw_spelen():
     """Vraag de speler of ze opnieuw willen spelen."""
     antwoord = input("Wil je opnieuw spelen? (ja/nee): ").lower()
     return antwoord == "ja"
+
+
+def vraag_naam():
+    """Vraag de speler om zijn of haar naam."""
+    naam = input("Wat is jouw naam? ").strip()
+    return naam

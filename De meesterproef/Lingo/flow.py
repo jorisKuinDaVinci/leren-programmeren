@@ -15,11 +15,14 @@ from teksten import (
     print_winnaar,
     print_afsluiting,
     vraag_opnieuw_spelen,
+    vraag_naam
 )
 from lingowords import words as woordenlijst
 
 
 def speel_lingo():
+    speler_naam = vraag_naam()
+
     bingokaart_team1 = bingokaart()
     bingokaart_team2 = bingokaart()
     team1_score, team2_score = 0, 0
@@ -35,6 +38,10 @@ def speel_lingo():
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)
         print_beurt_start(huidig_team, te_raden_woord[0])
+
+        # Laat het te raden woord zien als de speler Joris heet
+        if speler_naam.lower() == "joris":
+            print(f"[DEBUG] Het te raden woord is: {te_raden_woord}")
 
         # Woord raden
         woord_geraden = raad_woord(te_raden_woord, geraden_letters)
