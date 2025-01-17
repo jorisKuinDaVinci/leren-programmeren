@@ -15,20 +15,20 @@ def controleer_letters(te_raden_woord, invoer, geraden_letters):
 
 
 def raad_woord(te_raden_woord, geraden_letters):
-    """Laat de speler proberen het woord te raden."""
-    pogingen = 0
-    while pogingen < 5:
-        print("Raad het woord: ", " ".join(geraden_letters))
-        invoer = input("Jouw gok: ").lower()
+    """
+    Laat de speler een woord raden en geef terug of het woord correct is.
+    """
+    while "_" in geraden_letters:
+        invoer = input("Raad een woord: ")
         if len(invoer) != len(te_raden_woord):
-            print("Fout: Het woord moet dezelfde lengte hebben als het te raden woord!")
+            print(f"Je invoer moet {len(te_raden_woord)} letters lang zijn.")
             continue
 
-        pogingen += 1
         geraden_letters = controleer_letters(te_raden_woord, invoer, geraden_letters)
+        print("Huidige status:", "".join(geraden_letters))
 
         if "".join(geraden_letters) == te_raden_woord:
-            print("Gefeliciteerd, het woord is correct!")
+            print("Gefeliciteerd! Je hebt het woord geraden!")
             return True
 
     return False
