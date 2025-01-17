@@ -56,12 +56,23 @@ def check_bingo(kaart):
     """Controleer of er bingo is (volledige rij of kolom)."""
     # Controleer rijen
     for rij in kaart:
-        if all(vakje == "X" for vakje in rij):
+        volledig_x = True
+        for vakje in rij:
+            if vakje != "X":
+                volledig_x = False
+                break
+        if volledig_x:
             return True
 
     # Controleer kolommen
-    for kolom in range(len(kaart[0])):
-        if all(rij[kolom] == "X" for rij in kaart):
+    aantal_kolommen = len(kaart[0])
+    for kolom in range(aantal_kolommen):
+        volledig_x = True
+        for rij in kaart:
+            if rij[kolom] != "X":
+                volledig_x = False
+                break
+        if volledig_x:
             return True
 
     return False
