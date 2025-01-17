@@ -1,7 +1,5 @@
-import random
 from functions import (
     kies_willekeurig_woord,
-    controleer_letters,
     raad_woord,
     toon_te_raden_woord,
     bingokaart,
@@ -70,6 +68,10 @@ def speel_lingo():
                 team1_foute_rij += 1
             else:
                 team2_foute_rij += 1
+
+        # Toon de huidige bingo-kaarten
+        print(f"De bingo-kaart van {huidig_team}:")
+        print_bingokaart(bingokaart_team1 if huidig_team == "TEAM1" else bingokaart_team2)
 
         # Controleer op eindcondities
         if (
