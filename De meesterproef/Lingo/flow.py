@@ -10,7 +10,6 @@ from functions import (
 from teksten import (
     print_introductie,
     print_beurt_start,
-    print_fout_woord_lengte,
     print_winnaar,
     print_afsluiting,
     vraag_opnieuw_spelen,
@@ -44,9 +43,7 @@ def speel_lingo():
 
         # Start de beurt en woord raden
         print_beurt_start(huidig_team, te_raden_woord[0])
-        woord_geraden = raad_woord(
-            te_raden_woord, geraden_letters, print_fout_woord_lengte
-        )
+        woord_geraden = raad_woord(te_raden_woord, geraden_letters)
 
         # Verwerk het resultaat
         if woord_geraden:
