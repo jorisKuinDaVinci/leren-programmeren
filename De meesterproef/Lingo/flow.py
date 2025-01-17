@@ -16,15 +16,17 @@ from teksten import (
     print_winnaar,
     print_afsluiting,
     vraag_opnieuw_spelen,
-    vraag_naam
+    vraag_naam,
 )
 from lingowords import words as woordenlijst
 
 
 def speel_lingo():
+    # Vraag speler naam en geef introductie
     speler_naam = vraag_naam()
+    print_introductie()
 
-    # Maak bingokaarten en scores
+    # Maak bingokaarten en initialiseerscores
     bingokaart_team1 = bingokaart()
     bingokaart_team2 = bingokaart()
     team1_score, team2_score = 0, 0
@@ -35,16 +37,20 @@ def speel_lingo():
     huidig_team = "TEAM1"
 
     while spel_aan_de_gang:
+        # Kies een nieuw woord en initialiseert geraden letters
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)
 
-        # Debug: toon het woord
+        # Debug: Toon te raden woord
         toon_te_raden_woord(speler_naam, te_raden_woord)
 
-        # Woord raden
-        woord_geraden = raad_woord(te_raden_woord, geraden_letters)
+        # Start de beurt en woord raden
+        print_beurt_start(huidig_team, te_raden_woord[0])
+        woord_geraden = raad_woord(
+            te_raden_woord, geraden_letters, print_fout_woord_lengte
+        )
 
-        # Resultaat verwerken
+        # Verwerk het resultaat
         if woord_geraden:
             if huidig_team == "TEAM1":
                 team1_foute_rij = 0
@@ -65,7 +71,7 @@ def speel_lingo():
             else:
                 team2_foute_rij += 1
 
-        # Controleer op spelwinst of verlies
+        # Controleer op eindcondities
         if (
             team1_groene_ballen == 3
             or check_bingo(bingokaart_team1)
@@ -85,6 +91,7 @@ def speel_lingo():
         # Wissel van team
         huidig_team = "TEAM2" if huidig_team == "TEAM1" else "TEAM1"
 
+    # Vraag of het spel opnieuw moet worden gespeeld
     if vraag_opnieuw_spelen():
         speel_lingo()
     else:
