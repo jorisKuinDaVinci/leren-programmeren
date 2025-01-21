@@ -7,7 +7,7 @@ def kies_willekeurig_woord(woordenlijst):
     return random.choice(woordenlijst)
 
 
-def controleer_letters(te_raden_woord, invoer, geraden_letters):
+def controleer_letters(te_raden_woord, invoer, geraden_letters, geraden_letters_zonder_kleur):
     """
     Controleer geraden letters tegen het te raden woord.
     """
@@ -16,21 +16,24 @@ def controleer_letters(te_raden_woord, invoer, geraden_letters):
         if invoer[i] == te_raden_woord[i]:
             # Letter is correct en op de juiste positie
             geraden_letters[i] = colored(te_raden_woord[i], "green")  # Groen
-        elif invoer[i] in te_raden_woord and geraden_letters[i] == "_":
+            geraden_letters_zonder_kleur[i] = te_raden_woord[i]  # Bewaar de letter zonder kleur voor vergelijking
+        elif invoer[i] in te_raden_woord and geraden_letters_zonder_kleur[i] == "_":
             # Letter is in het woord, maar op de verkeerde positie
             geraden_letters[i] = colored(invoer[i], "yellow")  # Geel
-        elif geraden_letters[i] == "_":
+            geraden_letters_zonder_kleur[i] = invoer[i]  # Bewaar de letter zonder kleur voor vergelijking
+        elif geraden_letters_zonder_kleur[i] == "_":
             # Letter is onjuist en blijft een underscore
             geraden_letters[i] = "_"
-
-    # Toon het resultaat na de controle
-    print("Resultaat na controle: " + "".join(geraden_letters))
+            geraden_letters_zonder_kleur[i] = "_"
 
 
 def raad_woord(te_raden_woord, geraden_letters):
     """
     Laat de gebruiker proberen het woord te raden.
     """
+    # Maak een lijst van letters zonder kleurcodes voor vergelijking
+    geraden_letters_zonder_kleur = ["_"] * len(te_raden_woord)
+    
     while True:
         # Vraag gebruiker om een woord te raden
         invoer = input("Raad het woord: ").strip().lower()
@@ -41,13 +44,13 @@ def raad_woord(te_raden_woord, geraden_letters):
             continue
 
         # Controleer letters en toon resultaat
-        controleer_letters(te_raden_woord, invoer, geraden_letters)
+        controleer_letters(te_raden_woord, invoer, geraden_letters, geraden_letters_zonder_kleur)
 
         # Toon de huidige status van geraden letters
         print("Huidige voortgang: " + "".join(geraden_letters))
 
         # Controleer of het woord volledig geraden is
-        if "".join(geraden_letters) == te_raden_woord:
+        if "".join(geraden_letters_zonder_kleur) == te_raden_woord:
             print("Gefeliciteerd! Je hebt het woord geraden.")
             return True
         else:
