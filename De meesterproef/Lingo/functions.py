@@ -75,56 +75,49 @@ def toon_te_raden_woord(speler_naam, te_raden_woord):
         print(f"[DEBUG] Het te raden woord is: {te_raden_woord}")
 
 
+# Functie om een lege bingokaart te maken
 def bingokaart():
-    """Genereer een lege bingokaart."""
+    """Genereer een lege bingokaart met 5x5 vakjes."""
     return [["_" for _ in range(5)] for _ in range(5)]
 
 
+# Functie om de bingokaart af te drukken
 def print_bingokaart(kaart):
-    """Print een bingokaart netjes uit."""
+    """Print de bingokaart netjes uit in een 5x5 formaat."""
     print("Bingokaart:")
     for rij in kaart:
         print(" ".join(rij))
 
 
+# Functie voor het controleren van bingo (volledige rij of kolom van 'X')
 def check_bingo(kaart):
-    """Controleer of er bingo is (volledige rij of kolom)."""
+    """Controleer of er bingo is (volledige rij of kolom van X)."""
     # Controleer rijen
     for rij in kaart:
-        volledig_x = True
-        for vakje in rij:
-            if vakje != "X":
-                volledig_x = False
-                break
-        if volledig_x:
+        if all(vakje == "X" for vakje in rij):
             return True
 
     # Controleer kolommen
-    aantal_kolommen = len(kaart[0])
-    for kolom in range(aantal_kolommen):
-        volledig_x = True
-        for rij in kaart:
-            if rij[kolom] != "X":
-                volledig_x = False
-                break
-        if volledig_x:
+    for kolom in range(5):
+        if all(kaart[rij][kolom] == "X" for rij in range(5)):
             return True
 
     return False
 
 
+# Functie om ballen te trekken (groen, rood, geel) en de bingokaart te updaten
 def grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen):
-    """Simuleer het grabbelen van ballen en print het resultaat met de juiste meervoudsvorm."""
+    """Simuleer het trekken van ballen en werk de bingokaart bij."""
     print(f"{team} grabbelt een bal...")
     bal = random.choice(["groen", "rood", "geel"])
     print(f"{team} trekt een {bal} bal!")
 
-    # Variabele voor enkelvoud/meervoud
+    # Update het aantal ballen
     if bal == "groen":
         groene_ballen += 1
         bal_of_ballen = "groene bal" if groene_ballen == 1 else "groene ballen"
         print(f"{team} heeft nu {groene_ballen} {bal_of_ballen}.")
-        # Simuleer een willekeurige positie op de bingokaart
+        # Zet een willekeurig vakje op de bingokaart als 'X'
         rij, kolom = random.randint(0, 4), random.randint(0, 4)
         bingokaart[rij][kolom] = "X"
         print_bingokaart(bingokaart)
