@@ -1,0 +1,51 @@
+Start Programma
+
+// Stap 1: Begroet de speler en vraag om de naam
+Print "Welkom bij Lingo!"
+Vraag speler om naam
+
+// Stap 2: Start het spel
+Print "Het doel is om het juiste woord te raden."
+Kies willekeurig een woord uit de woordenlijst
+
+// Stap 3: Hoofdlus voor het spel
+Herhaal totdat het juiste woord is geraden:
+    Toon huidige voortgang van het woord (met lege plekken voor niet-geraden letters)
+    Vraag de speler om een poging (invoer van een woord)
+    
+    // Stap 4: Controleer de invoer
+    Voor elke letter in het geraden woord:
+        Als de letter op de juiste plaats staat:
+            Kleur de letter groen
+        Anders als de letter in het woord voorkomt maar niet op de juiste plaats:
+            Kleur de letter geel
+        Anders:
+            Kleur de letter grijs
+    
+    // Toon resultaat van de poging
+    Toon de voortgang van het te raden woord met gekleurde letters
+
+    // Stap 5: Voeg ballen toe aan de score
+    Als het woord correct is geraden:
+        Trek een bal
+        Als het team een rode bal trekt:
+            Verhoog het aantal rode ballen voor dat team
+        Anders als het team een groene bal trekt:
+            Verhoog het aantal groene ballen voor dat team
+
+    // Stap 6: Bijhouden van de Bingo-kaart
+    Markeer vakjes op de Bingo-kaart wanneer een correct woord wordt geraden
+    Controleer of een team Bingo heeft (volledige lijn op de Bingo-kaart)
+    Als Bingo is bereikt:
+        Aankondigen dat het team gewonnen heeft
+        Stop het spel
+
+// Stap 7: Aanbieden om opnieuw te spelen
+Vraag speler of ze opnieuw willen spelen
+Als speler kiest "ja":
+    Begin opnieuw met het spel
+Anders:
+    Print "Bedankt voor het spelen!"
+    Stop het programma
+
+Einde Programma
