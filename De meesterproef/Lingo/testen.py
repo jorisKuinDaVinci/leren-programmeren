@@ -25,7 +25,9 @@ def test_controleer_letters():
     te_raden_woord = "python"
     geraden = "potion"
     geraden_letters = ["_", "_", "_", "_", "_", "_"]
-    resultaat = controleer_letters(te_raden_woord, geraden, geraden_letters)
+    geraden_letters_zonder_kleur = ["_", "_", "_", "_", "_", "_"]  # Voeg dit argument toe
+
+    resultaat = controleer_letters(te_raden_woord, geraden, geraden_letters, geraden_letters_zonder_kleur)
     if resultaat == ["p", "_", "t", "_", "o", "n"]:
         print("  Geslaagd")
     else:
