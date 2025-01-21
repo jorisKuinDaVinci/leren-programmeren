@@ -29,14 +29,15 @@ def controleer_letters(te_raden_woord, invoer, geraden_letters, geraden_letters_
 
 def raad_woord(te_raden_woord, geraden_letters):
     """
-    Laat de gebruiker proberen het woord te raden.
+    Laat de gebruiker proberen het woord te raden, met maximaal 5 pogingen.
     """
     # Maak een lijst van letters zonder kleurcodes voor vergelijking
     geraden_letters_zonder_kleur = ["_"] * len(te_raden_woord)
+    pogingen = 0  # Teller voor het aantal pogingen
     
-    while True:
+    while pogingen < 5:  # Maximaal 5 pogingen
         # Vraag gebruiker om een woord te raden
-        invoer = input("Raad het woord: ").strip().lower()
+        invoer = input(f"Poging {pogingen + 1} van 5. Raad het woord: ").strip().lower()
         
         # Controleer of het woord de juiste lengte heeft
         if len(invoer) != len(te_raden_woord):
@@ -55,6 +56,11 @@ def raad_woord(te_raden_woord, geraden_letters):
             return True
         else:
             print("Niet correct, probeer het opnieuw.")
+        
+        pogingen += 1  # Verhoog het aantal pogingen na elke beurt
+
+    print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
+    return False  # Als de speler het woord niet geraden heeft na 5 pogingen
 
 
 def toon_te_raden_woord(speler_naam, te_raden_woord):
