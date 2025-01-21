@@ -14,7 +14,6 @@ from teksten import (
     print_afsluiting,
     vraag_opnieuw_spelen,
     vraag_naam,
-    toon_woord_geraden,
     toon_woord_fout,
 )
 from lingowords import words as woordenlijst
@@ -34,6 +33,10 @@ def speel_lingo():
     team1_foute_rij, team2_foute_rij = 0, 0
     spel_aan_de_gang = True
     huidig_team = "TEAM1"
+    
+    # Houd bij of er al een rode bal is getrokken
+    team1_rode_bal_getrokken = False
+    team2_rode_bal_getrokken = False
 
     while spel_aan_de_gang:
         # Kies een nieuw woord en initialiseert geraden letters als lijst
@@ -52,17 +55,27 @@ def speel_lingo():
             if huidig_team == "TEAM1":
                 team1_foute_rij = 0
                 team1_score += 1
-                team1_groene_ballen, team1_rode_ballen, doorgaan = grabbel_ballen(
-                    huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen
-                )
-                toon_woord_geraden()
+                # Als team1 geen rode bal getrokken heeft, kan het doorgaan met grabbelen
+                if not team1_rode_bal_getrokken:
+                    team1_groene_ballen, team1_rode_ballen, doorgaan = grabbel_ballen(
+                        huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen
+                    )
+                    if team1_rode_ballen > 0:
+                        team1_rode_bal_getrokken = True
+                else:
+                    print("Je hebt al een rode bal getrokken. Je kunt niet opnieuw grabbelen.")
             else:
                 team2_foute_rij = 0
                 team2_score += 1
-                team2_groene_ballen, team2_rode_ballen, doorgaan = grabbel_ballen(
-                    huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen
-                )
-                toon_woord_geraden()
+                # Als team2 geen rode bal getrokken heeft, kan het doorgaan met grabbelen
+                if not team2_rode_bal_getrokken:
+                    team2_groene_ballen, team2_rode_ballen, doorgaan = grabbel_ballen(
+                        huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen
+                    )
+                    if team2_rode_ballen > 0:
+                        team2_rode_bal_getrokken = True
+                else:
+                    print("Je hebt al een rode bal getrokken. Je kunt niet opnieuw grabbelen.")
         else:
             toon_woord_fout(te_raden_woord)
             if huidig_team == "TEAM1":
