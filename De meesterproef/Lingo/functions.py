@@ -1,6 +1,13 @@
 import random
 from termcolor import colored
 
+from teksten import (
+    print_geraden,
+    print_verkeerd_geraden,
+    print_helaas_geraden_woord,
+    print_fout_woord_lengte
+)
+
 
 def kies_willekeurig_woord(woordenlijst):
     """Kies een willekeurig woord uit de woordenlijst."""
@@ -41,7 +48,7 @@ def raad_woord(te_raden_woord, geraden_letters):
         
         # Controleer of het woord de juiste lengte heeft
         if len(invoer) != len(te_raden_woord):
-            print(f"Fout: het woord moet {len(te_raden_woord)} letters lang zijn.")
+            print_fout_woord_lengte(te_raden_woord)  # Gebruik de nieuwe functie voor foutieve lengte
             continue
 
         # Controleer letters en toon resultaat
@@ -52,14 +59,14 @@ def raad_woord(te_raden_woord, geraden_letters):
 
         # Controleer of het woord volledig geraden is
         if "".join(geraden_letters_zonder_kleur) == te_raden_woord:
-            print("Gefeliciteerd! Je hebt het woord geraden.")
+            print_geraden()  # Gebruik de nieuwe functie voor correct geraden woord
             return True
         else:
-            print("Niet correct, probeer het opnieuw.")
+            print_verkeerd_geraden()  # Gebruik de nieuwe functie voor verkeerd geraden woord
         
         pogingen += 1  # Verhoog het aantal pogingen na elke beurt
 
-    print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
+    print_helaas_geraden_woord(te_raden_woord)  # Gebruik de nieuwe functie voor wanneer het woord niet geraden is
     return False  # Als de speler het woord niet geraden heeft na 5 pogingen
 
 
