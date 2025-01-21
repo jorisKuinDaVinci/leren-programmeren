@@ -58,7 +58,7 @@ def raad_woord(te_raden_woord, geraden_letters):
 
         # Controleer of het woord volledig geraden is
         if "".join(geraden_letters_zonder_kleur) == te_raden_woord:
-            print_geraden()  # Gebruik de nieuwe functie voor correct geraden woord
+            print_geraden()
             return True
         else:
             print_verkeerd_geraden()
