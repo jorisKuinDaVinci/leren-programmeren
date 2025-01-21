@@ -47,7 +47,7 @@ def raad_woord(te_raden_woord, geraden_letters):
         
         # Controleer of het woord de juiste lengte heeft
         if len(invoer) != len(te_raden_woord):
-            print_fout_woord_lengte(te_raden_woord)  # Gebruik de nieuwe functie voor foutieve lengte
+            print_fout_woord_lengte(te_raden_woord)
             continue
 
         # Controleer letters en toon resultaat
@@ -61,11 +61,11 @@ def raad_woord(te_raden_woord, geraden_letters):
             print_geraden()  # Gebruik de nieuwe functie voor correct geraden woord
             return True
         else:
-            print_verkeerd_geraden()  # Gebruik de nieuwe functie voor verkeerd geraden woord
+            print_verkeerd_geraden()
         
         pogingen += 1  # Verhoog het aantal pogingen na elke beurt
 
-    print_helaas_geraden_woord(te_raden_woord)  # Gebruik de nieuwe functie voor wanneer het woord niet geraden is
+    print_helaas_geraden_woord(te_raden_woord)
     return False  # Als de speler het woord niet geraden heeft na 5 pogingen
 
 

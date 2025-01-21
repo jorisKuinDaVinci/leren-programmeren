@@ -28,17 +28,21 @@ def vraag_naam():
     """Vraag de naam van de speler."""
     return input("Wat is je naam? ").strip()
 
+
 def print_geraden():
     """Bericht wanneer het woord correct is geraden."""
     print("Gefeliciteerd! Je hebt het woord geraden.")
+
 
 def print_verkeerd_geraden():
     """Bericht wanneer het geraden woord incorrect is."""
     print("Niet correct, probeer het opnieuw.")
 
+
 def print_helaas_geraden_woord(te_raden_woord):
     """Bericht wanneer het woord niet geraden is na 5 pogingen."""
     print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
+    
 
 def print_fout_woord_lengte(te_raden_woord):
     """Bericht wanneer de lengte van het geraden woord niet klopt."""
