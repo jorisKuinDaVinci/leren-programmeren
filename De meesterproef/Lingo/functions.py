@@ -8,7 +8,6 @@ from teksten import (
     print_fout_woord_lengte
 )
 
-
 def kies_willekeurig_woord(woordenlijst):
     """Kies een willekeurig woord uit de woordenlijst."""
     return random.choice(woordenlijst)
