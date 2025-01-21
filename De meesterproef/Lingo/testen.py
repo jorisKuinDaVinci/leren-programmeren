@@ -43,7 +43,8 @@ def test_raad_woord():
     pogingen = ["pytzzz", "pythzz", "python"]
     for poging in pogingen:
         print(f"  Poging: {poging}")
-        geraden_letters = raad_woord(te_raden_woord, poging, geraden_letters)  # Nu raad_woord gebruiken
+        # Pas de aanroep van raad_woord aan, zodat deze alleen twee argumenten krijgt
+        geraden_letters = raad_woord(te_raden_woord, poging)
         print("  Huidige status:", "".join(geraden_letters))
         if "".join(geraden_letters) == te_raden_woord:
             print("  Geslaagd")
