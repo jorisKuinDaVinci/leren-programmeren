@@ -15,9 +15,7 @@ from teksten import (
     vraag_opnieuw_spelen,
     vraag_naam,
     toon_woord_geraden,
-    toon_woord_verkeerd,
     toon_woord_fout,
-    toon_fout_woord_lengte,
 )
 from lingowords import words as woordenlijst
 
