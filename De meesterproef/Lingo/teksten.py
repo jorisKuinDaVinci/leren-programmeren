@@ -42,8 +42,20 @@ def print_verkeerd_geraden():
 def print_helaas_geraden_woord(te_raden_woord):
     """Bericht wanneer het woord niet geraden is na 5 pogingen."""
     print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
-    
+
 
 def print_fout_woord_lengte(te_raden_woord):
     """Bericht wanneer de lengte van het geraden woord niet klopt."""
     print(f"Fout: het woord moet {len(te_raden_woord)} letters lang zijn.")
+
+def toon_woord_geraden():
+    print("Gefeliciteerd! Je hebt het woord geraden.")
+
+def toon_woord_verkeerd():
+    print("Niet correct, probeer het opnieuw.")
+
+def toon_woord_fout(te_raden_woord):
+    print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
+
+def toon_fout_woord_lengte(len_woord):
+    print(f"Fout: het woord moet {len_woord} letters lang zijn.")   

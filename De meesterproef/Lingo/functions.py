@@ -33,21 +33,21 @@ def controleer_letters(te_raden_woord, invoer, geraden_letters, geraden_letters_
             geraden_letters_zonder_kleur[i] = "_"
 
 
-def raad_woord(te_raden_woord, geraden_letters):
+def raad_woord(te_raden_woord, geraden_letters, max_beurten=5):
     """
-    Laat de gebruiker proberen het woord te raden, met maximaal 5 pogingen.
+    Laat de gebruiker proberen het woord te raden.
+    Beperk het aantal beurten tot max_beurten (standaard 5).
     """
     # Maak een lijst van letters zonder kleurcodes voor vergelijking
     geraden_letters_zonder_kleur = ["_"] * len(te_raden_woord)
-    pogingen = 0  # Teller voor het aantal pogingen
     
-    while pogingen < 5:  # Maximaal 5 pogingen
-        # Vraag gebruiker om een woord te raden
-        invoer = input(f"Poging {pogingen + 1} van 5. Raad het woord: ").strip().lower()
+    for poging_nummer in range(1, max_beurten + 1):  # Beperk tot max_beurten pogingen
+        print(f"Poging {poging_nummer} van {max_beurten}:")
+        invoer = input("Raad het woord: ").strip().lower()
         
         # Controleer of het woord de juiste lengte heeft
         if len(invoer) != len(te_raden_woord):
-            print_fout_woord_lengte(te_raden_woord)
+            print(f"Fout: het woord moet {len(te_raden_woord)} letters lang zijn.")
             continue
 
         # Controleer letters en toon resultaat
@@ -58,15 +58,12 @@ def raad_woord(te_raden_woord, geraden_letters):
 
         # Controleer of het woord volledig geraden is
         if "".join(geraden_letters_zonder_kleur) == te_raden_woord:
-            print_geraden()
+            print("Gefeliciteerd! Je hebt het woord geraden.")
             return True
         else:
-            print_verkeerd_geraden()
-        
-        pogingen += 1  # Verhoog het aantal pogingen na elke beurt
-
-    print_helaas_geraden_woord(te_raden_woord)
-    return False  # Als de speler het woord niet geraden heeft na 5 pogingen
+            print("Niet correct, probeer het opnieuw.")
+    print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
+    return False
 
 
 def toon_te_raden_woord(speler_naam, te_raden_woord):
@@ -75,10 +72,9 @@ def toon_te_raden_woord(speler_naam, te_raden_woord):
         print(f"[DEBUG] Het te raden woord is: {te_raden_woord}")
 
 
-# Functie om een lege bingokaart te maken
 def bingokaart():
-    """Genereer een lege bingokaart met 5x5 vakjes."""
-    return [["_" for _ in range(5)] for _ in range(5)]
+    """Genereer een lege bingokaart (5x5)."""
+    return [["_" for _ in range(5)] for _ in range(5)]  # 5x5 kaart
 
 
 # Functie om de bingokaart af te drukken
