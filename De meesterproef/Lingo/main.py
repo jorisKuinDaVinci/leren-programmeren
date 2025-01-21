@@ -14,6 +14,10 @@ from teksten import (
     print_afsluiting,
     vraag_opnieuw_spelen,
     vraag_naam,
+    toon_woord_geraden,
+    toon_woord_verkeerd,
+    toon_woord_fout,
+    toon_fout_woord_lengte,
 )
 from lingowords import words as woordenlijst
 
@@ -53,14 +57,16 @@ def speel_lingo():
                 team1_groene_ballen, team1_rode_ballen, doorgaan = grabbel_ballen(
                     huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen
                 )
+                toon_woord_geraden()
             else:
                 team2_foute_rij = 0
                 team2_score += 1
                 team2_groene_ballen, team2_rode_ballen, doorgaan = grabbel_ballen(
                     huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen
                 )
+                toon_woord_geraden()
         else:
-            print(f"Helaas {huidig_team}, het woord was: {te_raden_woord}")
+            toon_woord_fout(te_raden_woord)
             if huidig_team == "TEAM1":
                 team1_foute_rij += 1
             else:

@@ -1,17 +1,9 @@
 import random
 from termcolor import colored
 
-from teksten import (
-    print_geraden,
-    print_verkeerd_geraden,
-    print_helaas_geraden_woord,
-    print_fout_woord_lengte
-)
-
 def kies_willekeurig_woord(woordenlijst):
     """Kies een willekeurig woord uit de woordenlijst."""
     return random.choice(woordenlijst)
-
 
 def controleer_letters(te_raden_woord, invoer, geraden_letters, geraden_letters_zonder_kleur):
     """
@@ -31,7 +23,6 @@ def controleer_letters(te_raden_woord, invoer, geraden_letters, geraden_letters_
             # Letter is onjuist en blijft een underscore
             geraden_letters[i] = "_"
             geraden_letters_zonder_kleur[i] = "_"
-
 
 def raad_woord(te_raden_woord, geraden_letters, max_beurten=5):
     """
@@ -65,64 +56,52 @@ def raad_woord(te_raden_woord, geraden_letters, max_beurten=5):
     print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
     return False
 
-
 def toon_te_raden_woord(speler_naam, te_raden_woord):
     """Toon het te raden woord als de speler 'Joris' heet."""
     if speler_naam.lower() == "joris":
         print(f"[DEBUG] Het te raden woord is: {te_raden_woord}")
 
-
 def bingokaart():
     """Genereer een lege bingokaart (5x5)."""
-    return [["_" for _ in range(5)] for _ in range(5)]  # 5x5 kaart
+    return [["_" for _ in range(5)] for _ in range(5)]
 
-
-# Functie om de bingokaart af te drukken
 def print_bingokaart(kaart):
-    """Print de bingokaart netjes uit in een 5x5 formaat."""
+    """Print een bingokaart netjes uit."""
     print("Bingokaart:")
     for rij in kaart:
         print(" ".join(rij))
 
-
-# Functie voor het controleren van bingo (volledige rij of kolom van 'X')
 def check_bingo(kaart):
-    """Controleer of er bingo is (volledige rij of kolom van X)."""
+    """Controleer of er bingo is (volledige rij of kolom)."""
     # Controleer rijen
     for rij in kaart:
-        if all(vakje == "X" for vakje in rij):
+        if all(v == "x" for v in rij):
             return True
-
     # Controleer kolommen
-    for kolom in range(5):
-        if all(kaart[rij][kolom] == "X" for rij in range(5)):
+    for col in range(5):
+        if all(kaart[rij][col] == "x" for rij in range(5)):
             return True
-
     return False
 
+def grabbel_ballen(huidig_team, bingokaart_team, groene_ballen, rode_ballen):
+    """
+    Trek ballen en update de bingokaart voor het huidige team.
+    """
+    ballen = ["groen", "rood"]
+    gekozen_ballen = random.sample(ballen, 1)
 
-# Functie om ballen te trekken (groen, rood, geel) en de bingokaart te updaten
-def grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen):
-    """Simuleer het trekken van ballen en werk de bingokaart bij."""
-    print(f"{team} grabbelt een bal...")
-    bal = random.choice(["groen", "rood", "geel"])
-    print(f"{team} trekt een {bal} bal!")
-
-    # Update het aantal ballen
-    if bal == "groen":
+    if gekozen_ballen[0] == "groen":
         groene_ballen += 1
-        bal_of_ballen = "groene bal" if groene_ballen == 1 else "groene ballen"
-        print(f"{team} heeft nu {groene_ballen} {bal_of_ballen}.")
-        # Zet een willekeurig vakje op de bingokaart als 'X'
-        rij, kolom = random.randint(0, 4), random.randint(0, 4)
-        bingokaart[rij][kolom] = "X"
-        print_bingokaart(bingokaart)
-        return groene_ballen, rode_ballen, True
-    elif bal == "rood":
+        print(f"{huidig_team} heeft een groene bal!")
+        # Markeer een willekeurige plek als "x"
+        for i in range(5):
+            for j in range(5):
+                if bingokaart_team[i][j] == "_":
+                    bingokaart_team[i][j] = "x"
+                    return groene_ballen, rode_ballen, True
+    elif gekozen_ballen[0] == "rood":
         rode_ballen += 1
-        bal_of_ballen = "rode bal" if rode_ballen == 1 else "rode ballen"
-        print(f"{team} heeft nu {rode_ballen} {bal_of_ballen}.")
+        print(f"{huidig_team} heeft een rode bal!")
         return groene_ballen, rode_ballen, False
-    else:
-        print(f"{team} krijgt geen verdere actie.")
-        return groene_ballen, rode_ballen, True
+
+    return groene_ballen, rode_ballen, False
