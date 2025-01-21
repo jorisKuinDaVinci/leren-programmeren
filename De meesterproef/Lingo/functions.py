@@ -1,4 +1,5 @@
 import random
+from termcolor import colored
 
 
 def kies_willekeurig_woord(woordenlijst):
@@ -7,31 +8,50 @@ def kies_willekeurig_woord(woordenlijst):
 
 
 def controleer_letters(te_raden_woord, invoer, geraden_letters):
-    """Controleer welke letters correct zijn en vervang de underscores."""
+    """
+    Controleer geraden letters tegen het te raden woord.
+    """
+    # Itereer door elk teken van het geraden woord
     for i in range(len(te_raden_woord)):
-        if te_raden_woord[i] == invoer[i]:
-            geraden_letters[i] = invoer[i]
-    return geraden_letters
+        if invoer[i] == te_raden_woord[i]:
+            # Letter is correct en op de juiste positie
+            geraden_letters[i] = colored(te_raden_woord[i], "green")  # Groen
+        elif invoer[i] in te_raden_woord and geraden_letters[i] == "_":
+            # Letter is in het woord, maar op de verkeerde positie
+            geraden_letters[i] = colored(invoer[i], "yellow")  # Geel
+        elif geraden_letters[i] == "_":
+            # Letter is onjuist en blijft een underscore
+            geraden_letters[i] = "_"
+
+    # Toon het resultaat na de controle
+    print("Resultaat na controle: " + "".join(geraden_letters))
 
 
 def raad_woord(te_raden_woord, geraden_letters):
     """
-    Laat de speler een woord raden en geef terug of het woord correct is.
+    Laat de gebruiker proberen het woord te raden.
     """
-    while "_" in geraden_letters:
-        invoer = input("Raad een woord: ")
+    while True:
+        # Vraag gebruiker om een woord te raden
+        invoer = input("Raad het woord: ").strip().lower()
+        
+        # Controleer of het woord de juiste lengte heeft
         if len(invoer) != len(te_raden_woord):
-            print(f"Je invoer moet {len(te_raden_woord)} letters lang zijn.")
+            print(f"Fout: het woord moet {len(te_raden_woord)} letters lang zijn.")
             continue
 
-        geraden_letters = controleer_letters(te_raden_woord, invoer, geraden_letters)
-        print("Huidige status:", "".join(geraden_letters))
+        # Controleer letters en toon resultaat
+        controleer_letters(te_raden_woord, invoer, geraden_letters)
 
+        # Toon de huidige status van geraden letters
+        print("Huidige voortgang: " + "".join(geraden_letters))
+
+        # Controleer of het woord volledig geraden is
         if "".join(geraden_letters) == te_raden_woord:
-            print("Gefeliciteerd! Je hebt het woord geraden!")
+            print("Gefeliciteerd! Je hebt het woord geraden.")
             return True
-
-    return False
+        else:
+            print("Niet correct, probeer het opnieuw.")
 
 
 def toon_te_raden_woord(speler_naam, te_raden_woord):

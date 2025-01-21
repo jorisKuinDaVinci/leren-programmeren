@@ -34,9 +34,9 @@ def speel_lingo():
     huidig_team = "TEAM1"
 
     while spel_aan_de_gang:
-        # Kies een nieuw woord en initialiseert geraden letters
+        # Kies een nieuw woord en initialiseert geraden letters als lijst
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
-        geraden_letters = ["_"] * len(te_raden_woord)
+        geraden_letters = ["_"] * len(te_raden_woord)  # Lijst om status bij te houden
 
         # Debug: Toon te raden woord
         toon_te_raden_woord(speler_naam, te_raden_woord)
