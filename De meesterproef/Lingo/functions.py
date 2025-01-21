@@ -102,14 +102,16 @@ def check_bingo(kaart):
 
 
 def grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen):
-    """Simuleer het grabbelen van ballen."""
+    """Simuleer het grabbelen van ballen en print het resultaat met de juiste meervoudsvorm."""
     print(f"{team} grabbelt een bal...")
     bal = random.choice(["groen", "rood", "geel"])
     print(f"{team} trekt een {bal} bal!")
 
+    # Variabele voor enkelvoud/meervoud
     if bal == "groen":
         groene_ballen += 1
-        print(f"{team} heeft nu {groene_ballen} groene ballen.")
+        bal_of_ballen = "groene bal" if groene_ballen == 1 else "groene ballen"
+        print(f"{team} heeft nu {groene_ballen} {bal_of_ballen}.")
         # Simuleer een willekeurige positie op de bingokaart
         rij, kolom = random.randint(0, 4), random.randint(0, 4)
         bingokaart[rij][kolom] = "X"
@@ -117,7 +119,8 @@ def grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen):
         return groene_ballen, rode_ballen, True
     elif bal == "rood":
         rode_ballen += 1
-        print(f"{team} heeft nu {rode_ballen} rode ballen.")
+        bal_of_ballen = "rode bal" if rode_ballen == 1 else "rode ballen"
+        print(f"{team} heeft nu {rode_ballen} {bal_of_ballen}.")
         return groene_ballen, rode_ballen, False
     else:
         print(f"{team} krijgt geen verdere actie.")
