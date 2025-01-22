@@ -1,122 +1,104 @@
 import random
 from termcolor import colored
 
-def kies_willekeurig_woord(woordenlijst):
-    """Kies willekeurig een woord uit de woordenlijst."""
-    return woordenlijst[random.randint(0, len(woordenlijst) - 1)]
+# Functie die het woord van de speler vergelijkt met het te raden woord en gekleurde feedback geeft
+def controleer_letters(gok, te_raden_woord):
+    """
+    Vergelijk de ingevoerde gok met het te raden woord en geef gekleurde feedback:
+    Groen (correcte letter op de juiste plaats),
+    Geel (correcte letter op de verkeerde plaats),
+    Rood (foutieve letter).
+    """
+    feedback = []
+    for i in range(len(te_raden_woord)):
+        if gok[i] == te_raden_woord[i]:
+            # Groen voor de correcte letter op de juiste positie
+            feedback.append(colored(gok[i], "green"))
+        elif gok[i] in te_raden_woord:
+            # Geel voor correcte letter op verkeerde positie
+            feedback.append(colored(gok[i], "yellow"))
+        else:
+            # Rood voor foutieve letter
+            feedback.append(colored(gok[i], "red"))
+    
+    # De feedback als een string teruggeven
+    return " ".join(feedback)
 
+# Functie die een willekeurig woord kiest uit de woordenlijst
+def kies_willekeurig_woord(woordenlijst):
+    """
+    Kies een willekeurig woord uit de gegeven lijst.
+    """
+    return random.choice(woordenlijst)
+
+# Functie die het woord van de speler controleert
 def raad_woord(te_raden_woord, geraden_letters):
     """
     Laat een speler een woord raden en controleer of het correct is.
     Retourneert True als het woord correct is, anders False.
     """
-    pogingen = 5
+    pogingen = 5  # Aantal pogingen per woord
     while pogingen > 0:
         gok = input(f"Voer je woord in ({len(te_raden_woord)} letters): ").lower()
+        
+        # Controleer of de gok de juiste lengte heeft
         if len(gok) != len(te_raden_woord):
             print(f"Fout: het woord moet {len(te_raden_woord)} letters lang zijn.")
             continue
+        
         if gok == te_raden_woord:
             print("Gefeliciteerd! Je hebt het woord geraden.")
             return True
         else:
+            # Geef feedback op basis van de gekleurde letters
+            print("Feedback: ", controleer_letters(gok, te_raden_woord))
             pogingen -= 1
             print(f"Niet correct, probeer het opnieuw. Pogingen over: {pogingen}")
+    
     print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
     return False
 
-def toon_te_raden_woord(speler_naam, te_raden_woord):
-    """Toon het te raden woord (debugfunctie)."""
-    print(f"Debug ({speler_naam}): Het te raden woord is '{te_raden_woord}'.")
-
+# Functie die de bingokaart maakt
 def bingokaart():
-    """Genereer een bingokaart met unieke nummers van 1 t/m 18."""
-    kaart = []
-    while len(kaart) < 6:
-        nummer = random.randint(1, 18)
-        if nummer not in kaart:
-            kaart.append(nummer)
+    """
+    Genereer een bingokaart met 25 unieke nummers van 1 tot 75.
+    Het midden van de kaart is een gratis vak.
+    """
+    kaart = random.sample(range(1, 76), 25)
+    kaart[12] = "Gratis"  # Het middenvak is altijd gratis
     return kaart
 
+# Functie die de bingo-kaart afdrukt
 def print_bingokaart(kaart):
-    """Print de huidige status van de bingokaart."""
-    kaart_copy = kaart[:]
-    kaart_copy.sort()  # Handmatige sortering zonder `sorted`
-    for i in range(len(kaart_copy)):
-        if i > 0:
-            print(", ", end="")
-        print(kaart_copy[i], end="")
-    print()
+    """
+    Print de bingo-kaart met 5 rijen van 5 kolommen.
+    """
+    for i in range(5):
+        print(" | ".join([str(kaart[i * 5 + j]).rjust(2) for j in range(5)]))
+        print("-" * 29)
 
-def check_bingo(kaart):
-    """Controleer of de bingokaart leeg is."""
-    return len(kaart) == 0
-
-# Nieuwe functies voor de verwerking van ballen
-def verwerk_groene_bal(huidig_team, groene_ballen):
-    """Verwerk een groene bal."""
-    groene_ballen += 1
-    print(f"{huidig_team} heeft een groene bal! Je mag nog een keer grabbelen.")
-    return groene_ballen, True  # Team mag doorgaan
-
-def verwerk_blauwe_bal(huidig_team, bingokaart, balnummer):
-    """Verwerk een blauwe bal."""
-    print(f"{huidig_team} heeft een blauwe bal met nummer {balnummer}!")
-    if balnummer in bingokaart:
-        bingokaart.remove(balnummer)
-        print(f"Nummer {balnummer} is afgestreept van de bingokaart.")
-    else:
-        print(f"Nummer {balnummer} stond niet op de bingokaart.")
-    return bingokaart, True  # Team mag doorgaan
-
-def verwerk_rode_bal(huidig_team, rode_ballen):
-    """Verwerk een rode bal."""
-    rode_ballen += 1
-    print(f"{huidig_team} heeft een rode bal! De beurt gaat naar het andere team.")
-    return rode_ballen, False  # Team mag niet doorgaan
-
-def verwerk_vraagteken_bal(huidig_team, bingokaart):
-    """Verwerk het vraagteken."""
-    print(f"{huidig_team} heeft het vraagteken getrokken!")
-    print("Je mag een willekeurig nummer op de bingokaart kiezen om af te strepen.")
-    print(f"De huidige bingokaart: {bingokaart}")
-    keuze = None
-    while keuze not in bingokaart:
-        try:
-            keuze = int(input(f"Kies een nummer dat je wilt afstrepen (uit {bingokaart}): "))
-        except ValueError:
-            print("Ongeldige invoer. Voer een geldig getal in.")
-    bingokaart.remove(keuze)
-    print(f"Nummer {keuze} is afgestreept van de bingokaart.")
-    return bingokaart, True  # Team mag doorgaan
-
+# Functie die een rode, groene, blauwe of vraagteken bal trekt
 def grabbel_ballen(huidig_team, bingokaart, groene_ballen, rode_ballen):
     """
-    Laat een team een bal grabbelen en verwerk het resultaat.
-    - Groene bal: +1 groene bal, team mag opnieuw grabbelen.
-    - Blauwe bal: cijfer wordt afgestreept van de bingokaart.
-    - Rode bal: beurt gaat naar ander team.
-    - Vraagteken: speler kiest een getal om af te strepen.
+    Trek een bal uit de ballenbak voor het team en verwerk de effect.
+    Retourneer de bijgewerkte aantallen van groene en rode ballen.
     """
-    ballenbak = (
-        [i for i in range(1, 19)]  # 18 blauwe ballen (inclusief vraagtekenbal)
-        + ["vraagteken"]
-        + ["groen"] * 3
-        + ["rood"] * 3
-    )
+    ballenbak = ["groen", "groen", "groen", "blauw", "blauw", "blauw", "blauw", "blauw", "blauw", "blauw", "blauw", "blauw", "rood", "rood", "rood", "?"]
+    gekozen_bal = random.choice(ballenbak)
+    
+    if gekozen_bal == "groen":
+        groene_ballen += 1
+        print(f"{huidig_team} heeft een groene bal! Je mag nog een bal trekken.")
+    elif gekozen_bal == "rood":
+        rode_ballen += 1
+        print(f"{huidig_team} heeft een rode bal! De beurt gaat naar het andere team.")
+    elif gekozen_bal == "blauw":
+        getal = random.randint(1, 75)
+        print(f"{huidig_team} heeft een blauwe bal met nummer {getal}. Dit wordt afgestreept op de bingokaart.")
+        # Voer de juiste afstrepactie uit op de bingokaart hier
+    elif gekozen_bal == "?":
+        print(f"{huidig_team} heeft een vraagtekenbal! Kies een getal om af te strepen.")
+        # Laat het team een getal kiezen
+        # Voer de afstrepactie uit op de bingokaart hier
 
-    random.shuffle(ballenbak)
-    getrokken_bal = ballenbak[random.randint(0, len(ballenbak) - 1)]
-
-    print(f"{huidig_team} heeft een bal getrokken: {getrokken_bal}")
-
-    if getrokken_bal == "groen":
-        groene_ballen, doorgaan = verwerk_groene_bal(huidig_team, groene_ballen)
-    elif getrokken_bal == "rood":
-        rode_ballen, doorgaan = verwerk_rode_bal(huidig_team, rode_ballen)
-    elif getrokken_bal == "vraagteken":
-        bingokaart, doorgaan = verwerk_vraagteken_bal(huidig_team, bingokaart)
-    else:  # Blauwe bal
-        bingokaart, doorgaan = verwerk_blauwe_bal(huidig_team, bingokaart, getrokken_bal)
-
-    return groene_ballen, rode_ballen, doorgaan
+    return groene_ballen, rode_ballen, gekozen_bal

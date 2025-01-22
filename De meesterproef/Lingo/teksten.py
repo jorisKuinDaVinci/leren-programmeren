@@ -8,7 +8,7 @@ def print_beurt_start(team, eerste_letter):
     print(f"Het te raden woord begint met: {eerste_letter}\n")
 
 def print_winnaar(team):
-    print(f"\nGefeliciteerd! {team} heeft gewonnen! 🏆")
+    print(f"\nGefeliciteerd! {team} heeft gewonnen!")
 
 def print_afsluiting():
     print("\nHet spel is afgelopen. Bedankt voor het spelen van Lingo!")

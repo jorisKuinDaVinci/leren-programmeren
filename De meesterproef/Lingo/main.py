@@ -1,10 +1,8 @@
 from functions import (
     kies_willekeurig_woord,
     raad_woord,
-    toon_te_raden_woord,
     bingokaart,
     print_bingokaart,
-    check_bingo,
     grabbel_ballen,
 )
 from teksten import (
@@ -19,6 +17,7 @@ from teksten import (
 from lingowords import words as woordenlijst
 
 
+# Start het spel
 def speel_lingo():
     # Vraag speler naam en geef introductie
     speler_naam = vraag_naam()
@@ -38,9 +37,6 @@ def speel_lingo():
         # Kies een nieuw woord en initialiseert geraden letters als lijst
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)  # Lijst om status bij te houden
-
-        # Debug: Toon te raden woord
-        toon_te_raden_woord(speler_naam, te_raden_woord)
 
         # Start de beurt en woord raden
         print_beurt_start(huidig_team, te_raden_woord[0])
@@ -80,13 +76,11 @@ def speel_lingo():
         # Controleer op eindcondities
         if (
             team1_groene_ballen == 3
-            or check_bingo(bingokaart_team1)
             or team1_score == 10
             or team1_rode_ballen == 3
             or team1_foute_rij == 3
         ) or (
             team2_groene_ballen == 3
-            or check_bingo(bingokaart_team2)
             or team2_score == 10
             or team2_rode_ballen == 3
             or team2_foute_rij == 3
