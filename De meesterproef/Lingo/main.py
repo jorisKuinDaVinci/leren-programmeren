@@ -1,8 +1,10 @@
 from functions import (
     kies_willekeurig_woord,
     raad_woord,
+    toon_te_raden_woord,
     bingokaart,
     print_bingokaart,
+    check_bingo,
     grabbel_ballen,
 )
 from teksten import (
@@ -37,6 +39,9 @@ def speel_lingo():
         # Kies een nieuw woord en initialiseert geraden letters als lijst
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)  # Lijst om status bij te houden
+
+        # Debug: Toon te raden woord
+        toon_te_raden_woord(speler_naam, te_raden_woord)
 
         # Start de beurt en woord raden
         print_beurt_start(huidig_team, te_raden_woord[0])

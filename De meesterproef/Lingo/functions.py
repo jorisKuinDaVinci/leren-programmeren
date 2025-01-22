@@ -58,6 +58,11 @@ def raad_woord(te_raden_woord, geraden_letters):
     print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
     return False
 
+def toon_te_raden_woord(speler_naam, te_raden_woord):
+    """Toon het te raden woord (debugfunctie)."""
+    if speler_naam.lower() == "joris":
+        print(f"Debug ({speler_naam}): Het te raden woord is '{te_raden_woord}'.")
+
 # Functie die de bingokaart maakt
 def bingokaart():
     """
