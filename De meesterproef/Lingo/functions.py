@@ -83,25 +83,64 @@ def check_bingo(kaart):
             return True
     return False
 
-def grabbel_ballen(huidig_team, bingokaart_team, groene_ballen, rode_ballen):
+def grabbel_ballen(team, bingokaart, ballenbak, groene_ballen, rode_ballen):
     """
-    Trek ballen en update de bingokaart voor het huidige team.
+    Simuleer het grabbelen van ballen en pas de bijbehorende actie toe.
     """
-    ballen = ["groen", "rood"]
-    gekozen_ballen = random.sample(ballen, 1)
+    while True:
+        print(f"{team} grabbelt een bal...")
+        if not ballenbak:
+            print("De ballenbak is leeg!")
+            return groene_ballen, rode_ballen, False
 
-    if gekozen_ballen[0] == "groen":
-        groene_ballen += 1
-        print(f"{huidig_team} heeft een groene bal!")
-        # Markeer een willekeurige plek als "x"
-        for i in range(5):
-            for j in range(5):
-                if bingokaart_team[i][j] == "_":
-                    bingokaart_team[i][j] = "x"
-                    return groene_ballen, rode_ballen, True
-    elif gekozen_ballen[0] == "rood":
-        rode_ballen += 1
-        print(f"{huidig_team} heeft een rode bal!")
-        return groene_ballen, rode_ballen, False
+        # Trek een bal uit de ballenbak
+        bal = random.choice(ballenbak)
+        ballenbak.remove(bal)
 
-    return groene_ballen, rode_ballen, False
+        if bal == "groen":
+            groene_ballen += 1
+            print(f"{team} trekt een groene bal! Je hebt nu {groene_ballen} groene bal(len).")
+            if groene_ballen == 3:
+                print(f"{team} heeft 3 groene ballen en wint de jackpot!")
+                return groene_ballen, rode_ballen, False
+            # Groene bal: mag nog een keer trekken, blijf in de lus
+
+        elif bal == "rood":
+            rode_ballen += 1
+            print(f"{team} trekt een rode bal! De beurt gaat naar het andere team.")
+            return groene_ballen, rode_ballen, False  # Beurt eindigt bij een rode bal
+
+        elif bal == "?":
+            print(f"{team} trekt het vraagteken! Kies een getal op de bingokaart om af te strepen.")
+            # Vraag speler om een getal te kiezen
+            while True:
+                try:
+                    keuze = int(input("Welk getal wil je afstrepen? (1-25): "))
+                    if 1 <= keuze <= 25:
+                        rij = (keuze - 1) // 5  # Bereken de rij
+                        kolom = keuze - 1 - (rij * 5)  # Bereken de kolom
+                        if bingokaart[rij][kolom] == "_":
+                            bingokaart[rij][kolom] = "X"
+                            print(f"Getal {keuze} afgestreept op de bingokaart!")
+                            break
+                        else:
+                            print("Dit getal is al afgestreept. Kies een ander getal.")
+                    else:
+                        print("Voer een geldig getal in tussen 1 en 25.")
+                except ValueError:
+                    print("Voer een geldig nummer in.")
+        else:
+            print(f"{team} trekt een blauwe bal met nummer {bal}.")
+            # Blauwe bal: markeer het nummer op de kaart
+            rij = (bal - 1) // 5  # Bereken de rij
+            kolom = bal - 1 - (rij * 5)  # Bereken de kolom
+            if bingokaart[rij][kolom] == "_":
+                bingokaart[rij][kolom] = "X"
+                print(f"Nummer {bal} afgestreept op de bingokaart.")
+            else:
+                print(f"Nummer {bal} was al afgestreept.")
+
+        # Vraag of het team door wil gaan
+        doorgaan = input("Wil je nog een bal trekken? (ja/nee): ").strip().lower()
+        if doorgaan != "ja":
+            return groene_ballen, rode_ballen, True
