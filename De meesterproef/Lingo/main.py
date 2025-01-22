@@ -33,10 +33,6 @@ def speel_lingo():
     team1_foute_rij, team2_foute_rij = 0, 0
     spel_aan_de_gang = True
     huidig_team = "TEAM1"
-    
-    # Houd bij of er al een rode bal is getrokken
-    team1_rode_bal_getrokken = False
-    team2_rode_bal_getrokken = False
 
     while spel_aan_de_gang:
         # Kies een nieuw woord en initialiseert geraden letters als lijst
@@ -52,30 +48,30 @@ def speel_lingo():
 
         # Verwerk het resultaat
         if woord_geraden:
-    if huidig_team == "TEAM1":
-        team1_foute_rij = 0
-        team1_score += 1
-        team1_groene_ballen, team1_rode_ballen, doorgaan = grabbel_ballen(
-            huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen
-        )
-    else:
-        team2_foute_rij = 0
-        team2_score += 1
-        team2_groene_ballen, team2_rode_ballen, doorgaan = grabbel_ballen(
-            huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen
-        )
+            if huidig_team == "TEAM1":
+                team1_foute_rij = 0
+                team1_score += 1
+                team1_groene_ballen, team1_rode_ballen, doorgaan = grabbel_ballen(
+                    huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen
+                )
+            else:
+                team2_foute_rij = 0
+                team2_score += 1
+                team2_groene_ballen, team2_rode_ballen, doorgaan = grabbel_ballen(
+                    huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen
+                )
 
-    # Controleer of de beurt direct eindigt door een rode bal
-    if not doorgaan:
-        print(f"{huidig_team} heeft een rode bal getrokken. De beurt eindigt.")
-        continue  # Wissel van team
-else:
-    toon_woord_fout(te_raden_woord)
-    if huidig_team == "TEAM1":
-        team1_foute_rij += 1
-    else:
-        team2_foute_rij += 1
-
+            # Controleer of de beurt direct eindigt door een rode bal
+            if not doorgaan:
+                print(f"{huidig_team} heeft een rode bal getrokken. De beurt eindigt.")
+                huidig_team = "TEAM2" if huidig_team == "TEAM1" else "TEAM1"
+                continue
+        else:
+            toon_woord_fout(te_raden_woord)
+            if huidig_team == "TEAM1":
+                team1_foute_rij += 1
+            else:
+                team2_foute_rij += 1
 
         # Toon de huidige bingo-kaarten
         print(f"De bingo-kaart van {huidig_team}:")
