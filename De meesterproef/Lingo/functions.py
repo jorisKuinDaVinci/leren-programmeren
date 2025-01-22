@@ -82,6 +82,53 @@ def print_bingokaart(kaart):
         print(" | ".join([str(kaart[i * 5 + j]).rjust(2) for j in range(5)]))
         print("-" * 29)
 
+def check_bingo(kaart):
+    """
+    Controleer of er een bingo is (een volledige rij, kolom of diagonaal).
+    Retourneert True als er bingo is, anders False.
+    """
+
+    # Controleer horizontale rijen
+    for i in range(5):
+        bingo = True
+        for j in range(5):
+            if kaart[i * 5 + j] != 'X':  # Als een vakje niet is afgestreept
+                bingo = False
+                break
+        if bingo:
+            return True
+
+    # Controleer verticale kolommen
+    for j in range(5):
+        bingo = True
+        for i in range(5):
+            if kaart[i * 5 + j] != 'X':  # Als een vakje niet is afgestreept
+                bingo = False
+                break
+        if bingo:
+            return True
+
+    # Controleer de twee diagonalen
+    # Van linksboven naar rechtsonder
+    bingo = True
+    for i in range(5):
+        if kaart[i * 5 + i] != 'X':
+            bingo = False
+            break
+    if bingo:
+        return True
+
+    # Van rechtsboven naar linksonder
+    bingo = True
+    for i in range(5):
+        if kaart[i * 5 + (4 - i)] != 'X':
+            bingo = False
+            break
+    if bingo:
+        return True
+
+    return False
+
 # Functie die een rode, groene, blauwe of vraagteken bal trekt
 def grabbel_ballen(huidig_team, bingokaart, groene_ballen, rode_ballen):
     """

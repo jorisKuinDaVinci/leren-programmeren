@@ -78,7 +78,13 @@ def speel_lingo():
         print(f"De bingo-kaart van {huidig_team}:")
         print_bingokaart(bingokaart_team1 if huidig_team == "TEAM1" else bingokaart_team2)
 
-        # Controleer op eindcondities
+        # Controleer op bingo voor het huidige team
+        if check_bingo(bingokaart_team1 if huidig_team == "TEAM1" else bingokaart_team2):
+            print(f"{huidig_team} heeft bingo!")
+            print_winnaar(huidig_team)
+            break
+
+        # Controleer op andere eindcondities
         if (
             team1_groene_ballen == 3
             or team1_score == 10
