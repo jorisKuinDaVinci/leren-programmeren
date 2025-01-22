@@ -35,6 +35,11 @@ def speel_lingo():
     spel_aan_de_gang = True
     huidig_team = "TEAM1"
 
+    # Dynamisch opbouwen van de ballenbak op basis van de nummers op de bingokaart
+    # Converteer nummers naar integers, ongeacht of ze als string of integer zijn weergegeven
+    ballenbak_team1 = [int(nummer) for nummer in bingokaart_team1 if str(nummer).isdigit()]
+    ballenbak_team2 = [int(nummer) for nummer in bingokaart_team2 if str(nummer).isdigit()]
+
     while spel_aan_de_gang:
         # Kies een nieuw woord en initialiseert geraden letters als lijst
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
@@ -52,14 +57,14 @@ def speel_lingo():
             if huidig_team == "TEAM1":
                 team1_foute_rij = 0
                 team1_score += 1
-                team1_groene_ballen, team1_rode_ballen, doorgaan = grabbel_ballen(
-                    huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen
+                team1_groene_ballen, team1_rode_ballen, doorgaan, ballenbak_team1 = grabbel_ballen(
+                    huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen, ballenbak_team1
                 )
             else:
                 team2_foute_rij = 0
                 team2_score += 1
-                team2_groene_ballen, team2_rode_ballen, doorgaan = grabbel_ballen(
-                    huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen
+                team2_groene_ballen, team2_rode_ballen, doorgaan, ballenbak_team2 = grabbel_ballen(
+                    huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen, ballenbak_team2
                 )
 
             # Controleer of de beurt direct eindigt door een rode bal
@@ -78,20 +83,16 @@ def speel_lingo():
         print(f"De bingo-kaart van {huidig_team}:")
         print_bingokaart(bingokaart_team1 if huidig_team == "TEAM1" else bingokaart_team2)
 
-        # Controleer op bingo voor het huidige team
-        if check_bingo(bingokaart_team1 if huidig_team == "TEAM1" else bingokaart_team2):
-            print(f"{huidig_team} heeft bingo!")
-            print_winnaar(huidig_team)
-            break
-
-        # Controleer op andere eindcondities
+        # Controleer op eindcondities
         if (
             team1_groene_ballen == 3
+            or check_bingo(bingokaart_team1)
             or team1_score == 10
             or team1_rode_ballen == 3
             or team1_foute_rij == 3
         ) or (
             team2_groene_ballen == 3
+            or check_bingo(bingokaart_team2)
             or team2_score == 10
             or team2_rode_ballen == 3
             or team2_foute_rij == 3
@@ -107,7 +108,6 @@ def speel_lingo():
         speel_lingo()
     else:
         print_afsluiting()
-
 
 # Start het spel
 speel_lingo()
