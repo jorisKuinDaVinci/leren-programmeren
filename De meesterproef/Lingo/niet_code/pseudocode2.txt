@@ -1,123 +1,56 @@
 START
 
-# Definieer de lijst met woorden (woordenlijst)
-woordenlijst = ["woord1", "woord2", "woord3", ...]
+    FUNCTIE vraag_naam:
+        Vraag de speler om zijn naam.
+        RETURN naam
 
-# Functie om een willekeurig woord uit de lijst te kiezen
-FUNCTIE kies_willekeurig_woord(woordenlijst)
-    KIES een willekeurig woord uit de lijst en geef dit terug
-EINDE FUNCTIE
+    FUNCTIE toon_te_raden_woord(speler_naam, te_raden_woord):
+        IF speler_naam is "Joris" THEN
+            Toon het te raden woord voor debug-doeleinden.
+    
+    FUNCTIE speel_lingo:
+        naam = vraag_naam()  // Vraag om de naam van de speler
+        
+        Print introductie van het spel
 
-# Functie om letters van het geraden woord te controleren en kleuren toe te wijzen
-FUNCTIE controleer_letters(te_raden_woord, invoer, geraden_letters, geraden_letters_zonder_kleur)
-    VOOR elke letter in het geraden woord
-        ALS de letter correct en op de juiste positie is
-            Kleur de letter groen
-        ANDERS ALS de letter in het woord voorkomt maar op een verkeerde positie
-            Kleur de letter geel
-        ANDERS
-            Zet de letter als een underscore "_"
-EINDE FUNCTIE
+        INITIALISEER:
+            team1_score = 0
+            team2_score = 0
+            team1_groene_ballen = 0
+            team2_groene_ballen = 0
+            team1_rode_ballen = 0
+            team2_rode_ballen = 0
+            team1_foute_rij = 0
+            team2_foute_rij = 0
+            bingokaart_team1 = Genereer bingokaart voor Team 1
+            bingokaart_team2 = Genereer bingokaart voor Team 2
 
-# Functie voor het raden van het woord
-FUNCTIE raad_woord(te_raden_woord, geraden_letters)
-    INITIALISEER aantal pogingen op 0
-    TERWIJL aantal pogingen < 5
-        Vraag de speler om het woord in te voeren
-        ALS de lengte van de invoer ongelijk is aan de lengte van het te raden woord
-            Toon foutmelding voor onjuiste lengte
-            GA verder naar de volgende poging
-        ANDERS
-            Controleer de letters met controleer_letters functie
-            TOON de voortgang van de letters (groen voor correct, geel voor incorrect)
-            ALS het geraden woord correct is
-                Toon "Gefeliciteerd, je hebt het woord geraden!"
-                Geef TRUE terug
-            ANDERS
-                Toon "Niet correct, probeer het opnieuw"
-                Verhoog het aantal pogingen
-    NA 5 pogingen
-        Toon "Helaas, je hebt het woord niet geraden"
-        Geef FALSE terug
-EINDE FUNCTIE
+        Print de bingokaart voor Team 1
+        Print de bingokaart voor Team 2
 
-# Functies voor het printen van de berichten (te zetten in teksten.py)
-FUNCTIE print_introductie()
-    Toon de spelintroductie
-EINDE FUNCTIE
+        WHILE Spel loopt:
+            // Beurt voor Team 1
+            Kies willekeurig te raden woord voor Team 1
+            Toon eerste letter van het te raden woord
+            toon_te_raden_woord(naam, te_raden_woord)  // Toon het te raden woord als naam = "Joris"
 
-FUNCTIE print_geraden()
-    Toon het bericht: "Gefeliciteerd! Je hebt het woord geraden."
-EINDE FUNCTIE
+            IF Team 1 raadt het woord:
+                Verhoog Team 1 score
+                Trek ballen voor Team 1 en update groene en rode ballen
 
-FUNCTIE print_verkeerd_geraden()
-    Toon het bericht: "Niet correct, probeer het opnieuw."
-EINDE FUNCTIE
+            // Beurt voor Team 2
+            Kies willekeurig te raden woord voor Team 2
+            Toon eerste letter van het te raden woord
+            toon_te_raden_woord(naam, te_raden_woord)  // Toon het te raden woord als naam = "Joris"
 
-FUNCTIE print_helaas_geraden_woord(te_raden_woord)
-    Toon het bericht: "Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}"
-EINDE FUNCTIE
+            IF Team 2 raadt het woord:
+                Verhoog Team 2 score
+                Trek ballen voor Team 2 en update groene en rode ballen
 
-FUNCTIE print_fout_woord_lengte(te_raden_woord)
-    Toon het bericht: "Fout: het woord moet {len(te_raden_woord)} letters lang zijn."
-EINDE FUNCTIE
+            // Controleer of er een winnaar is
+            IF controleer_winnaar THEN
+                STOP het spel
 
-# Functies voor het bingo spel (te zetten in functions.py)
-FUNCTIE bingokaart()
-    Genereer een lege bingokaart met 5 rijen en 5 kolommen gevuld met underscores "_"
-EINDE FUNCTIE
+        Print de afsluiting van het spel
 
-FUNCTIE print_bingokaart(kaart)
-    Print de bingokaart netjes uit
-EINDE FUNCTIE
-
-FUNCTIE check_bingo(kaart)
-    Controleer of er een complete rij of kolom van "X" aanwezig is
-    Geef TRUE terug als er bingo is, anders FALSE
-EINDE FUNCTIE
-
-FUNCTIE grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen)
-    Grabbelen een bal (groen, rood, of geel)
-    Als de bal groen is, voeg "X" toe aan de bingokaart en verhoog groene ballen
-    Als de bal rood is, verhoog rode ballen
-    Als de bal geel is, doe niets
-    Toon de update van de bingokaart
-EINDE FUNCTIE
-
-# Functie voor het spelen van Lingo
-FUNCTIE speel_lingo()
-    Vraag de speler om zijn naam
-    Toon de introductie van het spel
-
-    INITIALISEER de bingokaarten voor twee teams
-    INITIALISEER de scores en andere variabelen
-
-    WIL het spel doorgaan:
-        Kies een willekeurig woord uit de woordenlijst
-        INITIALISEER een lijst voor de geraden letters met underscores
-        Toon de beginletter van het te raden woord (indien nodig)
-
-        Start de beurt voor het team
-        Laat het team proberen het woord te raden met 5 pogingen
-        ALS het team het woord raadt:
-            Verhoog de score van het team
-            Grabbelen een bal en werk de bingokaart bij
-        ANDERS:
-            Verhoog het aantal foute pogingen van het team
-
-        Toon de huidige bingo-kaart van het team
-
-        Controleer of er een winnaar is (bingo, score van 10, 3 groene ballen, 3 rode ballen, of 3 foute rijen)
-        ALS er een winnaar is:
-            Toon wie het heeft gewonnen en beëindig het spel
-
-        Wissel van team (TEAM1 <-> TEAM2)
-
-    Vraag of het spel opnieuw gespeeld moet worden
-    ALS het spel opnieuw moet worden gespeeld:
-        Start opnieuw
-    ANDERS:
-        Toon de afsluitende boodschap
-
-# Start het spel
-Speel lingo
+EINDE

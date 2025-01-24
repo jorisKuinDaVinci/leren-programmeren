@@ -1,135 +1,118 @@
-Welkom bij de Lingo Applicatie! 
-Deze applicatie is een digitale versie van het bekende spel Lingo. 
-Het doel van het spel is om woorden te raden door letters in een specifiek formaat in te vullen. 
-In deze handleiding zal ik stap voor stap uitleggen hoe je de applicatie kunt gebruiken.
+Gebruiksaanwijzing voor het Lingo Spel
 
 
-Stap 1: Start de applicatie
-
-1. Open de applicatie: 
-
-Wanneer je de applicatie opent, wordt je begroet met een welkomstbericht en een vraag om je naam in te voeren.
-
-Prompt: “Wat is je naam?”
-Voer je naam in en druk op Enter.
-
-2. Begin het spel: 
-
-Na het invoeren van je naam, wordt je gevraagd om het spel te starten. 
-De applicatie kiest willekeurig een woord dat je moet raden. Dit woord wordt geheim gehouden totdat je het raadt.
+Welkom bij Lingo! 
+Dit spel is geïnspireerd door het populaire televisieprogramma en wordt gespeeld in teams waarbij het doel is om woorden te raden en zoveel mogelijk punten te behalen. 
+Hier is de handleiding voor hoe je het spel speelt.
 
 
-Stap 2: Speel het spel
-
-1. Het doel van het spel: 
-
-Het doel is om het juiste woord te raden. Je krijgt hints over de letters van het woord na elke poging.
-
-2. Raad een woord:
-
-Elke speler krijgt om de beurt de kans om een woord in te voeren. Het woord dat je invoert, moet de juiste lengte hebben en mag alleen uit bestaande letters bestaan.
-Voer je poging in het daarvoor bestemde invoerveld in en druk op Enter.
-
-3. Resultaten van je poging:
-
-Groen: Als een letter op de juiste positie staat, wordt deze groen weergegeven.
-Geel: Als een letter wel in het woord voorkomt, maar op de verkeerde positie staat, wordt deze geel weergegeven.
-Grijs: Als een letter niet in het woord voorkomt, wordt deze grijs weergegeven.
-De applicatie toont de voortgang van je poging na elke invoer.
+Speloverzicht
 
 
-Stap 3: Woord raden en bijhouden van voortgang
-
-1. Bijhouden van de voortgang: 
-
-De applicatie toont de voortgang van het te raden woord op basis van je invoer. 
-Elke letter van je poging wordt geanalyseerd en geverfd op basis van de bovenstaande regels.
-
-2. Informatie over het te raden woord: 
-
-De applicatie toont ook of het woord begint met een specifieke letter. 
-Dit helpt je verder bij het raden van het woord.
-
-3. Gefeliciteerd: 
-
-Als je het juiste woord raadt, krijg je een felicitatie en wordt je score weergegeven.
+Lingo is een spel dat wordt gespeeld door twee teams. 
+Elk team probeert een woord te raden dat willekeurig wordt gekozen. 
+Tijdens het spel komen er verschillende spelmechanismen aan bod zoals ballen trekken (groen of rood) en het invullen van een bingokaart. 
+Het team met de hoogste score wint.
 
 
-Stap 4: Grabbelen voor ballen
+Spelstart
 
-1. Ballen trekken:
+1. Naam invoeren
 
-Na elke succesvolle poging om het woord te raden, zal het team een bal trekken. Er zijn twee kleuren ballen die je kunt trekken:
+Wanneer je het spel start, wordt je gevraagd om je naam in te voeren.
 
-    Rode ballen: 
+2. Introductie
 
-    Dit betekent dat je een goede poging hebt gedaan en punten hebt verdiend.
-
-    Groene ballen: 
-    
-    Dit kan betekenen dat je specifieke voorwaarden hebt vervuld die extra punten opleveren.
-
-De ballen worden aan je score toegevoegd. Het aantal ballen is zichtbaar op het scherm.
+Na het invoeren van je naam, wordt de introductie van het spel getoond. Dit legt uit hoe het spel zal verlopen.
 
 
-Stap 5: Bingo-kaarten bijhouden
-
-1. Bingo-kaart:
-
-Elke speler heeft een bingo-kaart waarop vakjes worden ingevuld. 
-Het doel is om de vakjes correct in te vullen door het juiste woord te raden.
-Elke keer als je het juiste woord raadt, krijg je een bal en wordt een vakje op je bingo-kaart gemarkeerd. 
-Als je een complete lijn van gemarkeerde vakjes hebt (horizontaal, verticaal of diagonaal), heb je "Bingo"!
+Spelregels
 
 
-Stap 6: Einde van het spel
+1. Teams
 
-1. Einde van het spel:
+Er zijn twee teams die elkaar afwisselen: Team 1 en Team 2.
+Elke beurt proberen de teams een willekeurig woord te raden.
 
-Het spel eindigt wanneer een van de teams een volledige lijn van gemarkeerde vakjes heeft en dus "Bingo!" roept.
-De applicatie zal de winnaar aankondigen.
+2. Beurtverdeling
 
-2. Nieuwe ronde:
+Elk team krijgt om de beurt een kans om het woord te raden.
+Het eerste letter van het te raden woord wordt getoond.
+Teams moeten het volledige woord raden door letters in te vullen.
 
-Na het beëindigen van een ronde, vraagt de applicatie of je opnieuw wilt spelen. 
-Je kunt kiezen om het spel opnieuw te starten of het spel af te sluiten.
+3. Ballentrekken
 
-Prompt: "Wil je opnieuw spelen? (ja/nee)"
+Na elke correcte gok, trekt het team ballen. Deze ballen kunnen groen, rood of onbekend ("?") zijn.
+Groene ballen geven aan dat het team dichter bij het winnen is, terwijl rode ballen een verlies aanduiden.
+Ballen worden gebruikt om een bingokaart voor elk team in te vullen.
 
-Als je "ja" kiest, begint een nieuwe ronde en worden er nieuwe woorden gekozen.
+4. Bingokaart
 
+Elk team heeft een bingokaart waarop ze vakjes vullen door ballen te trekken.
+Teams moeten proberen om rijen van 5 vakjes in te vullen om "Bingo!" te roepen.
 
-Stap 7: Spelinstellingen en regels
+5. Einde van het spel
 
-1. Instellingen:
-
-De applicatie heeft standaardinstellingen die het aantal teams en het aantal benodigde pogingen bepalen. 
-Je kunt de instellingen aanpassen via het hoofdmenu als dat nodig is.
-
-2. Spelregels:
-
-Het spel volgt de standaardregels van Lingo. 
-Elke speler heeft een beperkte hoeveelheid pogingen om het juiste woord te raden. 
-Er worden geen extra aanwijzingen gegeven, behalve de kleur van de letters.
+Het spel eindigt wanneer er een team is dat voldoet aan de voorwaarden om te winnen, zoals het verkrijgen van een bepaalde score of het behalen van bingo.
 
 
-Probleemoplossing:
-
-De applicatie reageert niet op mijn invoer:
-
-Zorg ervoor dat je een geldig woord invoert dat overeenkomt met de verwachte lengte van het te raden woord.
-Als het probleem blijft bestaan, probeer de applicatie opnieuw te starten.
-
-Ik kan geen bingo krijgen:
-
-Zorg ervoor dat je een volledige lijn op je bingo-kaart hebt ingevuld. 
-Het kan helpen om na elke succesvolle poging de voortgang op je bingo-kaart te controleren.
+Scores en Winnende Voorwaarden
 
 
-Samenvatting
-Stap 1: Open de applicatie en voer je naam in.
-Stap 2: Begin het spel en probeer het juiste woord te raden.
-Stap 3: Na elke poging zie je de voortgang van het te raden woord en krijg je feedback over de letters.
-Stap 4: Trek ballen en vul je bingo-kaart in.
-Stap 5: Het spel eindigt wanneer iemand bingo heeft! Kies of je opnieuw wilt spelen.
-Bedankt voor het spelen van Lingo! Veel plezier en succes!
+Team 1 en Team 2: 
+
+Elk team heeft een score die omhoog gaat wanneer ze het woord correct raden.
+
+Groene ballen: 
+
+Wanneer een team een groene bal trekt, kan dat helpen om de bingokaart te vullen en meer punten te behalen.
+
+Rode ballen: 
+
+Rood betekent verlies voor dat team voor die beurt, en de bingokaart wordt niet verder ingevuld.
+
+Winnende voorwaarden:
+
+Het team met de hoogste score na een bepaald aantal beurten wint.
+Een team wint ook als ze een rij op hun bingokaart volledig hebben ingevuld.
+
+
+Spelafsluiting
+
+
+Wanneer het spel eindigt, wordt de score getoond en wordt het resultaat gedeeld. 
+Het team met de meeste punten of de eerste die "Bingo!" heeft, wordt uitgeroepen tot winnaar.
+
+
+Opmerkingen
+
+
+Debugmodus: 
+
+Als je naam "Joris" is, zal het spel voor debugdoeleinden het te raden woord aan je tonen.
+
+Fouten: 
+
+Als je een verkeerd woord raadt, zal het spel doorgaan naar de volgende beurt.
+
+
+Voorbeeld van hoe het spel loopt
+
+
+Het spel vraagt om je naam.
+Je typt in: "Joris".
+De introductie wordt getoond.
+Team 1 krijgt hun beurt.
+Ze raden het woord "appel" en krijgen een groene bal.
+Team 2 krijgt hun beurt.
+Ze raden het woord "peer" en krijgen een rode bal.
+Het spel herhaalt de beurten en werkt de scores bij.
+Na enkele beurten wordt gecontroleerd of er een winnaar is.
+
+
+Problemen en Oplossingen
+
+
+Spel start niet:
+
+Zorg ervoor dat je Python correct hebt geïnstalleerd en dat alle bestanden in dezelfde map staan.
