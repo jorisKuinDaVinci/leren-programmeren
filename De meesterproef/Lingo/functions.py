@@ -123,7 +123,7 @@ def check_bingo(kaart):
 
     return False
 
-def grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen, ballenbak):
+def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
     """Laat een team grabbelen in de ballenbak."""
     if not ballenbak:
         print("De ballenbak is leeg!")
@@ -136,7 +136,7 @@ def grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen, ballenbak):
     if gekozen_bal == "groen":
         print(f"{team} trekt een GROENE bal! Extra beurt!")
         groene_ballen += 1
-        return grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen, ballenbak)
+        return grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen)
     elif gekozen_bal == "rood":
         print(f"{team} trekt een RODE bal! De beurt eindigt.")
         rode_ballen += 1
@@ -158,19 +158,51 @@ def grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen, ballenbak):
 
     return groene_ballen, rode_ballen, gekozen_bal
 
+# Functie die controleert of er een winnaar is
+def controleer_of_er_een_winnaar_is(
+    team1_score, team2_score,
+    team1_groene_ballen, team2_groene_ballen,
+    team1_rode_ballen, team2_rode_ballen,
+    team1_foute_rij, team2_foute_rij,
+    bingokaart_team1, bingokaart_team2
+):
+    """
+    Controleer of een van de teams gewonnen heeft.
+    Return True als er een winnaar is, anders False.
+    """
 
-def check_winnaar(groene_ballen, rode_ballen, score, bingo, team):
-    """Controleer of het team een winnaar is."""
-    if groene_ballen == 3:
-        print(f"{team} heeft 3 groene ballen! Ze winnen!")
+    # Controleer of team 1 gewonnen heeft
+    if team1_groene_ballen == 3:
+        print("TEAM1 heeft 3 groene ballen! Ze winnen!")
         return True
-    if score >= 10:
-        print(f"{team} heeft 10 woorden geraden! Ze winnen!")
+    if team1_score >= 10:
+        print("TEAM1 heeft 10 woorden geraden! Ze winnen!")
         return True
-    if bingo:
-        print(f"{team} heeft bingo! Ze winnen!")
+    if check_bingo(bingokaart_team1):
+        print("TEAM1 heeft bingo! Ze winnen!")
         return True
-    if rode_ballen == 3:
-        print(f"{team} heeft 3 rode ballen! Ze verliezen!")
+    if team1_rode_ballen == 3:
+        print("TEAM1 heeft 3 rode ballen! Ze verliezen!")
         return True
+    if team1_foute_rij == 3:
+        print("TEAM1 heeft 3 foute beurten! Ze verliezen!")
+        return True
+
+    # Controleer of team 2 gewonnen heeft
+    if team2_groene_ballen == 3:
+        print("TEAM2 heeft 3 groene ballen! Ze winnen!")
+        return True
+    if team2_score >= 10:
+        print("TEAM2 heeft 10 woorden geraden! Ze winnen!")
+        return True
+    if check_bingo(bingokaart_team2):
+        print("TEAM2 heeft bingo! Ze winnen!")
+        return True
+    if team2_rode_ballen == 3:
+        print("TEAM2 heeft 3 rode ballen! Ze verliezen!")
+        return True
+    if team2_foute_rij == 3:
+        print("TEAM2 heeft 3 foute beurten! Ze verliezen!")
+        return True
+
     return False

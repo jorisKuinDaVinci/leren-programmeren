@@ -83,21 +83,18 @@ def speel_lingo():
         print(f"De bingo-kaart van {huidig_team}:")
         print_bingokaart(bingokaart_team1 if huidig_team == "TEAM1" else bingokaart_team2)
 
-        # Controleer op eindcondities
-        if (
-            team1_groene_ballen == 3
-            or check_bingo(bingokaart_team1)
-            or team1_score == 10
-            or team1_rode_ballen == 3
-            or team1_foute_rij == 3
-        ) or (
-            team2_groene_ballen == 3
-            or check_bingo(bingokaart_team2)
-            or team2_score == 10
-            or team2_rode_ballen == 3
-            or team2_foute_rij == 3
-        ):
-            print_winnaar(huidig_team)
+        # Controleer of er een winnaar is
+        if check_winnaar(team1_score, 
+                         team2_score, 
+                         team1_groene_ballen, 
+                         team2_groene_ballen, 
+                         team1_rode_ballen, 
+                         team2_rode_ballen, 
+                         team1_foute_rij, 
+                         team2_foute_rij, 
+                         bingokaart_team1, 
+                         bingokaart_team2
+                         ):
             break
 
         # Wissel van team
