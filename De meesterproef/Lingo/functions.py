@@ -3,11 +3,8 @@ from termcolor import colored
 from teksten import (
     print_ballenbak_leeg,
     toon_woord_geraden,
-    team_groene_ballen_winnaar, 
-    team_score_winnaar, 
-    team_bingo_winnaar, 
-    team_rode_ballen_verliezer, 
-    team_foute_rij_verliezer
+    team_groene_ballen_winnaar,
+    team_rode_ballen_verliezer
 )
 
 # Functie die het woord van de speler vergelijkt met het te raden woord en gekleurde feedback geeft
