@@ -39,32 +39,17 @@ def toon_woord_fout(te_raden_woord):
 def toon_fout_woord_lengte(len_woord):
     print(f"Fout: het woord moet {len_woord} letters lang zijn.")
 
-def print_team1_groene_ballen_winnaar():
-    print("Team 1 heeft 3 groene ballen! Ze winnen!")
+def team_groene_ballen_winnaar(team):
+    print(f"{team} heeft 3 groene ballen! Ze winnen!")
 
-def print_team2_groene_ballen_winnaar():
-    print("Team 2 heeft 3 groene ballen! Ze winnen!")
+def team_score_winnaar(team, score):
+    print(f"{team} heeft {score} woorden geraden! Ze winnen!")
 
-def team1_score_winnaar():
-    print("Team 1 heeft 10 woorden geraden! Ze winnen!")
+def team_bingo_winnaar(team):
+    print(f"{team} heeft bingo! Ze winnen!")
 
-def team2_score_winnaar():
-    print("Team 2 heeft 10 woorden geraden! Ze winnen!")
+def team_rode_ballen_verliezer(team):
+    print(f"{team} heeft 3 rode ballen! Ze verliezen!")
 
-def team1_bingo_winnaar():
-    print("Team 1 heeft bingo! Ze winnen!")
-
-def team2_bingo_winnaar():
-    print("Team 2 heeft bingo! Ze winnen!")
-
-def team1_rode_ballen_verliezer():
-    print("Team 1 heeft 3 rode ballen! Ze verliezen!")
-
-def team2_rode_ballen_verliezer():
-    print("Team 2 heeft 3 rode ballen! Ze verliezen!")
-
-def team1_foute_rij_verliezer():
-    print("Team 1 heeft 3 foutieve rijen! Ze verliezen!")
-
-def team2_foute_rij_verliezer():
-    print("Team 2 heeft 3 foutieve rijen! Ze verliezen!")
+def team_foute_rij_verliezer(team):
+    print(f"{team} heeft 3 foutieve rijen! Ze verliezen!")
