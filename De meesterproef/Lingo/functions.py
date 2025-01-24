@@ -1,6 +1,8 @@
 import random
 from termcolor import colored
 from teksten import (
+    print_ballenbak_leeg,
+    toon_woord_geraden,
     team_groene_ballen_winnaar, 
     team_score_winnaar, 
     team_bingo_winnaar, 
@@ -30,7 +32,7 @@ def raad_woord(te_raden_woord, geraden_letters):
         poging = vraag_raad_woord(geraden_letters, te_raden_woord)
 
         if poging == te_raden_woord:
-            print("Correct! Het woord is geraden.")
+            toon_woord_geraden()
             return True
 
         for i in range(len(poging)):
@@ -102,7 +104,7 @@ def check_bingo(kaart):
 
 def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
     if not ballenbak:
-        print("De ballenbak is leeg!")
+        print_ballenbak_leeg()
         return groene_ballen, rode_ballen, "geen"
 
     gekozen_bal = random.choice(ballenbak)
