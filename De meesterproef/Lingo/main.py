@@ -5,15 +5,20 @@ from functions import (
     bingokaart, 
     print_bingokaart,
     grabbel_ballen, 
-    controleer_of_er_een_winnaar_is
+    controleer_of_er_een_winnaar_is,
+    toon_te_raden_woord
 )
 from teksten import (
     print_introductie, 
     print_beurt_start,
-    print_afsluiting
+    print_afsluiting,
+    vraag_naam  # voeg deze functie toe om de naam van de speler te vragen
 )
 
 def speel_lingo():
+    # Vraag de naam van de speler
+    speler_naam = vraag_naam()
+
     print_introductie()
 
     team1_score = 0
@@ -39,6 +44,9 @@ def speel_lingo():
         eerste_letter = te_raden_woord[0]
         print_beurt_start("Team 1", eerste_letter)
 
+        # Toon het te raden woord als spelernaam "Joris"
+        toon_te_raden_woord(speler_naam, te_raden_woord)  # Voeg dit toe om het woord te tonen bij "Joris"
+
         if raad_woord(te_raden_woord, geraden_letters):
             team1_score += 1
             team1_groene_ballen, team1_rode_ballen, _ = grabbel_ballen("Team 1", ["groen", "groen", "groen", "rood", "rood", "?"], bingokaart_team1, team1_groene_ballen, team1_rode_ballen)
@@ -48,6 +56,9 @@ def speel_lingo():
         geraden_letters = ["_"] * len(te_raden_woord)
         eerste_letter = te_raden_woord[0]
         print_beurt_start("Team 2", eerste_letter)
+
+        # Toon het te raden woord als spelernaam "Joris"
+        toon_te_raden_woord(speler_naam, te_raden_woord)  # Voeg dit toe om het woord te tonen bij "Joris"
 
         if raad_woord(te_raden_woord, geraden_letters):
             team2_score += 1
