@@ -17,10 +17,6 @@ def vraag_opnieuw_spelen():
     antwoord = input("\nWil je opnieuw spelen? (ja/nee): ").strip().lower()
     return antwoord == "ja"
 
-def vraag_naam():
-    naam = input("Wat is je naam? ").strip()
-    return naam
-
 def print_ballenbak_leeg():
     print("De ballenbak is leeg!")
 

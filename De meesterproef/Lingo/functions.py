@@ -134,3 +134,15 @@ def controleer_of_er_een_winnaar_is(team1_score, team2_score, team1_groene_balle
         team_rode_ballen_verliezer("Team 2")
         return True
     return False
+
+# Functie die de naam van de speler vraagt
+def vraag_naam():
+    naam = input("Wat is je naam? ").strip()
+    return naam
+
+# Functie die het te raden woord toont voor "Joris"
+def toon_te_raden_woord(te_raden_woord):
+    """Toon het te raden woord (debugfunctie)."""
+    speler_naam = vraag_naam()  # Vraagt de naam van de speler
+    if speler_naam.lower() == "joris":
+        print(f"Debug ({speler_naam}): Het te raden woord is '{te_raden_woord}'.")
