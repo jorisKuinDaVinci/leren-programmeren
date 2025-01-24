@@ -19,7 +19,6 @@ from teksten import (
 from lingowords import words as woordenlijst
 
 
-# Start het spel
 def speel_lingo():
     # Vraag speler naam en geef introductie
     speler_naam = vraag_naam()
@@ -28,17 +27,16 @@ def speel_lingo():
     # Maak bingokaarten en initialiseerscores
     bingokaart_team1 = bingokaart()
     bingokaart_team2 = bingokaart()
+
+    ballenbak_team1 = [int(nummer) for nummer in bingokaart_team1 if str(nummer).isdigit()]
+    ballenbak_team2 = [int(nummer) for nummer in bingokaart_team2 if str(nummer).isdigit()]
+
     team1_score, team2_score = 0, 0
     team1_rode_ballen, team2_rode_ballen = 0, 0
     team1_groene_ballen, team2_groene_ballen = 0, 0
     team1_foute_rij, team2_foute_rij = 0, 0
     spel_aan_de_gang = True
     huidig_team = "TEAM1"
-
-    # Dynamisch opbouwen van de ballenbak op basis van de nummers op de bingokaart
-    # Converteer nummers naar integers, ongeacht of ze als string of integer zijn weergegeven
-    ballenbak_team1 = [int(nummer) for nummer in bingokaart_team1 if str(nummer).isdigit()]
-    ballenbak_team2 = [int(nummer) for nummer in bingokaart_team2 if str(nummer).isdigit()]
 
     while spel_aan_de_gang:
         # Kies een nieuw woord en initialiseert geraden letters als lijst
@@ -54,24 +52,26 @@ def speel_lingo():
 
         # Verwerk het resultaat
         if woord_geraden:
-            if huidig_team == "TEAM1":
-                team1_foute_rij = 0
-                team1_score += 1
-                team1_groene_ballen, team1_rode_ballen, doorgaan, ballenbak_team1 = grabbel_ballen(
-                    huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen, ballenbak_team1
-                )
-            else:
-                team2_foute_rij = 0
-                team2_score += 1
-                team2_groene_ballen, team2_rode_ballen, doorgaan, ballenbak_team2 = grabbel_ballen(
-                    huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen, ballenbak_team2
-                )
+            print(f"{huidig_team} heeft het woord geraden!")
+            while True:
+                if huidig_team == "TEAM1":
+                    team1_foute_rij = 0
+                    team1_score += 1
+                    team1_groene_ballen, team1_rode_ballen, gekozen_bal = grabbel_ballen(
+                        huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen
+                    )
+                else:
+                    team2_foute_rij = 0
+                    team2_score += 1
+                    team2_groene_ballen, team2_rode_ballen, gekozen_bal = grabbel_ballen(
+                        huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen
+                    )
 
-            # Controleer of de beurt direct eindigt door een rode bal
-            if not doorgaan:
-                print(f"{huidig_team} heeft een rode bal getrokken. De beurt eindigt.")
-                huidig_team = "TEAM2" if huidig_team == "TEAM1" else "TEAM1"
-                continue
+                # Controleer of de speler opnieuw mag grabbelen
+                if gekozen_bal != "groen":
+                    print(f"{huidig_team} heeft geen groene bal meer. De beurt gaat over.")
+                    break
+
         else:
             toon_woord_fout(te_raden_woord)
             if huidig_team == "TEAM1":
@@ -108,6 +108,7 @@ def speel_lingo():
         speel_lingo()
     else:
         print_afsluiting()
+
 
 # Start het spel
 speel_lingo()
