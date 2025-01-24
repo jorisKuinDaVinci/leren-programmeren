@@ -1,19 +1,15 @@
 from lingowords import words as woordenlijst
 from functions import (
-    controleer_letters, 
     kies_willekeurig_woord, 
-    raad_woord, 
-    toon_te_raden_woord,
+    raad_woord,
     bingokaart, 
-    print_bingokaart, 
-    check_bingo, 
+    print_bingokaart,
     grabbel_ballen, 
     controleer_of_er_een_winnaar_is
 )
 from teksten import (
     print_introductie, 
-    print_beurt_start, 
-    print_winnaar, 
+    print_beurt_start,
     print_afsluiting
 )
 
