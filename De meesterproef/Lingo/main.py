@@ -6,6 +6,7 @@ from functions import (
     print_bingokaart,
     check_bingo,
     grabbel_ballen,
+    check_winnaar
 )
 from teksten import (
     print_introductie,
@@ -28,8 +29,9 @@ def speel_lingo():
     bingokaart_team1 = bingokaart()
     bingokaart_team2 = bingokaart()
 
-    ballenbak_team1 = [int(nummer) for nummer in bingokaart_team1 if str(nummer).isdigit()]
-    ballenbak_team2 = [int(nummer) for nummer in bingokaart_team2 if str(nummer).isdigit()]
+    # Maak ballenbakken voor de teams
+    ballenbak_team1 = [nummer for nummer in bingokaart_team1 if type(nummer) == int]
+    ballenbak_team2 = [nummer for nummer in bingokaart_team2 if type(nummer) == int]
 
     team1_score, team2_score = 0, 0
     team1_rode_ballen, team2_rode_ballen = 0, 0
@@ -65,10 +67,11 @@ def speel_lingo():
                     huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen, ballenbak_team2
                 )
 
-            # Als een groene bal wordt getrokken, mag de beurt doorgaan
-            if gekozen_bal == "groen":
-                print(f"{huidig_team} mag opnieuw grabbelen!")
-                continue
+                # Controleer of de speler opnieuw mag grabbelen
+                if gekozen_bal != "groen":
+                    print(f"{huidig_team} heeft geen groene bal meer. De beurt gaat over.")
+                    break
+
         else:
             toon_woord_fout(te_raden_woord)
             if huidig_team == "TEAM1":
@@ -87,17 +90,14 @@ def speel_lingo():
             or team1_score == 10
             or team1_rode_ballen == 3
             or team1_foute_rij == 3
-        ):
-            print_winnaar("TEAM1")
-            break
-        elif (
+        ) or (
             team2_groene_ballen == 3
             or check_bingo(bingokaart_team2)
             or team2_score == 10
             or team2_rode_ballen == 3
             or team2_foute_rij == 3
         ):
-            print_winnaar("TEAM2")
+            print_winnaar(huidig_team)
             break
 
         # Wissel van team

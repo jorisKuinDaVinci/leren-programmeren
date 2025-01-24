@@ -31,31 +31,25 @@ def kies_willekeurig_woord(woordenlijst):
     """
     return random.choice(woordenlijst)
 
-# Functie die het woord van de speler controleert
 def raad_woord(te_raden_woord, geraden_letters):
-    """
-    Laat een speler een woord raden en controleer of het correct is.
-    Retourneert True als het woord correct is, anders False.
-    """
-    pogingen = 5  # Aantal pogingen per woord
+    """Laat een team een woord raden en controleer de hint."""
+    pogingen = 5
     while pogingen > 0:
-        gok = input(f"Voer je woord in ({len(te_raden_woord)} letters): ").lower()
-        
-        # Controleer of de gok de juiste lengte heeft
-        if len(gok) != len(te_raden_woord):
-            print(f"Fout: het woord moet {len(te_raden_woord)} letters lang zijn.")
-            continue
-        
-        if gok == te_raden_woord:
-            print("Gefeliciteerd! Je hebt het woord geraden.")
+        poging = input(f"Raad het woord: {''.join(geraden_letters)} ").lower()
+
+        if poging == te_raden_woord:
+            print("Correct! Het woord is geraden.")
             return True
-        else:
-            # Geef feedback op basis van de gekleurde letters
-            print("Feedback: ", controleer_letters(gok, te_raden_woord))
-            pogingen -= 1
-            print(f"Niet correct, probeer het opnieuw. Pogingen over: {pogingen}")
-    
-    print(f"Helaas, je hebt het woord niet geraden. Het juiste woord was: {te_raden_woord}")
+
+        # Toon hints en vul goed geraden letters in
+        for i in range(len(poging)):
+            if i < len(te_raden_woord) and poging[i] == te_raden_woord[i]:
+                geraden_letters[i] = poging[i]
+
+        print(f"Hint: {''.join(geraden_letters)}")
+        pogingen -= 1
+
+    print(f"Jammer, het woord was {te_raden_woord}.")
     return False
 
 def toon_te_raden_woord(speler_naam, te_raden_woord):
@@ -79,7 +73,7 @@ def print_bingokaart(kaart):
     Print de bingo-kaart met 5 rijen van 5 kolommen.
     """
     for i in range(5):
-        print(" | ".join([str(kaart[i * 5 + j]).rjust(2) for j in range(5)]))
+        print(" | ".join([str(kaart[i * 5 + j]) for j in range(5)]))
         print("-" * 29)
 
 def check_bingo(kaart):
@@ -129,29 +123,54 @@ def check_bingo(kaart):
 
     return False
 
-# Functie die een rode, groene, blauwe of vraagteken bal trekt
-def grabbel_ballen(huidig_team, bingokaart, groene_ballen, rode_ballen, ballenbak):
-    """
-    Laat een team willekeurig een bal uit de ballenbak trekken.
-    Retourneert het aantal groene en rode ballen samen met de gekozen bal.
-    """
+def grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen, ballenbak):
+    """Laat een team grabbelen in de ballenbak."""
     if not ballenbak:
-        print(f"{huidig_team}: De ballenbak is leeg! Geen verdere ballen meer om te grabbelen.")
-        return groene_ballen, rode_ballen, None
+        print("De ballenbak is leeg!")
+        return groene_ballen, rode_ballen, "geen"
 
-    # Willekeurig een bal kiezen uit de ballenbak
+    # Willekeurig een bal trekken
     gekozen_bal = random.choice(ballenbak)
-    ballenbak.remove(gekozen_bal)  # Verwijder de gekozen bal uit de ballenbak
-    print(f"{huidig_team} trekt bal: {gekozen_bal}")
+    ballenbak.remove(gekozen_bal)
 
-    # Controleer de kleur of het type van de bal
     if gekozen_bal == "groen":
+        print(f"{team} trekt een GROENE bal! Extra beurt!")
         groene_ballen += 1
-        print(f"{huidig_team} mag opnieuw grabbelen!")
+        return grabbel_ballen(team, bingokaart, groene_ballen, rode_ballen, ballenbak)
     elif gekozen_bal == "rood":
+        print(f"{team} trekt een RODE bal! De beurt eindigt.")
         rode_ballen += 1
-        print(f"{huidig_team} heeft een rode bal getrokken. De beurt eindigt.")
+    elif gekozen_bal == "?":
+        print(f"{team} trekt een VRAAGTEKEN! Kies een getal van de bingo-kaart om af te strepen.")
+        # Laat de speler een getal kiezen
+        geldig = False
+        while not geldig:
+            keuze = int(input(f"Welke getal wil je afstrepen? {bingokaart}: "))
+            if keuze in bingokaart:
+                geldig = True
+                bingokaart.remove(keuze)
+            else:
+                print("Ongeldige keuze, probeer opnieuw.")
     else:
-        print(f"{huidig_team} heeft een blauwe bal met nummer {gekozen_bal}. Controleer je bingokaart!")
+        print(f"{team} trekt een BAL met het nummer {gekozen_bal}. Het getal wordt afgestreept.")
+        if gekozen_bal in bingokaart:
+            bingokaart.remove(gekozen_bal)
 
     return groene_ballen, rode_ballen, gekozen_bal
+
+
+def check_winnaar(groene_ballen, rode_ballen, score, bingo, team):
+    """Controleer of het team een winnaar is."""
+    if groene_ballen == 3:
+        print(f"{team} heeft 3 groene ballen! Ze winnen!")
+        return True
+    if score >= 10:
+        print(f"{team} heeft 10 woorden geraden! Ze winnen!")
+        return True
+    if bingo:
+        print(f"{team} heeft bingo! Ze winnen!")
+        return True
+    if rode_ballen == 3:
+        print(f"{team} heeft 3 rode ballen! Ze verliezen!")
+        return True
+    return False
