@@ -158,7 +158,7 @@ def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
 
     return groene_ballen, rode_ballen, gekozen_bal
 
-# Functie die controleert of er een winnaar is
+
 def controleer_of_er_een_winnaar_is(
     team1_score, team2_score,
     team1_groene_ballen, team2_groene_ballen,
@@ -166,43 +166,36 @@ def controleer_of_er_een_winnaar_is(
     team1_foute_rij, team2_foute_rij,
     bingokaart_team1, bingokaart_team2
 ):
-    """
-    Controleer of een van de teams gewonnen heeft.
-    Return True als er een winnaar is, anders False.
-    """
-
-    # Controleer of team 1 gewonnen heeft
+    """Controleer of er een winnaar is"""
     if team1_groene_ballen == 3:
-        print("TEAM1 heeft 3 groene ballen! Ze winnen!")
+        print("Team 1 heeft 3 groene ballen! Ze winnen!")
+        return True
+    if team2_groene_ballen == 3:
+        print("Team 2 heeft 3 groene ballen! Ze winnen!")
         return True
     if team1_score >= 10:
-        print("TEAM1 heeft 10 woorden geraden! Ze winnen!")
-        return True
-    if check_bingo(bingokaart_team1):
-        print("TEAM1 heeft bingo! Ze winnen!")
-        return True
-    if team1_rode_ballen == 3:
-        print("TEAM1 heeft 3 rode ballen! Ze verliezen!")
-        return True
-    if team1_foute_rij == 3:
-        print("TEAM1 heeft 3 foute beurten! Ze verliezen!")
-        return True
-
-    # Controleer of team 2 gewonnen heeft
-    if team2_groene_ballen == 3:
-        print("TEAM2 heeft 3 groene ballen! Ze winnen!")
+        print("Team 1 heeft 10 woorden geraden! Ze winnen!")
         return True
     if team2_score >= 10:
-        print("TEAM2 heeft 10 woorden geraden! Ze winnen!")
+        print("Team 2 heeft 10 woorden geraden! Ze winnen!")
+        return True
+    if check_bingo(bingokaart_team1):
+        print("Team 1 heeft bingo! Ze winnen!")
         return True
     if check_bingo(bingokaart_team2):
-        print("TEAM2 heeft bingo! Ze winnen!")
+        print("Team 2 heeft bingo! Ze winnen!")
+        return True
+    if team1_rode_ballen == 3:
+        print("Team 1 heeft 3 rode ballen! Ze verliezen!")
         return True
     if team2_rode_ballen == 3:
-        print("TEAM2 heeft 3 rode ballen! Ze verliezen!")
+        print("Team 2 heeft 3 rode ballen! Ze verliezen!")
+        return True
+    if team1_foute_rij == 3:
+        print("Team 1 heeft 3 foutieve rijen! Ze verliezen!")
         return True
     if team2_foute_rij == 3:
-        print("TEAM2 heeft 3 foute beurten! Ze verliezen!")
+        print("Team 2 heeft 3 foutieve rijen! Ze verliezen!")
         return True
 
     return False
