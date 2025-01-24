@@ -1,7 +1,6 @@
 import random
 from termcolor import colored
 from teksten import (
-    vraag_naam,
     print_ballenbak_leeg,
     toon_woord_geraden,
     team_groene_ballen_winnaar,
