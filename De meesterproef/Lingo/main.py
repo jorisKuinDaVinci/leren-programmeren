@@ -65,11 +65,10 @@ def speel_lingo():
                     huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen, ballenbak_team2
                 )
 
-                # Controleer of de speler opnieuw mag grabbelen
-                if gekozen_bal != "groen":
-                    print(f"{huidig_team} heeft geen groene bal meer. De beurt gaat over.")
-                    break
-
+            # Als een groene bal wordt getrokken, mag de beurt doorgaan
+            if gekozen_bal == "groen":
+                print(f"{huidig_team} mag opnieuw grabbelen!")
+                continue
         else:
             toon_woord_fout(te_raden_woord)
             if huidig_team == "TEAM1":
@@ -88,14 +87,17 @@ def speel_lingo():
             or team1_score == 10
             or team1_rode_ballen == 3
             or team1_foute_rij == 3
-        ) or (
+        ):
+            print_winnaar("TEAM1")
+            break
+        elif (
             team2_groene_ballen == 3
             or check_bingo(bingokaart_team2)
             or team2_score == 10
             or team2_rode_ballen == 3
             or team2_foute_rij == 3
         ):
-            print_winnaar(huidig_team)
+            print_winnaar("TEAM2")
             break
 
         # Wissel van team
