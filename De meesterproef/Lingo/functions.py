@@ -1,5 +1,29 @@
 import random
 from termcolor import colored
+from teksten import (
+    print_introductie, 
+    print_beurt_start, 
+    print_winnaar, 
+    print_afsluiting,
+    vraag_opnieuw_spelen,
+    vraag_naam,
+    print_ballenbak_leeg,
+    toon_woord_geraden,
+    toon_woord_verkeerd,
+    print_ongeldige_keuze,
+    toon_woord_fout,
+    toon_fout_woord_lengte,
+    print_team1_groene_ballen_winnaar,
+    print_team2_groene_ballen_winnaar,
+    team1_score_winnaar,
+    team2_score_winnaar,
+    team1_bingo_winnaar,
+    team2_bingo_winnaar,
+    team1_rode_ballen_verliezer,
+    team2_rode_ballen_verliezer,
+    team1_foute_rij_verliezer,
+    team2_foute_rij_verliezer
+)
 
 # Functie die het woord van de speler vergelijkt met het te raden woord en gekleurde feedback geeft
 def controleer_letters(gok, te_raden_woord):
