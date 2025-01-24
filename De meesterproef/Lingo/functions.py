@@ -132,20 +132,26 @@ def check_bingo(kaart):
 # Functie die een rode, groene, blauwe of vraagteken bal trekt
 def grabbel_ballen(huidig_team, bingokaart, groene_ballen, rode_ballen, ballenbak):
     """
-    Laat een team in de ballenbak grabbelen en retourneert het aantal groene en rode ballen
-    samen met de gekozen bal.
+    Laat een team willekeurig een bal uit de ballenbak trekken.
+    Retourneert het aantal groene en rode ballen samen met de gekozen bal.
     """
     if not ballenbak:
-        print(f"{huidig_team}: De ballenbak is leeg!")
+        print(f"{huidig_team}: De ballenbak is leeg! Geen verdere ballen meer om te grabbelen.")
         return groene_ballen, rode_ballen, None
 
-    gekozen_bal = ballenbak.pop(0)  # Pak de eerste bal uit de ballenbak
-    print(f"{huidig_team} grabbelt in de ballenbak en trekt bal: {gekozen_bal}")
+    # Willekeurig een bal kiezen uit de ballenbak
+    gekozen_bal = random.choice(ballenbak)
+    ballenbak.remove(gekozen_bal)  # Verwijder de gekozen bal uit de ballenbak
+    print(f"{huidig_team} trekt bal: {gekozen_bal}")
 
+    # Controleer de kleur of het type van de bal
     if gekozen_bal == "groen":
         groene_ballen += 1
-        print(f"{huidig_team}: Je mag opnieuw grabbelen!")
-    else:
+        print(f"{huidig_team} mag opnieuw grabbelen!")
+    elif gekozen_bal == "rood":
         rode_ballen += 1
+        print(f"{huidig_team} heeft een rode bal getrokken. De beurt eindigt.")
+    else:
+        print(f"{huidig_team} heeft een blauwe bal met nummer {gekozen_bal}. Controleer je bingokaart!")
 
     return groene_ballen, rode_ballen, gekozen_bal

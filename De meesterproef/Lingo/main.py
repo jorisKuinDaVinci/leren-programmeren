@@ -52,20 +52,18 @@ def speel_lingo():
 
         # Verwerk het resultaat
         if woord_geraden:
-            print(f"{huidig_team} heeft het woord geraden!")
-            while True:
-                if huidig_team == "TEAM1":
-                    team1_foute_rij = 0
-                    team1_score += 1
-                    team1_groene_ballen, team1_rode_ballen, gekozen_bal = grabbel_ballen(
-                        huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen, ballenbak_team1
-                    )
-                else:
-                    team2_foute_rij = 0
-                    team2_score += 1
-                    team2_groene_ballen, team2_rode_ballen, gekozen_bal = grabbel_ballen(
-                        huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen, ballenbak_team2
-                    )
+            if huidig_team == "TEAM1":
+                team1_foute_rij = 0
+                team1_score += 1
+                team1_groene_ballen, team1_rode_ballen, gekozen_bal = grabbel_ballen(
+                    huidig_team, bingokaart_team1, team1_groene_ballen, team1_rode_ballen, ballenbak_team1
+                )
+            else:
+                team2_foute_rij = 0
+                team2_score += 1
+                team2_groene_ballen, team2_rode_ballen, gekozen_bal = grabbel_ballen(
+                    huidig_team, bingokaart_team2, team2_groene_ballen, team2_rode_ballen, ballenbak_team2
+                )
 
                 # Controleer of de speler opnieuw mag grabbelen
                 if gekozen_bal != "groen":
