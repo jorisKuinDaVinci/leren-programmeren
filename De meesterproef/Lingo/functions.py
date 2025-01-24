@@ -132,33 +132,20 @@ def check_bingo(kaart):
 # Functie die een rode, groene, blauwe of vraagteken bal trekt
 def grabbel_ballen(huidig_team, bingokaart, groene_ballen, rode_ballen, ballenbak):
     """
-    Trek een bal uit de ballenbak voor het team en verwerk de effect.
-    Retourneer de bijgewerkte aantallen van groene en rode ballen.
+    Laat een team in de ballenbak grabbelen en retourneert het aantal groene en rode ballen
+    samen met de gekozen bal.
     """
-    # Trek een bal uit de ballenbak
-    gekozen_bal = random.choice(ballenbak)
-    
+    if not ballenbak:
+        print(f"{huidig_team}: De ballenbak is leeg!")
+        return groene_ballen, rode_ballen, None
+
+    gekozen_bal = ballenbak.pop(0)  # Pak de eerste bal uit de ballenbak
+    print(f"{huidig_team} grabbelt in de ballenbak en trekt bal: {gekozen_bal}")
+
     if gekozen_bal == "groen":
         groene_ballen += 1
-        print(f"{huidig_team} heeft een groene bal! Je mag nog een bal trekken.")
-        ballenbak.remove(gekozen_bal)  # Verwijder de groene bal uit de ballenbak
-        gekozen_bal = random.choice(ballenbak)  # Trek een andere bal
-        print(f"{huidig_team} trekt een extra bal: {gekozen_bal}")
-
-    elif gekozen_bal == "rood":
+        print(f"{huidig_team}: Je mag opnieuw grabbelen!")
+    else:
         rode_ballen += 1
-        print(f"{huidig_team} heeft een rode bal! De beurt gaat naar het andere team.")
-    elif gekozen_bal == "blauw":
-        getal = random.randint(1, 75)
-        print(f"{huidig_team} heeft een blauwe bal met nummer {getal}. Dit wordt afgestreept op de bingokaart.")
-        # Voer de juiste afstrepactie uit op de bingokaart hier
-    elif gekozen_bal == "?":
-        print(f"{huidig_team} heeft een vraagtekenbal! Kies een getal om af te strepen.")
-        # Laat het team een getal kiezen
-        # Voer de afstrepactie uit op de bingokaart hier
 
-    # Verwijder de getrokken bal uit de ballenbak
-    if gekozen_bal != "?":
-        ballenbak.remove(gekozen_bal)
-
-    return groene_ballen, rode_ballen, gekozen_bal, ballenbak
+    return groene_ballen, rode_ballen, gekozen_bal
