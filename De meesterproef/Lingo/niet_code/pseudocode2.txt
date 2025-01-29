@@ -1,56 +1,28 @@
 START
 
-    FUNCTIE vraag_naam:
-        Vraag de speler om zijn naam.
-        RETURN naam
+Vraag de naam van de speler
+Print introductie
+Initialiseer scores, ballen en Bingokaarten voor beide teams
+Print Bingokaarten voor beide teams
 
-    FUNCTIE toon_te_raden_woord(speler_naam, te_raden_woord):
-        IF speler_naam is "Joris" THEN
-            Toon het te raden woord voor debug-doeleinden.
-    
-    FUNCTIE speel_lingo:
-        naam = vraag_naam()  // Vraag om de naam van de speler
-        
-        Print introductie van het spel
+WHILE er geen winnaar is:
+    BEURT voor Team 1:
+        Kies willekeurig woord voor team 1
+        Toon eerste letter van te raden woord
+        Vraag team 1 om woord te raden
+        Controleer de ingevoerde gok:
+            - Als correct: Update score en trek een bal
+            - Als incorrect: Geef feedback (groen, geel, rood)
+    BEURT voor Team 2:
+        Kies willekeurig woord voor team 2
+        Toon eerste letter van te raden woord
+        Vraag team 2 om woord te raden
+        Controleer de ingevoerde gok:
+            - Als correct: Update score en trek een bal
+            - Als incorrect: Geef feedback (groen, geel, rood)
 
-        INITIALISEER:
-            team1_score = 0
-            team2_score = 0
-            team1_groene_ballen = 0
-            team2_groene_ballen = 0
-            team1_rode_ballen = 0
-            team2_rode_ballen = 0
-            team1_foute_rij = 0
-            team2_foute_rij = 0
-            bingokaart_team1 = Genereer bingokaart voor Team 1
-            bingokaart_team2 = Genereer bingokaart voor Team 2
-
-        Print de bingokaart voor Team 1
-        Print de bingokaart voor Team 2
-
-        WHILE Spel loopt:
-            // Beurt voor Team 1
-            Kies willekeurig te raden woord voor Team 1
-            Toon eerste letter van het te raden woord
-            toon_te_raden_woord(naam, te_raden_woord)  // Toon het te raden woord als naam = "Joris"
-
-            IF Team 1 raadt het woord:
-                Verhoog Team 1 score
-                Trek ballen voor Team 1 en update groene en rode ballen
-
-            // Beurt voor Team 2
-            Kies willekeurig te raden woord voor Team 2
-            Toon eerste letter van het te raden woord
-            toon_te_raden_woord(naam, te_raden_woord)  // Toon het te raden woord als naam = "Joris"
-
-            IF Team 2 raadt het woord:
-                Verhoog Team 2 score
-                Trek ballen voor Team 2 en update groene en rode ballen
-
-            // Controleer of er een winnaar is
-            IF controleer_winnaar THEN
-                STOP het spel
-
-        Print de afsluiting van het spel
+    Controleer of er een winnaar is:
+        - Winnaar als score >= 3 of andere voorwaarden (groene ballen, Bingo, etc.)
+        - Als er een winnaar, eindig het spel en toon de winnaar
 
 EINDE
