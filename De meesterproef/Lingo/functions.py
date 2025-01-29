@@ -24,14 +24,14 @@ def controleer_letters(gok, te_raden_woord):
     # Eerst groene letters markeren
     for i in range(len(gok)):
         if gok[i] == te_raden_woord[i]:
-            feedback[i] = colored(gok[i], "green")
+            feedback[i] = colored(gok[i], "green")  # Groene letters staan goed
             te_raden_lijst[i] = None  # Verwijder de letter zodat deze niet meer als geel telt
 
     # Dan gele letters markeren
     for i in range(len(gok)):
         if feedback[i] == "":  # Alleen als het nog niet groen is
             if gok[i] in te_raden_lijst:
-                feedback[i] = colored(gok[i], "yellow")
+                feedback[i] = colored(gok[i], "yellow")  # Gele letters staan wel in het woord maar op de verkeerde plek
                 te_raden_lijst[te_raden_lijst.index(gok[i])] = None  # Zorg dat een letter maar één keer geel wordt
             else:
                 feedback[i] = colored(gok[i], "red")  # Rood als het nergens voorkomt
