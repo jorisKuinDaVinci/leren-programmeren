@@ -1,3 +1,4 @@
+# de code werkt.
 import random
 from lingowords import words as woordenlijst
 from functions import (
