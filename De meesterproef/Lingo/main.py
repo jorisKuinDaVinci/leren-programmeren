@@ -1,4 +1,3 @@
-# deze code werkt.
 from lingowords import words as woordenlijst
 from functions import (
     kies_willekeurig_woord, 
