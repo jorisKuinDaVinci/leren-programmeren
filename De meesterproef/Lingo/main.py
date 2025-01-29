@@ -1,4 +1,4 @@
-# de code werkt.
+
 import random
 from lingowords import words as woordenlijst
 from functions import (
@@ -15,12 +15,14 @@ from teksten import (
     print_introductie,
     print_beurt_start,
     print_afsluiting,
-    vraag_naam  # Voeg deze functie toe om de naam van de speler te vragen
+    vraag_naam,
+    vraag_opnieuw_spelen
 )
 
 def speel_lingo():
-    # Vraag de naam van de speler
+    # Vraag de naam van de speler en van de tweede speler
     speler_naam = vraag_naam()
+    tweede_speler_naam = input("Wat is de naam van de tweede speler? ").strip()
 
     print_introductie()
 
@@ -41,7 +43,7 @@ def speel_lingo():
     print("Bingo Kaart Team 2:")
     print_bingokaart(bingokaart_team2)
 
-    def speel_beurt(team, speler_naam, bingokaart_team, team_score, team_groene_ballen, team_rode_ballen):
+    def speel_beurt(team, speler_naam, bingokaart_team, team_score, team_groene_ballen, team_rode_ballen, pogingen):
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)
 
@@ -56,18 +58,23 @@ def speel_lingo():
         if raad_woord(te_raden_woord, geraden_letters):
             team_score += 1
             team_groene_ballen, team_rode_ballen, _ = grabbel_ballen(team, random.sample(["groen", "groen", "groen", "rood", "rood", "?"], 6), bingokaart_team, team_groene_ballen, team_rode_ballen)
+        
+        pogingen -= 1
+        print(f"Nog {pogingen} pogingen over.")
 
-        return team_score, team_groene_ballen, team_rode_ballen
+        return team_score, team_groene_ballen, team_rode_ballen, pogingen
 
     while True:
-        print("\n--- Beurt Team 1 ---")
-        team1_score, team1_groene_ballen, team1_rode_ballen = speel_beurt(
-            "Team 1", speler_naam, bingokaart_team1, team1_score, team1_groene_ballen, team1_rode_ballen
+        # Start de beurten voor beide teams
+        pogingen = 5
+        print(f"\n--- Beurt {speler_naam} en {tweede_speler_naam} ---")
+        team1_score, team1_groene_ballen, team1_rode_ballen, pogingen = speel_beurt(
+            f"{speler_naam} & {tweede_speler_naam}", speler_naam, bingokaart_team1, team1_score, team1_groene_ballen, team1_rode_ballen, pogingen
         )
 
         print("\n--- Beurt Team 2 ---")
-        team2_score, team2_groene_ballen, team2_rode_ballen = speel_beurt(
-            "Team 2", speler_naam, bingokaart_team2, team2_score, team2_groene_ballen, team2_rode_ballen
+        team2_score, team2_groene_ballen, team2_rode_ballen, pogingen = speel_beurt(
+            f"{tweede_speler_naam} & {speler_naam}", tweede_speler_naam, bingokaart_team2, team2_score, team2_groene_ballen, team2_rode_ballen, pogingen
         )
 
         # Controleer of er een winnaar is
@@ -78,6 +85,10 @@ def speel_lingo():
             team1_foute_rij, team2_foute_rij,
             bingokaart_team1, bingokaart_team2
         ):
+            break
+
+        # Vraag of de speler opnieuw wil spelen
+        if not vraag_opnieuw_spelen():
             break
 
     print_afsluiting()
