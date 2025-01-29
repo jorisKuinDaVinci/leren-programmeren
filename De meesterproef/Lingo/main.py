@@ -7,7 +7,8 @@ from functions import (
     print_bingokaart,
     grabbel_ballen, 
     controleer_of_er_een_winnaar_is,
-    toon_te_raden_woord
+    toon_te_raden_woord,
+    controleer_letters
 )
 from teksten import (
     print_introductie, 

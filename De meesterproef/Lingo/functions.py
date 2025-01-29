@@ -52,7 +52,7 @@ def raad_woord(te_raden_woord, geraden_letters):
             if i < len(te_raden_woord) and poging[i] == te_raden_woord[i]:
                 geraden_letters[i] = poging[i]
 
-        print(f"Hint: {''.join(geraden_letters)}")
+        print("Feedback:", controleer_letters(poging, te_raden_woord))
         pogingen -= 1
 
     print(f"Jammer, het woord was {te_raden_woord}.")
