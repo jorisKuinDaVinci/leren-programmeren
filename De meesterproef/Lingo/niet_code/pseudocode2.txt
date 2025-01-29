@@ -1,28 +1,66 @@
-START
+Begin spel
 
-Vraag de naam van de speler
+Vraag naam van speler 1 (speler_naam)
+Vraag naam van speler 2 (tweede_speler_naam)
+
 Print introductie
-Initialiseer scores, ballen en Bingokaarten voor beide teams
-Print Bingokaarten voor beide teams
 
-WHILE er geen winnaar is:
-    BEURT voor Team 1:
-        Kies willekeurig woord voor team 1
-        Toon eerste letter van te raden woord
-        Vraag team 1 om woord te raden
-        Controleer de ingevoerde gok:
-            - Als correct: Update score en trek een bal
-            - Als incorrect: Geef feedback (groen, geel, rood)
-    BEURT voor Team 2:
-        Kies willekeurig woord voor team 2
-        Toon eerste letter van te raden woord
-        Vraag team 2 om woord te raden
-        Controleer de ingevoerde gok:
-            - Als correct: Update score en trek een bal
-            - Als incorrect: Geef feedback (groen, geel, rood)
+Initialiseer:
+    team1_score = 0
+    team2_score = 0
+    team1_groene_ballen = 0
+    team2_groene_ballen = 0
+    team1_rode_ballen = 0
+    team2_rode_ballen = 0
+    team1_foute_rij = 0
+    team2_foute_rij = 0
+    team1_geraden_woorden = 0
+    team2_geraden_woorden = 0
+    bingokaart_team1 = nieuwe bingo-kaart
+    bingokaart_team2 = nieuwe bingo-kaart
 
-    Controleer of er een winnaar is:
-        - Winnaar als score >= 3 of andere voorwaarden (groene ballen, Bingo, etc.)
-        - Als er een winnaar, eindig het spel en toon de winnaar
+Print bingo-kaarten voor beide teams
 
-EINDE
+Herhaal tot spel is afgelopen:
+
+    -- Begin Beurt Team 1 --
+    Kies willekeurig woord voor team 1
+    Toon eerste letter van het te raden woord
+    Toon het volledige woord alleen als speler_naam is "joris"
+
+    Als team 1 raadt correct:
+        Verhoog team1_score
+        Verhoog team1_geraden_woorden
+        Trek een bal (groen of rood) en update ballen en bingokaart
+
+    Als team 1 raadt fout:
+        Verhoog team1_foute_rij
+
+    Controleer of team 1 voldoet aan win- of verliesvoorwaarden:
+        Als team 1 heeft gewonnen of verloren, beëindig het spel
+
+    -- Begin Beurt Team 2 --
+    Kies willekeurig woord voor team 2
+    Toon eerste letter van het te raden woord
+    Toon het volledige woord alleen als tweede_speler_naam is "joris"
+
+    Als team 2 raadt correct:
+        Verhoog team2_score
+        Verhoog team2_geraden_woorden
+        Trek een bal (groen of rood) en update ballen en bingokaart
+
+    Als team 2 raadt fout:
+        Verhoog team2_foute_rij
+
+    Controleer of team 2 voldoet aan win- of verliesvoorwaarden:
+        Als team 2 heeft gewonnen of verloren, beëindig het spel
+
+    Controleer of een van de win- of verliescondities is bereikt:
+        Als een team voldoet aan een win- of verliesvoorwaarde, beëindig het spel
+
+    Vraag of de speler opnieuw wil spelen:
+        Als "nee", beëindig het spel
+
+Print afsluiting
+
+Einde spel
