@@ -7,16 +7,32 @@ from teksten import (
     team_rode_ballen_verliezer
 )
 
-# Functie die het woord van de speler vergelijkt met het te raden woord en gekleurde feedback geeft
 def controleer_letters(gok, te_raden_woord):
-    feedback = []
-    for i in range(len(te_raden_woord)):
+    """
+    Vergelijkt de gok met het te raden woord en geeft gekleurde feedback.
+    
+    - Groen: juiste letter op de juiste plek
+    - Geel: juiste letter op de verkeerde plek
+    - Rood: letter komt niet voor in het woord
+    """
+    feedback = [""] * len(te_raden_woord)
+    te_raden_lijst = list(te_raden_woord)  # Kopieer het te raden woord om verbruikte letters bij te houden
+
+    # Eerst groene letters markeren
+    for i in range(len(gok)):
         if gok[i] == te_raden_woord[i]:
-            feedback.append(colored(gok[i], "green"))
-        elif gok[i] in te_raden_woord:
-            feedback.append(colored(gok[i], "yellow"))
-        else:
-            feedback.append(colored(gok[i], "red"))
+            feedback[i] = colored(gok[i], "green")
+            te_raden_lijst[i] = None  # Verwijder de letter zodat deze niet meer als geel telt
+
+    # Dan gele letters markeren
+    for i in range(len(gok)):
+        if feedback[i] == "":  # Alleen als het nog niet groen is
+            if gok[i] in te_raden_lijst:
+                feedback[i] = colored(gok[i], "yellow")
+                te_raden_lijst[te_raden_lijst.index(gok[i])] = None  # Zorg dat een letter maar één keer geel wordt
+            else:
+                feedback[i] = colored(gok[i], "red")  # Rood als het nergens voorkomt
+
     return " ".join(feedback)
 
 # Functie die een willekeurig woord kiest uit de woordenlijst
