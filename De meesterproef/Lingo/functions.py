@@ -15,6 +15,9 @@ def controleer_letters(gok, te_raden_woord):
     - Geel: juiste letter op de verkeerde plek
     - Rood: letter komt niet voor in het woord
     """
+    if len(gok) != len(te_raden_woord):
+        raise ValueError("De lengte van de gok komt niet overeen met de lengte van het te raden woord.")
+
     feedback = [""] * len(te_raden_woord)
     te_raden_lijst = list(te_raden_woord)  # Kopieer het te raden woord om verbruikte letters bij te houden
 
@@ -35,11 +38,18 @@ def controleer_letters(gok, te_raden_woord):
 
     return " ".join(feedback)
 
-# Functie die een willekeurig woord kiest uit de woordenlijst
 def kies_willekeurig_woord(woordenlijst):
+    """
+    Kies een willekeurig woord uit de woordenlijst, controleer of de lijst niet leeg is.
+    """
+    if not woordenlijst:
+        raise ValueError("De woordenlijst is leeg.")
     return random.choice(woordenlijst)
 
 def raad_woord(te_raden_woord, geraden_letters):
+    """
+    Laat de speler een poging doen om het te raden woord te raden.
+    """
     pogingen = 5
     while pogingen > 0:
         poging = vraag_raad_woord(geraden_letters, te_raden_woord)
@@ -59,6 +69,9 @@ def raad_woord(te_raden_woord, geraden_letters):
     return False
 
 def vraag_raad_woord(geraden_letters, te_raden_woord):
+    """
+    Vraag de speler om een woord in te vullen en controleer de lengte.
+    """
     while True:
         poging = input(f"Raad het woord: {''.join(geraden_letters)} ").lower()
 
@@ -69,53 +82,47 @@ def vraag_raad_woord(geraden_letters, te_raden_woord):
         return poging
 
 def bingokaart():
+    """
+    Genereer een bingokaart met 25 nummers, waarbij het midden een 'Gratis' vakje is.
+    """
     kaart = random.sample(range(1, 76), 25)
-    kaart[12] = "Gratis"
+    kaart[12] = "Gratis"  # Het middenvak is altijd 'Gratis'
     return kaart
 
 def print_bingokaart(kaart):
+    """
+    Print de bingokaart.
+    """
     for i in range(5):
         print(" | ".join([str(kaart[i * 5 + j]) for j in range(5)]))
         print("-" * 29)
 
 def check_bingo(kaart):
+    """
+    Controleer of er bingo is (horizontaal, verticaal, diagonaal).
+    """
+    # Controleer horizontale lijnen
     for i in range(5):
-        bingo = True
-        for j in range(5):
-            if kaart[i * 5 + j] != 'X':
-                bingo = False
-                break
-        if bingo:
+        if all(kaart[i * 5 + j] == 'X' for j in range(5)):
             return True
 
+    # Controleer verticale lijnen
     for j in range(5):
-        bingo = True
-        for i in range(5):
-            if kaart[i * 5 + j] != 'X':
-                bingo = False
-                break
-        if bingo:
+        if all(kaart[i * 5 + j] == 'X' for i in range(5)):
             return True
 
-    bingo = True
-    for i in range(5):
-        if kaart[i * 5 + i] != 'X':
-            bingo = False
-            break
-    if bingo:
+    # Controleer diagonalen
+    if all(kaart[i * 5 + i] == 'X' for i in range(5)):
         return True
-
-    bingo = True
-    for i in range(5):
-        if kaart[i * 5 + (4 - i)] != 'X':
-            bingo = False
-            break
-    if bingo:
+    if all(kaart[i * 5 + (4 - i)] == 'X' for i in range(5)):
         return True
 
     return False
 
 def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
+    """
+    Trek een bal uit de ballenbak en pas de scores en ballen aan.
+    """
     if not ballenbak:
         print_ballenbak_leeg()
         return groene_ballen, rode_ballen, "geen"
@@ -137,6 +144,9 @@ def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
 def controleer_of_er_een_winnaar_is(team1_score, team2_score, team1_groene_ballen, team2_groene_ballen,
                                      team1_rode_ballen, team2_rode_ballen, team1_foute_rij, team2_foute_rij,
                                      bingokaart_team1, bingokaart_team2):
+    """
+    Controleer of er een winnaar is op basis van verschillende voorwaarden.
+    """
     if team1_score >= 3 or team1_groene_ballen == 3 or check_bingo(bingokaart_team1):
         team_groene_ballen_winnaar("Team 1")
         return True
@@ -151,8 +161,7 @@ def controleer_of_er_een_winnaar_is(team1_score, team2_score, team1_groene_balle
         return True
     return False
 
-# Functie die het te raden woord toont voor "Joris"
 def toon_te_raden_woord(speler_naam, te_raden_woord):
-    """Toon het te raden woord (debugfunctie)."""
+    """Toon het te raden woord voor debugdoeleinden (alleen voor speler 'Joris')."""
     if speler_naam.lower() == "joris":
         print(f"Debug ({speler_naam}): Het te raden woord is '{te_raden_woord}'.")
