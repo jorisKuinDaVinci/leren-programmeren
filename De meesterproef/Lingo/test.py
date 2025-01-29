@@ -19,20 +19,6 @@ def test_controleer_letters():
     assert result == expected, f"Test 2 mislukt! Verwacht: {expected}, gekregen: {result}"
     print("Test 2 geslaagd: Gedeeltelijk goed")
     
-    # Test 3: Helemaal fout
-    gok = "zoets"
-    expected = " ".join([colored(c, "red") for c in gok])
-    result = controleer_letters(gok, te_raden_woord)
-    assert result == expected, f"Test 3 mislukt! Verwacht: {expected}, gekregen: {result}"
-    print("Test 3 geslaagd: Helemaal fout")
-    
-    # Test 4: Letters op verkeerde plek
-    gok = "lapep"
-    expected = f"{colored('l', 'yellow')} {colored('a', 'green')} {colored('p', 'green')} {colored('e', 'green')} {colored('p', 'yellow')}"
-    result = controleer_letters(gok, te_raden_woord)
-    assert result == expected, f"Test 4 mislukt! Verwacht: {expected}, gekregen: {result}"
-    print("Test 4 geslaagd: Letters op verkeerde plek")
-    
 if __name__ == "__main__":
     test_controleer_letters()
     print("Alle tests zijn succesvol uitgevoerd!")

@@ -1,118 +1,99 @@
 Gebruiksaanwijzing voor het Lingo Spel
 
 
-Welkom bij Lingo! 
-Dit spel is geïnspireerd door het populaire televisieprogramma en wordt gespeeld in teams waarbij het doel is om woorden te raden en zoveel mogelijk punten te behalen. 
-Hier is de handleiding voor hoe je het spel speelt.
+Welkom bij Lingo, het spannende woordraadspel! 
+Hier leer je hoe je het spel speelt, de regels, en hoe je een winnaar kunt worden.
 
 
-Speloverzicht
+Inhoud van het spel
 
 
-Lingo is een spel dat wordt gespeeld door twee teams. 
-Elk team probeert een woord te raden dat willekeurig wordt gekozen. 
-Tijdens het spel komen er verschillende spelmechanismen aan bod zoals ballen trekken (groen of rood) en het invullen van een bingokaart. 
-Het team met de hoogste score wint.
+Lingo Woordenlijst:
+
+Een lijst met woorden die geraden moeten worden.
+
+Bingo Kaart:
+
+Een kaart met getallen waarmee je extra punten kunt verdienen.
+
+Ballenbak:
+
+Een bak met ballen in verschillende kleuren (groen, rood, vraagteken) die invloed hebben op je voortgang.
 
 
-Spelstart
+Doel van het spel
 
-1. Naam invoeren
 
-Wanneer je het spel start, wordt je gevraagd om je naam in te voeren.
-
-2. Introductie
-
-Na het invoeren van je naam, wordt de introductie van het spel getoond. Dit legt uit hoe het spel zal verlopen.
+Het doel van Lingo is om woorden correct te raden en speciale ballen te trekken, terwijl je probeert de win- en verliescondities te vermijden. 
+Het team dat als eerste voldoet aan een van de wincondities, wint!
 
 
 Spelregels
 
+1. Begin van het Spel
 
-1. Teams
+Elke speler voert hun naam in.
+Er worden twee teams gevormd.
+Het spel bestaat uit verschillende beurten, waarbij elk team om de beurt speelt.
 
-Er zijn twee teams die elkaar afwisselen: Team 1 en Team 2.
-Elke beurt proberen de teams een willekeurig woord te raden.
+2. Beurt van een Team
 
-2. Beurtverdeling
+Tijdens de beurt probeert het team het geheime woord te raden.
+Elke beurt begint met het onthullen van de eerste letter van het geheime woord.
+Het team krijgt 5 pogingen om het volledige woord te raden.
+Elke foutieve poging wordt gekarakteriseerd door gekleurde feedback:
+Groen: de letter is correct en op de juiste positie.
+Geel: de letter komt voor in het woord, maar niet op de juiste plek.
+Rood: de letter komt niet voor in het woord.
 
-Elk team krijgt om de beurt een kans om het woord te raden.
-Het eerste letter van het te raden woord wordt getoond.
-Teams moeten het volledige woord raden door letters in te vullen.
+3. Ballen trekken
 
-3. Ballentrekken
+Na elke beurt trekt het team een bal uit de ballenbak, die de voortgang beïnvloedt:
+Groene bal: Het team krijgt een extra beurt.
+Rode bal: Het team verliest een punt.
+Vraagteken bal: Het team mag kiezen of ze een extra beurt willen of een punt verliezen.
 
-Na elke correcte gok, trekt het team ballen. Deze ballen kunnen groen, rood of onbekend ("?") zijn.
-Groene ballen geven aan dat het team dichter bij het winnen is, terwijl rode ballen een verlies aanduiden.
-Ballen worden gebruikt om een bingokaart voor elk team in te vullen.
+4. Bingo Kaart
 
-4. Bingokaart
-
-Elk team heeft een bingokaart waarop ze vakjes vullen door ballen te trekken.
-Teams moeten proberen om rijen van 5 vakjes in te vullen om "Bingo!" te roepen.
-
-5. Einde van het spel
-
-Het spel eindigt wanneer er een team is dat voldoet aan de voorwaarden om te winnen, zoals het verkrijgen van een bepaalde score of het behalen van bingo.
-
-
-Scores en Winnende Voorwaarden
-
-
-Team 1 en Team 2: 
-
-Elk team heeft een score die omhoog gaat wanneer ze het woord correct raden.
-
-Groene ballen: 
-
-Wanneer een team een groene bal trekt, kan dat helpen om de bingokaart te vullen en meer punten te behalen.
-
-Rode ballen: 
-
-Rood betekent verlies voor dat team voor die beurt, en de bingokaart wordt niet verder ingevuld.
-
-Winnende voorwaarden:
-
-Het team met de hoogste score na een bepaald aantal beurten wint.
-Een team wint ook als ze een rij op hun bingokaart volledig hebben ingevuld.
+Elk team heeft een bingo-kaart met 25 vakjes.
+Tijdens het spel kan het team vakjes markeren op de kaart. 
+Als een team een horizontale, verticale of diagonale lijn heeft, krijgen ze bingo en winnen ze het spel.
 
 
-Spelafsluiting
+Win- en Verliescondities
 
 
-Wanneer het spel eindigt, wordt de score getoond en wordt het resultaat gedeeld. 
-Het team met de meeste punten of de eerste die "Bingo!" heeft, wordt uitgeroepen tot winnaar.
+Wincondities
+
+Een team wint als één van de volgende condities wordt gehaald:
+
+Het team heeft 3 groene ballen getrokken.
+Het team heeft een lijn op hun bingo-kaart (horizontaal, verticaal of diagonaal).
+Het team heeft 10 woorden correct geraden.
+
+Verliescondities
+
+Een team verliest als één van de volgende condities wordt gehaald:
+
+Het team heeft 3 rode ballen getrokken.
+Het team heeft 3 woorden op rij fout geraden.
 
 
-Opmerkingen
+Herstarten of Einde van het Spel
 
 
-Debugmodus: 
-
-Als je naam "Joris" is, zal het spel voor debugdoeleinden het te raden woord aan je tonen.
-
-Fouten: 
-
-Als je een verkeerd woord raadt, zal het spel doorgaan naar de volgende beurt.
+Na elke ronde wordt het team gevraagd of ze opnieuw willen spelen.
+Als beide teams besluiten niet opnieuw te spelen, eindigt het spel en wordt een afsluitende boodschap weergegeven.
 
 
-Voorbeeld van hoe het spel loopt
+Tips voor Succes
 
 
-Het spel vraagt om je naam.
-Je typt in: "Joris".
-De introductie wordt getoond.
-Team 1 krijgt hun beurt.
-Ze raden het woord "appel" en krijgen een groene bal.
-Team 2 krijgt hun beurt.
-Ze raden het woord "peer" en krijgen een rode bal.
-Het spel herhaalt de beurten en werkt de scores bij.
-Na enkele beurten wordt gecontroleerd of er een winnaar is.
+Probeer systematisch te raden. Elke letter telt!
+Gebruik de feedback goed om je volgende gok te verbeteren.
+Let op de ballen die je trekt! Ze kunnen je team extra kansen geven of je terugwerpen.
+Speel strategisch met je bingo-kaart om snel een lijn te maken.
+Blijf kalm als je dicht bij het winnen of verliezen bent!
 
 
-Problemen en Oplossingen
-
-
-Spel start niet:
-
-Zorg ervoor dat je Python correct hebt geïnstalleerd en dat alle bestanden in dezelfde map staan.
+Veel plezier met het spelen van Lingo! Hopelijk komt je team als winnaar uit de strijd!
