@@ -22,6 +22,7 @@ def speel_lingo():
 
     print_introductie()
 
+    # Beginwaarden voor de scores en ballen
     team1_score = 0
     team2_score = 0
     team1_groene_ballen = 0
@@ -38,32 +39,36 @@ def speel_lingo():
     print("Bingo Kaart Team 2:")
     print_bingokaart(bingokaart_team2)
 
+    # Functie voor het spelen van de beurt van een team
+    def speel_beurt(team, te_raden_woord, geraden_letters, team_score, team_groene_ballen, team_rode_ballen, bingokaart_team):
+        eerste_letter = te_raden_woord[0]
+        print_beurt_start(team, eerste_letter)
+
+        # Toon het te raden woord als spelernaam "Joris"
+        toon_te_raden_woord(speler_naam, te_raden_woord)
+
+        if raad_woord(te_raden_woord, geraden_letters):
+            team_score += 1
+            team_groene_ballen, team_rode_ballen, _ = grabbel_ballen(team, ["groen", "groen", "groen", "rood", "rood", "?"], bingokaart_team, team_groene_ballen, team_rode_ballen)
+        
+        return team_score, team_groene_ballen, team_rode_ballen
+
     while True:
         print("\n--- Beurt Team 1 ---")
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)
-        eerste_letter = te_raden_woord[0]
-        print_beurt_start("Team 1", eerste_letter)
 
-        # Toon het te raden woord als spelernaam "Joris"
-        toon_te_raden_woord(speler_naam, te_raden_woord)  # Voeg dit toe om het woord te tonen bij "Joris"
-
-        if raad_woord(te_raden_woord, geraden_letters):
-            team1_score += 1
-            team1_groene_ballen, team1_rode_ballen, _ = grabbel_ballen("Team 1", ["groen", "groen", "groen", "rood", "rood", "?"], bingokaart_team1, team1_groene_ballen, team1_rode_ballen)
+        team1_score, team1_groene_ballen, team1_rode_ballen = speel_beurt(
+            "Team 1", te_raden_woord, geraden_letters, team1_score, team1_groene_ballen, team1_rode_ballen, bingokaart_team1
+        )
 
         print("\n--- Beurt Team 2 ---")
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)
-        eerste_letter = te_raden_woord[0]
-        print_beurt_start("Team 2", eerste_letter)
 
-        # Toon het te raden woord als spelernaam "Joris"
-        toon_te_raden_woord(speler_naam, te_raden_woord)  # Voeg dit toe om het woord te tonen bij "Joris"
-
-        if raad_woord(te_raden_woord, geraden_letters):
-            team2_score += 1
-            team2_groene_ballen, team2_rode_ballen, _ = grabbel_ballen("Team 2", ["groen", "groen", "groen", "rood", "rood", "?"], bingokaart_team2, team2_groene_ballen, team2_rode_ballen)
+        team2_score, team2_groene_ballen, team2_rode_ballen = speel_beurt(
+            "Team 2", te_raden_woord, geraden_letters, team2_score, team2_groene_ballen, team2_rode_ballen, bingokaart_team2
+        )
 
         if controleer_of_er_een_winnaar_is(
             team1_score, team2_score,
