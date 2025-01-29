@@ -122,6 +122,7 @@ def check_bingo(kaart):
 def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
     """
     Trek een bal uit de ballenbak en pas de scores en ballen aan.
+    Bij het trekken van een vraagteken bal, mag het team een keuze maken.
     """
     if not ballenbak:
         print_ballenbak_leeg()
@@ -139,6 +140,19 @@ def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
         rode_ballen += 1
     elif gekozen_bal == "?":
         print(f"{team} trekt een vraagteken bal! Ze mogen kiezen.")
+        
+        # Vraag wat de speler wil doen bij een vraagteken bal
+        keuze = input(f"{team}, kies wat je wilt doen: (1) Extra beurt of (2) Verlies een punt: ")
+        
+        if keuze == "1":
+            print(f"{team} heeft gekozen voor een extra beurt!")
+            groene_ballen += 1
+        elif keuze == "2":
+            print(f"{team} heeft gekozen om een punt te verliezen.")
+            rode_ballen += 1
+        else:
+            print(f"{team} maakte een ongeldige keuze, dus ze verliezen een punt.")
+            rode_ballen += 1
     return groene_ballen, rode_ballen, gekozen_bal
 
 def controleer_of_er_een_winnaar_is(team1_score, team2_score, team1_groene_ballen, team2_groene_ballen,
