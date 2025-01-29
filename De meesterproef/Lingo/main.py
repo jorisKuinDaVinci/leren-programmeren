@@ -34,6 +34,8 @@ def speel_lingo():
     team2_rode_ballen = 0
     team1_foute_rij = 0
     team2_foute_rij = 0
+    team1_geraden_woorden = 0
+    team2_geraden_woorden = 0
     bingokaart_team1 = bingokaart()
     bingokaart_team2 = bingokaart()
 
@@ -42,38 +44,45 @@ def speel_lingo():
     print("Bingo Kaart Team 2:")
     print_bingokaart(bingokaart_team2)
 
-    def speel_beurt(team, speler_naam, bingokaart_team, team_score, team_groene_ballen, team_rode_ballen, pogingen):
+    pogingen = 5  # Aantal pogingen per beurt
+
+    def speel_beurt(team_naam, bingokaart_team, team_score, team_groene_ballen, team_rode_ballen, team_foute_rij,
+                    team_geraden_woorden, pogingen):
         te_raden_woord = kies_willekeurig_woord(woordenlijst)
         geraden_letters = ["_"] * len(te_raden_woord)
-
         eerste_letter = te_raden_woord[0]
-        print_beurt_start(team, eerste_letter)
+        print_beurt_start(team_naam, eerste_letter)
 
-        # Toon het te raden woord alleen voor "Joris"
-        if speler_naam.lower() == "joris":
+        # Toon het te raden woord alleen voor "Joris" (als speler_naam of tweede_speler_naam gelijk is aan "Joris")
+        if speler_naam.lower() == "joris" or tweede_speler_naam.lower() == "joris":
             toon_te_raden_woord(speler_naam, te_raden_woord)
 
         # Raad het woord
         if raad_woord(te_raden_woord, geraden_letters):
             team_score += 1
-            team_groene_ballen, team_rode_ballen, _ = grabbel_ballen(team, random.sample(["groen", "groen", "groen", "rood", "rood", "?"], 6), bingokaart_team, team_groene_ballen, team_rode_ballen)
+            team_geraden_woorden += 1
+            team_groene_ballen, team_rode_ballen, _ = grabbel_ballen(
+                team_naam, random.sample(["groen", "groen", "groen", "rood", "rood", "?"], 6), bingokaart_team, team_groene_ballen, team_rode_ballen
+            )
+        else:
+            team_foute_rij += 1
         
         pogingen -= 1
-        print(f"Nog {pogingen} pogingen over.")
+        print(f"Nog {pogingen} pogingen over voor {team_naam}.")
 
-        return team_score, team_groene_ballen, team_rode_ballen, pogingen
+        return team_score, team_groene_ballen, team_rode_ballen, team_foute_rij, team_geraden_woorden, pogingen
 
     while True:
-        # Start de beurten voor beide teams
-        pogingen = 5
-        print(f"\n--- Beurt {speler_naam} en {tweede_speler_naam} ---")
-        team1_score, team1_groene_ballen, team1_rode_ballen, pogingen = speel_beurt(
-            f"{speler_naam} & {tweede_speler_naam}", speler_naam, bingokaart_team1, team1_score, team1_groene_ballen, team1_rode_ballen, pogingen
+        # Start de beurt voor Team 1 (speler_naam)
+        print(f"\n--- Beurt {speler_naam} (Team 1) ---")
+        team1_score, team1_groene_ballen, team1_rode_ballen, team1_foute_rij, team1_geraden_woorden, pogingen = speel_beurt(
+            speler_naam, bingokaart_team1, team1_score, team1_groene_ballen, team1_rode_ballen, team1_foute_rij, team1_geraden_woorden, pogingen
         )
 
-        print("\n--- Beurt Team 2 ---")
-        team2_score, team2_groene_ballen, team2_rode_ballen, pogingen = speel_beurt(
-            f"{tweede_speler_naam} & {speler_naam}", tweede_speler_naam, bingokaart_team2, team2_score, team2_groene_ballen, team2_rode_ballen, pogingen
+        # Start de beurt voor Team 2 (tweede_speler_naam)
+        print(f"\n--- Beurt {tweede_speler_naam} (Team 2) ---")
+        team2_score, team2_groene_ballen, team2_rode_ballen, team2_foute_rij, team2_geraden_woorden, pogingen = speel_beurt(
+            tweede_speler_naam, bingokaart_team2, team2_score, team2_groene_ballen, team2_rode_ballen, team2_foute_rij, team2_geraden_woorden, pogingen
         )
 
         # Controleer of er een winnaar is
@@ -82,7 +91,8 @@ def speel_lingo():
             team1_groene_ballen, team2_groene_ballen,
             team1_rode_ballen, team2_rode_ballen,
             team1_foute_rij, team2_foute_rij,
-            bingokaart_team1, bingokaart_team2
+            bingokaart_team1, bingokaart_team2,
+            team1_geraden_woorden, team2_geraden_woorden
         ):
             break
 

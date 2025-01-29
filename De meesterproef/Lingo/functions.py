@@ -157,22 +157,26 @@ def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
 
 def controleer_of_er_een_winnaar_is(team1_score, team2_score, team1_groene_ballen, team2_groene_ballen,
                                      team1_rode_ballen, team2_rode_ballen, team1_foute_rij, team2_foute_rij,
-                                     bingokaart_team1, bingokaart_team2):
+                                     bingokaart_team1, bingokaart_team2, team1_geraden_woorden, team2_geraden_woorden):
     """
-    Controleer of er een winnaar is op basis van verschillende voorwaarden.
+    Controleer of er een winnaar of verliezer is op basis van de voorwaarden.
     """
-    if team1_score >= 3 or team1_groene_ballen == 3 or check_bingo(bingokaart_team1):
+    # Wincondities
+    if team1_groene_ballen == 3 or check_bingo(bingokaart_team1) or team1_geraden_woorden >= 10:
         team_groene_ballen_winnaar("Team 1")
         return True
-    elif team2_score >= 3 or team2_groene_ballen == 3 or check_bingo(bingokaart_team2):
+    elif team2_groene_ballen == 3 or check_bingo(bingokaart_team2) or team2_geraden_woorden >= 10:
         team_groene_ballen_winnaar("Team 2")
         return True
-    elif team1_rode_ballen == 3 or team1_foute_rij == 3:
+
+    # Verliescondities
+    if team1_rode_ballen == 3 or team1_foute_rij == 3:
         team_rode_ballen_verliezer("Team 1")
         return True
     elif team2_rode_ballen == 3 or team2_foute_rij == 3:
         team_rode_ballen_verliezer("Team 2")
         return True
+
     return False
 
 def toon_te_raden_woord(speler_naam, te_raden_woord):
