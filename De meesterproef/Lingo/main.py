@@ -8,9 +8,9 @@ from functions import (
     grabbel_ballen,
     controleer_of_er_een_winnaar_is,
     toon_te_raden_woord,
-    controleer_letters
+    controleer_letters,
 )
-from teksten import (
+from teksten_functions import (
     print_introductie,
     print_beurt_start,
     print_afsluiting,

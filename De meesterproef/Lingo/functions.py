@@ -1,6 +1,6 @@
 import random
 from termcolor import colored
-from teksten import (
+from teksten_functions import (
     print_ballenbak_leeg,
     toon_woord_geraden,
     team_groene_ballen_winnaar,
@@ -142,13 +142,13 @@ def grabbel_ballen(team, ballenbak, bingokaart, groene_ballen, rode_ballen):
         print(f"{team} trekt een vraagteken bal! Ze mogen kiezen.")
         
         # Vraag wat de speler wil doen bij een vraagteken bal
-        keuze = input(f"{team}, kies wat je wilt doen: (1) Extra beurt of (2) Verlies een punt: ")
+        keuze = input(f"{team}, kies wat je wilt doen: (1) Extra beurt of (2) beeindig je beurt.: ")
         
         if keuze == "1":
             print(f"{team} heeft gekozen voor een extra beurt!")
             groene_ballen += 1
         elif keuze == "2":
-            print(f"{team} heeft gekozen om een punt te verliezen.")
+            print(f"{team} heeft gekozen om de beurt te eindigen.")
             rode_ballen += 1
         else:
             print(f"{team} maakte een ongeldige keuze, dus ze verliezen een punt.")
@@ -183,3 +183,29 @@ def toon_te_raden_woord(speler_naam, te_raden_woord):
     """Toon het te raden woord voor debugdoeleinden (alleen voor speler 'Joris')."""
     if speler_naam.lower() == "joris":
         print(f"Debug ({speler_naam}): Het te raden woord is '{te_raden_woord}'.")
+
+def speel_beurt(team_naam, bingokaart_team, team_score, team_groene_ballen, team_rode_ballen, team_foute_rij,
+                    team_geraden_woorden, pogingen):
+        te_raden_woord = kies_willekeurig_woord(woordenlijst)
+        geraden_letters = ["_"] * len(te_raden_woord)
+        eerste_letter = te_raden_woord[0]
+        print_beurt_start(team_naam, eerste_letter)
+
+        # Toon het te raden woord alleen voor "Joris" (als speler_naam of tweede_speler_naam gelijk is aan "Joris")
+        if speler_naam.lower() == "joris" or tweede_speler_naam.lower() == "joris":
+            toon_te_raden_woord(speler_naam, te_raden_woord)
+
+        # Raad het woord
+        if raad_woord(te_raden_woord, geraden_letters):
+            team_score += 1
+            team_geraden_woorden += 1
+            team_groene_ballen, team_rode_ballen, _ = grabbel_ballen(
+                team_naam, random.sample(["groen", "groen", "groen", "rood", "rood", "?"], 6), bingokaart_team, team_groene_ballen, team_rode_ballen
+            )
+        else:
+            team_foute_rij += 1
+        
+        pogingen -= 1
+        print(f"Nog {pogingen} pogingen over voor {team_naam}.")
+
+        return team_score, team_groene_ballen, team_rode_ballen, team_foute_rij, team_geraden_woorden, pogingen        
